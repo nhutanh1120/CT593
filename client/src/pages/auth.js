@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import FormLogin from "./../components/auth/FormLogin";
 import FormSignup from "./../components/auth/FormSignup";
 import Panels from "./../components/auth/Panels";
-import "./../assets/css/style.css";
+import "./../assets/css/auth.css";
 
 function Auth() {
   let sign = " ";

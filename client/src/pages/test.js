@@ -1,12 +1,13 @@
 import React from "react";
-import { showErrorToast } from "../components/utils/notification/message";
+// import { showErrorToast } from "../components/utils/notification/message";
+import Message from "../components/utils/notification/message";
+import "./../components/utils/notification/message.css";
 
 const test = () => {
-  const abc = () => showErrorToast;
-  abc();
   return (
-    <div onClick={abc}>
-      a<div id="toast"></div>
+    <div>
+      <div id="toast"></div>
+      <Message />
     </div>
   );
 };

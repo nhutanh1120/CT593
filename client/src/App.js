@@ -16,7 +16,8 @@ import test from "./pages/test";
 // import { useDispatch, useSelector } from "react-redux";
 // import axios from "axios";
 // import { apiUrl } from "./constants/";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
+import "./assets/css/style.css";
 
 function App() {
   return (

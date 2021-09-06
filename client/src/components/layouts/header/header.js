@@ -1,27 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import "./styles.css";
 import logo from "./../../../assets/img/1.webp";
 
 function Header({ classNav }) {
-  const scroll = () => {
+  let navCss = "navbar navbar-expand-lg navbar-dark";
+  useEffect(() => {
     window.addEventListener("scroll", async () => {
       let header = await document.querySelector("nav");
       let windowPosition = window.scrollY > 0;
       header.classList.toggle("nav-bar-scroll", windowPosition);
     });
-  };
-  let navCss = "navbar navbar-expand-lg navbar-dark";
-  // useEffect(() => {
+  }, []);
+
   if (classNav) {
     navCss += " header-home";
-    scroll();
   } else {
     navCss += " header";
   }
-  // });
-
   return (
     <nav className={navCss}>
       <Container>

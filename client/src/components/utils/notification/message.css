@@ -1,25 +1,7 @@
-/* * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  font-family: "Helvetica Neue";
-  background-color: #f4f4f5;
-} */
-
-body > div {
-  margin: auto;
-}
-
 /* ======= Buttons ======== */
 
 /* Block */
-.btn {
+.btn--message {
   display: inline-block;
   text-decoration: none;
   background-color: transparent;
@@ -42,11 +24,11 @@ body > div {
   padding: 8px 32px;
 }
 
-.btn:hover {
+.btn--message:hover {
   opacity: 0.8;
 }
 
-.btn + .btn {
+.btn--message + .btn--message {
   margin-left: 16px;
 }
 
