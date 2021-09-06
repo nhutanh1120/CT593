@@ -1,0 +1,70 @@
+GET http://localhost:4000/api/agricultural/read
+
+###
+PATCH http://localhost:4000/api/agricultural/update/613372c85e27380ba8b5e74e
+Content-Type: application/json
+
+{
+    "actions": [
+              {
+               "typeAction": 0,
+               "listAction": [
+                          {
+                            "nameAction": "thuoc 4",
+                            "supplierAction": "update"
+                          }
+                        ]
+              }
+            ]
+}
+
+### 
+DELETE http://localhost:4000/api/agricultural/delete/61337ebaa330a8090c9d2b3e
+
+###
+POST http://localhost:4000/api/agricultural/create
+Content-Type: application/json
+
+{
+  "typeAgricultural": 2,
+  "breed": {
+        "nameBreed": "ca rot",
+        "supplierBreed": "abcdefgh"
+      },
+  "actions": [
+              {
+               "typeAction": 0,
+               "listAction": [
+                          {
+                            "nameAction": "thuoc 1",
+                            "supplierAction": "sbcdef"
+                          },
+                          {
+                            "nameAction": "thuoc 2",
+                            "supplierAction": "sbcdef"
+                          },
+                          {
+                            "nameAction": "thuoc 3",
+                            "supplierAction": "xvcd"
+                          }
+                        ]
+              },
+              {
+               "typeAction": 0,
+               "listAction": [
+                          {
+                            "nameAction": "thuoc 1",
+                            "supplierAction": "sbcdef"
+                          },
+                          {
+                            "nameAction": "thuoc 2",
+                            "supplierAction": "sbcdef"
+                          },
+                          {
+                            "nameAction": "thuoc 3",
+                            "supplierAction": "xvcd"
+                          }
+                        ]
+              }
+            ]
+}

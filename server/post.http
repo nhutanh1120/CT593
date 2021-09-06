@@ -1,0 +1,31 @@
+
+###
+POST http://localhost:4000/api/post/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTE3YzVlYjZkMDIzNzBkZDQzOTUwZTAiLCJpYXQiOjE2Mjg5NTg3NzF9.b9Di8lhKDnIzIsCG2YCir8IohKe4Ej3nxEPtkqOPqtE
+
+{
+  "title": "a", 
+  "description": "b",
+  "url": "c", 
+  "status": "LEARNING"
+}
+
+###
+GET http://localhost:4000/api/post/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTE3YzVlYjZkMDIzNzBkZDQzOTUwZTAiLCJpYXQiOjE2Mjg5NTg3NzF9.b9Di8lhKDnIzIsCG2YCir8IohKe4Ej3nxEPtkqOPqtE
+
+###
+PUT  http://localhost:4000/api/post/6117cd0f39838e1a1cd5b42b
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTE3YzVlYjZkMDIzNzBkZDQzOTUwZTAiLCJpYXQiOjE2Mjg5NTg3NzF9.b9Di8lhKDnIzIsCG2YCir8IohKe4Ej3nxEPtkqOPqtE
+
+{
+  "title": "update vue"
+}
+
+###
+DELETE  http://localhost:4000/api/post/6117cd0f39838e1a1cd5b42b
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTE3YzVlYjZkMDIzNzBkZDQzOTUwZTAiLCJpYXQiOjE2Mjg5NTg3NzF9.b9Di8lhKDnIzIsCG2YCir8IohKe4Ej3nxEPtkqOPqtE

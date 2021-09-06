@@ -1,0 +1,22 @@
+.brand-text {
+  position: absolute;
+  width: auto;
+  height: 464px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  z-index: 1000;
+  text-align: center;
+}
+.brand-text h5 {
+  color: white;
+  font-size: 34px;
+}
+.brand-text p {
+  color: white;
+}
+.brand-text img {
+  color: red;
+}

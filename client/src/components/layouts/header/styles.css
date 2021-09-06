@@ -1,0 +1,134 @@
+.selected {
+  border: 1px solid white;
+}
+.header-logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.header-logo .logo-item {
+  position: relative;
+  display: inline-block;
+  color: white;
+  top: 5px;
+  left: -5px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.logo-item h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  padding-bottom: 0px;
+}
+
+.logo-item span {
+  transition: 0.5;
+  position: relative;
+  display: block;
+  color: white;
+  font-size: 0.4rem;
+  text-align: left;
+}
+
+.header-sign li a {
+  position: relative;
+  height: 28px !important;
+  border-right: 1px solid white;
+}
+
+.header-sign li:last-child a {
+  border-right: none !important;
+}
+
+.header-sign .nav-link {
+  padding: 0.1rem 1rem !important;
+}
+
+.navbar {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  position: fixed !important;
+  top: 0px !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+}
+
+.header-home {
+  background-color: transparent;
+  margin-top: 10px;
+  transition: margin-top 0.5s ease;
+}
+
+.header {
+  background-color: #212529 !important;
+}
+
+.nav-bar-scroll {
+  background-color: #212529 !important;
+  box-shadow: 0 3px 1rem rgba(0, 0, 0, 0.1);
+  margin-top: 0px !important;
+}
+
+.hero {
+  width: 100%;
+  height: 100%;
+  background: url("./../../../assets/img/bg.jpg") center no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+video {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100%;
+  min-height: 100%;
+  position: relative !important;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.header-active .active {
+  margin: 0 10px;
+  position: relative;
+}
+.header-active .active::after {
+  content: "";
+  width: 90%;
+  height: 2px;
+  background-color: #fff;
+  position: absolute;
+  left: 5px;
+  bottom: 0px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+.header-sign .active::after {
+  content: "";
+  width: 80%;
+  height: 2px;
+  background-color: #fff;
+  position: absolute;
+  left: 10px;
+  bottom: -5px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+.selected:hover::after {
+  transform: scaleX(0) !important;
+}
+.active:hover::after {
+  transform: scaleX(1);
+}

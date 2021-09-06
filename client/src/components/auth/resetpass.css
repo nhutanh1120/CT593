@@ -1,0 +1,102 @@
+.bg-body {
+  background-color: #8db7e4;
+}
+.bg-body-white {
+  background-color: #fff;
+}
+.bg-tb {
+  background-color: #1e7ee4;
+  color: #fff;
+  font-size: 2rem;
+  border-top: 3px solid rgb(41, 38, 38);
+  border-bottom: 3px solid rgb(41, 38, 38);
+}
+
+.bg-form {
+  background-color: white;
+  z-index: 1;
+  border-radius: 4px;
+  box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.2);
+}
+#reset input {
+  margin-top: 20px;
+}
+#reset input + a {
+  position: relative;
+  top: -15px;
+}
+#reset input:hover {
+  border: 1px solid blue;
+}
+/* Icon */
+.contac > a > i {
+  transition: 0.5s;
+  border-radius: 50%;
+  text-shadow: 20px 20px 50px solid gray;
+  border: 2px solid transparent;
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+  line-height: 30px;
+  text-align: center;
+  box-shadow: 3px 3px 7px gray;
+}
+
+.contac > a {
+  text-decoration: none;
+  color: white;
+}
+
+.contac > a > i:hover {
+  transform: rotate(90deg);
+  background-color: teal;
+  color: white;
+}
+
+.facebook {
+  background-color: #102eaa;
+}
+
+.github {
+  background-color: #343a40;
+}
+
+.twitter {
+  background-color: #55acee;
+}
+
+.google {
+  background-color: #b1aecc;
+}
+
+/* reset password */
+.form-reset {
+  border: 1px solid #cbcbd2;
+  border-radius: 4px;
+  padding: 4px 12px;
+  color: #3f3f44;
+  background-color: #fff;
+  background-image: none;
+}
+.form-reset input {
+  margin: 0px;
+  border: none;
+  width: 90%;
+  outline: none;
+  font-size: 14px;
+  line-height: 1.42857;
+  padding: 6px 12px;
+  background-color: #fff;
+  background-image: none;
+}
+.form-reset span {
+  width: 20%;
+  border-right: 1px solid #cbcbd2;
+  font-size: 16px;
+}
+.reset-text {
+  font-size: 14px;
+}
+#reset .show {
+  font-size: 13px;
+}
