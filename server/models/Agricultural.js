@@ -12,6 +12,7 @@ const AgriculturalSchema = new Schema(
       type: Number,
       required: true,
     },
+    address: { type: String, required: true },
     breed: {
       // Quản lý giống
       nameBreed: String, // Tên giống

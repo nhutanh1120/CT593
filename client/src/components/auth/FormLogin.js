@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-// import { GoogleLogin } from "react-google-login";
+import { GoogleLogin } from "react-google-login";
 // import FacebookLogin from "react-facebook-login";
 import { useDispatch } from "react-redux";
-import {
-  showErrMsg,
-  showSuccessMsg,
-} from "./../utils/notification/Notification";
-import { dispatchLogin } from "./../../redux/actions/authAction";
+import { showErrMsg, showSuccessMsg } from "../utils/notification/Notification";
+import { dispatchLogin } from "../../redux/actions/authAction";
 import { apiUrl } from "../../constants";
 
 const initialState = {
@@ -52,25 +49,25 @@ const FormLogin = () => {
     }
   };
 
-  // const responseGoogle = async (response) => {
-  //   try {
-  //     const res = await axios.post(
-  //       "http://localhost:4000/api/auth/google_login",
-  //       {
-  //         tokenId: response.tokenId,
-  //       }
-  //     );
+  const responseGoogle = async (response) => {
+    try {
+      const res = await axios.post(
+        "http://localhost:4000/api/auth/google_login",
+        {
+          tokenId: response.tokenId,
+        }
+      );
 
-  //     setUser({ ...user, error: "", success: res.data.message });
-  //     localStorage.setItem("firstLogin", true);
+      setUser({ ...user, error: "", success: res.data.message });
+      localStorage.setItem("firstLogin", true);
 
-  //     dispatch(dispatchLogin());
-  //     history.push("/dashboard");
-  //   } catch (error) {
-  //     error.response.data.message &&
-  //       setUser({ ...user, error: error.response.data.message, success: "" });
-  //   }
-  // };
+      dispatch(dispatchLogin());
+      history.push("/dashboard");
+    } catch (error) {
+      error.response.data.message &&
+        setUser({ ...user, error: error.response.data.message, success: "" });
+    }
+  };
 
   // const responseFacebook = async (response) => {
   //   try {
@@ -126,13 +123,13 @@ const FormLogin = () => {
           {/* <Link to="/" className="social-icon">
             <i className="fab fa-google-plus-g"></i>
           </Link> */}
-          {/* <GoogleLogin
+          <GoogleLogin
             clientId="350754393545-ges26agoopegg76ojspuem9ccsh1ti8a.apps.googleusercontent.com"
             buttonText="Login"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
             cookiePolicy={"single_host_origin"}
-          /> */}
+          />
           {/* <Link to="/" className="social-icon">
             <i className="fa fa-instagram" aria-hidden="true"></i>
           </Link> */}
@@ -157,11 +154,10 @@ const FormLogin = () => {
           />
           <span onClick={showHide}>{passwordShown ? "Ẩn" : "Hiện"}</span>
         </div>
-        <Link to="/resetpassword">Quên mật khẩu?</Link>
+        <Link to="/forgot">Quên mật khẩu?</Link>
         <button type="submit" className="btn solid">
           Đăng nhập
         </button>
-        {/* <button type="submit" value="Login" className="btn solid"></button> */}
       </form>
     </>
   );

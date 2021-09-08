@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import FormLogin from "./../components/auth/FormLogin";
-import FormSignup from "./../components/auth/FormSignup";
-import Panels from "./../components/auth/Panels";
+import FormLogin from "./../components/auth/formLogin";
+import FormSignup from "./../components/auth/formSignup";
+import Panels from "../components/auth/panels";
+import "./../components/utils/notification/message.css";
 import "./../assets/css/auth.css";
 
 function Auth() {
@@ -21,7 +22,8 @@ function Auth() {
     sign_in_btn.onclick = handleSign;
   }, [sign]);
   return (
-    <div className="auth">
+    <div className="App auth">
+      <div id="toast"></div>
       <div className="forms-auth">
         <div className="signin-signup">
           <FormLogin />

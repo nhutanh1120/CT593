@@ -1,27 +1,27 @@
 import React, { useEffect } from "react";
-import { Link, Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+// import { useSelector } from "react-redux";
 // import axios from "axios";
 
 const Sidebar = () => {
-  const auth = useSelector((state) => state.auth);
+  // const auth = useSelector((state) => state.auth);
 
-  const { user, isLogged } = auth;
+  // const { user, isLogged } = auth;
 
-  const checkLogin = () => {
-    return (
-      <li className="profile">
-        <div className="profile-details">
-          <img src="profile.jpg" alt="profileImg" />
-          <div className="name_job">
-            <div className="name">Prem Shahi</div>
-            <div className="job">admin</div>
-          </div>
-        </div>
-        <i className="bx bx-log-out" id="log_out"></i>
-      </li>
-    );
-  };
+  // const checkLogin = () => {
+  //   return (
+  //     <li className="profile">
+  //       <div className="profile-details">
+  //         <img src="profile.jpg" alt="profileImg" />
+  //         <div className="name_job">
+  //           <div className="name">Prem Shahi</div>
+  //           <div className="job">admin</div>
+  //         </div>
+  //       </div>
+  //       <i className="bx bx-log-out" id="log_out"></i>
+  //     </li>
+  //   );
+  // };
   useEffect(() => {
     let sidebar = document.querySelector(".sidebar");
     let closeBtn = document.querySelector("#btn");
@@ -120,7 +120,7 @@ const Sidebar = () => {
               </Link>
               <span className="tooltip">Setting</span>
             </li> */}
-          {isLogged ? checkLogin() : "chua login"}
+          {/* {isLogged ? checkLogin() : "chua login"} */}
         </ul>
       </div>
     </>

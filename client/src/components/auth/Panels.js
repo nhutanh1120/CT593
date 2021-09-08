@@ -18,7 +18,7 @@ const Panels = ({ onSignUpMode }) => {
               id="sign-up-btn"
               onClick={() => onSignUpMode(true)}
             >
-              Sign up
+              Đăng ký
             </button>
           </div>
           <img src={log} className="image" alt="img" />
@@ -35,7 +35,7 @@ const Panels = ({ onSignUpMode }) => {
               id="sign-in-btn"
               onClick={() => onSignUpMode(false)}
             >
-              Sign in
+              Đăng nhập
             </button>
           </div>
           <img src={register} className="image" alt="img" />

@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import axios from "axios";
+import axios from "axios";
+// import {
+//   showErrMsg,
+//   showSuccessMsg,
+// } from "./../utils/notification/Notification";
 import {
-  showErrMsg,
-  showSuccessMsg,
-} from "./../utils/notification/Notification";
+  showSuccessToast,
+  showErrorToast,
+} from "../utils/notification/message";
 import {
   isEmpty,
   isEmail,
   isLength,
   isMatch,
-} from "./../utils/validation/Validation";
-// import { apiUrl } from "../../constants";
+} from "../utils/validation/Validation";
+import { apiUrl } from "../../constants";
 
 const initialState = {
   username: "",
@@ -58,19 +62,19 @@ const FormSignup = () => {
         error: "Password did not match.",
         success: "",
       });
-    console.log("success              ");
-    // try {
-    //   const res = await axios.post(apiUrl + "/auth/register", {
-    //     username,
-    //     password,
-    //     email,
-    //   });
 
-    //   setUser({ ...user, error: "", success: res.data.message });
-    // } catch (error) {
-    //   error.response.data.message &&
-    //     setUser({ ...user, error: error.response.data.message, success: "" });
-    // }
+    try {
+      const res = await axios.post(apiUrl + "/auth/register", {
+        username,
+        password,
+        email,
+      });
+
+      setUser({ ...user, error: "", success: res.data.message });
+    } catch (error) {
+      error.response.data.message &&
+        setUser({ ...user, error: error.response.data.message, success: "" });
+    }
   };
 
   // Show/hide password
@@ -80,10 +84,10 @@ const FormSignup = () => {
   };
   return (
     <>
+      {error && showErrorToast}
+      {success && showSuccessToast}
       <form className="sign-up-form" onSubmit={handleSubmit}>
         <h2 className="title">Sign up</h2>
-        {error && showErrMsg(error)}
-        {success && showSuccessMsg(success)}
 
         <div className="input-field">
           <input

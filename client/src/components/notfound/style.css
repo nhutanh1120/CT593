@@ -2,12 +2,34 @@
   padding: 40px 0;
   background: #fff;
   font-family: "Arvo", serif;
+  width: 100%;
+  height: 100vh;
 }
+/* 
+.page_404::after {
+  content: "";
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+} */
 
 .page_404 img {
   width: 100%;
 }
 
+/* .four_zero_four_bg {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-image: url("./../../assets/img/405.jpg");
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+} */
 .four_zero_four_bg {
   background-image: url("./../../assets/img/404.gif");
   height: 400px;

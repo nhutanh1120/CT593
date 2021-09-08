@@ -7,8 +7,8 @@ import logo from "./../../../assets/img/1.webp";
 function Header({ classNav }) {
   let navCss = "navbar navbar-expand-lg navbar-dark";
   useEffect(() => {
-    window.addEventListener("scroll", async () => {
-      let header = await document.querySelector("nav");
+    let header = document.querySelector("nav");
+    window.addEventListener("scroll", () => {
       let windowPosition = window.scrollY > 0;
       header.classList.toggle("nav-bar-scroll", windowPosition);
     });

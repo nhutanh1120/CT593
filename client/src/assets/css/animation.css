@@ -11,6 +11,7 @@ body {
   height: 0.4vw;
   margin: -0.2vw 0 0 9.8vw;
   animation: ease 200s alternate infinite;
+  animation-delay: 5s;
   pointer-events: none;
 }
 .firefly::before,
@@ -26,12 +27,14 @@ body {
   background: black;
   opacity: 0.4;
   animation: drift ease alternate infinite;
+  animation-delay: 5s;
 }
 .firefly::after {
   background: white;
   opacity: 0;
   box-shadow: 0 0 0vw 0vw yellow;
   animation: drift ease alternate infinite, flash ease infinite;
+  animation-delay: 5s;
 }
 
 .firefly:nth-child(1) {

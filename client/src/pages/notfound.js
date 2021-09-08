@@ -5,7 +5,7 @@ import "./../assets/css/animation.css";
 export class notfound extends Component {
   render() {
     return (
-      <div>
+      <div className="App">
         <NotFoundComponents />
         <div>
           <div className="firefly"></div>
