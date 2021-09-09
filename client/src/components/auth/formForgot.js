@@ -2,16 +2,15 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { isEmail } from "./../utils/validation/Validation";
-import { showSuccessToast } from "./../utils/notification/message";
 import { apiUrl } from "./../../constants";
-import "./resetpass.css";
+import "./forgotForm.css";
 
 const initialState = {
   email: "",
   success: "",
   error: "",
 };
-const FormForgot = () => {
+const FormForgot = ({ showMessage }) => {
   const [forgotData, setForgotData] = useState(initialState);
   const { email, success, error } = forgotData;
 
@@ -22,7 +21,7 @@ const FormForgot = () => {
 
   const forgotPassword = async (event) => {
     event.preventDefault();
-    console.log(forgotData);
+
     if (!isEmail(email))
       return setForgotData({
         ...forgotData,
@@ -31,8 +30,11 @@ const FormForgot = () => {
       });
     try {
       const res = await axios.post(apiUrl + "/auth/forgot", { email });
+      if (res.data.success) {
+        senData(res.data.success);
+      }
       return setForgotData({
-        ...forgotPassword,
+        ...forgotData,
         success: res.data.message,
         error: "",
       });
@@ -43,7 +45,14 @@ const FormForgot = () => {
           success: "",
           error: error.response.data.message,
         });
+      senData(error.response.data.success);
     }
+  };
+  const senData = (type, message) => {
+    showMessage({
+      type,
+      message,
+    });
   };
   return (
     <>
@@ -64,7 +73,7 @@ const FormForgot = () => {
             name="email"
             placeholder="Địa chỉ Email"
             onChange={handleChange}
-            // value={email}
+            value={email}
           />
         </div>
         <button type="submit" className="form__reset_submit">
@@ -83,9 +92,6 @@ const FormForgot = () => {
           </Link>
         </div>
       </form>
-      <div id="toast"></div>
-      {success && showSuccessToast}
-      {error && console.log(error)}
     </>
   );
 };

@@ -1,9 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import FormForgot from "./../components/auth/formForgot";
+import {
+  showSuccessToast,
+  showErrorToast,
+} from "./../components/utils/notification/message";
 import "./../components/utils/notification/message.css";
 
-const forgotPassword = () => {
+const ForgotPassword = () => {
+  const showMessage = (data) => {
+    console.log(data);
+    if (data.type === true) {
+      showSuccessToast();
+    } else {
+      showErrorToast();
+    }
+  };
   return (
     <div className="App">
       <div className="col-md-12 text-center">
@@ -12,7 +24,7 @@ const forgotPassword = () => {
           <b>Luu Moments</b>
         </h5>
       </div>
-      <FormForgot />
+      <FormForgot showMessage={showMessage} />
       <div className="mx-auto text-center">
         <p>
           Dùng tài khoản khác để truy cập ứng dụng của <b>Luu Moments</b>
@@ -43,4 +55,4 @@ const forgotPassword = () => {
   );
 };
 
-export default forgotPassword;
+export default ForgotPassword;

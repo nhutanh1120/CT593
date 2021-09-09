@@ -133,7 +133,7 @@ const userControllers = {
       if (!user) {
         return res.status(400).json({
           success: false,
-          massage: "This username does not exist!",
+          message: "This username does not exist!",
         });
       }
 
@@ -141,7 +141,7 @@ const userControllers = {
       if (!isMatch) {
         return res.status(400).json({
           success: false,
-          massage: "Password is incorrect.",
+          message: "Password is incorrect.",
         });
       }
 
@@ -173,7 +173,7 @@ const userControllers = {
       if (!rf_token) {
         return res.status(400).json({
           success: false,
-          massage: "Please login now!!",
+          message: "Please login now!!",
         });
       }
 
@@ -181,7 +181,7 @@ const userControllers = {
         if (err) {
           return res.status(400).json({
             success: false,
-            massage: "Please login now!!",
+            message: "Please login now!!",
           });
         }
 
@@ -207,7 +207,7 @@ const userControllers = {
       if (!user) {
         return res.status(400).json({
           success: false,
-          massage: "This email does not exist.",
+          message: "This email does not exist.",
         });
       }
 
@@ -218,7 +218,7 @@ const userControllers = {
 
       return res.json({
         success: true,
-        massage: "Re-send the password, please check your email.",
+        message: "Re-send the password, please check your email.",
       });
     } catch (error) {
       console.log(error);

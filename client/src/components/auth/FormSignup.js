@@ -16,6 +16,7 @@ import {
   isMatch,
 } from "../utils/validation/Validation";
 import { apiUrl } from "../../constants";
+import { showSuccessMsg } from "../utils/notification/Notification";
 
 const initialState = {
   username: "",
@@ -26,7 +27,7 @@ const initialState = {
   success: "",
 };
 
-const FormSignup = () => {
+const FormSignup = ({ successMsg }) => {
   const [user, setUser] = useState(initialState);
 
   const { username, email, password, cf_password, error, success } = user;
@@ -35,10 +36,15 @@ const FormSignup = () => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value, error: "", success: "" });
   };
-
+  const senData = (data) => {
+    successMsg(true);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    // console.log("BA");
+    // successMsg = "true";
+    senData();
+    // console.log(successMsg);
     if (isEmpty(username) || isEmpty(password))
       return setUser({
         ...user,
@@ -71,6 +77,9 @@ const FormSignup = () => {
       });
 
       setUser({ ...user, error: "", success: res.data.message });
+      // if (res.data.message) {
+      //   props.success = true;
+      // }
     } catch (error) {
       error.response.data.message &&
         setUser({ ...user, error: error.response.data.message, success: "" });
@@ -84,9 +93,13 @@ const FormSignup = () => {
   };
   return (
     <>
-      {error && showErrorToast}
-      {success && showSuccessToast}
-      <form className="sign-up-form" onSubmit={handleSubmit}>
+      {/* {error && showErrorToast}
+      {success && showSuccessToast} */}
+      <form
+        className="sign-up-form"
+        showSuccessMsg={true}
+        onSubmit={handleSubmit}
+      >
         <h2 className="title">Sign up</h2>
 
         <div className="input-field">

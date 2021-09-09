@@ -8,7 +8,7 @@ import Auth from "./pages/auth";
 import NotFound from "./pages/notfound";
 import Dashboard from "./pages/dashboard";
 import ActivationEmail from "./components/auth/activationEmail";
-import forgotPassword from "./pages/forgotPassword";
+import ForgotPassword from "./pages/forgotPassword";
 import "./App.css";
 import qr from "./pages/qr";
 // import Apps from "./components/test/App";
@@ -32,7 +32,7 @@ function App() {
         <Route path="/sign" component={Auth} />
         <Route path="/dashboard" component={isLogged ? Dashboard : NotFound} />
         <Route path="/qr" component={qr} />
-        <Route path="/forgot" component={forgotPassword} />
+        <Route path="/forgot" component={ForgotPassword} />
         <Route path="/test" component={qr} />
         <Route
           exact
