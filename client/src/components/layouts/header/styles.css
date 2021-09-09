@@ -30,17 +30,17 @@
   text-align: left;
 }
 
-.header-sign li a {
+.header__sign li a {
   position: relative;
   height: 28px !important;
   border-right: 1px solid white;
 }
 
-.header-sign li:last-child a {
+.header__sign li:last-child a {
   border-right: none !important;
 }
 
-.header-sign .nav-link {
+.header__sign .nav-link {
   padding: 0.1rem 1rem !important;
 }
 
@@ -55,7 +55,7 @@
 
 .header-home {
   background-color: transparent;
-  margin-top: 10px;
+  margin-top: 15px;
   transition: margin-top 0.5s ease;
 }
 
@@ -74,6 +74,8 @@
   height: 100%;
   background: url("./../../../assets/img/bg.jpg") center no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+  background-position: bottom center;
   position: relative;
 }
 
@@ -114,7 +116,7 @@ video {
   transform-origin: left;
   transition: transform 0.5s ease;
 }
-.header-sign .active::after {
+.header__sign .active::after {
   content: "";
   width: 80%;
   height: 2px;

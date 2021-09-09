@@ -14,14 +14,20 @@ function Home() {
         <video preload="none" muted="muted" playsnline="true" autoPlay loop>
           <source src={Video} type="video/mp4" />
         </video>
-        <div className="brand">
-          <h5>Cùng chúng tôi xây dựng một tương lai tốt đẹp hơn</h5>
-          <p>
-            Truy xuất nguồn gốc thực phẩm, yêu cầu các tiêu chuẩn lựa chọn và{" "}
-            <br />
-            tập trung vào việc thiết lập chuỗi cung ứng.
-          </p>
-          <button>Đăng nhập</button>
+        <div className="home__header">
+          <div className="home__header__title">
+            <h5>Cùng chúng tôi xây dựng một tương lai tốt đẹp hơn</h5>
+          </div>
+          <div className="home__header__text">
+            <p>
+              Truy xuất nguồn gốc thực phẩm, yêu cầu các tiêu chuẩn lựa chọn và{" "}
+              <br />
+              tập trung vào việc thiết lập chuỗi cung ứng.
+            </p>
+          </div>
+          <div className="home__header__button">
+            <button>ĐĂNG NHẬP</button>
+          </div>
         </div>
       </section>
       <Container>

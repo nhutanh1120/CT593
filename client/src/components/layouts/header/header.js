@@ -6,12 +6,17 @@ import logo from "./../../../assets/img/1.webp";
 
 function Header({ classNav }) {
   let navCss = "navbar navbar-expand-lg navbar-dark";
+
+  const scroll = () => {
+    const header = document.querySelector("nav");
+    let windowPosition = window.scrollY > 0;
+    header.classList.toggle("nav-bar-scroll", windowPosition);
+  };
   useEffect(() => {
-    let header = document.querySelector("nav");
-    window.addEventListener("scroll", () => {
-      let windowPosition = window.scrollY > 0;
-      header.classList.toggle("nav-bar-scroll", windowPosition);
-    });
+    window.addEventListener("scroll", scroll);
+    return () => {
+      window.addEventListener("scroll", scroll);
+    };
   }, []);
 
   if (classNav) {
@@ -32,7 +37,7 @@ function Header({ classNav }) {
           </div>
         </Link>
         <div className="collapse navbar-collapse">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0 header-active">
+          <ul className="navbar-nav me-auto my-2 mb-lg-0 header-active">
             <li className="nav-item">
               <NavLink
                 className="nav-link active"
@@ -84,7 +89,7 @@ function Header({ classNav }) {
               </NavLink>
             </li>
           </ul>
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 header-sign">
+          <ul className="navbar-nav ms-auto my-2 mb-lg-0 header__sign">
             <li className="nav-item">
               <Link className="nav-link active" to="/sign">
                 Đăng nhập

@@ -8,7 +8,7 @@
   color: #111;
 }
 
-.brand {
+.home__header {
   position: absolute;
   width: auto;
   height: 364px;
@@ -20,28 +20,35 @@
   z-index: 1000;
   text-align: center;
 }
-.brand h5 {
+.home__header__title h5 {
   width: 45%;
   padding-left: 8rem;
   text-align: left;
   color: white;
   font-size: 34px;
 }
-.brand button {
+.home__header__button button {
   position: absolute;
   box-sizing: border-box;
-  width: 220px;
-  height: 60px;
+  padding: 12px 70px;
   border: 2px solid #fff;
-  border-radius: 10px;
+  border-radius: 50px;
   background: rgba(255, 255, 255, 0.3);
-  margin-top: 10px;
+  margin-top: 30px;
   left: 8rem;
   z-index: 2;
   color: white;
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.home__header__button button:hover {
+  background-color: white;
+  opacity: 0.8;
+  color: red;
 }
 
-.brand p {
+.home__header p {
   color: white;
   text-align: left;
   padding-left: 8rem;
