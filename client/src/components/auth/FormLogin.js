@@ -35,7 +35,6 @@ const FormLogin = () => {
         password,
       });
       if (res.data.success) {
-        console.log(res.data.success);
         setUser({ ...user, error: "", success: res.data.message });
 
         localStorage.setItem("firstLogin", true);

@@ -1,9 +1,27 @@
 const AgriculturalModel = require("./../models/Agricultural");
 
 const agriculturalControllers = {
-  // @Router post /api/agricultural/read
+  // @Router post /api/agricultural/read/:id
   // @access private
   read: async (req, res) => {
+    try {
+      const agricultural = await AgriculturalModel.findOne({
+        _id: req.params.id,
+      });
+
+      res.json({
+        success: true,
+        message: "read agricultural success",
+        data: agricultural,
+      });
+    } catch (error) {
+      console.log(error);
+      res
+        .status(500)
+        .json({ success: false, message: "Internal server error" });
+    }
+  },
+  readAll: async (req, res) => {
     try {
       const agricultural = await AgriculturalModel.find();
 

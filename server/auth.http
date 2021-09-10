@@ -41,7 +41,7 @@ Content-Type: application/json
 ###
 GET http://localhost:4000/api/auth/info
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjBlN2VlMjFiMDA5Mjk2MGRiNGJhYiIsImlhdCI6MTYyOTU2NDkyMiwiZXhwIjoxNjMwMTY5NzIyfQ.Kkn7hPjINYKdwTzDZKZ4m2rXaffiM35KqVAGoUVtswc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjBlN2VlMjFiMDA5Mjk2MGRiNGJhYiIsImlhdCI6MTYzMTI4OTE0MCwiZXhwIjoxNjMxODkzOTQwfQ.JVc3OCy36lst9EALrBpW6i-gvO-zXmNFQTVC11Ppqdk
 
 ###
 GET http://localhost:4000/api/auth/all_info

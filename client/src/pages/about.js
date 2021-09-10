@@ -9,7 +9,7 @@ function About() {
   return (
     <div className="App">
       <Header />
-      <Product />
+      {/* <Product /> */}
       <Container>
         <Row>
           <IntroduceCard imageUrl="adasdsa" title="abcdef" text="adasd" />

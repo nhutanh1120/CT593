@@ -18,6 +18,7 @@ import qr from "./pages/qr";
 // import { apiUrl } from "./constants/";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/style.css";
+import Agricultural from "./pages/agricultural";
 
 function App() {
   const auth = useSelector((state) => state.auth);
@@ -34,6 +35,7 @@ function App() {
         <Route path="/qr" component={qr} />
         <Route path="/forgot" component={ForgotPassword} />
         <Route path="/test" component={qr} />
+        <Route path="/agricultural/:id" component={Agricultural} />
         <Route
           exact
           path="/api/auth/activation/:activation_token"

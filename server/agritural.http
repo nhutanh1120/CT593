@@ -1,4 +1,7 @@
-GET http://localhost:4000/api/agricultural/read
+GET http://localhost:4000/api/agricultural/read/all
+
+###
+GET http://localhost:4000/api/agricultural/read/613b7fee69f6021708a38b56
 
 ###
 PATCH http://localhost:4000/api/agricultural/update/613372c85e27380ba8b5e74e
@@ -26,11 +29,13 @@ POST http://localhost:4000/api/agricultural/create
 Content-Type: application/json
 
 {
-  "typeAgricultural": 2,
+  "user_id": "6120e7ee21b0092960db4bab",
+  "typeAgricultural": 1,
   "breed": {
         "nameBreed": "ca rot",
         "supplierBreed": "abcdefgh"
       },
+  "address": "Xuân hiệp, trà ôn, vĩnh long",
   "actions": [
               {
                "typeAction": 0,
