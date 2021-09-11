@@ -92,6 +92,7 @@ const FormForgot = ({ showMessage }) => {
           </Link>
         </div>
       </form>
+      {error && success}
     </>
   );
 };

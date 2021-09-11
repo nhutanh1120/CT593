@@ -16,7 +16,7 @@ import {
   isMatch,
 } from "../utils/validation/Validation";
 import { apiUrl } from "../../constants";
-import { showSuccessMsg } from "../utils/notification/Notification";
+// import { showSuccessMsg } from "../utils/notification/Notification";
 
 const initialState = {
   username: "",
@@ -93,8 +93,8 @@ const FormSignup = ({ successMsg }) => {
   };
   return (
     <>
-      {/* {error && showErrorToast}
-      {success && showSuccessToast} */}
+      {error && showErrorToast}
+      {success && showSuccessToast}
       <form
         className="sign-up-form"
         showSuccessMsg={true}

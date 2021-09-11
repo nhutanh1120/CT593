@@ -10,61 +10,82 @@ const initialState = {
   address: "",
   breed: "",
   actions: "",
-  agricultural: "",
+  harvest: "",
 };
+
+// const data = {
+//   success: true,
+//   message: "read agricultural success",
+//   data: {
+//     breed: { nameBreed: "ca rot", supplierBreed: "abcdefgh" },
+//     isSuccess: 0,
+//     _id: "613b7fee69f6021708a38b56",
+//     typeAgricultural: 2,
+//     user_id: "6120e7ee21b0092960db4bab",
+//     address: "Xuân hiệp, trà ôn, vĩnh long",
+//     actions: [
+//       {
+//         _id: "613b7fee69f6021708a38b57",
+//         typeAction: 0,
+//         listAction: [
+//           {
+//             _id: "613b7fee69f6021708a38b58",
+//             nameAction: "thuoc 1",
+//             supplierAction: "sbcdef",
+//           },
+//           {
+//             _id: "613b7fee69f6021708a38b59",
+//             nameAction: "thuoc 2",
+//             supplierAction: "sbcdef",
+//           },
+//           {
+//             _id: "613b7fee69f6021708a38b5a",
+//             nameAction: "thuoc 3",
+//             supplierAction: "xvcd",
+//           },
+//         ],
+//       },
+//       {
+//         _id: "613b7fee69f6021708a38b5b",
+//         typeAction: 0,
+//         listAction: [
+//           {
+//             _id: "613b7fee69f6021708a38b5c",
+//             nameAction: "thuoc 1",
+//             supplierAction: "sbcdef",
+//           },
+//           {
+//             _id: "613b7fee69f6021708a38b5d",
+//             nameAction: "thuoc 2",
+//             supplierAction: "sbcdef",
+//           },
+//           {
+//             _id: "613b7fee69f6021708a38b5e",
+//             nameAction: "thuoc 3",
+//             supplierAction: "xvcd",
+//           },
+//         ],
+//       },
+//     ],
+//     createdAt: "2021-09-10T15:55:26.677Z",
+//     updatedAt: "2021-09-10T15:55:26.677Z",
+//     __v: 0,
+//   },
+// };
+
 const Product = () => {
   const [agricultural, setAgricultural] = useState(initialState);
+  const [tableData, setTableData] = useState([]);
   const { id } = useParams();
-  // console.log(id);
+
   const getData = async () => {
     try {
       const res = await axios.get(apiUrl + "/agricultural/read/" + id, null);
-      const {
-        user_id,
-        typeAgricultural,
-        address,
-        breed,
-        actions,
-        agricultural: harvest,
-      } = res.data.data;
-      if (res.data.success) {
-        setAgricultural({
-          ...agricultural,
-          user_id,
-          typeAgricultural,
-          address,
-          breed,
-          actions,
-          agricultural: harvest,
-        });
-      }
+      console.log(res.data);
+      setAgricultural(res.data.data);
+      setTableData(res.data.data.actions);
     } catch (error) {}
   };
-
-  // const getDatalist = (array) => {
-  //   array.map((listAction, index) => (
-  //     <tr key={index}>
-  //       <td>{index + 1}</td>
-  //       <td>{listAction.nameAction}</td>
-  //       <td>{listAction.supplierAction}</td>
-  //     </tr>
-  //   ));
-  // };
-
-  // const getDataActions = Object.keys(agricultural.actions).map(
-  //   (action, index) => (
-  //     <table key={index}>
-  //       <thead>
-  //         <tr>
-  //           <th>#</th>
-  //           <th>Tên sản phẩm sử dụng</th>
-  //           <th>Nhà cung cấp</th>
-  //         </tr>
-  //       </thead>
-  //       <tbody>{getDatalist(action.listAction)}</tbody>
-  //     </table>
-  //   )
-  // );
 
   useEffect(() => {
     getData();
@@ -109,6 +130,26 @@ const Product = () => {
                 <span className="price_order-pay--icon">2</span>
                 <p>THÔNG TIN VỀ GIỐNG</p>
               </div>
+              {/* {agricultural.actions.map((action, index) => (
+                <table key={index}>
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Tên sản phẩm sử dụng</th>
+                      <th>Nhà cung cấp</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {action.listAction.map((listAction, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{listAction.nameAction}</td>
+                        <td>{listAction.supplierAction}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ))} */}
               <table>
                 <thead>
                   <tr>
@@ -150,8 +191,27 @@ const Product = () => {
                   HOẠT ĐỘNG DIỂN RA: Áp dụng từ ngày sản xuất đến khi thu hoạch.
                 </p>
               </div>
-              {/* {getDataActions} */}
-              <table>
+              {tableData.map((action, index) => (
+                <table key={index}>
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Tên sản phẩm sử dụng</th>
+                      <th>Nhà cung cấp</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {action.listAction.map((listAction, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{listAction.nameAction}</td>
+                        <td>{listAction.supplierAction}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ))}
+              {/* <table>
                 <tbody>
                   <tr>
                     <th>#</th>
@@ -184,7 +244,7 @@ const Product = () => {
                     <td>50%</td>
                   </tr>
                 </tbody>
-              </table>
+              </table> */}
 
               <div className="price_order-pay margin__top30">
                 <span className="price_order-pay--icon">4</span>

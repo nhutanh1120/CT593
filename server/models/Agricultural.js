@@ -32,7 +32,7 @@ const AgriculturalSchema = new Schema(
         timeAction: Date, // Thời gian
       },
     ],
-    agricultural: {
+    harvest: {
       timeAgricultural: Date, // Thời gian thu hoạch
       imgUrl: String, // Ảnh sản phẩm
     },

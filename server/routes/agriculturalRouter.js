@@ -4,7 +4,7 @@ const router = express.Router();
 const agriculturalControllers = require("./../controllers/agriculturalController");
 
 // localhost/api/agricultural/read/all
-router.get("/reads/all", agriculturalControllers.readAll);
+router.get("/all/read", agriculturalControllers.readAll);
 
 // localhost/api/agricultural/read/:id
 router.get("/read/:id", agriculturalControllers.read);

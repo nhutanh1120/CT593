@@ -28,7 +28,7 @@ const agriculturalControllers = {
       res.json({
         success: true,
         message: "read agricultural success",
-        data: agricultural,
+        agricultural,
       });
     } catch (error) {
       console.log(error);
