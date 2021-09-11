@@ -12,7 +12,7 @@ const agriculturalControllers = {
       res.json({
         success: true,
         message: "read agricultural success",
-        data: agricultural,
+        agricultural,
       });
     } catch (error) {
       console.log(error);
@@ -41,22 +41,26 @@ const agriculturalControllers = {
   // @access private
   create: async (req, res) => {
     try {
-      const { typeAgricultural, breed, ...rest } = req.body;
+      const { producer, breed, ...rest } = req.body;
 
-      if (!typeAgricultural) {
+      if (!producer?.name && !producer?.address) {
         return res.status(400).json({
           success: false,
-          message: "Please fill in the Agricultural type.",
+          message: "Please fill in the producer.",
         });
       }
-      if (!breed) {
+      if (
+        !breed?.typeAgricultural &&
+        !breed?.nameBreed &&
+        !breed?.supplierBreed
+      ) {
         return res.status(400).json({
           success: false,
-          message: "Please fill in the breed type.",
+          message: "Please fill in the breed.",
         });
       }
       const newAgricultural = {
-        typeAgricultural,
+        producer,
         breed,
         ...rest,
       };
@@ -79,7 +83,29 @@ const agriculturalControllers = {
   // @access private
   update: async (req, res) => {
     try {
-      const updateAgricultural = req.body;
+      const { producer, breed, ...rest } = req.body;
+
+      if (!producer?.name && !producer?.address) {
+        return res.status(400).json({
+          success: false,
+          message: "Please fill in the producer.",
+        });
+      }
+      if (
+        !breed?.typeAgricultural &&
+        !breed?.nameBreed &&
+        !breed?.supplierBreed
+      ) {
+        return res.status(400).json({
+          success: false,
+          message: "Please fill in the breed.",
+        });
+      }
+      const updateAgricultural = {
+        producer,
+        breed,
+        ...rest,
+      };
 
       const agriculturalUpdate = await AgriculturalModel.findOneAndUpdate(
         { _id: req.params.id },
@@ -87,7 +113,6 @@ const agriculturalControllers = {
         { new: true }
       );
       await agriculturalUpdate.save();
-      console.log(updateAgricultural);
 
       res.json({
         success: true,

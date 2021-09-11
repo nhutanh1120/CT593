@@ -3,21 +3,24 @@ const Schema = mongoose.Schema;
 
 const AgriculturalSchema = new Schema(
   {
-    user_id: {
-      type: Schema.Types.ObjectId,
-      ref: "users",
+    producer: {
+      user_id: {
+        type: Schema.Types.ObjectId,
+        ref: "users",
+      },
+      name: String,
+      address: { type: String, required: true },
     },
-    typeAgricultural: {
-      // Loại nông sản -> Cây trồng (0) hoặc vật nuôi (1)
-      type: Number,
-      required: true,
-    },
-    address: { type: String, required: true },
     breed: {
       // Quản lý giống
+      typeAgricultural: {
+        // Loại nông sản -> Cây trồng (0) hoặc vật nuôi (1)
+        type: Number,
+        required: true,
+      },
       nameBreed: String, // Tên giống
       supplierBreed: String, // Nhà cung cấp
-      timeBreed: Date, // Thời gian xuống giống
+      timeBreed: { type: Date, default: Date.now() }, // Thời gian xuống giống
     },
     actions: [
       // Quản lý các hoạt động
@@ -29,11 +32,11 @@ const AgriculturalSchema = new Schema(
             supplierAction: String, // Nhà cung cấp
           },
         ],
-        timeAction: Date, // Thời gian
+        timeAction: { type: Date, default: Date.now() }, // Thời gian
       },
     ],
     harvest: {
-      timeAgricultural: Date, // Thời gian thu hoạch
+      timeAgricultural: { type: Date, default: Date.now() }, // Thời gian thu hoạch
       imgUrl: String, // Ảnh sản phẩm
     },
     isSuccess: {

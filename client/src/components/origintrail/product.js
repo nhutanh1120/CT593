@@ -5,91 +5,53 @@ import { apiUrl } from "../../constants";
 import "./product.css";
 
 const initialState = {
-  user_id: "",
-  typeAgricultural: "",
-  address: "",
+  producer: "",
   breed: "",
-  actions: "",
   harvest: "",
 };
-
-// const data = {
-//   success: true,
-//   message: "read agricultural success",
-//   data: {
-//     breed: { nameBreed: "ca rot", supplierBreed: "abcdefgh" },
-//     isSuccess: 0,
-//     _id: "613b7fee69f6021708a38b56",
-//     typeAgricultural: 2,
-//     user_id: "6120e7ee21b0092960db4bab",
-//     address: "Xuân hiệp, trà ôn, vĩnh long",
-//     actions: [
-//       {
-//         _id: "613b7fee69f6021708a38b57",
-//         typeAction: 0,
-//         listAction: [
-//           {
-//             _id: "613b7fee69f6021708a38b58",
-//             nameAction: "thuoc 1",
-//             supplierAction: "sbcdef",
-//           },
-//           {
-//             _id: "613b7fee69f6021708a38b59",
-//             nameAction: "thuoc 2",
-//             supplierAction: "sbcdef",
-//           },
-//           {
-//             _id: "613b7fee69f6021708a38b5a",
-//             nameAction: "thuoc 3",
-//             supplierAction: "xvcd",
-//           },
-//         ],
-//       },
-//       {
-//         _id: "613b7fee69f6021708a38b5b",
-//         typeAction: 0,
-//         listAction: [
-//           {
-//             _id: "613b7fee69f6021708a38b5c",
-//             nameAction: "thuoc 1",
-//             supplierAction: "sbcdef",
-//           },
-//           {
-//             _id: "613b7fee69f6021708a38b5d",
-//             nameAction: "thuoc 2",
-//             supplierAction: "sbcdef",
-//           },
-//           {
-//             _id: "613b7fee69f6021708a38b5e",
-//             nameAction: "thuoc 3",
-//             supplierAction: "xvcd",
-//           },
-//         ],
-//       },
-//     ],
-//     createdAt: "2021-09-10T15:55:26.677Z",
-//     updatedAt: "2021-09-10T15:55:26.677Z",
-//     __v: 0,
-//   },
-// };
-
 const Product = () => {
   const [agricultural, setAgricultural] = useState(initialState);
-  const [tableData, setTableData] = useState([]);
+  const [actionData, setActionData] = useState([]);
   const { id } = useParams();
 
   const getData = async () => {
     try {
       const res = await axios.get(apiUrl + "/agricultural/read/" + id, null);
-      console.log(res.data);
-      setAgricultural(res.data.data);
-      setTableData(res.data.data.actions);
+      setAgricultural(res.data.agricultural);
+      setActionData(res.data.agricultural.actions);
     } catch (error) {}
   };
 
   useEffect(() => {
     getData();
   }, []);
+
+  const tableAction = actionData.map((action, index) => (
+    <div className="table--content" key={index}>
+      <ul>
+        <li>Hoạt động: {action.typeAction}</li>
+        <li>Thời gian: {action.timeAction}</li>
+      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Tên sản phẩm sử dụng</th>
+            <th>Nhà cung cấp</th>
+          </tr>
+        </thead>
+        <tbody>
+          {action.listAction.map((listAction, index) => (
+            <tr key={index}>
+              <td>{index + 1}</td>
+              <td>{listAction.nameAction}</td>
+              <td>{listAction.supplierAction}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  ));
 
   return (
     <>
@@ -123,67 +85,37 @@ const Product = () => {
                 <p>THÔNG TIN NHÀ CUNG CẤP</p>
               </div>
               <ul>
-                <li>Họ tên: {agricultural.user_id}</li>
-                <li>Địa chỉ sản xuất: {agricultural.address}</li>
+                <li>Họ tên: {agricultural.producer.name}</li>
+                <li>Địa chỉ sản xuất: {agricultural.producer.address}</li>
               </ul>
               <div className="price_order-pay">
                 <span className="price_order-pay--icon">2</span>
                 <p>THÔNG TIN VỀ GIỐNG</p>
               </div>
-              {/* {agricultural.actions.map((action, index) => (
-                <table key={index}>
+              <div className="table--content">
+                <table>
                   <thead>
                     <tr>
-                      <th>#</th>
-                      <th>Tên sản phẩm sử dụng</th>
+                      <th>Loại nông sản</th>
+                      <th>Thời gian (dd/mm/yyyy)</th>
+                      <th>Tên nông sản</th>
                       <th>Nhà cung cấp</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {action.listAction.map((listAction, index) => (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>{listAction.nameAction}</td>
-                        <td>{listAction.supplierAction}</td>
-                      </tr>
-                    ))}
+                    <tr>
+                      <td>
+                        {agricultural?.breed?.typeAgricultural === 1
+                          ? "Vật nuôi"
+                          : "Cây trồng"}
+                      </td>
+                      <td>{agricultural.breed.timeBreed}</td>
+                      <td>{agricultural.breed.nameBreed}</td>
+                      <td>{agricultural.breed.supplierBreed}</td>
+                    </tr>
                   </tbody>
                 </table>
-              ))} */}
-              <table>
-                <thead>
-                  <tr>
-                    <th>Loại nông sản</th>
-                    <th>Thời gian (dd/mm/yyyy)</th>
-                    <th>Tên nông sản</th>
-                    <th>Nhà cung cấp</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      {agricultural.typeAgricultural === 1
-                        ? "Vật nuôi"
-                        : "Cây trồng"}
-                    </td>
-                    <td>
-                      {agricultural.breed.timeBreed
-                        ? agricultural.breed.timeBreed
-                        : null}
-                    </td>
-                    <td>
-                      {agricultural.breed.nameBreed
-                        ? agricultural.breed.nameBreed
-                        : null}
-                    </td>
-                    <td>
-                      {agricultural.breed.supplierBreed
-                        ? agricultural.breed.supplierBreed
-                        : null}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              </div>
 
               <div className="price_order-pay">
                 <span className="price_order-pay--icon">3</span>
@@ -191,75 +123,24 @@ const Product = () => {
                   HOẠT ĐỘNG DIỂN RA: Áp dụng từ ngày sản xuất đến khi thu hoạch.
                 </p>
               </div>
-              {tableData.map((action, index) => (
-                <table key={index}>
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Tên sản phẩm sử dụng</th>
-                      <th>Nhà cung cấp</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {action.listAction.map((listAction, index) => (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>{listAction.nameAction}</td>
-                        <td>{listAction.supplierAction}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              ))}
-              {/* <table>
-                <tbody>
-                  <tr>
-                    <th>#</th>
-                    <th>Thời gian (dd/mm/yyyy)</th>
-                    <th>Tên sản phẩm sử dụng</th>
-                    <th>Nhà cung cấp</th>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>10/09/2021</td>
-                    <td>Thuốc .....</td>
-                    <td>.........................</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>10/09/2021</td>
-                    <td>Thuốc .....</td>
-                    <td>.........................</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>10/09/2021</td>
-                    <td>Thuốc .....</td>
-                    <td>.........................</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>Liên hệ</td>
-                    <td>1%</td>
-                    <td>50%</td>
-                  </tr>
-                </tbody>
-              </table> */}
+
+              {tableAction}
 
               <div className="price_order-pay margin__top30">
                 <span className="price_order-pay--icon">4</span>
                 <p>THÔNG TIN THU HOẠCH</p>
               </div>
-
-              <table>
-                <tbody>
-                  <tr>
-                    <th>Ngày thu hoạch</th>
-                    <th>Hình ảnh sản phảm</th>
-                    <th>Mô tả</th>
-                  </tr>
-                </tbody>
-              </table>
+              <div className="table--content">
+                <table>
+                  <tbody>
+                    <tr>
+                      <th>Ngày thu hoạch</th>
+                      <th>Hình ảnh sản phảm</th>
+                      <th>Mô tả</th>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
 
               <div className="price_order-note">
                 <p>
@@ -279,7 +160,8 @@ const Product = () => {
             </div>
 
             <div className="price_order-contain">
-              {/* <table>
+              <div className="table--content">
+                {/* <table>
                 <tbody>
                   <tr>
                     <th>Tổng cân nặng mỗi tháng</th>
@@ -303,6 +185,7 @@ const Product = () => {
                   </tr>
                 </tbody>
               </table> */}
+              </div>
             </div>
           </div>
           <div className="price_ship">

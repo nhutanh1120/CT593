@@ -1,41 +1,54 @@
 GET http://localhost:4000/api/agricultural/all/read
 
 ###
-GET http://localhost:4000/api/agricultural/read/613b7fee69f6021708a38b56
-
-###
-PATCH http://localhost:4000/api/agricultural/update/613372c85e27380ba8b5e74e
-Content-Type: application/json
-
-{
-    "actions": [
-              {
-               "typeAction": 0,
-               "listAction": [
-                          {
-                            "nameAction": "thuoc 4",
-                            "supplierAction": "update"
-                          }
-                        ]
-              }
-            ]
-}
+GET http://localhost:4000/api/agricultural/read/613c85b780213313f480c88c
 
 ### 
 DELETE http://localhost:4000/api/agricultural/delete/61337ebaa330a8090c9d2b3e
+
+###
+PATCH http://localhost:4000/api/agricultural/update/613c82c2fd20fd30c0581b5d
+Content-Type: application/json
+
+{
+  "producer": {
+    "user_id": "6120e7ee21b0092960db4bab",
+    "name": "Luu Tran Anh Nhut a",
+    "address": "Xuân hiệp, trà ôn, vĩnh longs"
+  },
+  "breed": {
+    "typeAgricultural": 0,
+    "nameBreed": "ca rot update",
+    "supplierBreed": "update"
+  },
+  "actions": [
+            {
+              "typeAction": 0,
+              "listAction": [
+                        {
+                          "nameAction": "thuoc 4",
+                          "supplierAction": "update"
+                        }
+                      ]
+            }
+            ]
+}
 
 ###
 POST http://localhost:4000/api/agricultural/create
 Content-Type: application/json
 
 {
-  "user_id": "6120e7ee21b0092960db4bab",
-  "typeAgricultural": 1,
+  "producer": {
+      "user_id": "6120e7ee21b0092960db4bab",
+      "name": "Luu Tran Anh Nhut",
+      "address": "Xuân hiệp, trà ôn, vĩnh long"
+    },
   "breed": {
-        "nameBreed": "ca rot",
-        "supplierBreed": "abcdefgh"
-      },
-  "address": "Xuân hiệp, trà ôn, vĩnh long",
+      "typeAgricultural": 1,
+      "nameBreed": "ca rot",
+      "supplierBreed": "abcdefgh"
+    },
   "actions": [
               {
                "typeAction": 0,
@@ -71,5 +84,8 @@ Content-Type: application/json
                           }
                         ]
               }
-            ]
+            ],
+    "harvest": {
+      "imgUrl": "abc.jpg"
+    }
 }
