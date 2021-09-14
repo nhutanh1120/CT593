@@ -19,6 +19,7 @@ import qr from "./pages/qr";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/style.css";
 import Agricultural from "./pages/agricultural";
+import "./assets/font/css2.css";
 
 function App() {
   const auth = useSelector((state) => state.auth);

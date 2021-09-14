@@ -101,7 +101,7 @@ const FormLogin = () => {
   return (
     <>
       <form className="sign-in-form" onSubmit={handleSubmit}>
-        <h2 className="title">Sign in</h2>
+        <h2 className="title">Đăng nhập</h2>
         {error && showErrMsg(error)}
         {success && showSuccessMsg(success)}
 
@@ -124,7 +124,7 @@ const FormLogin = () => {
           </Link> */}
           <GoogleLogin
             clientId="350754393545-ges26agoopegg76ojspuem9ccsh1ti8a.apps.googleusercontent.com"
-            buttonText="Login"
+            buttonText="Đăng nhập với Google"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
             cookiePolicy={"single_host_origin"}
@@ -133,7 +133,7 @@ const FormLogin = () => {
             <i className="fa fa-instagram" aria-hidden="true"></i>
           </Link> */}
         </div>
-        <p className="social-text">Or Sign in with social platforms</p>
+        <p className="social-text">Hoặc đăng nhập với tài khoản của bạn</p>
         <div className="input-field">
           <input
             type="text"
@@ -153,7 +153,9 @@ const FormLogin = () => {
           />
           <span onClick={showHide}>{passwordShown ? "Ẩn" : "Hiện"}</span>
         </div>
-        <Link to="/forgot">Quên mật khẩu?</Link>
+        <Link to="/forgot">
+          Quên mật khẩu?&nbsp;<b>Nhấn vào đây</b>
+        </Link>
         <button type="submit" className="btn solid">
           Đăng nhập
         </button>

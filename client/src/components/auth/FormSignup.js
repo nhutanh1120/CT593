@@ -100,13 +100,13 @@ const FormSignup = ({ successMsg }) => {
         showSuccessMsg={true}
         onSubmit={handleSubmit}
       >
-        <h2 className="title">Sign up</h2>
+        <h2 className="title">Đăng ký</h2>
 
         <div className="input-field">
           <input
             type="text"
             name="username"
-            placeholder="Username"
+            placeholder="Tài khoản"
             value={username}
             onChange={handleChangeInput}
           />
@@ -115,7 +115,7 @@ const FormSignup = ({ successMsg }) => {
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder="Địa chỉ email"
             value={email}
             onChange={handleChangeInput}
           />
@@ -124,7 +124,7 @@ const FormSignup = ({ successMsg }) => {
           <input
             type={passwordShown ? "text" : "password"}
             name="password"
-            placeholder="Password"
+            placeholder="Mật khẩu"
             value={password}
             onChange={handleChangeInput}
           />
@@ -134,14 +134,16 @@ const FormSignup = ({ successMsg }) => {
           <input
             type={passwordShown ? "text" : "password"}
             name="cf_password"
-            placeholder="Confirm password"
+            placeholder="Xác nhận mật khẩu"
             value={cf_password}
             onChange={handleChangeInput}
           />
           <span onClick={showHide}>{passwordShown ? "Ẩn" : "Hiện"}</span>
         </div>
-        <input type="submit" className="btn" value="Sign up" />
-        <p className="social-text">Or Sign up with social platforms</p>
+        <button type="submit" className="btn">
+          Đăng ký
+        </button>
+        <p className="social-text">Hoặc đăng nhập với các nền tảng</p>
         <div className="social-media">
           <Link to="/" className="social-icon">
             <i className="fa fa-facebook" aria-hidden="true"></i>

@@ -8,10 +8,10 @@ const Panels = ({ onSignUpMode }) => {
       <div className="panels-auth">
         <div className="panel left-panel">
           <div className="content">
-            <h3>New here ?</h3>
+            <h3>Bạn chưa có tài khoản ?</h3>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
-              ex ratione. Aliquid!
+              Bạn muốn đăng nhập với một vai trò khác, hãy đăng ký tài khoản
+              mới. Nhấn vào đây!
             </p>
             <button
               className="btn transparent"
@@ -25,7 +25,7 @@ const Panels = ({ onSignUpMode }) => {
         </div>
         <div className="panel right-panel">
           <div className="content">
-            <h3>One of us ?</h3>
+            <h3>Bạn đã có tài khoản ?</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
               laboriosam ad deleniti.
