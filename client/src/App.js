@@ -17,7 +17,7 @@ import qr from "./pages/qr";
 // import axios from "axios";
 // import { apiUrl } from "./constants/";
 // import "bootstrap/dist/css/bootstrap.min.css";
-import "./assets/css/style.css";
+import "./assets/css/grid.css";
 import Agricultural from "./pages/agricultural";
 import "./assets/css/theme.css";
 import "./assets/font/css2.css";

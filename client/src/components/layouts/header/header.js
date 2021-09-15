@@ -5,12 +5,18 @@ import "./styles.css";
 import logo from "./../../../assets/img/1.webp";
 
 function Header({ classNav }) {
-  let navCss = "navbar navbar-expand-lg navbar-dark";
+  let navCss = "navbar";
+
+  if (classNav) {
+    navCss += " header-home";
+  } else {
+    navCss += " header";
+  }
 
   const scroll = () => {
     const header = document.querySelector("nav");
     let windowPosition = window.scrollY > 0;
-    header.classList.toggle("nav-bar-scroll", windowPosition);
+    header.classList.toggle("navbar--scroll", windowPosition);
   };
   useEffect(() => {
     window.addEventListener("scroll", scroll);
@@ -18,29 +24,24 @@ function Header({ classNav }) {
       window.removeEventListener("scroll", scroll);
     };
   }, []);
-
-  if (classNav) {
-    navCss += " header-home";
-  } else {
-    navCss += " header";
-  }
   return (
     <nav className={navCss}>
       <div className="container">
-        <Link className="navbar-brand" to="/">
-          <div className="header-logo">
+        <Link className="navbar--logo" to="/">
+          <div className="navbar--logo--content">
             <img src={logo} alt="logo" />
-            <div className="logo-item">
-              <h2 className="mb-0">LUU MOMENTS</h2>
+            <div className="logo--item">
+              <h2>LUU MOMENTS</h2>
               <span>Agricultural</span>
             </div>
           </div>
         </Link>
-        <div className="collapse navbar-collapse">
-          <ul className="navbar-nav me-auto my-2 mb-lg-0 header-active">
-            <li className="nav-item">
+        <div className="navbar--pc">
+          <ul className="navbar--pc--list my-2 navbar--header-active">
+            <li>
               <NavLink
-                className="nav-link active"
+                aria-current="page"
+                className="navbar--pc--link"
                 to="/"
                 activeClassName="selected"
                 exact
@@ -48,9 +49,9 @@ function Header({ classNav }) {
                 Trang chủ
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li>
               <NavLink
-                className="nav-link active"
+                className="navbar--pc--link"
                 to="/about"
                 activeClassName="selected"
                 exact
@@ -58,9 +59,9 @@ function Header({ classNav }) {
                 Giới thiệu
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li>
               <NavLink
-                className="nav-link active"
+                className="navbar--pc--link"
                 to="/post"
                 activeClassName="selected"
                 exact
@@ -68,9 +69,9 @@ function Header({ classNav }) {
                 Tin tức
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li>
               <NavLink
-                className="nav-link active"
+                className="navbar--pc--link"
                 to="/event"
                 activeClassName="selected"
                 exact
@@ -78,9 +79,9 @@ function Header({ classNav }) {
                 Sự kiện
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li>
               <NavLink
-                className="nav-link active"
+                className="navbar--pc--link"
                 to="/contact"
                 activeClassName="selected"
                 exact
@@ -89,18 +90,77 @@ function Header({ classNav }) {
               </NavLink>
             </li>
           </ul>
-          <ul className="navbar-nav ms-auto my-2 mb-lg-0 header__sign">
-            <li className="nav-item">
-              <Link className="nav-link active" to="/sign">
+          <ul className="navbar--pc--list navbar--header--sign">
+            <li>
+              <NavLink className="navbar--pc--link" to="/sign">
+                Đăng nhập
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="navbar--pc--link" to="/sign">
+                Đăng ký
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+        <label htmlFor="navbar__mobile--input" className="navbar--btn">
+          XV
+        </label>
+        <input
+          type="checkbox"
+          className="navbar__input"
+          id="navbar__mobile--input"
+        />
+        <label
+          htmlFor="navbar__mobile--input"
+          className="navbar__overlay"
+        ></label>
+        <div className="navbar__mobile">
+          <ul className="navbar__mobile--list">
+            <li className="navbar__mobile--item">
+              <NavLink className="nav__mobile--link" to="/">
+                Trang chủ
+              </NavLink>
+            </li>
+            <li className="navbar__mobile--item">
+              <NavLink className="nav__mobile--link" to="/about">
+                Giới thiệu
+              </NavLink>
+            </li>
+            <li className="navbar__mobile--item">
+              <NavLink className="nav__mobile--link" to="/post">
+                Tin tức
+              </NavLink>
+            </li>
+            <li className="navbar__mobile--item">
+              <NavLink className="nav__mobile--link" to="/event">
+                Sự kiện
+              </NavLink>
+            </li>
+            <li className="navbar__mobile--item">
+              <NavLink className="nav__mobile--link" to="/contact">
+                Liên hệ
+              </NavLink>
+            </li>
+          </ul>
+          <ul className="navbar__mobile--sign">
+            <li className="navbar__mobile--item">
+              <Link className="nav__mobile--link" to="/sign">
                 Đăng nhập
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link active" to="/sign">
+            <li className="navbar__mobile--item">
+              <Link className="nav__mobile--link" to="/sign">
                 Đăng ký
               </Link>
             </li>
           </ul>
+          <label
+            htmlFor="navbar__mobile--input"
+            className="navbar__mobile--close"
+          >
+            X
+          </label>
         </div>
       </div>
     </nav>
