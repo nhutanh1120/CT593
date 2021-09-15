@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { Container } from "react-bootstrap";
+// import { Container } from "react-bootstrap";
 import "./styles.css";
 import logo from "./../../../assets/img/1.webp";
 
@@ -15,7 +15,7 @@ function Header({ classNav }) {
   useEffect(() => {
     window.addEventListener("scroll", scroll);
     return () => {
-      window.addEventListener("scroll", scroll);
+      window.removeEventListener("scroll", scroll);
     };
   }, []);
 
@@ -26,7 +26,7 @@ function Header({ classNav }) {
   }
   return (
     <nav className={navCss}>
-      <Container>
+      <div className="container">
         <Link className="navbar-brand" to="/">
           <div className="header-logo">
             <img src={logo} alt="logo" />
@@ -102,7 +102,7 @@ function Header({ classNav }) {
             </li>
           </ul>
         </div>
-      </Container>
+      </div>
     </nav>
   );
 }

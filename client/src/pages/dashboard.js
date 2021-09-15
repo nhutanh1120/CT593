@@ -1,5 +1,6 @@
 import React from "react";
 import Sidebar from "./../components/dashboard/sidebar";
+// import ThemeMenu from "../components/dashboard/themeMenu";
 import "./../assets/css/dashboard.css";
 
 function Dashboard() {

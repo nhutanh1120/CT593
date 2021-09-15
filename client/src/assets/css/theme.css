@@ -1,0 +1,20 @@
+:root {
+  --h1-h5: black;
+  --primary-color-white: #fff;
+  --primary-background: #fff;
+  --text-muted: #6c757d;
+  --background1: #22c1c3;
+  --background2: #fdbb2d;
+  --background-dangky: #f7f7f7;
+  --bg-submit: #c3a762;
+}
+[data-theme="dark"] {
+  --h1-h5: white;
+  --primary-color-white: lightgray;
+  --primary-background: #4b566b;
+  --text-muted: lightgray;
+  --background1: rgba(44, 62, 80, 0.97);
+  --background2: gray;
+  --background-dangky: rgba(44, 62, 80, 0.97);
+  --bg-submit: #141d25;
+}
