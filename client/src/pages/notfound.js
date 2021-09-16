@@ -7,7 +7,7 @@ export class notfound extends Component {
     return (
       <div className="App">
         <NotFoundComponents />
-        <div>
+        <div className="animation--notfound">
           <div className="firefly"></div>
           <div className="firefly"></div>
           <div className="firefly"></div>

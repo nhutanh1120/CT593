@@ -1,22 +1,42 @@
-.brand-text {
+.contact__slider {
+  width: 100%;
+  height: 100vh;
+  background: url("./../../../assets/img/bg.jpg") center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: bottom center;
+}
+.contact__slider::after {
+  content: "";
+  width: inherit;
+  height: inherit;
   position: absolute;
-  width: auto;
-  height: 464px;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
-  margin: auto;
-  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.contact__slider--content {
+  position: absolute;
+  width: 100%;
+  bottom: 80px;
+  z-index: 1;
+  color: white;
+}
+.contact__slider--text {
+  width: 100%;
   text-align: center;
 }
-.brand-text h5 {
-  color: white;
-  font-size: 34px;
+.contact__slider--text h5 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 20px;
 }
-.brand-text p {
-  color: white;
+.contact__slider--text p {
+  text-align: center;
+  font-size: 15px;
 }
-.brand-text img {
-  color: red;
+.contact__slider--content img {
+  display: block;
+  margin: auto;
 }

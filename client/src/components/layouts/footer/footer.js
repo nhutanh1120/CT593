@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col } from "react-bootstrap";
 import "./styles.css";
 
 function Footer() {
   return (
     <footer>
-      <Container>
+      <div>
         <div className="mt-3">&nbsp;</div>
-        <Row>
-          <Col md={3} className="footer-1">
+        <div>
+          <div className="footer-1">
             <div className="footer">
               <div className="footer-header">THÔNG TIN VỀ CHÚNG TÔI</div>
             </div>
@@ -23,8 +22,8 @@ function Footer() {
                 </Link>
               </div>
             </div>
-          </Col>
-          <Col md={3} className="footer-2">
+          </div>
+          <div className="footer-2">
             <div className="footer">
               <div className="footer-header">HỔ TRỢ KHÁCH HÀNG</div>
             </div>
@@ -54,8 +53,8 @@ function Footer() {
                 </Link>
               </div>
             </div>
-          </Col>
-          <Col md={3} className="footer-3">
+          </div>
+          <div className="footer-3">
             <div className="footer">
               <div className="footer-header">CHÍNH SÁCH</div>
               <div className="footer-body mt-3">
@@ -92,8 +91,8 @@ function Footer() {
                 </div>
               </div>
             </div>
-          </Col>
-          <Col md={3} className="footer-4">
+          </div>
+          <div className="footer-4">
             <div className="footer">
               <div className="footer-header">LIÊN HỆ CHÚNG TÔI</div>
             </div>
@@ -119,14 +118,14 @@ function Footer() {
                 </Link>
               </span>
             </div>
-          </Col>
-        </Row>
-      </Container>
+          </div>
+        </div>
+      </div>
 
       {/* Bản quyền  */}
-      <Container fluid className="ban-quyen mt-3">
-        <Row>
-          <Col className="py-3 text-center">
+      <div className="grid ban-quyen mt-3">
+        <div className="row">
+          <div className="py-3 text-center c-12">
             Bản quyền thiết kế thuộc về &copy;&nbsp;
             <Link
               to="mailto:ltanhutd20086@cusc.ctu.edu.vn"
@@ -135,9 +134,9 @@ function Footer() {
               Lưu Trần Anh Nhựt
             </Link>
             <script>document.write(new Date().getFullYear());</script>
-          </Col>
-        </Row>
-      </Container>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 }

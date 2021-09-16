@@ -1,5 +1,4 @@
 import React from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
 import Header from "./../components/layouts/header/header";
 import Footer from "./../components/layouts/footer/footer";
 import Email from "./../components/layouts/email/email";
@@ -30,9 +29,9 @@ function Home() {
           </div>
         </div>
       </section>
-      <Container>
-        <Row>
-          <Col md={5} className="ve-chung-toi">
+      <div>
+        <div>
+          <div className="ve-chung-toi">
             <span>Về chúng tôi</span>
             <p className="mt-3">
               Bằng chiếc điện thoại di động thông minh của mình, ở bất kỳ đâu,
@@ -40,10 +39,10 @@ function Home() {
               tra về nguồn gốc xuất xứ của sản phẩm hay tiến hành mua sắm hoàn
               toàn đơn giản.
             </p>
-            <Button variant="outline-info">Xem chi tiết</Button>
-          </Col>
-        </Row>
-      </Container>
+            <button variant="outline-info">Xem chi tiết</button>
+          </div>
+        </div>
+      </div>
       <div>Trang chủ</div>
       <Email />
       <Footer />

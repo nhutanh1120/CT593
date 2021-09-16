@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import "./sidebar.css";
 
 const Sidebar = () => {
   const auth = useSelector((state) => state.auth);
 
   const { user, isLogged } = auth;
 
-  console.log(user);
+  // console.log(user);
 
   const checkLogin = () => {
     return (

@@ -1,13 +1,12 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
 import "./styles.css";
 
 function Email() {
   return (
-    <Container className="search" fluid>
-      <Container>
-        <Row>
-          <Col md={9} className="mx-auto email">
+    <div className="search">
+      <div>
+        <div>
+          <div className="mx-auto email">
             <div className="text-center mt-3">
               <h2 className="mx-auto">Là Người Đầu Tiên</h2>
               <p>
@@ -34,10 +33,10 @@ function Email() {
                 </div>
               </form>
             </div>
-          </Col>
-        </Row>
-      </Container>
-    </Container>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
