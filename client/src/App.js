@@ -9,6 +9,7 @@ import NotFound from "./pages/notfound";
 import Dashboard from "./pages/dashboard";
 import ActivationEmail from "./components/auth/activationEmail";
 import ForgotPassword from "./pages/forgotPassword";
+import Customer from "./pages/customer";
 import "./App.css";
 import qr from "./pages/qr";
 // import Apps from "./components/test/App";
@@ -34,6 +35,7 @@ function App() {
         <Route path="/contact" component={Contact} />
         <Route path="/sign" component={Auth} />
         {/* <Route path="/dashboard" component={isLogged ? Dashboard : NotFound} /> */}
+        <Route path="/dashboard/customer" component={Customer} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/qr" component={qr} />
         <Route path="/forgot" component={ForgotPassword} />

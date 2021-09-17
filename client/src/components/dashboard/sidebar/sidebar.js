@@ -60,21 +60,21 @@ const Sidebar = () => {
             <span className="tooltip">Search</span>
           </li>
           <li>
-            <Link to="/">
+            <Link to="/dashboard">
               <i className="bx bx-grid-alt"></i>
               <span className="links_name">Dashboard</span>
             </Link>
             <span className="tooltip">Dashboard</span>
           </li>
           <li>
-            <Link to="/">
+            <Link to="/dashboard/customer">
               <i className="bx bx-user"></i>
               <span className="links_name">User</span>
             </Link>
             <span className="tooltip">User</span>
           </li>
           <li>
-            <Link to="/">
+            <Link to="/dashboard/message">
               <i className="bx bx-chat"></i>
               <span className="links_name">Messages</span>
             </Link>

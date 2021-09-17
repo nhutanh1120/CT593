@@ -1,15 +1,16 @@
 import React from "react";
 import Sidebar from "./../components/dashboard/sidebar/sidebar";
-import Body from "./../components/dashboard/body/body";
+import CustomerBody from "../components/dashboard/body/customer/customer";
 // import ThemeMenu from "../components/dashboard/themeMenu";
+// import customerList from "../assets/JsonData/customers.json";
 
-function Dashboard() {
+function Customer() {
   return (
     <div className="App">
       <Sidebar />
-      <Body />
+      <CustomerBody />
     </div>
   );
 }
 
-export default Dashboard;
+export default Customer;

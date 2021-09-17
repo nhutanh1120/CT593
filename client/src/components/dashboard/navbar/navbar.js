@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "../dropdown/Dropdown";
 import notifications from "../../../assets/JsonData/notification.json";
@@ -36,15 +36,56 @@ const renderNotificationItem = (item, index) => (
   </div>
 );
 
-const TopNavbar = () => {
+const TopNavbar = ({ data }) => {
+  const [filter, setFilter] = useState([]);
+  const [wordEntered, setWordEntered] = useState("");
+
+  const handleChange = (event) => {
+    const searchWord = event.target.value;
+    setWordEntered(searchWord);
+    const newFilter = data.filter((value) => {
+      return value.name.toLowerCase().includes(searchWord.toLowerCase());
+    });
+
+    if (searchWord === "") {
+      setFilter([]);
+    } else {
+      setFilter(newFilter);
+    }
+  };
+
+  const clearInput = () => {
+    setFilter([]);
+    setWordEntered("");
+  };
+
   return (
     <div className="dashboard--navbar">
       <div className="dashboard--navbar__title">
         <h1>Quản trị viên</h1>
       </div>
       <div className="dashboard--navbar__search">
-        <input type="text" placeholder="Search here..." />
-        <i className="bx bx-search"></i>
+        <div className="search__input">
+          <input
+            type="text"
+            placeholder="Tìm kiếm..."
+            onChange={handleChange}
+            value={wordEntered}
+          />
+
+          {filter.length === 0 ? (
+            <i className="bx bx-search"></i>
+          ) : (
+            <div onClick={clearInput}>X</div>
+          )}
+        </div>
+        {filter.length !== 0 && (
+          <div className="search__result">
+            {filter.slice(0, 15).map((item, index) => (
+              <div key={index}>{item.name}</div>
+            ))}
+          </div>
+        )}
       </div>
       <div className="dashboard--navbar__profile">
         <div className="navbar__profile--item">

@@ -12,7 +12,7 @@
   margin-bottom: 30px;
 }
 
-.dashboard--card__icon i {
+.dashboard--card__icon {
   width: 30% !important;
   height: 100%;
   font-size: 3rem;
@@ -57,4 +57,12 @@
 
 .dashboard--card:hover {
   color: var(--txt-white);
+}
+
+.card--chart {
+  padding: 30px;
+  background-color: var(--main-bg);
+  box-shadow: var(--box-shadow);
+  border-radius: 15px;
+  height: 100%;
 }

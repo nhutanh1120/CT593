@@ -4,7 +4,7 @@ import "./card.css";
 const Card = (props) => {
   return (
     <div className="dashboard--card">
-      <div className="dashboard-card__icon">
+      <div className="dashboard--card__icon">
         <i className={props.icon}></i>
       </div>
       <div className="dashboard--card__text">
