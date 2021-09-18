@@ -1,6 +1,12 @@
 .grid.body {
-  max-width: 96%;
+  max-width: calc(100% - 40px);
   margin: 0 auto;
+}
+.dashboard--body {
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 15px;
+  text-transform: capitalize;
 }
 .card--body {
   padding: 30px;
@@ -13,7 +19,7 @@
   text-transform: capitalize;
 }
 .card--body__header ~ .card--body__content {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .card--body__footer {
   text-align: center;

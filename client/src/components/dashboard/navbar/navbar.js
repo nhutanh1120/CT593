@@ -5,7 +5,7 @@ import notifications from "../../../assets/JsonData/notification.json";
 import user_image from "../../../assets/img/bg.jpg";
 import user_menu from "../../../assets/JsonData/user_menu.json";
 import "./navbar.css";
-// import ThemeMenu from "../thememenu/ThemeMenu";
+import ThemeMenu from "../thememenu/ThemeMenu";
 
 const curr_user = {
   display_name: "Nhut Anh",
@@ -76,7 +76,7 @@ const TopNavbar = ({ data }) => {
           {filter.length === 0 ? (
             <i className="bx bx-search"></i>
           ) : (
-            <div onClick={clearInput}>X</div>
+            <i onClick={clearInput} class="bx bx-x"></i>
           )}
         </div>
         {filter.length !== 0 && (
@@ -90,13 +90,6 @@ const TopNavbar = ({ data }) => {
       <div className="dashboard--navbar__profile">
         <div className="navbar__profile--item">
           <Dropdown
-            customToggle={() => renderUserToggle(curr_user)}
-            contentData={user_menu}
-            renderItems={(item, index) => renderUserMenu(item, index)}
-          />
-        </div>
-        <div className="navbar__profile--item">
-          <Dropdown
             icon="bx bx-bell"
             badge="12"
             contentData={notifications}
@@ -104,7 +97,16 @@ const TopNavbar = ({ data }) => {
             renderFooter={() => <Link to="/">View All</Link>}
           />
         </div>
-        <div className="navbar__profile--item">{/* <ThemeMenu /> */}</div>
+        <div className="navbar__profile--item">
+          <Dropdown
+            customToggle={() => renderUserToggle(curr_user)}
+            contentData={user_menu}
+            renderItems={(item, index) => renderUserMenu(item, index)}
+          />
+        </div>
+        <div className="navbar__profile--item">
+          <ThemeMenu />
+        </div>
       </div>
     </div>
   );

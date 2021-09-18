@@ -14,6 +14,21 @@
   --txt-white: #fff;
   --main-color: #349eff;
   --second-color: #62b4ff;
+
+  --main-color-blue: #349eff;
+  --second-color-blue: #62b4ff;
+
+  --main-color-red: #fb0b12;
+  --second-color-red: #ff4a6b;
+
+  --main-color-cyan: #10d4d2;
+  --second-color-cyan: #2ae9e6;
+
+  --main-color-green: #019707;
+  --second-color-green: #4caf50;
+
+  --main-color-orange: #d68102;
+  --second-color-orange: #fca11a;
 }
 [data-theme="dark"] {
   --h1-h5: white;

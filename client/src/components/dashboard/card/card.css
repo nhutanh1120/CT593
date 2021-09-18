@@ -4,12 +4,12 @@
   align-items: center;
   background-color: var(--main-bg);
   box-shadow: var(--box-shadow);
-  border-radius: var(--border-radius);
+  border-radius: 15px;
   position: relative;
   overflow: hidden;
   z-index: 1;
   transition: color 0.5s ease 0s;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .dashboard--card__icon {
@@ -64,5 +64,5 @@
   background-color: var(--main-bg);
   box-shadow: var(--box-shadow);
   border-radius: 15px;
-  height: 100%;
+  height: calc(100% - 25px);
 }

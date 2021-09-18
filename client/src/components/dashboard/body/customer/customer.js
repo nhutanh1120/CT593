@@ -18,7 +18,7 @@ const customerTableHead = [
 const renderHead = (item, index) => <th key={index}>{item}</th>;
 
 const renderBody = (item, index) => (
-  <tr key={index}>
+  <tr className="table__body" key={index}>
     <td>{item.id}</td>
     <td>{item.name}</td>
     <td>{item.email}</td>
@@ -36,11 +36,11 @@ const CustomerBody = () => {
       <div className="grid body">
         <h2 className="dashboard--body">Quản lý người dùng</h2>
         <div className="row">
-          <div className="l-12">
+          <div className="col l-12">
             <div className="card--body">
-              <div className="card--body__header">
+              {/* <div className="card--body__header">
                 <h3>top customer</h3>
-              </div>
+              </div> */}
               <div className="card--body__content">
                 <Table
                   limit="10"
