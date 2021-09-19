@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "../dropdown/Dropdown";
 import notifications from "../../../assets/JsonData/notification.json";
@@ -90,7 +90,7 @@ const TopNavbar = ({ data }) => {
       <div className="dashboard--navbar__profile">
         <div className="navbar__profile--item">
           <Dropdown
-            icon="bx bx-bell"
+            icon="bx bx-bell bx-tada-hover"
             badge="12"
             contentData={notifications}
             renderItems={(item, index) => renderNotificationItem(item, index)}

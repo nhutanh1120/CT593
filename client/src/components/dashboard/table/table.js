@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./table.css";
 
 const Table = (props) => {
@@ -18,6 +18,9 @@ const Table = (props) => {
       props.tbodyData.length % Number(props.limit) === 0 ? page : page + 1;
     range = [...Array(pages).keys()];
   }
+  // useEffect(() => {
+  //   range = [...Array(props.tbodyData.length).keys()];
+  // }, [props.limit]);
 
   const [currPage, setCurrPage] = useState(0);
 

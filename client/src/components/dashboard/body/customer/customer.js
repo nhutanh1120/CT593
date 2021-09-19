@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import TopNavbar from "./../../navbar/navbar";
 import Table from "./../../table/table";
@@ -30,6 +30,13 @@ const renderBody = (item, index) => (
 );
 
 const CustomerBody = () => {
+  const [viewAll, setViewAll] = useState(10);
+
+  const clickViewAll = (event) => {
+    event.preventDefault();
+    setViewAll(customerList.length);
+  };
+
   return (
     <section className="home-section">
       <TopNavbar data={customerList} />
@@ -38,12 +45,9 @@ const CustomerBody = () => {
         <div className="row">
           <div className="col l-12">
             <div className="card--body">
-              {/* <div className="card--body__header">
-                <h3>top customer</h3>
-              </div> */}
               <div className="card--body__content">
                 <Table
-                  limit="10"
+                  limit={viewAll}
                   theadData={customerTableHead}
                   renderHead={(item, index) => renderHead(item, index)}
                   tbodyData={customerList}
@@ -51,7 +55,9 @@ const CustomerBody = () => {
                 />
               </div>
               <div className="card--body__footer">
-                <Link to="/">view all</Link>
+                <Link to="/" onClick={clickViewAll}>
+                  view all
+                </Link>
               </div>
             </div>
           </div>

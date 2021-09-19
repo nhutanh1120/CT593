@@ -6,7 +6,8 @@ import "./sidebar.css";
 const Sidebar = () => {
   const auth = useSelector((state) => state.auth);
 
-  const { user, isLogged } = auth;
+  const { isLogged } = auth;
+  // const { user, isLogged } = auth;
 
   // console.log(user);
 
