@@ -34,15 +34,15 @@ export function toast({
     toast.style.animation = `slideInLeft ease .3s, fadeOut linear 1s ${delay}s forwards`;
 
     toast.innerHTML = `
-                    <div class="toast__icon">
-                        <i class="${icon}"></i>
+                    <div className="toast__icon">
+                        <i className="${icon}"></i>
                     </div>
-                    <div class="toast__body">
-                        <h3 class="toast__title">${title}</h3>
-                        <p class="toast__msg">${message}</p>
+                    <div className="toast__body">
+                        <h3 className="toast__title">${title}</h3>
+                        <p className="toast__msg">${message}</p>
                     </div>
-                    <div class="toast__close">
-                        <i class="fas fa-times"></i>
+                    <div className="toast__close">
+                        <i className="fas fa-times"></i>
                     </div>
                 `;
     main.appendChild(toast);

@@ -76,7 +76,7 @@ const TopNavbar = ({ data }) => {
           {filter.length === 0 ? (
             <i className="bx bx-search"></i>
           ) : (
-            <i onClick={clearInput} class="bx bx-x"></i>
+            <i onClick={clearInput} className="bx bx-x"></i>
           )}
         </div>
         {filter.length !== 0 && (
