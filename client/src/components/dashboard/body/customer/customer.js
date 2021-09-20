@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TopNavbar from "./../../navbar/navbar";
-import Table from "./../../table/table";
 
 import customerList from "../../../../assets/JsonData/customers.json";
 
@@ -40,13 +39,6 @@ const useSortableData = (items, config = null) => {
 };
 
 const CustomerBody = () => {
-  const [viewAll, setViewAll] = useState(10);
-
-  const clickViewAll = (event) => {
-    event.preventDefault();
-    // setViewAll(customerList.length);
-  };
-
   const [limit, setLimit] = useState(10);
 
   const [pagination, setPagination] = useState(
@@ -70,13 +62,17 @@ const CustomerBody = () => {
     setPagination(customerList.slice(start, end));
     setCurrPage(page);
   };
+
+  // sort
   const { items, requestSort } = useSortableData(pagination);
 
-  // const [Data, setData] = useState(pagination);
-  // useEffect(() => {
-  //   setData(pagination);
-  // }, [items, pagination]);
-
+  const [view, setView] = useState(false);
+  const clickViewAll = (event) => {
+    event.preventDefault();
+    setLimit(customerList.length);
+    setPagination(customerList.slice(0, customerList.length));
+    setView(true);
+  };
   return (
     <section className="home-section">
       <TopNavbar data={customerList} />
@@ -180,7 +176,7 @@ const CustomerBody = () => {
               </div>
               <div className="card--body__footer">
                 <Link to="/" onClick={clickViewAll}>
-                  view all
+                  {view ? "Xem tất cả" : "Thu gọn"}
                 </Link>
               </div>
             </div>
