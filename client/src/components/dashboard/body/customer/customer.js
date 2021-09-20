@@ -1,41 +1,81 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TopNavbar from "./../../navbar/navbar";
 import Table from "./../../table/table";
 
 import customerList from "../../../../assets/JsonData/customers.json";
 
-const customerTableHead = [
-  "",
-  "name",
-  "email",
-  "phone",
-  "total orders",
-  "total spend",
-  "location",
-];
+const useSortableData = (items, config = null) => {
+  const [sortConfig, setSortConfig] = React.useState(config);
 
-const renderHead = (item, index) => <th key={index}>{item}</th>;
+  const sortedItems = React.useMemo(() => {
+    let sortableItems = [...items];
+    if (sortConfig !== null) {
+      sortableItems.sort((a, b) => {
+        if (a[sortConfig.key] < b[sortConfig.key]) {
+          return sortConfig.direction === "ascending" ? -1 : 1;
+        }
+        if (a[sortConfig.key] > b[sortConfig.key]) {
+          return sortConfig.direction === "ascending" ? 1 : -1;
+        }
+        return 0;
+      });
+    }
+    return sortableItems;
+  }, [items, sortConfig]);
 
-const renderBody = (item, index) => (
-  <tr className="table__body" key={index}>
-    <td>{item.id}</td>
-    <td>{item.name}</td>
-    <td>{item.email}</td>
-    <td>{item.phone}</td>
-    <td>{item.total_orders}</td>
-    <td>{item.total_spend}</td>
-    <td>{item.location}</td>
-  </tr>
-);
+  const requestSort = (key) => {
+    let direction = "ascending";
+    if (
+      sortConfig &&
+      sortConfig.key === key &&
+      sortConfig.direction === "ascending"
+    ) {
+      direction = "descending";
+    }
+    setSortConfig({ key, direction });
+  };
+
+  return { items: sortedItems, requestSort, sortConfig };
+};
 
 const CustomerBody = () => {
   const [viewAll, setViewAll] = useState(10);
 
   const clickViewAll = (event) => {
     event.preventDefault();
-    setViewAll(customerList.length);
+    // setViewAll(customerList.length);
   };
+
+  const [limit, setLimit] = useState(10);
+
+  const [pagination, setPagination] = useState(
+    customerList.slice(0, Number(limit))
+  );
+  console.log(pagination);
+  let pages = 1;
+  let range = [];
+
+  if (limit !== undefined) {
+    let page = Math.floor(customerList.length / Number(limit));
+    pages = customerList.length % Number(limit) === 0 ? page : page + 1;
+    range = [...Array(pages).keys()];
+  }
+
+  const [currPage, setCurrPage] = useState(0);
+
+  const selectPage = (page) => {
+    const start = Number(limit) * page;
+    const end = start + Number(limit);
+    setPagination(customerList.slice(start, end));
+    setCurrPage(page);
+  };
+  const { items, requestSort } = useSortableData(pagination);
+
+  // const [Data, setData] = useState(pagination);
+  // useEffect(() => {
+  //   setData(pagination);
+  // }, [items, pagination]);
 
   return (
     <section className="home-section">
@@ -46,13 +86,97 @@ const CustomerBody = () => {
           <div className="col l-12">
             <div className="card--body">
               <div className="card--body__content">
-                <Table
-                  limit={viewAll}
-                  theadData={customerTableHead}
-                  renderHead={(item, index) => renderHead(item, index)}
-                  tbodyData={customerList}
-                  renderBody={(item, index) => renderBody(item, index)}
-                />
+                <div className="dashboard--table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>
+                          name
+                          <div
+                            className="th__icon"
+                            onClick={() => requestSort("name")}
+                          >
+                            <i className="bx bx-sort"></i>
+                          </div>
+                        </th>
+                        <th>
+                          email
+                          <div
+                            className="th__icon"
+                            onClick={() => requestSort("email")}
+                          >
+                            <i className="bx bx-sort"></i>
+                          </div>
+                        </th>
+                        <th>
+                          phone
+                          <div
+                            className="th__icon"
+                            onClick={() => requestSort("phone")}
+                          >
+                            <i className="bx bx-sort"></i>
+                          </div>
+                        </th>
+                        <th>
+                          total orders
+                          <div
+                            className="th__icon"
+                            onClick={() => requestSort("total orders")}
+                          >
+                            <i className="bx bx-sort"></i>
+                          </div>
+                        </th>
+                        <th>
+                          total spend
+                          <div
+                            className="th__icon"
+                            onClick={() => requestSort("total spend")}
+                          >
+                            <i className="bx bx-sort"></i>
+                          </div>
+                        </th>
+                        <th>
+                          location
+                          <div
+                            className="th__icon"
+                            onClick={() => requestSort("location")}
+                          >
+                            <i className="bx bx-sort"></i>
+                          </div>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {items.map((item, index) => (
+                        <tr className="table__body" key={index}>
+                          <td>{index + 1}</td>
+                          <td>{item.name}</td>
+                          <td>{item.email}</td>
+                          <td>{item.phone}</td>
+                          <td>{item.total_orders}</td>
+                          <td>{item.total_spend}</td>
+                          <td>{item.location}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                {pages > 1 ? (
+                  <div className="table__pagination">
+                    {range.map((item, index) => (
+                      <div
+                        key={index}
+                        className={`table__pagination--item ${
+                          currPage === index ? "active" : ""
+                        }`}
+                        onClick={() => selectPage(index)}
+                      >
+                        {item + 1}
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
               </div>
               <div className="card--body__footer">
                 <Link to="/" onClick={clickViewAll}>

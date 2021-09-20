@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./table.css";
 
 const Table = (props) => {
   const initialState =
-    props.limit && props.tbodyData
+    props.limit !== undefined && props.tbodyData
       ? props.tbodyData.slice(0, Number(props.limit))
       : props.tbodyData;
 
@@ -18,18 +18,13 @@ const Table = (props) => {
       props.tbodyData.length % Number(props.limit) === 0 ? page : page + 1;
     range = [...Array(pages).keys()];
   }
-  // useEffect(() => {
-  //   range = [...Array(props.tbodyData.length).keys()];
-  // }, [props.limit]);
 
   const [currPage, setCurrPage] = useState(0);
 
   const selectPage = (page) => {
     const start = Number(props.limit) * page;
     const end = start + Number(props.limit);
-
     setPagination(props.tbodyData.slice(start, end));
-
     setCurrPage(page);
   };
   return (

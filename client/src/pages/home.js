@@ -8,7 +8,7 @@ import "./../assets/css/home.css";
 function Home() {
   return (
     <div className="App">
-      <Header classNav="header-home" />
+      <Header isActiveHeader="isActiveHeader" />
       <section className="hero">
         <video preload="none" muted="muted" playsnline="true" autoPlay loop>
           <source src={Video} type="video/mp4" />

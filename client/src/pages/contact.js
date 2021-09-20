@@ -31,7 +31,7 @@ function Contact() {
   ];
   return (
     <div className="App">
-      <Header classNav="header-home" />
+      <Header isActiveHeader="isActiveHeader" />
       <Brand />
       <h5 className="approve-contact">
         Truy xuất nguồn gốc thực phẩm và yêu cầu các tiêu chuẩn lựa chọn

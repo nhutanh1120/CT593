@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "./style.css";
 
 const ScrollTop = () => {
   const scroll = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
   const ref = useRef(null);
 
   const changeStyle = () => {

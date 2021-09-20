@@ -9,7 +9,7 @@
   border: 1px solid white;
 }
 /* scroll  */
-.header-home {
+.isActiveHeader {
   background-color: transparent;
   margin-top: 15px;
   transition: margin-top 0.5s ease;

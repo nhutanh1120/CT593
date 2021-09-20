@@ -1,22 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { NavLink, Link } from "react-router-dom";
 // import { Container } from "react-bootstrap";
 import "./styles.css";
 import logo from "./../../../assets/img/1.webp";
 
-function Header({ classNav }) {
-  let navCss = "navbar";
+function Header({ isActiveHeader }) {
+  let navbarStyle = "navbar";
 
-  if (classNav) {
-    navCss += " header-home";
+  if (isActiveHeader) {
+    navbarStyle += " isActiveHeader";
   } else {
-    navCss += " header";
+    navbarStyle += " header";
   }
 
+  const ref = useRef(null);
   const scroll = () => {
-    const header = document.querySelector("nav");
     let windowPosition = window.scrollY > 0;
-    header.classList.toggle("navbar--scroll", windowPosition);
+    ref.current.classList.toggle("navbar--scroll", windowPosition);
   };
   useEffect(() => {
     window.addEventListener("scroll", scroll);
@@ -25,7 +25,7 @@ function Header({ classNav }) {
     };
   }, []);
   return (
-    <nav className={navCss}>
+    <nav className={navbarStyle} ref={ref}>
       <div className="container">
         <Link className="navbar--logo" to="/">
           <div className="navbar--logo--content">
