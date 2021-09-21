@@ -12,18 +12,16 @@ const Sidebar = () => {
   // console.log(user);
 
   const checkLogin = () => {
-    return (
-      <li className="profile">
-        <div className="profile-details">
-          <img src="profile.jpg" alt="profileImg" />
-          <div className="name_job">
-            <div className="name">Prem Shahi</div>
-            <div className="job">admin</div>
-          </div>
+    <li className="profile">
+      <div className="profile-details">
+        <img src="profile.jpg" alt="profileImg" />
+        <div className="name_job">
+          <div className="name">Prem Shahi</div>
+          <div className="job">admin</div>
         </div>
-        <i className="bx bx-log-out" id="log_out"></i>
-      </li>
-    );
+      </div>
+      <i className="bx bx-log-out" id="log_out"></i>
+    </li>;
   };
   useEffect(() => {
     let sidebar = document.querySelector(".dashboard--sidebar");
@@ -110,13 +108,13 @@ const Sidebar = () => {
             <span className="tooltip">Saved</span>
           </li>
           <li>
-            <Link to="/">
+            <Link to="/dashboard/setting">
               <i className="bx bx-cog"></i>
               <span className="links_name">Setting</span>
             </Link>
             <span className="tooltip">Setting</span>
           </li>
-          {isLogged ? checkLogin() : "<li>chua login</li>"}
+          {isLogged ? checkLogin : ""}
         </ul>
       </div>
     </>

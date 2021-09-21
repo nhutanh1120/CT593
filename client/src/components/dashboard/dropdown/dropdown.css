@@ -43,7 +43,7 @@
   transform-origin: top right;
   transform: scale(0);
   transition: transform 0.3s ease 0s;
-  padding: 15px
+  padding: 15px;
 }
 
 .dashboard--dropdown__content.active {

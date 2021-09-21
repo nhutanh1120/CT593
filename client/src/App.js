@@ -5,11 +5,13 @@ import About from "./pages/about";
 import Contact from "./pages/contact";
 import Post from "./pages/tintuc";
 import Auth from "./pages/auth";
-import NotFound from "./pages/notfound";
-import Dashboard from "./pages/dashboard";
-import ActivationEmail from "./components/auth/activationEmail";
 import ForgotPassword from "./pages/forgotPassword";
+import ActivationEmail from "./components/auth/activationEmail";
+import NotFound from "./pages/notfound";
+import Agricultural from "./pages/agricultural";
+import Dashboard from "./pages/dashboard";
 import Customer from "./pages/customer";
+import Setting from "./pages/setting";
 import "./App.css";
 import qr from "./pages/qr";
 // import Apps from "./components/test/App";
@@ -19,7 +21,6 @@ import qr from "./pages/qr";
 // import { apiUrl } from "./constants/";
 import "./assets/css/grid.css";
 import "boxicons/css/boxicons.min.css";
-import Agricultural from "./pages/agricultural";
 import "./assets/css/theme.css";
 import "./assets/font/css2.css";
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="/sign" component={Auth} />
         {/* <Route path="/dashboard" component={isLogged ? Dashboard : NotFound} /> */}
         <Route path="/dashboard/customer" component={Customer} />
+        <Route path="/dashboard/setting" component={Setting} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/qr" component={qr} />
         <Route path="/forgot" component={ForgotPassword} />

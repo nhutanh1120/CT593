@@ -5,6 +5,7 @@ import notifications from "../../../assets/JsonData/notification.json";
 import user_image from "../../../assets/img/bg.jpg";
 import user_menu from "../../../assets/JsonData/user_menu.json";
 import "./navbar.css";
+import "./search.css";
 import ThemeMenu from "../thememenu/ThemeMenu";
 
 const curr_user = {
@@ -15,7 +16,7 @@ const curr_user = {
 const renderUserToggle = (user) => (
   <div className="navbar__profile--user">
     <div className="navbar__profile--user__image">
-      <img src={user.image} alt="" />
+      <img src={user.image} alt="img" />
     </div>
     <div className="navbar__profile--user__name">{user.display_name}</div>
   </div>
@@ -43,13 +44,18 @@ const TopNavbar = ({ data }) => {
   const handleChange = (event) => {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
-    const newFilter = data.filter((value) => {
-      return value.name.toLowerCase().includes(searchWord.toLowerCase());
-    });
-
-    if (searchWord === "") {
-      setFilter([]);
-    } else {
+    if (data && searchWord) {
+      const newFilter = data.filter((value) => {
+        return value.name.toLowerCase().includes(searchWord.toLowerCase());
+      });
+      if (searchWord === "") {
+        setFilter([]);
+      } else {
+        setFilter(newFilter);
+      }
+    }
+    if (!data && searchWord) {
+      const newFilter = "Không có dử liệu để tìm!";
       setFilter(newFilter);
     }
   };
@@ -79,11 +85,16 @@ const TopNavbar = ({ data }) => {
             <i onClick={clearInput} className="bx bx-x"></i>
           )}
         </div>
-        {filter.length !== 0 && (
+        {typeof filter !== "string" && filter.length !== 0 && (
           <div className="search__result">
             {filter.slice(0, 15).map((item, index) => (
               <div key={index}>{item.name}</div>
             ))}
+          </div>
+        )}
+        {typeof filter == "string" && (
+          <div className="search__result search__none">
+            <div>{filter}</div>
           </div>
         )}
       </div>
