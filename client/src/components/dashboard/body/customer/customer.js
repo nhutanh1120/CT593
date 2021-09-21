@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import TopNavbar from "./../../navbar/navbar";
 
@@ -44,7 +44,6 @@ const CustomerBody = () => {
   const [pagination, setPagination] = useState(
     customerList.slice(0, Number(limit))
   );
-  console.log(pagination);
   let pages = 1;
   let range = [];
 
@@ -66,12 +65,24 @@ const CustomerBody = () => {
   // sort
   const { items, requestSort } = useSortableData(pagination);
 
+  // view all
+  const ref = useRef(null);
   const [view, setView] = useState(false);
   const clickViewAll = (event) => {
     event.preventDefault();
-    setLimit(customerList.length);
-    setPagination(customerList.slice(0, customerList.length));
-    setView(true);
+    if (!view) {
+      setLimit(customerList.length);
+      setPagination(customerList.slice(0, customerList.length));
+      setView(!view);
+      ref.current = {
+        limit,
+        pagination,
+      };
+    } else {
+      setLimit(ref.current.limit);
+      setPagination(ref.current.pagination);
+      setView(!view);
+    }
   };
   return (
     <section className="home-section">
@@ -176,7 +187,7 @@ const CustomerBody = () => {
               </div>
               <div className="card--body__footer">
                 <Link to="/" onClick={clickViewAll}>
-                  {view ? "Xem tất cả" : "Thu gọn"}
+                  {view ? "Thu gọn" : "Xem tất cả"}
                 </Link>
               </div>
             </div>
