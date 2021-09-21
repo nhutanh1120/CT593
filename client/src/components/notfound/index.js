@@ -6,21 +6,19 @@ function NotFoundComponents() {
   return (
     <>
       <section className="page_404">
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-8 col-md-8 mx-auto col-sm-offset-1 text-center">
-              <div className="four_zero_four_bg">
-                <h1 className="text-center ">404</h1>
-              </div>
+        <div className="grid wide">
+          <div className="col l-12">
+            <div className="four_zero_four_bg">
+              <h1 className="text-center ">404</h1>
+            </div>
 
-              <div className="constant_box_404">
-                <h3 className="h2">Trang không tồn tại</h3>
-                <p>Chúng tôi không tìm thấy trang bạn đang tìm.</p>
+            <div className="constant_box_404">
+              <h3 className="h2">Trang không tồn tại</h3>
+              <p>Chúng tôi không tìm thấy trang bạn đang tìm.</p>
 
-                <Link to="/" className="link_404">
-                  Về trang chủ
-                </Link>
-              </div>
+              <Link to="/" className="link_404">
+                Về trang chủ
+              </Link>
             </div>
           </div>
         </div>

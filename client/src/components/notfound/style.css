@@ -4,9 +4,10 @@
   font-family: "Arvo", serif;
   width: 100%;
   height: 100vh;
+  text-align: center;
 }
-/* 
-.page_404::after {
+
+/* .page_404::after {
   content: "";
   width: inherit;
   height: inherit;
