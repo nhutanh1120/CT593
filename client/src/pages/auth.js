@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import FormLogin from "./../components/auth/formLogin";
-import FormSignup from "./../components/auth/formSignup";
+// import FormSignup from "./../components/auth/formSignup";
 import Panels from "../components/auth/panels";
 import "./../components/utils/notification/message.css";
 import "./../assets/css/auth.css";
-import { showSuccessToast } from "./../components/utils/notification/message";
+// import { showSuccessToast } from "./../components/utils/notification/message";
 
 function Auth() {
   let sign = " ";
@@ -22,16 +22,16 @@ function Auth() {
     sign_up_btn.onclick = handleSign;
     sign_in_btn.onclick = handleSign;
   }, [sign]);
-  const successMsg = (success) => {
-    if (success) showSuccessToast();
-  };
+  // const successMsg = (success) => {
+  //   if (success) showSuccessToast();
+  // };
   return (
     <div className="App auth">
       <div id="toast"></div>
-      <div className="forms-auth">
-        <div className="signin-signup">
+      <div className="forms--auth">
+        <div className="signin--signup">
           <FormLogin />
-          <FormSignup successMsg={successMsg} />
+          {/* <FormSignup successMsg={successMsg} /> */}
         </div>
         <Panels onSignUpMode={onSignUpMode} />
       </div>

@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import axios from "axios";
 // import {
-//   showErrMsg,
-//   showSuccessMsg,
-// } from "./../utils/notification/Notification";
-import {
-  showSuccessToast,
-  showErrorToast,
-} from "../utils/notification/message";
+//   showSuccessToast,
+//   showErrorToast,
+// } from "../utils/notification/message";
 import {
   isEmpty,
   isEmail,
@@ -93,8 +89,9 @@ const FormSignup = ({ successMsg }) => {
   };
   return (
     <>
-      {error && showErrorToast}
-      {success && showSuccessToast}
+      {/* {error && showErrorToast}
+      {success && showSuccessToast} */}
+      {error && success}
       <form
         className="sign-up-form"
         showSuccessMsg={true}
@@ -144,20 +141,7 @@ const FormSignup = ({ successMsg }) => {
           Đăng ký
         </button>
         <p className="social-text">Hoặc đăng nhập với các nền tảng</p>
-        <div className="social-media">
-          <Link to="/" className="social-icon">
-            <i className="fa fa-facebook" aria-hidden="true"></i>
-          </Link>
-          <Link to="/" className="social-icon">
-            <i className="fa fa-twitter" aria-hidden="true"></i>
-          </Link>
-          <Link to="/" className="social-icon">
-            <i className="fa fa-google-plus" aria-hidden="true"></i>
-          </Link>
-          <Link to="/" className="social-icon">
-            <i className="fa fa-instagram" aria-hidden="true"></i>
-          </Link>
-        </div>
+        <div className="social-media"></div>
       </form>
     </>
   );

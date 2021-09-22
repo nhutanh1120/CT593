@@ -5,8 +5,8 @@ import register from "./../../assets/img/register.svg";
 const Panels = ({ onSignUpMode }) => {
   return (
     <div>
-      <div className="panels-auth">
-        <div className="panel left-panel">
+      <div className="panels--auth">
+        <div className="panel left--panel">
           <div className="content">
             <h3>Bạn chưa có tài khoản ?</h3>
             <p>
@@ -23,7 +23,7 @@ const Panels = ({ onSignUpMode }) => {
           </div>
           <img src={log} className="image" alt="img" />
         </div>
-        <div className="panel right-panel">
+        <div className="panel right--panel">
           <div className="content">
             <h3>Bạn đã có tài khoản ?</h3>
             <p>
