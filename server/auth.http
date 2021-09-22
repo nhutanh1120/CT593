@@ -23,7 +23,7 @@ POST http://localhost:4000/api/auth/activation
 Content-Type: application/json
 
 {
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiIkMmIkMTIkam9NR2F6VkNnOHJFRDBLTnFsN1laLjRFL1QxbURDMGN1SGdxY202eDlTSDQ4aU8uYXZ4eHEiLCJlbWFpbCI6Im5odXRhbmhAZ21haWwuY29tIiwiaWF0IjoxNjMyMzI2OTc2LCJleHAiOjE2MzIzMjcyNzZ9.HA1Kd0vrEhUbTfpvdXf7ebrADr8heCDDt79dMMy-rAk"
+  "activation_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiIkMmIkMTIkcUQ5bEVNVzR4MTFPYmZHNDNsc09VT0N2ZzF0WXh4SWhzSFRRcXNCeUNEUTFqQ3VvaHdaeUciLCJlbWFpbCI6Im5odXRhbmhAZ21haWwuY29tIiwiaWF0IjoxNjMyMzI5NTY3LCJleHAiOjE2MzIzMjk4Njd9.jvaD-RQTbvJJmlOATnElmyQ5wvNotwkVVdH5ZMYdi_k"
 }
 ###
 POST http://localhost:4000/api/auth/login
@@ -50,7 +50,7 @@ Content-Type: application/json
 ###
 POST http://localhost:4000/api/auth/reset
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1NTM1NzFlM2YwMzhkODYyOTliNCIsImlhdCI6MTYzMjMyNzQ2NywiZXhwIjoxNjMyMzI4MzY3fQ.1VnLGV9jfzQgYxVWVinOxI9uEemG6TyhA0jI7JbQphk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZWZmNjY3ZmVmM2FjNGIyYWM4NiIsImlhdCI6MTYzMjMyOTgzMSwiZXhwIjoxNjMyMzMwNzMxfQ.-KhMwfMoZAaWdNjWW6sjgRY1utrAs_waBO4rp_zHcho
 
 {
   "password": "1234567"

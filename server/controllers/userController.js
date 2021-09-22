@@ -68,6 +68,7 @@ const userControllers = {
 
       const url = CLIENT_URL + "/api/auth/activation/" + activation_token;
       sendMail(email, url, "Verify your email address");
+
       return res.json({
         success: true,
         message: "Username create successfully",
@@ -83,8 +84,11 @@ const userControllers = {
   // @access private
   activateEmail: async (req, res) => {
     try {
-      const { token } = req.body;
-      const user = jwt.verify(token, process.env.ACTIVATION_TOKEN_SECRET);
+      const { activation_token } = req.body;
+      const user = jwt.verify(
+        activation_token,
+        process.env.ACTIVATION_TOKEN_SECRET
+      );
 
       const { username, password, email } = user;
 
@@ -144,9 +148,8 @@ const userControllers = {
         });
       }
 
-      // set token equals cookie
-      const refresh = createRefreshToken({ id: user._id });
-      res.cookie("refresh", refresh, {
+      const refresh_token = createRefreshToken({ id: user._id });
+      res.cookie("refresh", refresh_token, {
         httpOnly: true,
         path: "/api/auth/refresh",
         maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
@@ -155,7 +158,7 @@ const userControllers = {
       res.json({
         success: true,
         message: "Login success!",
-        refresh,
+        refresh_token,
       });
     } catch (error) {
       console.log(error);
@@ -164,7 +167,7 @@ const userControllers = {
         .json({ success: false, message: "Internal server error" });
     }
   },
-  // @Router post /api/auth/refresh
+  // @Router post /api/auth/refresh_token
   // @access private
   getAccessToken: (req, res) => {
     try {
@@ -185,25 +188,12 @@ const userControllers = {
           });
         }
 
-        const token = createAccessToken({ id: user.id });
+        const access_token = createAccessToken({ id: user.id });
         return res.json({
           success: true,
-          token,
+          access_token,
         });
       });
-    } catch (error) {
-      console.log(error);
-      res
-        .status(500)
-        .json({ success: false, message: "Internal server error" });
-    }
-  },
-  // @Router post /api/auth/logout
-  // @access private
-  logout: async (req, res) => {
-    try {
-      res.clearCookie("refresh", { path: "/api/auth/refresh" });
-      return res.json({ success: true, message: "Logged out." });
     } catch (error) {
       console.log(error);
       res
@@ -224,10 +214,11 @@ const userControllers = {
         });
       }
 
-      const token = createAccessToken({ id: user._id });
-      const url = CLIENT_URL + "/api/auth/reset/" + token;
-      console.log(url);
+      const access_token = createAccessToken({ id: user._id });
+      const url = CLIENT_URL + "/api/auth/reset/" + access_token;
+
       sendMail(email, url, "Reset your password");
+      console.log(url);
 
       return res.json({
         success: true,
@@ -248,13 +239,11 @@ const userControllers = {
       const passwordHash = await bcrypt.hash(password, 12);
 
       await Users.findOneAndUpdate(
-        { _id: req.user._id },
+        { _id: req.user.id },
         {
           password: passwordHash,
         }
       );
-      console.log(req.user.id);
-      console.log(password);
 
       res.json({ success: true, message: "Password successfully changed!" });
     } catch (error) {
@@ -264,7 +253,21 @@ const userControllers = {
         .json({ success: false, message: "Internal server error" });
     }
   },
-
+  // @Router post /api/auth/logout
+  // @access private
+  logout: async (req, res) => {
+    try {
+      res.clearCookie("refresh", { path: "/api/auth/refresh" });
+      return res.json({ success: true, message: "Logged out." });
+    } catch (error) {
+      console.log(error);
+      res
+        .status(500)
+        .json({ success: false, message: "Internal server error" });
+    }
+  },
+  // @Router post /api/auth/google/login
+  // @access public
   googleLogin: async (req, res) => {
     try {
       const { tokenId } = req.body;
@@ -297,9 +300,9 @@ const userControllers = {
         }
 
         const refresh_token = createRefreshToken({ id: user._id });
-        res.cookie("refreshtoken", refresh_token, {
+        res.cookie("refresh", refresh_token, {
           httpOnly: true,
-          path: "/api/auth/refresh_token",
+          path: "/api/auth/refresh",
           maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
         });
 
@@ -315,9 +318,9 @@ const userControllers = {
         await newUser.save();
 
         const refresh_token = createRefreshToken({ id: newUser._id });
-        res.cookie("refreshtoken", refresh_token, {
+        res.cookie("refresh", refresh_token, {
           httpOnly: true,
-          path: "/user/refresh_token",
+          path: "/user/refresh",
           maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
         });
 
@@ -363,9 +366,9 @@ const userControllers = {
         }
 
         const refresh_token = createRefreshToken({ id: user._id });
-        res.cookie("refreshtoken", refresh_token, {
+        res.cookie("refresh", refresh_token, {
           httpOnly: true,
-          path: "/user/refresh_token",
+          path: "/user/refresh",
           maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
         });
 
@@ -381,9 +384,9 @@ const userControllers = {
         await newUser.save();
 
         const refresh_token = createRefreshToken({ id: newUser._id });
-        res.cookie("refreshtoken", refresh_token, {
+        res.cookie("refresh", refresh_token, {
           httpOnly: true,
-          path: "/user/refresh_token",
+          path: "/user/refresh",
           maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
         });
 

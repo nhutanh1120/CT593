@@ -25,11 +25,11 @@ router.post("/reset", verifyToken, userControllers.resetPassword);
 router.get("/logout", userControllers.logout);
 
 // @social Login
-// @http://localhost:4000/api/auth/google_login
-router.post("/google_login", userControllers.googleLogin);
+// @http://localhost:4000/api/auth/google/login
+router.post("/google/login", userControllers.googleLogin);
 
 // @social Login
-// @http://localhost:4000/api/auth/facebook_login
-router.post("/facebook_login", userControllers.facebookLogin);
+// @http://localhost:4000/api/auth/facebook/login
+router.post("/facebook/login", userControllers.facebookLogin);
 
 module.exports = router;
