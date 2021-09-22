@@ -1,1 +1,14 @@
-POST http://localhost:4000/api/profile/create
+###
+GET http://localhost:4000/api/auth/info
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGIzMTg2NzA2OTQ0MzhjYzk1YWJjYSIsImlhdCI6MTYzMjMxNzg1NSwiZXhwIjoxNjMyOTIyNjU1fQ.D5ZyM4DxRiyBPtyzi8wgjlTvbRq9s10D03-_alPcs_0
+
+###
+GET http://localhost:4000/api/auth/all_info
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjBlN2VlMjFiMDA5Mjk2MGRiNGJhYiIsImlhdCI6MTYzMDk1ODgxNywiZXhwIjoxNjMxNTYzNjE3fQ.A9vykeICBuIUbH-Pay4w-jwXz9xcn8bev0c-BR_04Q0
+
+###
+PATCH  http://localhost:4000/api/auth/update_role/6120e7ee21b0092960db4bab
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjBlN2VlMjFiMDA5Mjk2MGRiNGJhYiIsImlhdCI6MTYyOTU2MzQ5MCwiZXhwIjoxNjMwMTY4MjkwfQ.M2sk3LRP5_g-2qMq__LOcgjpXpavvCzH9cLe_0uyp-4

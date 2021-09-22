@@ -23,9 +23,6 @@ const userControllers = {
         return res.status(400).json({
           success: false,
           message: "Please fill in all fields.",
-          username: username,
-          password: password,
-          email: email,
         });
       }
 
@@ -70,9 +67,7 @@ const userControllers = {
       const activation_token = createActivationToken(newUser);
 
       const url = CLIENT_URL + "/api/auth/activation/" + activation_token;
-      console.log(url);
       sendMail(email, url, "Verify your email address");
-
       return res.json({
         success: true,
         message: "Username create successfully",
@@ -88,14 +83,18 @@ const userControllers = {
   // @access private
   activateEmail: async (req, res) => {
     try {
-      const { activation_token } = req.body;
-      const user = jwt.verify(
-        activation_token,
-        process.env.ACTIVATION_TOKEN_SECRET
-      );
+      const { token } = req.body;
+      const user = jwt.verify(token, process.env.ACTIVATION_TOKEN_SECRET);
 
       const { username, password, email } = user;
 
+      const CheckUser = await Users.findOne({ username });
+      if (CheckUser) {
+        return res.status(400).json({
+          success: false,
+          message: "Username already taken.",
+        });
+      }
       const check = await Users.findOne({ email });
       if (check) {
         return res.status(400).json({
@@ -145,17 +144,18 @@ const userControllers = {
         });
       }
 
-      const refresh_token = createRefreshToken({ id: user._id });
-      res.cookie("refreshtoken", refresh_token, {
+      // set token equals cookie
+      const refresh = createRefreshToken({ id: user._id });
+      res.cookie("refresh", refresh, {
         httpOnly: true,
-        path: "/api/auth/refresh_token",
+        path: "/api/auth/refresh",
         maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
       });
 
       res.json({
         success: true,
         message: "Login success!",
-        refresh_token,
+        refresh,
       });
     } catch (error) {
       console.log(error);
@@ -164,11 +164,11 @@ const userControllers = {
         .json({ success: false, message: "Internal server error" });
     }
   },
-  // @Router post /api/auth/refresh_token
+  // @Router post /api/auth/refresh
   // @access private
   getAccessToken: (req, res) => {
     try {
-      const rf_token = req.cookies.refreshtoken;
+      const rf_token = req.cookies.refresh;
 
       if (!rf_token) {
         return res.status(400).json({
@@ -185,12 +185,25 @@ const userControllers = {
           });
         }
 
-        const access_token = createAccessToken({ id: user.id });
+        const token = createAccessToken({ id: user.id });
         return res.json({
           success: true,
-          access_token,
+          token,
         });
       });
+    } catch (error) {
+      console.log(error);
+      res
+        .status(500)
+        .json({ success: false, message: "Internal server error" });
+    }
+  },
+  // @Router post /api/auth/logout
+  // @access private
+  logout: async (req, res) => {
+    try {
+      res.clearCookie("refresh", { path: "/api/auth/refresh" });
+      return res.json({ success: true, message: "Logged out." });
     } catch (error) {
       console.log(error);
       res
@@ -211,9 +224,9 @@ const userControllers = {
         });
       }
 
-      const access_token = createAccessToken({ id: user._id });
-      const url = CLIENT_URL + "/api/auth/reset/" + access_token;
-
+      const token = createAccessToken({ id: user._id });
+      const url = CLIENT_URL + "/api/auth/reset/" + token;
+      console.log(url);
       sendMail(email, url, "Reset your password");
 
       return res.json({
@@ -232,10 +245,7 @@ const userControllers = {
   resetPassword: async (req, res) => {
     try {
       const { password } = req.body;
-      console.log(password);
       const passwordHash = await bcrypt.hash(password, 12);
-
-      console.log(req.user.id);
 
       await Users.findOneAndUpdate(
         { _id: req.user._id },
@@ -243,6 +253,8 @@ const userControllers = {
           password: passwordHash,
         }
       );
+      console.log(req.user.id);
+      console.log(password);
 
       res.json({ success: true, message: "Password successfully changed!" });
     } catch (error) {
@@ -252,102 +264,7 @@ const userControllers = {
         .json({ success: false, message: "Internal server error" });
     }
   },
-  // @Router post /api/auth/info
-  // @access private
-  getUserInfo: async (req, res) => {
-    try {
-      const user = await Users.findById(req.user.id).select("-password");
 
-      res.json({ success: true, user });
-    } catch (error) {
-      console.log(error);
-      res
-        .status(500)
-        .json({ success: false, message: "Internal server error" });
-    }
-  },
-  // @Router post /api/auth/all_info
-  // @access private
-  getUsersAllInfo: async (req, res) => {
-    try {
-      const users = await Users.find().select("-password");
-
-      res.json({ success: true, users });
-    } catch (error) {
-      console.log(error);
-      res
-        .status(500)
-        .json({ success: false, message: "Internal server error" });
-    }
-  },
-  // @Router post /api/auth/logout
-  // @access private
-  logout: async (req, res) => {
-    try {
-      res.clearCookie("refreshtoken", { path: "/api/auth/refresh_token" });
-      return res.json({ success: true, message: "Logged out." });
-    } catch (error) {
-      console.log(error);
-      res
-        .status(500)
-        .json({ success: false, message: "Internal server error" });
-    }
-  },
-  // @Router post /api/auth/update
-  // @access private
-  updateUser: async (req, res) => {
-    try {
-      const { username, avatar } = req.body;
-      await Users.findOneAndUpdate(
-        { _id: req.user.id },
-        {
-          username,
-          avatar,
-        }
-      );
-
-      res.json({ success: true, message: "Update Success!" });
-    } catch (error) {
-      console.log(error);
-      res
-        .status(500)
-        .json({ success: false, message: "Internal server error" });
-    }
-  },
-  // @Router post /api/auth/update_role/:id
-  // @access private
-  updateUsersRole: async (req, res) => {
-    try {
-      const { role } = req.body;
-
-      await Users.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-          role,
-        }
-      );
-
-      res.json({ success: true, message: "Update Success!" });
-    } catch (error) {
-      console.log(error);
-      res
-        .status(500)
-        .json({ success: false, message: "Internal server error" });
-    }
-  },
-
-  deleteUser: async (req, res) => {
-    try {
-      await Users.findByIdAndDelete(req.params.id);
-
-      res.json({ success: true, message: "Deleted Success!" });
-    } catch (error) {
-      console.log(error);
-      res
-        .status(500)
-        .json({ success: false, message: "Internal server error" });
-    }
-  },
   googleLogin: async (req, res) => {
     try {
       const { tokenId } = req.body;

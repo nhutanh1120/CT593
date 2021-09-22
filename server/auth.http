@@ -1,15 +1,6 @@
 GET http://localhost:4000/
 
 ###
-POST http://localhost:4000/api/auth/login
-Content-Type: application/json
-
-{
-  "username": "nhutanh",
-  "password": "1234567"
-}
-
-###
 POST http://localhost:4000/api/auth/register
 Content-Type: application/json
 
@@ -18,17 +9,36 @@ Content-Type: application/json
   "password": "1234567",
   "email": "nhutanh1120@gmail.com"
 }
+###
+POST http://localhost:4000/api/auth/register
+Content-Type: application/json
 
+{
+  "username": "admin",
+  "password": "1234567",
+  "email": "nhutanh@gmail.com"
+}
 ### 
 POST http://localhost:4000/api/auth/activation
 Content-Type: application/json
 
 {
-  "activation_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5odXRhbmgiLCJwYXNzd29yZCI6IiQyYiQxMiQvL2FYV1JXTVJScEhGOUpMMzBBRGlPUlRWZGlFR0FBYzBoV1d5RGpNbUFmaVVmWEpuTzhSZSIsImVtYWlsIjoibmh1dGFuaDExMjBAZ21haWwuY29tIiwiaWF0IjoxNjI5NTQ2Mzg3LCJleHAiOjE2Mjk1NDY2ODd9.Y7g8Q_tnlPLCRVFq7wvWTMLDYt11kQuaYcf4GkwF5vQ"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiIkMmIkMTIkam9NR2F6VkNnOHJFRDBLTnFsN1laLjRFL1QxbURDMGN1SGdxY202eDlTSDQ4aU8uYXZ4eHEiLCJlbWFpbCI6Im5odXRhbmhAZ21haWwuY29tIiwiaWF0IjoxNjMyMzI2OTc2LCJleHAiOjE2MzIzMjcyNzZ9.HA1Kd0vrEhUbTfpvdXf7ebrADr8heCDDt79dMMy-rAk"
+}
+###
+POST http://localhost:4000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "nhutanh",
+  "password": "1234567"
 }
 
 ### 
-POST http://localhost:4000/api/auth/refresh_token
+POST http://localhost:4000/api/auth/refresh
+
+###
+GET http://localhost:4000/api/auth/logout
 
 ### 
 POST http://localhost:4000/api/auth/forgot
@@ -37,21 +47,11 @@ Content-Type: application/json
 {
   "email": "nhutanh1120@gmail.com"
 }
-
 ###
-GET http://localhost:4000/api/auth/info
+POST http://localhost:4000/api/auth/reset
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjBlN2VlMjFiMDA5Mjk2MGRiNGJhYiIsImlhdCI6MTYzMTI4OTE0MCwiZXhwIjoxNjMxODkzOTQwfQ.JVc3OCy36lst9EALrBpW6i-gvO-zXmNFQTVC11Ppqdk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1NTM1NzFlM2YwMzhkODYyOTliNCIsImlhdCI6MTYzMjMyNzQ2NywiZXhwIjoxNjMyMzI4MzY3fQ.1VnLGV9jfzQgYxVWVinOxI9uEemG6TyhA0jI7JbQphk
 
-###
-GET http://localhost:4000/api/auth/all_info
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjBlN2VlMjFiMDA5Mjk2MGRiNGJhYiIsImlhdCI6MTYzMDk1ODgxNywiZXhwIjoxNjMxNTYzNjE3fQ.A9vykeICBuIUbH-Pay4w-jwXz9xcn8bev0c-BR_04Q0
-
-###
-GET http://localhost:4000/api/auth/logout
-
-###
-PATCH  http://localhost:4000/api/auth/update_role/6120e7ee21b0092960db4bab
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjBlN2VlMjFiMDA5Mjk2MGRiNGJhYiIsImlhdCI6MTYyOTU2MzQ5MCwiZXhwIjoxNjMwMTY4MjkwfQ.M2sk3LRP5_g-2qMq__LOcgjpXpavvCzH9cLe_0uyp-4
+{
+  "password": "1234567"
+}
