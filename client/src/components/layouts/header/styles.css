@@ -144,7 +144,7 @@
 }
 .navbar--header--sign .navbar--pc--link::after {
   content: "";
-  width: 80%;
+  width: 84%;
   height: 2px;
   background-color: #fff;
   position: absolute;

@@ -1,4 +1,5 @@
 import ACTIONS from "./../../constants/redux";
+import { apiUrl } from "../../constants";
 import axios from "axios";
 
 export const dispatchLogin = () => {
@@ -8,7 +9,7 @@ export const dispatchLogin = () => {
 };
 
 export const fetchUser = async (token) => {
-  const res = await axios.get("/user/info", {
+  const res = await axios.get(apiUrl + "/profile/info", {
     headers: { Authorization: token },
   });
   return res;

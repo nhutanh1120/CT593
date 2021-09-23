@@ -99,7 +99,7 @@ form.sign-in-form {
 
 .input--field input {
   background: none;
-  outline: none;
+  outline: none !important;
   border: none;
   height: 53px;
   line-height: 1;
@@ -107,6 +107,14 @@ form.sign-in-form {
   font-size: 1.1rem;
   color: #333;
   margin-left: 20px;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  background: none;
+  background-color: transparent !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 .input--field input::placeholder {
@@ -127,8 +135,8 @@ form.sign-in-form {
   font-size: 1rem;
   margin-bottom: 10px;
 }
-#login a {
-  margin-top: 10px;
+.sign-in-form a {
+  margin-top: 10px !important;
 }
 
 .social--media {

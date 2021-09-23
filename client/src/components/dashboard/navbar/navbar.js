@@ -7,6 +7,7 @@ import user_menu from "../../../assets/JsonData/user_menu.json";
 import "./navbar.css";
 import "./search.css";
 import ThemeMenu from "../thememenu/ThemeMenu";
+import { handleLogout } from "./../sidebar/logout/handleLogout";
 
 const curr_user = {
   display_name: "Nhut Anh",
@@ -23,7 +24,11 @@ const renderUserToggle = (user) => (
 );
 
 const renderUserMenu = (item, index) => (
-  <Link to="/" key={index}>
+  <Link
+    to={item.path}
+    key={index}
+    onClick={item?.event ? handleLogout : () => true}
+  >
     <div className="message-item">
       <i className={item.icon}></i>
       <span>{item.content}</span>

@@ -59,12 +59,7 @@ export function toast({
   </div>
 </div> */
 
-export function showErrorToast(
-  title = "Thất bại!",
-  message = "",
-  type = "error",
-  duration = 5000
-) {
+export function showErrorToast(title, message, type, duration = 5000) {
   toast({
     title,
     message,

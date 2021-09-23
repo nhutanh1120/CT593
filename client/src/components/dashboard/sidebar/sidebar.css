@@ -207,7 +207,7 @@
 .dashboard--sidebar li.profile .job {
   font-size: 12px;
 }
-.dashboard--sidebar .profile #log_out {
+.dashboard--sidebar .profile .log_out {
   position: absolute;
   top: 50%;
   right: 0;
@@ -218,8 +218,9 @@
   line-height: 60px;
   border-radius: 0px;
   transition: all 0.5s ease;
+  cursor: pointer !important;
 }
-.dashboard--sidebar.open .profile #log_out {
+.dashboard--sidebar.open .profile .log_out {
   width: 50px;
   background: none;
 }
