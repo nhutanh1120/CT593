@@ -12,6 +12,7 @@ import Agricultural from "./pages/agricultural";
 import Dashboard from "./pages/dashboard";
 import Customer from "./pages/customer";
 import Setting from "./pages/setting";
+import Email from "./pages/email";
 import "./App.css";
 import qr from "./pages/qr";
 // import Apps from "./components/test/App";
@@ -38,6 +39,7 @@ function App() {
         {/* <Route path="/dashboard" component={isLogged ? Dashboard : NotFound} /> */}
         <Route path="/dashboard/customer" component={Customer} />
         <Route path="/dashboard/setting" component={Setting} />
+        <Route path="/dashboard/email" component={Email} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/qr" component={qr} />
         <Route path="/forgot" component={ForgotPassword} />
