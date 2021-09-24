@@ -3,6 +3,7 @@ export const apiUrl =
     ? "http://localhost:4000/api"
     : "somedeloyurl";
 
+export const apiClient = "http://localhost:3000";
 export const LOCAL_STORAGE_TOKEN_NAME = "learnit-mern";
 
 // export const POSTS_LOADED_SUCCESS = 'POSTS_LOADED_SUCCESS'

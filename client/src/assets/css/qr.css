@@ -1,0 +1,17 @@
+.qr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.qr h2 {
+  margin: 2rem;
+  box-shadow: var(--box-shadow);
+  padding: 5px 10px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.qr span {
+  padding: 15px;
+  box-shadow: var(--box-shadow);
+}

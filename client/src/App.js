@@ -14,7 +14,7 @@ import Customer from "./pages/customer";
 import Setting from "./pages/setting";
 import Email from "./pages/email";
 import "./App.css";
-import qr from "./pages/qr";
+import QrCode from "./pages/qrCode";
 // import Apps from "./components/test/App";
 // import test from "./pages/test";
 // import { useDispatch, useSelector } from "react-redux";
@@ -41,9 +41,8 @@ function App() {
         <Route path="/dashboard/setting" component={Setting} />
         <Route path="/dashboard/email" component={Email} />
         <Route path="/dashboard" component={Dashboard} />
-        <Route path="/qr" component={qr} />
+        <Route path="/qr/:id" component={QrCode} />
         <Route path="/forgot" component={ForgotPassword} />
-        <Route path="/test" component={qr} />
         <Route path="/agricultural/:id" component={Agricultural} />
         <Route
           exact
