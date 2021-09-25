@@ -309,7 +309,8 @@ const userControllers = {
         res.json({ success: true, message: "Login success!" });
       } else {
         const newUser = new Users({
-          username: name,
+          fullname: name,
+          username: email,
           password: passwordHash,
           email,
           avatar: picture,
@@ -320,7 +321,7 @@ const userControllers = {
         const refresh_token = createRefreshToken({ id: newUser._id });
         res.cookie("refresh", refresh_token, {
           httpOnly: true,
-          path: "/user/refresh",
+          path: "/api/auth/refresh",
           maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
         });
 
@@ -368,7 +369,7 @@ const userControllers = {
         const refresh_token = createRefreshToken({ id: user._id });
         res.cookie("refresh", refresh_token, {
           httpOnly: true,
-          path: "/user/refresh",
+          path: "/api/auth/refresh",
           maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
         });
 
@@ -386,7 +387,7 @@ const userControllers = {
         const refresh_token = createRefreshToken({ id: newUser._id });
         res.cookie("refresh", refresh_token, {
           httpOnly: true,
-          path: "/user/refresh",
+          path: "/api/auth/refresh",
           maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
         });
 

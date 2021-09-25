@@ -154,14 +154,9 @@
   font-size: 20px;
   color: rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  /* padding: 10px;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px; */
 }
+
 .toast__close i {
-  position: relative;
-  padding: 7px;
   border-radius: 50%;
 }
 

@@ -6,6 +6,7 @@ import {
 } from "./../components/utils/notification/message";
 
 const Test = () => {
+  alert("abcd");
   return (
     <div>
       <div id="toast"></div>

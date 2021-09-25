@@ -1,12 +1,20 @@
-import React, { useState } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { GoogleLogin } from "react-google-login";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { apiUrl } from "../../constants";
+import { dispatchLogin } from "../../redux/actions/authAction";
 import {
-  isEmpty,
+  showErrorToast,
+  showSuccessToast,
+} from "../utils/notification/message";
+import {
   isEmail,
+  isEmpty,
   isLength,
   isMatch,
 } from "../utils/validation/Validation";
-import { apiUrl } from "../../constants";
 
 const initialState = {
   username: "",
@@ -19,6 +27,8 @@ const initialState = {
 
 const FormSignup = ({ successMsg }) => {
   const [user, setUser] = useState(initialState);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const { username, email, password, cf_password, error, success } = user;
 
@@ -31,68 +41,46 @@ const FormSignup = ({ successMsg }) => {
     let check = true;
     const event = document.querySelectorAll(".sign-up-form .input--field");
     event.forEach((event) => {
-      console.log(event.firstElementChild.name);
       if (
         isMatch(event.firstElementChild.name, "username") &&
-        isEmpty(event.firstElementChild.value)
+        isEmpty(username)
       ) {
         event.nextElementSibling.innerText = "Vui lòng nhập Tài khoản.";
         check = false;
       }
-      if (
-        isMatch(event.firstElementChild.name, "email") &&
-        !isEmail(event.nextElementSibling.value)
-      ) {
+      if (isMatch(event.firstElementChild.name, "email") && !isEmail(email)) {
         event.nextElementSibling.innerText =
           "Vui lòng nhập Email đúng định dạng.";
         check = false;
       }
       if (
         isMatch(event.firstElementChild.name, "password") &&
-        isEmpty(event.firstElementChild.value)
+        isEmpty(password)
       ) {
         event.nextElementSibling.innerText = "Vui lòng nhập Mật khẩu.";
         check = false;
       } else if (
         isMatch(event.firstElementChild.name === "password") &&
-        isLength(event.firstElementChild.value)
+        isLength(password)
       ) {
         event.nextElementSibling.innerText = "Mật khẩu phải từ 6 ký tự.";
         check = false;
       }
       if (
         isMatch(event.firstElementChild.name, "cf_password") &&
-        isMatch(event.firstElementChild.value, password)
+        isEmpty(cf_password)
+      ) {
+        event.nextElementSibling.innerText = "Vui lòng nhập lại mật khẩu.";
+        check = false;
+      } else if (
+        isMatch(event.firstElementChild.name, "cf_password") &&
+        !isMatch(password, cf_password)
       ) {
         event.nextElementSibling.innerText = "Mật khẩu không khớp.";
         check = false;
       }
     });
     if (check === false) return false;
-
-    if (isEmpty(username) || isEmpty(password))
-      return setUser({
-        ...user,
-        error: "Please fill in all fields.",
-        success: "",
-      });
-
-    if (!isEmail(email))
-      return setUser({ ...user, error: "Invalid emails.", success: "" });
-
-    if (isLength(password))
-      return setUser({
-        ...user,
-        error: "Password must be at least 6 characters.",
-        success: "",
-      });
-
-    if (!isMatch(password, cf_password))
-      return setUser({
-        ...user,
-        error: "Password did not match.",
-        success: "",
-      });
 
     try {
       const res = await axios.post(apiUrl + "/auth/register", {
@@ -104,30 +92,35 @@ const FormSignup = ({ successMsg }) => {
       setUser({ ...user, error: "", success: res.data.message });
     } catch (error) {
       error.response.data.message &&
-        setUser({ ...user, error: error.response.data.message, success: "" });
+        setUser({ ...user, error: Math.random(), success: "" });
     }
   };
 
   const handleBlurInput = (e) => {
-    if (isMatch(e.target.name, "username") && isEmpty(e.target.value)) {
+    if (isMatch(e.target.name, "username") && isEmpty(username)) {
       e.target.parentElement.nextElementSibling.innerText =
         "Vui lòng nhập Tài khoản.";
     }
-    if (isMatch(e.target.name, "email") && !isEmail(e.target.value)) {
+    if (isMatch(e.target.name, "email") && !isEmail(email)) {
       e.target.parentElement.nextElementSibling.innerText =
         "Vui lòng nhập Email đúng định dạng.";
     }
-    if (isMatch(e.target.name, "password") && isEmpty(e.target.value)) {
+    if (isMatch(e.target.name, "password") && isEmpty(password)) {
       e.target.parentElement.nextElementSibling.innerText =
         "Vui lòng nhập Mật khẩu.";
-    } else if (isMatch(e.target.name, "password") && isLength(e.target.value)) {
+    } else if (isMatch(e.target.name, "password") && isLength(password)) {
       e.target.parentElement.nextElementSibling.innerText =
         "Mật khẩu phải từ 6 ký tự.";
     }
-    if (
+    if (isMatch(e.target.name, "cf_password") && isEmpty(cf_password)) {
+      e.target.parentElement.nextElementSibling.innerText =
+        "Vui lòng nhập lại mật khẩu.";
+    } else if (isMatch(e.target.name, "cf_password") && isLength(cf_password)) {
+      e.target.parentElement.nextElementSibling.innerText =
+        "Mật khẩu phải từ 6 ký tự.";
+    } else if (
       isMatch(e.target.name, "cf_password") &&
-      isMatch(e.target.value, password) &&
-      isEmpty(e.target.value)
+      !isMatch(password, cf_password)
     ) {
       e.target.parentElement.nextElementSibling.innerText =
         "Mật khẩu không khớp.";
@@ -138,16 +131,37 @@ const FormSignup = ({ successMsg }) => {
     e.target.parentElement.nextElementSibling.style = "display:none";
   };
 
+  const responseGoogle = async (response) => {
+    try {
+      const res = await axios.post(apiUrl + "/auth/google/login", {
+        tokenId: response.tokenId,
+      });
+      setUser({ ...user, error: "", success: res.data.message });
+      localStorage.setItem("firstLogin", true);
+      dispatch(dispatchLogin());
+      history.push("/dashboard");
+    } catch (error) {
+      error.response.data.message &&
+        setUser({ ...user, error: Math.random(), success: "" });
+    }
+  };
+
   // Show/hide password
   const [passwordShown, setPasswordShown] = useState(false);
   const showHide = () => {
     setPasswordShown(passwordShown ? false : true);
   };
+
+  useEffect(() => {
+    if (error) {
+      showErrorToast("Tài khoản hoặc email đã tồn tại.");
+    }
+    if (success) {
+      showSuccessToast("Bạn đã đăng ký tài khoản thành công.");
+    }
+  }, [error, success]);
   return (
     <>
-      {/* {error && showErrorToast}
-      {success && showSuccessToast} */}
-      {error && success}
       <form className="sign-up-form" onSubmit={handleSubmit}>
         <h2 className="title">Đăng ký</h2>
 
@@ -201,7 +215,15 @@ const FormSignup = ({ successMsg }) => {
           Đăng ký
         </button>
         <p className="social-text">Hoặc đăng nhập với các nền tảng</p>
-        <div className="social-media"></div>
+        <div className="social-media">
+          <GoogleLogin
+            clientId="350754393545-ges26agoopegg76ojspuem9ccsh1ti8a.apps.googleusercontent.com"
+            buttonText="Đăng nhập với Google"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={"single_host_origin"}
+          />
+        </div>
       </form>
     </>
   );

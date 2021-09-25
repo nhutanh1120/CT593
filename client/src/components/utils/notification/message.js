@@ -1,9 +1,5 @@
-export function toast({
-  title = "",
-  message = "",
-  type = "info",
-  duration = 3000,
-}) {
+// Toast function
+function toast({ title = "", message = "", type = "info", duration = 3000 }) {
   const main = document.getElementById("toast");
   if (main) {
     const toast = document.createElement("div");
@@ -22,10 +18,10 @@ export function toast({
     };
 
     const icons = {
-      success: "fas fa-check-circle",
-      info: "fas fa-info-circle",
-      warning: "fas fa-exclamation-circle",
-      error: "fas fa-exclamation-circle",
+      success: "bx bx-check-circle bx-sm",
+      info: "bx bx-info-circle bx-sm",
+      warning: "bx bx-error-circle bx-sm",
+      error: "bx bx-error-circle bx-sm",
     };
     const icon = icons[type];
     const delay = (duration / 1000).toFixed(2);
@@ -34,44 +30,34 @@ export function toast({
     toast.style.animation = `slideInLeft ease .3s, fadeOut linear 1s ${delay}s forwards`;
 
     toast.innerHTML = `
-                    <div className="toast__icon">
-                        <i className="${icon}"></i>
+                    <div class="toast__icon">
+                        <i class="${icon}"></i>
                     </div>
-                    <div className="toast__body">
-                        <h3 className="toast__title">${title}</h3>
-                        <p className="toast__msg">${message}</p>
+                    <div class="toast__body">
+                        <h3 class="toast__title">${title}</h3>
+                        <p class="toast__msg">${message}</p>
                     </div>
-                    <div className="toast__close">
-                        <i className="fas fa-times"></i>
+                    <div class="toast__close">
+                        <i class='bx bx-x bx-sm'></i>
                     </div>
                 `;
     main.appendChild(toast);
   }
 }
 
-/* <div id="toast"></div>
-<div>
-  <div onClick={showSuccessToast} className="btn--message btn--success">
-    Show success toast
-  </div>
-  <div onClick={showErrorToast} className="btn--message btn--danger">
-    Show error toast
-  </div>
-</div> */
-
-export function showErrorToast(title, message, type, duration = 5000) {
+export function showErrorToast(message) {
   toast({
-    title,
+    title: "Thất bại!",
     message,
-    type,
-    duration,
+    type: "error",
+    duration: 5000,
   });
 }
-export function showSuccessToast() {
+export function showSuccessToast(message) {
   toast({
     title: "Thành công!",
-    message: "Bạn đã đăng ký thành công tài khoản tại F8.",
-    type: "success",
+    message,
+    type: "error",
     duration: 5000,
   });
 }

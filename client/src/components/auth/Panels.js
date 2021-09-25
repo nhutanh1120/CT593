@@ -27,8 +27,8 @@ const Panels = ({ onSignUpMode }) => {
           <div className="content">
             <h3>Bạn đã có tài khoản ?</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-              laboriosam ad deleniti.
+              Nếu bạn là chủ của một tài khoản. Bạn có thể đăng nhập bằng cách
+              nhấn vào nút bên dưới
             </p>
             <button
               className="btn transparent"

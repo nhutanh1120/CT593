@@ -18,10 +18,16 @@ const UserSchema = new Schema(
       require: [true, "Please enter your name!"],
       unique: true,
     },
-    fullname: String,
-    phone: Number,
-    address: String,
-    description: String,
+    fullname: {
+      type: String,
+    },
+    phone: { type: Number },
+    address: {
+      type: String,
+    },
+    description: {
+      type: String,
+    },
     access: {
       type: Number,
       default: 0, // 0 not active email, 1 not update info, 2 success

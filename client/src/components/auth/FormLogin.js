@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-// import { GoogleLogin } from "react-google-login";
-// import FacebookLogin from "react-facebook-login";
+import { GoogleLogin } from "react-google-login";
+import FacebookLogin from "react-facebook-login";
 import { useDispatch } from "react-redux";
 import { showErrorToast } from "../utils/notification/message";
 import { dispatchLogin } from "../../redux/actions/authAction";
@@ -24,7 +24,7 @@ const FormLogin = () => {
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
-    setUser({ ...user, [name]: value, error: "", success: "" });
+    setUser({ ...user, [name]: value, error: "" });
   };
   const handleBlurInput = (e) => {
     if (isMatch(e.target.name, "username") && isEmpty(e.target.value)) {
@@ -89,88 +89,78 @@ const FormLogin = () => {
         error.response.data.message &&
           setUser({
             ...user,
-            error: error.response.data.message,
+            error: Math.random(),
           });
       }
     }
   };
 
-  // const responseGoogle = async (response) => {
-  //   try {
-  //     const res = await axios.post(
-  //       "http://localhost:4000/api/auth/google_login",
-  //       {
-  //         tokenId: response.tokenId,
-  //       }
-  //     );
+  const responseGoogle = async (response) => {
+    try {
+      if (!response) return;
+      const res = await axios.post(apiUrl + "/auth/google/login", {
+        tokenId: response.tokenId,
+      });
+      setUser({ ...user, error: "", success: res.data.message });
+      localStorage.setItem("firstLogin", true);
+      dispatch(dispatchLogin());
+      history.push("/dashboard");
+    } catch (error) {
+      error.response.data.message &&
+        setUser({ ...user, error: Math.random(), success: "" });
+    }
+  };
 
-  //     setUser({ ...user, error: "", success: res.data.message });
-  //     localStorage.setItem("firstLogin", true);
+  const responseFacebook = async (response) => {
+    try {
+      const { accessToken, userID } = response;
+      if (!response) return;
 
-  //     dispatch(dispatchLogin());
-  //     history.push("/dashboard");
-  //   } catch (error) {
-  //     error.response.data.message &&
-  //       setUser({ ...user, error: error.response.data.message, success: "" });
-  //   }
-  // };
+      const res = await axios.post(apiUrl + "/auth/facebook/login", {
+        accessToken,
+        userID,
+      });
 
-  // const responseFacebook = async (response) => {
-  //   try {
-  //     const { accessToken, userID } = response;
-  //     const res = await axios.post(
-  //       "http://localhost:4000/api/auth/facebook_login",
-  //       {
-  //         accessToken,
-  //         userID,
-  //       }
-  //     );
+      setUser({ ...user, error: "", success: res.data.message });
+      localStorage.setItem("firstLogin", true);
 
-  //     setUser({ ...user, error: "", success: res.data.message });
-  //     localStorage.setItem("firstLogin", true);
-
-  //     dispatch(dispatchLogin());
-  //     history.push("/dashboard");
-  //   } catch (error) {
-  //     error.response.data.message &&
-  //       setUser({ ...user, error: error.response.data.message, success: "" });
-  //   }
-  // };
+      dispatch(dispatchLogin());
+      history.push("/dashboard");
+    } catch (error) {
+      error.response.data.message &&
+        setUser({ ...user, error: error.response.data.message, success: "" });
+    }
+  };
   // Show/hide password
   const [passwordShown, setPasswordShown] = useState(false);
   const showHide = () => {
     setPasswordShown(passwordShown ? false : true);
   };
 
-  // -----------------------
-  // const componentClicked = () => {};
+  useEffect(() => {
+    if (error) {
+      showErrorToast("Tài khoản hoặc mật khẩu không chính xác.");
+    }
+  }, [error]);
 
   return (
     <>
       <form className="sign-in-form" onSubmit={handleSubmit}>
         <h2 className="title">Đăng nhập</h2>
-        {error
-          ? showErrorToast(
-              "Thất bại",
-              "Tài khoản hoặc mật khẩu không chính xác.",
-              "error"
-            )
-          : null}
         <div className="social--media">
-          {/* <FacebookLogin
-            appId="199091375537292"
-            autoLoad={false}
-            fields="name,email,picture"
-            onClick={componentClicked}
-            callback={responseFacebook}
-          /> */}
-          {/* <GoogleLogin
+          <GoogleLogin
             clientId="350754393545-ges26agoopegg76ojspuem9ccsh1ti8a.apps.googleusercontent.com"
             buttonText="Đăng nhập với Google"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
             cookiePolicy={"single_host_origin"}
-          /> */}
+          />
+          <FacebookLogin
+            appId="199091375537292"
+            autoLoad={false}
+            fields="name,email,picture"
+            callback={responseFacebook}
+          />
         </div>
         <p className="social--text">Hoặc đăng nhập với tài khoản của bạn</p>
         <div className="input--field">
