@@ -24,6 +24,7 @@ import "./assets/css/grid.css";
 import "boxicons/css/boxicons.min.css";
 import "./assets/css/theme.css";
 import "./assets/font/css2.css";
+import Test from "./pages/test";
 
 function App() {
   // const auth = useSelector((state) => state.auth);
@@ -44,6 +45,7 @@ function App() {
         <Route path="/qr/:id" component={QrCode} />
         <Route path="/forgot" component={ForgotPassword} />
         <Route path="/agricultural/:id" component={Agricultural} />
+        <Route path="/test" component={Test} />
         <Route
           exact
           path="/api/auth/activation/:activation_token"

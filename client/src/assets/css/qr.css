@@ -3,15 +3,19 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  height: 100vh;
 }
-.qr h2 {
+.qr button {
   margin: 2rem;
   box-shadow: var(--box-shadow);
-  padding: 5px 10px;
-  border: 1px solid black;
+  padding: 3px 10px;
+  font-weight: 600;
+  font-size: 25px;
   cursor: pointer;
+  background-color: #fff;
 }
 .qr span {
   padding: 15px;
   box-shadow: var(--box-shadow);
+  background-color: #fff;
 }

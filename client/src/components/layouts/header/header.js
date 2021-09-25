@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import logo from "./../../../assets/img/1.webp";
 // import { Container } from "react-bootstrap";
 import "./styles.css";
-import logo from "./../../../assets/img/1.webp";
 
 function Header({ isActiveHeader }) {
   let navbarStyle = "navbar";
@@ -16,6 +16,7 @@ function Header({ isActiveHeader }) {
   const ref = useRef(null);
   const scroll = () => {
     let windowPosition = window.scrollY > 0;
+    if (!ref?.current) return;
     ref.current.classList.toggle("navbar--scroll", windowPosition);
   };
   useEffect(() => {

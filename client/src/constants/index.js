@@ -4,6 +4,7 @@ export const apiUrl =
     : "somedeloyurl";
 
 export const apiClient = "http://localhost:3000";
+export const GTIN = "(01)03453120000011(8200)http://luumoments.com(10)";
 export const LOCAL_STORAGE_TOKEN_NAME = "learnit-mern";
 
 // export const POSTS_LOADED_SUCCESS = 'POSTS_LOADED_SUCCESS'

@@ -1,6 +1,6 @@
-import ACTIONS from "./../../constants/redux";
-import { apiUrl } from "../../constants";
 import axios from "axios";
+import { apiUrl } from "../../constants";
+import ACTIONS from "./../../constants/redux";
 
 export const dispatchLogin = () => {
   return {
