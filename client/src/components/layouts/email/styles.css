@@ -1,53 +1,66 @@
-/* Search Email */
-.search + footer > .container {
+.email--padding + footer > .footer {
   padding-top: 3rem !important;
 }
-.search h2 {
+.email--padding .row .col {
+  padding: 0 15px;
+}
+.search__email {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 850px;
+  margin: auto !important;
+}
+.search__email h2 {
   font-size: 1.8em;
   display: block;
   font-family: "Lora", serif;
   font-weight: 400;
-  margin: 0 0 0.5em;
+  margin: 1rem 0 10px;
   line-height: 1.4;
-  text-rendering: optimizeLegibility;
   color: white;
+  text-align: center;
 }
-.search p {
+.search__email p {
   color: lightgray;
+  text-align: center;
+  margin-bottom: 1rem;
 }
-.search hr {
+.search__email hr {
   width: 50px;
   color: white;
   margin: auto;
-  padding-top: 1px;
   opacity: 1 !important;
+  height: 0px;
+  background-color: #fff;
+  outline: none;
 }
-.search-email {
+.search__email--input {
   text-align: center;
   margin-top: 30px;
   margin-bottom: 20px;
 }
-.search-email input:focus {
+.search__email--input input:focus {
   box-shadow: none;
   outline: none;
 }
-.search-email input[type="submit"] {
+.search__email--input input[type="submit"] {
   border-radius: 0 30px 30px 0;
   border: 2px solid white;
   color: white;
   padding: 10px 30px;
   background: transparent;
 }
-.search-email input[type="submit"]:hover {
+.search__email--input input[type="submit"]:hover {
   background-color: white;
   color: black;
 }
-.search ::placeholder {
+.search__email ::placeholder {
   color: white;
   opacity: 1;
 }
-.search-email input[type="text"] {
-  max-width: 170px;
+.search__email--input input[type="text"] {
+  max-width: 220px;
   padding: 10px 20px;
   border-radius: 30px 0 0 30px;
   color: lightgray;
@@ -55,22 +68,24 @@
   margin-right: -3px;
   background: transparent;
 }
-.email {
+.search__email.email {
   background-image: linear-gradient(coral, #fc5492);
   position: relative;
   top: 60px;
   border-radius: 15px;
 }
-
+.message__error__email {
+  color: red;
+}
 @media only screen and (max-width: 600px) {
-  .search-email input[type="text"] {
-    max-width: 165px;
+  .search__email--input input[type="text"] {
+    max-width: 165px !important;
     padding: 10px 10px;
   }
-  .search-email input[type="submit"] {
+  .search__email--input input[type="submit"] {
     padding: 10px 20px;
   }
-  .search form {
+  .search__email form {
     padding: 0px;
   }
 }

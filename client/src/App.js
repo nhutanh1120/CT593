@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Home from "./pages/home";
 import About from "./pages/about";
 import Contact from "./pages/contact";
@@ -27,8 +27,9 @@ import "./assets/font/css2.css";
 import Test from "./pages/test";
 
 function App() {
-  // const auth = useSelector((state) => state.auth);
-  // const { isLogged } = auth;
+  const auth = useSelector((state) => state.auth);
+  console.log(auth);
+  const { isLogged, isAdmin } = auth;
   return (
     <Router>
       <Switch>
@@ -37,7 +38,10 @@ function App() {
         <Route path="/post" component={Post} />
         <Route path="/contact" component={Contact} />
         <Route path="/sign" component={Auth} />
-        {/* <Route path="/dashboard" component={isLogged ? Dashboard : NotFound} /> */}
+        <Route
+          path="/dashboard"
+          component={isLogged && isAdmin ? Dashboard : NotFound}
+        />
         <Route path="/dashboard/customer" component={Customer} />
         <Route path="/dashboard/setting" component={Setting} />
         <Route path="/dashboard/email" component={Email} />

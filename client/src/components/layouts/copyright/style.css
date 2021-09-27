@@ -1,0 +1,13 @@
+.copyright {
+  padding: 1rem;
+  border-top: 1px solid lightgray;
+  text-align: center;
+  color: #fff;
+}
+.copyright a {
+  font-weight: 600;
+  color: #00c9ff;
+}
+.copyright a:hover {
+  color: #fc5492;
+}

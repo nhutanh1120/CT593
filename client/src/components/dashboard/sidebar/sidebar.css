@@ -203,6 +203,7 @@
   font-weight: 400;
   color: var(--primary-color-white);
   white-space: nowrap;
+  text-transform: capitalize;
 }
 .dashboard--sidebar li.profile .job {
   font-size: 12px;

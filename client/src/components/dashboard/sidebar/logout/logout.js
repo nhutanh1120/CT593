@@ -1,11 +1,19 @@
 import React from "react";
+import profile from "./../../../../assets/img/profile.jpg";
 import { handleLogout } from "./handleLogout";
 
 const Logout = ({ fullname, permission, avatar }) => {
   return (
     <li className="profile">
       <div className="profile-details">
-        <img src={avatar} alt="profileImg" />
+        <img
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = profile;
+          }}
+          src={avatar}
+          alt="profileImg"
+        />
         <div className="name_job">
           <div className="name">{fullname}</div>
           <div className="job">{permission}</div>
