@@ -12,7 +12,7 @@ const userProfileControllers = {
       console.log(error);
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal server error." });
     }
   },
   // @Router post /api/profile/all/info
@@ -26,7 +26,7 @@ const userProfileControllers = {
       console.log(error);
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal server error." });
     }
   },
   // @Router post /api/profile/update
@@ -47,7 +47,7 @@ const userProfileControllers = {
       console.log(error);
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal server error." });
     }
   },
 
@@ -69,7 +69,7 @@ const userProfileControllers = {
       console.log(error);
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal server error." });
     }
   },
 
@@ -82,7 +82,7 @@ const userProfileControllers = {
       console.log(error);
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal server error." });
     }
   },
 };

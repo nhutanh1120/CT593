@@ -18,7 +18,7 @@ const agriculturalControllers = {
       console.log(error);
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal server error." });
     }
   },
   readAll: async (req, res) => {
@@ -34,7 +34,7 @@ const agriculturalControllers = {
       console.log(error);
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal server error." });
     }
   },
   // @Router post /api/agricultural/create
@@ -76,7 +76,7 @@ const agriculturalControllers = {
       console.log(error);
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal server error." });
     }
   },
   // @Router post /api/agricultural/update/:id
@@ -123,7 +123,7 @@ const agriculturalControllers = {
       console.log(error);
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal server error." });
     }
   },
   // @Router post /api/agricultural/delete/:id
@@ -148,7 +148,7 @@ const agriculturalControllers = {
       console.log(error);
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal server error." });
     }
   },
 };

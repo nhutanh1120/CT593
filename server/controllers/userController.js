@@ -71,13 +71,13 @@ const userControllers = {
 
       return res.json({
         success: true,
-        message: "Username create successfully",
+        message: "Username create successfully.",
       });
     } catch (error) {
       console.log(error);
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal server error." });
     }
   },
   // @Router post /api/auth/activate
@@ -123,7 +123,7 @@ const userControllers = {
       console.log(error);
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal server error." });
     }
   },
   // @Router post /api/auth/login
@@ -164,7 +164,7 @@ const userControllers = {
       console.log(error);
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal server error." });
     }
   },
   // @Router post /api/auth/refresh_token
@@ -198,7 +198,7 @@ const userControllers = {
       console.log(error);
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal server error." });
     }
   },
   // @Router post /api/auth/forgotPassword
@@ -228,7 +228,7 @@ const userControllers = {
       console.log(error);
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal server error." });
     }
   },
   // @Router post /api/auth/resetPassword
@@ -250,7 +250,7 @@ const userControllers = {
       console.log(error);
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal server error." });
     }
   },
   // @Router post /api/auth/logout
@@ -263,7 +263,7 @@ const userControllers = {
       console.log(error);
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal server error." });
     }
   },
   // @Router post /api/auth/google/login
@@ -331,7 +331,7 @@ const userControllers = {
       console.log(error);
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal server error." });
     }
   },
   facebookLogin: async (req, res) => {
@@ -397,7 +397,7 @@ const userControllers = {
       console.log(error);
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal server error." });
     }
   },
 };
