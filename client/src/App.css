@@ -5,3 +5,10 @@ a {
 ul {
   padding-left: 0px !important;
 }
+.mx-auto {
+  margin: auto !important;
+}
+
+.text-center {
+  text-align: center !important;
+}

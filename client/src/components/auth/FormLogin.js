@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-import { GoogleLogin } from "react-google-login";
+import React, { useEffect, useState } from "react";
 import FacebookLogin from "react-facebook-login";
+import { GoogleLogin } from "react-google-login";
 import { useDispatch } from "react-redux";
-import { showErrorToast } from "../utils/notification/message";
-import { dispatchLogin } from "../../redux/actions/authAction";
+import { Link, useHistory } from "react-router-dom";
 import { apiUrl } from "../../constants";
-import { isMatch, isEmpty, isLength } from "../utils/validation/Validation";
+import { dispatchLogin } from "../../redux/actions/authAction";
+import { showErrorToast } from "../utils/notification/message";
+import { isEmpty, isLength, isMatch } from "../utils/validation/Validation";
 
 const initialState = {
   username: "",

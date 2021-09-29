@@ -6,12 +6,11 @@ import Brand from "./../components/contact/Brand/brand";
 
 function Contact() {
   return (
-    <div className="App">
+    <div className="App" style={{ background: "#f1f1f1" }}>
       <Header isActiveHeader="isActiveHeader" />
       <Brand />
-
-      <Footer />
       <Connection />
+      <Footer />
     </div>
   );
 }

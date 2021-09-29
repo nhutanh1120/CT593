@@ -88,3 +88,8 @@ footer {
   background-color: #fc5492;
   color: blue;
 }
+@media only screen and (max-width: 600px) {
+  .footer {
+    padding: 0 10px !important;
+  }
+}

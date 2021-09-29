@@ -7,7 +7,6 @@
 .ve-chung-toi p {
   color: #111;
 }
-
 .home__header {
   position: absolute;
   width: auto;
@@ -17,30 +16,36 @@
   bottom: 0;
   left: 0;
   margin: auto;
-  z-index: 1000;
+  z-index: 10;
   text-align: center;
 }
+
 .home__header__title h5 {
+  margin-top: 50px;
   width: 45%;
   padding-left: 8rem;
   text-align: left;
   color: white;
   font-size: 34px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.home__header__button {
+  padding-left: 8rem;
 }
 .home__header__button button {
-  position: absolute;
   box-sizing: border-box;
   padding: 12px 70px;
   border: 2px solid #fff;
   border-radius: 50px;
   background: rgba(255, 255, 255, 0.3);
   margin-top: 30px;
-  left: 8rem;
   z-index: 2;
   color: white;
   text-align: center;
   font-size: 1.2rem;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  float: left;
 }
 .home__header__button button:hover {
   background-color: white;
@@ -52,5 +57,33 @@
   color: white;
   text-align: left;
   padding-left: 8rem;
-  left: 8rem;
+  line-height: 1.5;
+}
+
+@media only screen and (max-width: 900px) {
+  .home__header {
+    top: 200px;
+  }
+  .home__header__title h5 {
+    margin-top: 0;
+    padding-left: 2rem;
+    font-size: 24px;
+  }
+  .home__header__button {
+    padding-left: 2rem;
+  }
+  .home__header__button button {
+    padding: 8px 40px;
+    font-size: 14px;
+  }
+
+  .home__header p {
+    font-size: 14px;
+    padding-left: 2rem;
+  }
+}
+@media only screen and (max-width: 440px) {
+  .home__header {
+    display: none;
+  }
 }

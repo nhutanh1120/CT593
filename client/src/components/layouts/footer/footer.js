@@ -39,14 +39,14 @@ function Footer() {
     <footer>
       <div className="grid wide footer">
         <div className="row">
-          <div className="col l-3">
+          <div className="col l-3 m-6 c-12">
             <div className="footer__header">THÔNG TIN VỀ CHÚNG TÔI</div>
             <div className="footer__text">
               Truy xuất nguồn gốc sản phẩm là một giải pháp cho người dùng truy
               xuất, tìm hiểu về thông tin nguồn gốc xuất xứ của sản phẩm
             </div>
           </div>
-          <div className="col l-3">
+          <div className="col l-3 m-6 c-12">
             <div className="footer__header">HỔ TRỢ KHÁCH HÀNG</div>
             <div className="footer__text">
               <Link to="tel:0399234016" title="Hotline">
@@ -73,7 +73,7 @@ function Footer() {
               </Link>
             </div>
           </div>
-          <div className="col l-3">
+          <div className="col l-3 m-6 c-12">
             <div className="footer__header">CHÍNH SÁCH KHÁCH HÀNG</div>
             <div className="footer__text">
               <ul>
@@ -101,7 +101,7 @@ function Footer() {
               </ul>
             </div>
           </div>
-          <div className="col l-3">
+          <div className="col l-3 m-6 c-12">
             <div className="footer__header">LIÊN HỆ CHÚNG TÔI</div>
             <div className="footer__body">
               {itemSocial.map((item, index) => iconSocial(item, index))}

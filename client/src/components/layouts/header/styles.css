@@ -1,5 +1,4 @@
-/* border active  */
-.selected {
+border active .selected {
   border: 1px solid white;
 }
 /* scroll  */
@@ -19,8 +18,9 @@
 /* config navbar  */
 .navbar {
   position: fixed !important;
-  top: 0px !important;
-  width: 100% !important;
+  top: 0 !important;
+  right: 0 !important;
+  left: 0 !important;
   z-index: 1000 !important;
   max-height: 60px;
   height: 60px;
@@ -195,6 +195,9 @@ video {
   height: 28px;
   color: #fff;
   display: none;
+  position: absolute;
+  right: 20px;
+  top: 10px;
 }
 .navbar__overlay {
   position: fixed;
@@ -217,21 +220,26 @@ video {
   transform: translateX(100%);
   opacity: 0;
   transition: transform linear 0.2s, opacity linear 0.3s;
+  padding: 15px 0 0 15px;
 }
 .navbar__mobile--list {
-  list-style: none;
+  margin: 20px 0 10px;
+}
+.navbar__mobile--sign {
+  border-top: 1px solid rgb(185, 179, 179) !important;
+  padding-top: 10px;
 }
 .nav__mobile--link {
   text-decoration: none;
   color: #333;
   display: block;
-  padding: 8px 0px;
-  font-size: 1.4rem;
+  padding: 8px 0 8px 10px;
+  font-size: 16px;
 }
 .navbar__mobile--close {
   position: absolute;
   color: #666;
-  top: 15px;
+  top: 5px;
   right: 15px;
 }
 .navbar__input {
@@ -243,6 +251,17 @@ video {
 .navbar__input:checked ~ .navbar__mobile {
   transform: translateX(0%);
   opacity: 1;
+}
+.navbar__mobile--item {
+  cursor: pointer;
+  list-style: none;
+}
+.isActiveMobile {
+  color: #292929;
+  background-color: #f0f0f0;
+}
+.navbar__mobile--item i {
+  margin-right: 10px;
 }
 @media only screen and (max-width: 1023px) {
   .navbar--btn {

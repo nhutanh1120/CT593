@@ -1,3 +1,16 @@
 .contact {
   height: 100vh !important;
 }
+.form__contact {
+  /* background-image: linear-gradient(to right, #1cd9a6, #59adca); */
+  background-color: #fff;
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+  border-radius: 15px;
+}
+.form__contact form {
+  padding: 50px;
+}
+.form__textarea {
+  height: 100px !important;
+}

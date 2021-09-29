@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "./../../../assets/img/1.webp";
-// import { Container } from "react-bootstrap";
 import "./styles.css";
 
 function Header({ isActiveHeader }) {
@@ -105,7 +104,7 @@ function Header({ isActiveHeader }) {
           </ul>
         </div>
         <label htmlFor="navbar__mobile--input" className="navbar--btn">
-          XV
+          <i className="bx bx-menu bx-md"></i>
         </label>
         <input
           type="checkbox"
@@ -119,40 +118,72 @@ function Header({ isActiveHeader }) {
         <div className="navbar__mobile">
           <ul className="navbar__mobile--list">
             <li className="navbar__mobile--item">
-              <NavLink className="nav__mobile--link" to="/">
-                Trang chủ
+              <NavLink
+                className="nav__mobile--link"
+                to="/"
+                activeClassName="isActiveMobile"
+                exact
+              >
+                <i className="bx bx-home"></i>
+                <span>Trang chủ</span>
               </NavLink>
             </li>
             <li className="navbar__mobile--item">
-              <NavLink className="nav__mobile--link" to="/about">
-                Giới thiệu
+              <NavLink
+                className="nav__mobile--link"
+                to="/about"
+                activeClassName="isActiveMobile"
+                exact
+              >
+                <i className="bx bx-info-circle"></i>
+                <span>Giới thiệu</span>
               </NavLink>
             </li>
             <li className="navbar__mobile--item">
-              <NavLink className="nav__mobile--link" to="/post">
-                Tin tức
+              <NavLink
+                className="nav__mobile--link"
+                to="/post"
+                activeClassName="isActiveMobile"
+                exact
+              >
+                <i className="bx bx-news"></i>
+                <span>Tin tức</span>
               </NavLink>
             </li>
             <li className="navbar__mobile--item">
-              <NavLink className="nav__mobile--link" to="/event">
-                Sự kiện
+              <NavLink
+                className="nav__mobile--link"
+                to="/event"
+                activeClassName="isActiveMobile"
+                exact
+              >
+                <i className="bx bx-calendar-event"></i>
+                <span>Sự kiện</span>
               </NavLink>
             </li>
             <li className="navbar__mobile--item">
-              <NavLink className="nav__mobile--link" to="/contact">
-                Liên hệ
+              <NavLink
+                className="nav__mobile--link"
+                to="/contact"
+                activeClassName="isActiveMobile"
+                exact
+              >
+                <i className="bx bxs-contact"></i>
+                <span>Liên hệ</span>
               </NavLink>
             </li>
           </ul>
           <ul className="navbar__mobile--sign">
             <li className="navbar__mobile--item">
               <Link className="nav__mobile--link" to="/sign">
-                Đăng nhập
+                <i className="bx bx-log-in"></i>
+                <span>Đăng nhập</span>
               </Link>
             </li>
             <li className="navbar__mobile--item">
               <Link className="nav__mobile--link" to="/sign">
-                Đăng ký
+                <i className="bx bx-add-to-queue"></i>
+                <span>Đăng ký</span>
               </Link>
             </li>
           </ul>
@@ -160,7 +191,7 @@ function Header({ isActiveHeader }) {
             htmlFor="navbar__mobile--input"
             className="navbar__mobile--close"
           >
-            X
+            <i className="bx bx-x bx-md"></i>
           </label>
         </div>
       </div>

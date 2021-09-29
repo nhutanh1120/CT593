@@ -1,7 +1,7 @@
 .email--padding + footer > .footer {
   padding-top: 3rem !important;
 }
-.email--padding .row .col {
+.email--padding {
   padding: 0 15px;
 }
 .search__email {
@@ -50,6 +50,7 @@
   color: white;
   padding: 10px 30px;
   background: transparent;
+  cursor: pointer;
 }
 .search__email--input input[type="submit"]:hover {
   background-color: white;
