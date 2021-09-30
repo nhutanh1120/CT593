@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import card from "./../../../assets/JsonData/card.json";
-import Card from "../card/card";
+import Card from "./../card/card";
 import "./body.css";
-import Table from "../table/table";
-import TopNavbar from "../navbar/navbar";
-import Badge from "../badge/badge";
+import Table from "./../table/table";
+import TopNavbar from "./../navbar/navbar";
+import Badge from "./../badge/badge";
 
 const topCustomers = {
   head: ["user", "total orders", "total spending"],

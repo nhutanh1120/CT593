@@ -3,18 +3,18 @@ import React, { useEffect, useState } from "react";
 import { GoogleLogin } from "react-google-login";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { apiUrl } from "../../constants";
-import { dispatchLogin } from "../../redux/actions/authAction";
+import { apiUrl } from "./../../constants";
+import { dispatchLogin } from "./../../redux/actions/authAction";
 import {
   showErrorToast,
   showSuccessToast,
-} from "../utils/notification/message";
+} from "./../utils/notification/message";
 import {
   isEmail,
   isEmpty,
   isLength,
   isMatch,
-} from "../utils/validation/Validation";
+} from "./../utils/validation/Validation";
 
 const initialState = {
   username: "",
@@ -141,7 +141,7 @@ const FormSignup = ({ successMsg }) => {
       dispatch(dispatchLogin());
       history.push("/dashboard");
     } catch (error) {
-      error.response.data.message &&
+      error?.response?.data?.message &&
         setUser({ ...user, error: Math.random(), success: "" });
     }
   };

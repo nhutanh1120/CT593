@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import FacebookLogin from "react-facebook-login";
 import { GoogleLogin } from "react-google-login";
 import { useDispatch } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
-import { apiUrl } from "../../constants";
-import { dispatchLogin } from "../../redux/actions/authAction";
-import { showErrorToast } from "../utils/notification/message";
-import { isEmpty, isLength, isMatch } from "../utils/validation/Validation";
+import { Link, useHistory, useParams } from "react-router-dom";
+import { apiUrl } from "./../../constants";
+import { dispatchLogin } from "./../../redux/actions/authAction";
+import { showErrorToast } from "./../utils/notification/message";
+import { isEmpty, isLength, isMatch } from "./../utils/validation/Validation";
 
 const initialState = {
   username: "",
@@ -19,6 +19,7 @@ const FormLogin = () => {
   const [user, setUser] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();
+  const { id } = useParams();
 
   const { username, password, error } = user;
 
@@ -83,7 +84,9 @@ const FormLogin = () => {
           localStorage.setItem("firstLogin", true);
 
           dispatch(dispatchLogin());
-          history.push("/dashboard");
+          if (!id) {
+            history.push("/dashboard");
+          }
         }
       } catch (error) {
         error.response.data.message &&
@@ -106,7 +109,7 @@ const FormLogin = () => {
       dispatch(dispatchLogin());
       history.push("/dashboard");
     } catch (error) {
-      error.response.data.message &&
+      error?.response?.data?.message &&
         setUser({ ...user, error: Math.random(), success: "" });
     }
   };

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import {
   showErrorToast,
   showSuccessToast,
-} from "../utils/notification/message";
+} from "./../utils/notification/message";
 import { apiUrl } from "./../../constants";
 import Validator from "./../utils/validation/Vanilla";
 import "./style.css";

@@ -30,7 +30,7 @@ function QrCode() {
           <QRCode value={qr} />
         </span>
         <button onClick={printQR} id="printQR">
-          <i class="bx bxs-download"></i> Download QR
+          <i className="bx bxs-download"></i> Download QR
         </button>
         <p id="demo">GS1 QR Code: {qr}</p>
       </div>

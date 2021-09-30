@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import CopyRight from "../copyright/copyright";
+import CopyRight from "./../copyright/copyright";
 import "./styles.css";
 
 const itemSocial = [

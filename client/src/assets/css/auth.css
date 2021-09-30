@@ -6,6 +6,31 @@
   overflow: hidden;
 }
 
+.btn__sign {
+  outline: none;
+  border-radius: 49px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 1s;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  color: #4481eb !important;
+  margin: 0;
+  background: none;
+  border: 2px solid #4481eb !important;
+  width: 130px;
+  height: 41px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  z-index: 10;
+  text-align: center;
+  line-height: 3;
+}
+.sign-up-mode > .btn__sign {
+  right: none;
+  left: 15px;
+}
 .forms--auth {
   position: absolute;
   width: 100%;
@@ -283,6 +308,9 @@ input:-webkit-autofill:active {
 }
 
 @media (max-width: 870px) {
+  .btn__sign {
+    display: none;
+  }
   .auth {
     min-height: 800px;
     height: 100vh;
@@ -388,6 +416,14 @@ input:-webkit-autofill:active {
 @media (max-width: 570px) {
   form {
     padding: 0 1.5rem;
+  }
+
+  form.sign-in-form {
+    width: 80%;
+  }
+
+  form.sign-up-form {
+    width: 80%;
   }
 
   .image {

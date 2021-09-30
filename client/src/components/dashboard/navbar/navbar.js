@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import user_image from "../../../assets/img/bg.jpg";
-import notifications from "../../../assets/JsonData/notification.json";
-import user_menu from "../../../assets/JsonData/user_menu.json";
-import Dropdown from "../dropdown/Dropdown";
-import ThemeMenu from "../thememenu/ThemeMenu";
+import user_image from "./../../../assets/img/bg.jpg";
+import notifications from "./../../../assets/JsonData/notification.json";
+import user_menu from "./../../../assets/JsonData/user_menu.json";
+import Dropdown from "./../dropdown/Dropdown";
+import ThemeMenu from "./../thememenu/ThemeMenu";
 import { handleLogout } from "./../sidebar/logout/handleLogout";
 import "./navbar.css";
 import "./search.css";

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { apiUrl } from "../../../../constants";
+import { apiUrl } from "./../../../../constants";
 export const handleLogout = async () => {
   try {
     await axios.get(apiUrl + "/auth/logout");

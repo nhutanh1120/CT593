@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import TopNavbar from "./../../navbar/navbar";
 
-import customerList from "../../../../assets/JsonData/customers.json";
+import customerList from "./../../../../assets/JsonData/customers.json";
 
 const useSortableData = (items, config = null) => {
   const [sortConfig, setSortConfig] = React.useState(config);

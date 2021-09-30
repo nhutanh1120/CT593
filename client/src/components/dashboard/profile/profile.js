@@ -1,5 +1,5 @@
 import React from "react";
-import Validator from "../../utils/validation/Vanilla";
+import Validator from "./../../utils/validation/Vanilla";
 import profile from "./../../../assets/img/profile.jpg";
 import "./profile.css";
 

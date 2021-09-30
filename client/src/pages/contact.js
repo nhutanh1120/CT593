@@ -1,8 +1,9 @@
 import React from "react";
-import Header from "./../components/layouts/header/header";
-import Footer from "./../components/layouts/footer/footer";
-import Connection from "./../components/contact/connection";
+import ScrollTop from "./../components/scrollTop/scrollTop";
 import Brand from "./../components/contact/Brand/brand";
+import Connection from "./../components/contact/connection";
+import Footer from "./../components/layouts/footer/footer";
+import Header from "./../components/layouts/header/header";
 
 function Contact() {
   return (
@@ -11,6 +12,7 @@ function Contact() {
       <Brand />
       <Connection />
       <Footer />
+      <ScrollTop />
     </div>
   );
 }

@@ -1,3 +1,21 @@
+.view__form__login {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 10;
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  animation: fadeIn linear 0.2s;
+}
+.view__form__login .sign-in-form {
+  margin-top: 10% !important;
+  background: #fff;
+  z-index: 100;
+}
 .showError-agricultural {
   position: fixed;
   width: 100%;
@@ -13,6 +31,27 @@
 }
 .showError-agricultural ~ .agricultural {
   display: none !important;
+}
+.btn__agricultural {
+  outline: none;
+  border-radius: 49px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 1s;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  color: #4481eb !important;
+  margin: 0;
+  background: none;
+  border: 2px solid #4481eb !important;
+  width: 130px;
+  height: 41px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  z-index: 10;
+  text-align: center;
+  line-height: 3;
 }
 .agricultural {
   max-width: 1110px;
@@ -264,5 +303,14 @@ td {
 @media (min-width: 1024px) and (max-width: 1239px) {
   .wide {
     width: 984px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

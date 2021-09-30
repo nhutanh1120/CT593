@@ -1,8 +1,8 @@
 import React from "react";
 import Sidebar from "./../components/dashboard/sidebar/sidebar";
-import ScrollTop from "../components/scrollTop/scrollTop";
-import EmailBody from "../components/dashboard/body/email/email";
-import TopNavbar from "../components/dashboard/navbar/navbar";
+import ScrollTop from "./../components/scrollTop/scrollTop";
+import EmailBody from "./../components/dashboard/body/email/email";
+import TopNavbar from "./../components/dashboard/navbar/navbar";
 
 function Email() {
   return (

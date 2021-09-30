@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
-import { apiUrl } from "./../constants";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import "./../assets/css/agricultural.css";
+import FormLogin from "./../components/auth/formLogin";
+import ScrollTop from "./../components/scrollTop/scrollTop";
+import { apiUrl } from "./../constants";
 
 const initialState = {
   producer: "",
@@ -24,7 +26,7 @@ const Agricultural = () => {
           setActionData(res.data.agricultural.actions);
         }
       } catch (error) {
-        setShowError(error.response.data.success);
+        setShowError(error?.response?.data?.success);
       }
     })();
   }, [id]);
@@ -62,9 +64,37 @@ const Agricultural = () => {
       </div>
     );
   };
+
+  const [viewLogin, setViewLogin] = useState(false);
+  const showLogin = async (e) => {
+    const show = document.querySelector(".view__form__login");
+    if (!show) return;
+    await setViewLogin(true);
+    show.style.display = "block";
+
+    const form = document.querySelector(".sign-in-form");
+    if (!form) return;
+    form.onmousedown = function (event) {
+      event.stopPropagation();
+    };
+    form.onclick = function (event) {
+      event.stopPropagation();
+    };
+  };
   return (
     <div className="App">
-      {!showError && showErrorAgricultural("Không tim thấy sản phẩm")}
+      {/* {!showError && showErrorAgricultural("Không tim thấy sản phẩm")} */}
+      <button className="btn__agricultural" onClick={showLogin}>
+        {true ? "Đăng nhập" : "Chỉnh sữa"}
+      </button>
+      <div
+        className="view__form__login"
+        onClick={(e) => {
+          e.target.style.display = "none";
+        }}
+      >
+        {viewLogin ? <FormLogin /> : null}
+      </div>
       <div className="agricultural">
         <h2 className="heading--h2">TRUY SUẤT NGUỒN GỐC SẢN PHẨM</h2>
         <p className="text--p">
@@ -269,6 +299,7 @@ const Agricultural = () => {
           </div>
         </div>
       </div>
+      <ScrollTop />
     </div>
   );
 };

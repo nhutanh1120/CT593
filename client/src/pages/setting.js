@@ -1,9 +1,9 @@
 import React from "react";
-import Sidebar from "../components/dashboard/sidebar/sidebar";
-import Profile from "../components/dashboard/profile/profile";
-import TopNavbar from "../components/dashboard/navbar/navbar";
-import ScrollTop from "../components/scrollTop/scrollTop";
-import Permission from "../components/dashboard/profile/permission/permission";
+import Sidebar from "./../components/dashboard/sidebar/sidebar";
+import Profile from "./../components/dashboard/profile/profile";
+import TopNavbar from "./../components/dashboard/navbar/navbar";
+import ScrollTop from "./../components/scrollTop/scrollTop";
+import Permission from "./../components/dashboard/profile/permission/permission";
 
 function Setting() {
   return (

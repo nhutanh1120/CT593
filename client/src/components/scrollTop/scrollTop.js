@@ -7,9 +7,9 @@ const ScrollTop = () => {
 
   const changeStyle = () => {
     if (window.scrollY > 100) {
-      ref.current.classList.add("scroll__Active");
+      ref.current?.classList.add("scroll__Active");
     } else {
-      ref.current.classList.remove("scroll__Active");
+      ref.current?.classList.remove("scroll__Active");
     }
   };
   useEffect(() => {
