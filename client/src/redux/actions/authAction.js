@@ -10,7 +10,7 @@ export const dispatchLogin = () => {
 
 export const fetchUser = async (token) => {
   const res = await axios.get(apiUrl + "/profile/info", {
-    headers: { Authorization: token },
+    headers: { Authorization: "Bearer " + token },
   });
   return res;
 };
@@ -19,8 +19,8 @@ export const dispatchGetUser = (res) => {
   return {
     type: ACTIONS.GET_USER,
     payload: {
-      user: res.data,
-      isAdmin: res.data.role === 1 ? true : false,
+      user: res.data.user,
+      isAdmin: res.data.user.role === 1 ? true : false,
     },
   };
 };

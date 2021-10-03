@@ -1,35 +1,67 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
-import Home from "./pages/home";
-import About from "./pages/about";
-import Contact from "./pages/contact";
-import Post from "./pages/tintuc";
-import Auth from "./pages/auth";
-import ForgotPassword from "./pages/forgotPassword";
-import ActivationEmail from "./components/auth/activationEmail";
-import NotFound from "./pages/notfound";
-import Agricultural from "./pages/agricultural";
-import Dashboard from "./pages/dashboard";
-import Customer from "./pages/customer";
-import Setting from "./pages/setting";
-import Email from "./pages/email";
-import "./App.css";
-import QrCode from "./pages/qrCode";
-// import Apps from "./components/test/App";
-// import test from "./pages/test";
-// import { useDispatch, useSelector } from "react-redux";
-// import axios from "axios";
-// import { apiUrl } from "./constants/";
-import "./assets/css/grid.css";
+import axios from "axios";
 import "boxicons/css/boxicons.min.css";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+import "./assets/css/grid.css";
 import "./assets/css/theme.css";
 import "./assets/font/css2.css";
+import ActivationEmail from "./components/auth/activationEmail";
+import { apiUrl } from "./constants/";
+import About from "./pages/about";
+import Agricultural from "./pages/agricultural";
+import Auth from "./pages/auth";
+import Contact from "./pages/contact";
+import Customer from "./pages/customer";
+import Dashboard from "./pages/dashboard";
+import Email from "./pages/email";
+import ForgotPassword from "./pages/forgotPassword";
+import Home from "./pages/home";
+import NotFound from "./pages/notfound";
+import QrCode from "./pages/qrCode";
+import Setting from "./pages/setting";
 import Test from "./pages/test";
+import Post from "./pages/tintuc";
+import {
+  dispatchLogin,
+  fetchUser,
+  dispatchGetUser,
+} from "./redux/actions/authAction";
 
 function App() {
   const auth = useSelector((state) => state.auth);
-  console.log(auth);
-  const { isLogged, isAdmin } = auth;
+  // console.log(auth);
+  // const { isLogged, isAdmin } = auth;
+  const { isLogged } = auth;
+
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.token);
+  useEffect(() => {
+    const firstLogin = localStorage.getItem("firstLogin");
+    if (firstLogin) {
+      const getToken = async () => {
+        const res = await axios.get(apiUrl + "/auth/refresh", {
+          withCredentials: true,
+        });
+        dispatch({ type: "GET_TOKEN", payload: res.data.access_token });
+      };
+      getToken();
+    }
+  }, [auth.isLogged, dispatch]);
+
+  useEffect(() => {
+    if (token) {
+      const getUser = () => {
+        dispatch(dispatchLogin());
+
+        return fetchUser(token).then((res) => {
+          dispatch(dispatchGetUser(res));
+        });
+      };
+      getUser();
+    }
+  }, [token, dispatch]);
   return (
     <Router>
       <Switch>
@@ -38,10 +70,7 @@ function App() {
         <Route path="/post" component={Post} />
         <Route path="/contact" component={Contact} />
         <Route path="/sign" component={Auth} />
-        <Route
-          path="/dashboard"
-          component={isLogged && isAdmin ? Dashboard : NotFound}
-        />
+        <Route path="/dashboard" component={isLogged ? Dashboard : NotFound} />
         <Route path="/dashboard/customer" component={Customer} />
         <Route path="/dashboard/setting" component={Setting} />
         <Route path="/dashboard/email" component={Email} />

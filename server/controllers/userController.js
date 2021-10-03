@@ -149,10 +149,11 @@ const userControllers = {
       }
 
       const refresh_token = createRefreshToken({ id: user._id });
-      res.cookie("refresh", refresh_token, {
+      res.status(202).cookie("refresh", refresh_token, {
         httpOnly: true,
-        path: "/api/auth/refresh",
+        path: "/",
         maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+        sameSite: "strict",
       });
 
       res.json({
@@ -167,12 +168,11 @@ const userControllers = {
         .json({ success: false, message: "Internal server error." });
     }
   },
-  // @Router post /api/auth/refresh_token
+  // @Router post /api/auth/refresh
   // @access private
   getAccessToken: (req, res) => {
     try {
       const rf_token = req.cookies.refresh;
-
       if (!rf_token) {
         return res.status(400).json({
           success: false,
@@ -257,7 +257,7 @@ const userControllers = {
   // @access private
   logout: async (req, res) => {
     try {
-      res.clearCookie("refresh", { path: "/api/auth/refresh" });
+      res.clearCookie("refresh");
       return res.json({ success: true, message: "Logged out." });
     } catch (error) {
       console.log(error);
@@ -302,8 +302,9 @@ const userControllers = {
         const refresh_token = createRefreshToken({ id: user._id });
         res.cookie("refresh", refresh_token, {
           httpOnly: true,
-          path: "/api/auth/refresh",
+          path: "/",
           maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+          sameSite: "strict",
         });
 
         res.json({ success: true, message: "Login success!" });
@@ -321,8 +322,9 @@ const userControllers = {
         const refresh_token = createRefreshToken({ id: newUser._id });
         res.cookie("refresh", refresh_token, {
           httpOnly: true,
-          path: "/api/auth/refresh",
+          path: "/",
           maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+          sameSite: "strict",
         });
 
         res.json({ success: true, message: "Login success!" });
@@ -369,8 +371,9 @@ const userControllers = {
         const refresh_token = createRefreshToken({ id: user._id });
         res.cookie("refresh", refresh_token, {
           httpOnly: true,
-          path: "/api/auth/refresh",
+          path: "/",
           maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+          sameSite: "strict",
         });
 
         res.json({ success: true, message: "Login success!" });
@@ -387,8 +390,9 @@ const userControllers = {
         const refresh_token = createRefreshToken({ id: newUser._id });
         res.cookie("refresh", refresh_token, {
           httpOnly: true,
-          path: "/api/auth/refresh",
+          path: "/",
           maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+          sameSite: "strict",
         });
 
         res.json({ success: true, message: "Login success!" });

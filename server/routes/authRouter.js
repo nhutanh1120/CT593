@@ -13,7 +13,7 @@ router.post("/activation", userControllers.activateEmail);
 router.post("/login", userControllers.login);
 
 // @Router post /api/auth/refresh
-router.post("/refresh", userControllers.getAccessToken);
+router.get("/refresh", userControllers.getAccessToken);
 
 // @Router post /api/auth/forgot
 router.post("/forgot", userControllers.forgotPassword);

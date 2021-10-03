@@ -9,7 +9,7 @@ const Sidebar = () => {
 
   const { user, isLogged } = auth;
 
-  console.log(user);
+  // console.log(user);
 
   useEffect(() => {
     let sidebar = document.querySelector(".dashboard--sidebar");
