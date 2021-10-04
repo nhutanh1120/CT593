@@ -1,23 +1,26 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import user_image from "./../../../assets/img/bg.jpg";
+import profile from "./../../../assets/img/profile.jpg";
 import notifications from "./../../../assets/JsonData/notification.json";
 import user_menu from "./../../../assets/JsonData/user_menu.json";
 import Dropdown from "./../dropdown/Dropdown";
-import ThemeMenu from "./../thememenu/ThemeMenu";
 import { handleLogout } from "./../sidebar/logout/handleLogout";
+import ThemeMenu from "./../thememenu/ThemeMenu";
 import "./navbar.css";
 import "./search.css";
-
-const curr_user = {
-  display_name: "Nhut Anh",
-  image: user_image,
-};
+import { useSelector } from "react-redux";
 
 const renderUserToggle = (user) => (
   <div className="navbar__profile--user">
     <div className="navbar__profile--user__image">
-      <img src={user.image} alt="img" />
+      <img
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src = profile;
+        }}
+        src={user.image}
+        alt="img"
+      />
     </div>
     <div className="navbar__profile--user__name">{user.display_name}</div>
   </div>
@@ -70,10 +73,20 @@ const TopNavbar = ({ data }) => {
     setWordEntered("");
   };
 
+  const auth = useSelector((state) => state.auth);
+  const { user } = auth;
+
+  const curr_user = {
+    display_name: "Nhut Anh",
+    image: user.avatar,
+  };
+
   return (
     <div className="dashboard--navbar">
       <div className="dashboard--navbar__title">
-        <h1>Quản trị viên</h1>
+        <h1>
+          <i className="bx bx-star bx-sm"></i>&nbsp;Quản trị viên
+        </h1>
       </div>
       <div className="dashboard--navbar__search">
         <div className="search__input">

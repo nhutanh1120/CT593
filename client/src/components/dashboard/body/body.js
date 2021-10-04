@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import CopyRight from "../../layouts/copyright/copyright";
 import card from "./../../../assets/JsonData/card.json";
-import Card from "./../card/card";
-import "./body.css";
-import Table from "./../table/table";
-import TopNavbar from "./../navbar/navbar";
 import Badge from "./../badge/badge";
+import Card from "./../card/card";
+import TopNavbar from "./../navbar/navbar";
+import Table from "./../table/table";
+import "./../../../assets/css/dashboard.css";
+import "./body.css";
 
 const topCustomers = {
   head: ["user", "total orders", "total spending"],
@@ -113,7 +115,9 @@ const Body = () => {
     <section className="home-section">
       <TopNavbar />
       <div className="grid body">
-        <h2 className="dashboard--body">Dash board</h2>
+        <div className="dashboard__body__header">
+          <h2>Dash board</h2>
+        </div>
         <div className="row">
           <div className="col l-6 c-6">
             <div className="row">
@@ -171,6 +175,7 @@ const Body = () => {
           </div>
         </div>
       </div>
+      <CopyRight styles={true} />
     </section>
   );
 };

@@ -1,8 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import TopNavbar from "./../../navbar/navbar";
-
+import "./../../../../assets/css/dashboard.css";
 import customerList from "./../../../../assets/JsonData/customers.json";
+import TopNavbar from "./../../navbar/navbar";
 
 const useSortableData = (items, config = null) => {
   const [sortConfig, setSortConfig] = React.useState(config);
@@ -88,7 +88,13 @@ const CustomerBody = () => {
     <section className="home-section">
       <TopNavbar data={customerList} />
       <div className="grid body">
-        <h2 className="dashboard--body">Quản lý người dùng</h2>
+        <div className="dashboard__body__header">
+          <h2>Quản lý người dùng</h2>
+          <button className="btn">
+            <i className="bx bx-plus-circle bx-sm bx-spin-hover"></i>&nbsp;Thêm
+            mới
+          </button>
+        </div>
         <div className="row">
           <div className="col l-12">
             <div className="card--body">

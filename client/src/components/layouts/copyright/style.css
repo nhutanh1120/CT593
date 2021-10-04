@@ -11,3 +11,22 @@
 .copyright a:hover {
   color: #fc5492;
 }
+.copyright--dashboard {
+  padding: 1rem;
+  text-align: center;
+  color: var(--txt-color);
+  background-color: #fff;
+  border-radius: 15px;
+  margin: 0 20px;
+}
+.copyright--dashboard a {
+  font-weight: 600;
+  color: var(--h1-h5);
+}
+.copyright--dashboard a:hover {
+  color: #fc5492;
+}
+
+.copyright--bottom {
+  padding-bottom: 25px;
+}

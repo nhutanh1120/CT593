@@ -2,15 +2,9 @@
   max-width: calc(100% - 40px);
   margin: 0 auto;
 }
-.dashboard--body {
-  font-weight: 500;
-  font-size: 24px;
-  margin-bottom: 15px;
-  text-transform: capitalize;
-}
 .card--body {
   padding: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   background-color: var(--main-bg);
   box-shadow: var(--box-shadow);
   border-radius: 15px;

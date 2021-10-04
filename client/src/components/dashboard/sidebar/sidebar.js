@@ -1,15 +1,13 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import "./sidebar.css";
+import { Link } from "react-router-dom";
 import Logout from "./logout/logout";
+import "./sidebar.css";
 
-const Sidebar = () => {
+const Sidebar = ({ sidebarCurrent }) => {
   const auth = useSelector((state) => state.auth);
 
   const { user, isLogged } = auth;
-
-  // console.log(user);
 
   useEffect(() => {
     let sidebar = document.querySelector(".dashboard--sidebar");
@@ -45,64 +43,18 @@ const Sidebar = () => {
           <input type="text" placeholder="Search..." />
           <span className="tooltip">Search</span>
         </li>
-        <li>
-          <Link to="/dashboard">
-            <i className="bx bx-grid-alt"></i>
-            <span className="links_name">Dashboard</span>
-          </Link>
-          <span className="tooltip">Dashboard</span>
-        </li>
-        <li>
-          <Link to="/dashboard/customer">
-            <i className="bx bx-user"></i>
-            <span className="links_name">User</span>
-          </Link>
-          <span className="tooltip">User</span>
-        </li>
-        <li>
-          <Link to="/dashboard/message">
-            <i className="bx bx-chat"></i>
-            <span className="links_name">Messages</span>
-          </Link>
-          <span className="tooltip">Messages</span>
-        </li>
-        <li>
-          <Link to="/">
-            <i className="bx bx-pie-chart-alt-2"></i>
-            <span className="links_name">Analytics</span>
-          </Link>
-          <span className="tooltip">Analytics</span>
-        </li>
-        <li>
-          <Link to="/">
-            <i className="bx bx-folder"></i>
-            <span className="links_name">File Manager</span>
-          </Link>
-          <span className="tooltip">Files</span>
-        </li>
-        <li>
-          <Link to="/">
-            <i className="bx bx-cart-alt"></i>
-            <span className="links_name">Order</span>
-          </Link>
-          <span className="tooltip">Order</span>
-        </li>
-        <li>
-          <Link to="/">
-            <i className="bx bx-heart"></i>
-            <span className="links_name">Saved</span>
-          </Link>
-          <span className="tooltip">Saved</span>
-        </li>
-        <li>
-          <Link to="/dashboard/setting">
-            <i className="bx bx-cog"></i>
-            <span className="links_name">Setting</span>
-          </Link>
-          <span className="tooltip">Setting</span>
-        </li>
+        {sidebarCurrent.map((item, index) => (
+          <li key={index}>
+            <Link to={item.link}>
+              <i className={item.icon}></i>
+              <span className="links_name">{item.title}</span>
+            </Link>
+            <span className="tooltip">{item.title}</span>
+          </li>
+        ))}
+
         {isLogged ? (
-          <Logout fullname="nhựt anh" permission="admin" avatar="abc.jpg" />
+          <Logout fullname="nhựt anh" permission="admin" avatar={user.avatar} />
         ) : (
           ""
         )}

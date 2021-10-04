@@ -23,17 +23,16 @@ import QrCode from "./pages/qrCode";
 import Setting from "./pages/setting";
 import Test from "./pages/test";
 import Post from "./pages/tintuc";
+import User from "./pages/user";
 import {
+  dispatchGetUser,
   dispatchLogin,
   fetchUser,
-  dispatchGetUser,
 } from "./redux/actions/authAction";
 
 function App() {
   const auth = useSelector((state) => state.auth);
-  // console.log(auth);
-  // const { isLogged, isAdmin } = auth;
-  const { isLogged } = auth;
+  const { isLogged, isAdmin } = auth;
 
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
@@ -70,15 +69,19 @@ function App() {
         <Route path="/post" component={Post} />
         <Route path="/contact" component={Contact} />
         <Route path="/sign" component={Auth} />
-        <Route path="/dashboard" component={isLogged ? Dashboard : NotFound} />
+        <Route
+          exact
+          path="/dashboard"
+          component={isLogged && isAdmin ? Dashboard : NotFound}
+        />
         <Route path="/dashboard/customer" component={Customer} />
         <Route path="/dashboard/setting" component={Setting} />
         <Route path="/dashboard/email" component={Email} />
-        <Route path="/dashboard" component={Dashboard} />
         <Route path="/qr/:id" component={QrCode} />
         <Route path="/forgot" component={ForgotPassword} />
         <Route path="/agricultural/:id" component={Agricultural} />
         <Route path="/test" component={Test} />
+        <Route path="/user" component={User} />
         <Route
           exact
           path="/api/auth/activation/:activation_token"

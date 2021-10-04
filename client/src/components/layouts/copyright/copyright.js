@@ -2,11 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-const CopyRight = () => {
+const CopyRight = (props) => {
   const year = new Date().getFullYear();
   return (
-    <div className="grid">
-      <div className="col l-12 c-12 m-12 copyright">
+    <div className={props.styles ? "grid copyright--bottom" : "grid"}>
+      <div
+        className={
+          props.styles
+            ? "col l-12 c-12 m-12 copyright--dashboard"
+            : "col l-12 c-12 m-12 copyright"
+        }
+      >
         Bản quyền thiết kế thuộc về &copy;&nbsp;
         <Link
           to="mailto:ltanhutd20086@cusc.ctu.edu.vn"

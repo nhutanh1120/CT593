@@ -17,6 +17,7 @@ const Agricultural = () => {
   const [showError, setShowError] = useState(true);
   const { id } = useParams();
 
+  console.log(showError);
   useEffect(() => {
     (async () => {
       try {
@@ -57,13 +58,13 @@ const Agricultural = () => {
       </table>
     </div>
   ));
-  const showErrorAgricultural = (message) => {
-    return (
-      <div className="showError-agricultural">
-        <div>{message}</div>
-      </div>
-    );
-  };
+  // const showErrorAgricultural = (message) => {
+  //   return (
+  //     <div className="showError-agricultural">
+  //       <div>{message}</div>
+  //     </div>
+  //   );
+  // };
 
   const [viewLogin, setViewLogin] = useState(false);
   const showLogin = async (e) => {

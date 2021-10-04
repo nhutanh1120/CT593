@@ -89,7 +89,7 @@ const FormLogin = () => {
           }
         }
       } catch (error) {
-        error.response.data.message &&
+        error?.response?.data?.message &&
           setUser({
             ...user,
             error: Math.random(),
