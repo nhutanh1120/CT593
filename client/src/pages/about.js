@@ -3,7 +3,7 @@ import img from "./../assets/img/contact1.png";
 import Approve from "./../components/contact/approve";
 import Footer from "./../components/layouts/footer/footer";
 import Header from "./../components/layouts/header/header";
-import ScrollTop from "./../components/scrollTop/scrollTop";
+import ScrollTop from "../components/layouts/scrollTop/scrollTop";
 // import Product from "./../components/origintrail/product";
 
 function About() {

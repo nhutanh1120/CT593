@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { isEmail } from "./../../../utils/validation/Validation";
+import { isEmail } from "./../../utils/validation/Validation";
 import "./email.css";
 
 const initialState = {

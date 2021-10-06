@@ -68,7 +68,10 @@
   font-weight: 500;
   text-transform: capitalize;
 }
-
+.dashboard__mobile {
+  display: none;
+  cursor: pointer;
+}
 @media only screen and (max-width: 900px) {
   .dashboard--navbar__title {
     display: none;
@@ -77,5 +80,8 @@
 @media only screen and (max-width: 430px) {
   .dashboard--navbar__search {
     display: none;
+  }
+  .dashboard__mobile {
+    display: block;
   }
 }

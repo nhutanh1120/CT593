@@ -1,5 +1,5 @@
 import React from "react";
-import profile from "./../../../../assets/img/profile.jpg";
+import profile from "./../../../../../assets/img/profile.jpg";
 import { handleLogout } from "./handleLogout";
 
 const Logout = ({ fullname, permission, avatar }) => {

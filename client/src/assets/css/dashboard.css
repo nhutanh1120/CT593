@@ -25,3 +25,6 @@
   text-transform: uppercase;
   transition: 0.5s;
 }
+.dashboard__body--min--height {
+  min-height: 70vh;
+}

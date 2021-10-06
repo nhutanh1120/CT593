@@ -13,16 +13,14 @@ import About from "./pages/about";
 import Agricultural from "./pages/agricultural";
 import Auth from "./pages/auth";
 import Contact from "./pages/contact";
-import Customer from "./pages/customer";
 import Dashboard from "./pages/dashboard";
-import Email from "./pages/email";
+import Events from "./pages/events";
 import ForgotPassword from "./pages/forgotPassword";
 import Home from "./pages/home";
 import NotFound from "./pages/notfound";
+import Post from "./pages/post";
 import QrCode from "./pages/qrCode";
-import Setting from "./pages/setting";
 import Test from "./pages/test";
-import Post from "./pages/tintuc";
 import User from "./pages/user";
 import {
   dispatchGetUser,
@@ -67,26 +65,24 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/post" component={Post} />
+        <Route path="/event" component={Events} />
         <Route path="/contact" component={Contact} />
         <Route path="/sign" component={Auth} />
-        <Route
-          exact
-          path="/dashboard"
-          component={isLogged && isAdmin ? Dashboard : NotFound}
-        />
-        <Route path="/dashboard/customer" component={Customer} />
-        <Route path="/dashboard/setting" component={Setting} />
-        <Route path="/dashboard/email" component={Email} />
-        <Route path="/qr/:id" component={QrCode} />
-        <Route path="/forgot" component={ForgotPassword} />
-        <Route path="/agricultural/:id" component={Agricultural} />
-        <Route path="/test" component={Test} />
-        <Route path="/user" component={User} />
         <Route
           exact
           path="/api/auth/activation/:activation_token"
           component={ActivationEmail}
         />
+        <Route path="/forgot" component={ForgotPassword} />
+        <Route
+          exact
+          path="/dashboard"
+          component={isLogged && isAdmin ? Dashboard : NotFound}
+        />
+        <Route path="/qr/:id" component={QrCode} />
+        <Route path="/agricultural/:id" component={Agricultural} />
+        <Route path="/test" component={Test} />
+        <Route path="/user" component={User} />
         <Route path="*" component={NotFound} />
       </Switch>
     </Router>

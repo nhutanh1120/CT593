@@ -130,7 +130,7 @@ const FormLogin = () => {
       dispatch(dispatchLogin());
       history.push("/dashboard");
     } catch (error) {
-      error.response.data.message &&
+      error?.response?.data?.message &&
         setUser({ ...user, error: error.response.data.message, success: "" });
     }
   };

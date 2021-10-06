@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import profile from "./../../../assets/img/profile.jpg";
-import notifications from "./../../../assets/JsonData/notification.json";
-import user_menu from "./../../../assets/JsonData/user_menu.json";
-import Dropdown from "./../dropdown/Dropdown";
+import profile from "./../../../../assets/img/profile.jpg";
+import notifications from "../../../../assets/JsonData/notification.json";
+import user_menu from "../../../../assets/JsonData/user_menu.json";
+import Dropdown from "../../../dashboard/dropdown/Dropdown";
 import { handleLogout } from "./../sidebar/logout/handleLogout";
-import ThemeMenu from "./../thememenu/ThemeMenu";
+import ThemeMenu from "../../../dashboard/thememenu/ThemeMenu";
 import "./navbar.css";
 import "./search.css";
 import { useSelector } from "react-redux";
@@ -87,6 +87,9 @@ const TopNavbar = ({ data }) => {
         <h1>
           <i className="bx bx-star bx-sm"></i>&nbsp;Quản trị viên
         </h1>
+      </div>
+      <div className="dashboard__mobile" onClick={() => alert("view sidebar")}>
+        <i className="bx bx-menu bx-md"></i>
       </div>
       <div className="dashboard--navbar__search">
         <div className="search__input">

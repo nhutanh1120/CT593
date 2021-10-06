@@ -1,5 +1,5 @@
 import React from "react";
-import ScrollTop from "./../components/scrollTop/scrollTop";
+import ScrollTop from "../components/layouts/scrollTop/scrollTop";
 import Brand from "./../components/contact/Brand/brand";
 import Connection from "./../components/contact/connection";
 import Footer from "./../components/layouts/footer/footer";

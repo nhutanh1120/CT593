@@ -1,12 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import CopyRight from "../../layouts/copyright/copyright";
 import card from "./../../../assets/JsonData/card.json";
 import Badge from "./../badge/badge";
 import Card from "./../card/card";
-import TopNavbar from "./../navbar/navbar";
 import Table from "./../table/table";
-import "./../../../assets/css/dashboard.css";
 import "./body.css";
 
 const topCustomers = {
@@ -112,71 +109,63 @@ const renderOrderBody = (item, index) => (
 );
 const Body = () => {
   return (
-    <section className="home-section">
-      <TopNavbar />
-      <div className="grid body">
-        <div className="dashboard__body__header">
-          <h2>Dash board</h2>
-        </div>
-        <div className="row">
-          <div className="col l-6 c-6">
-            <div className="row">
-              {card.map((item, index) => (
-                <div key={index} className="col l-6">
-                  <Card
-                    icon={item.icon}
-                    count={item.count}
-                    title={item.title}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="col l-6">
-            <div className="card--chart"></div>
+    <div className="grid body">
+      <div className="dashboard__body__header">
+        <h2>Dash board</h2>
+      </div>
+      <div className="row">
+        <div className="col l-6 c-6">
+          <div className="row">
+            {card.map((item, index) => (
+              <div key={index} className="col l-6">
+                <Card icon={item.icon} count={item.count} title={item.title} />
+              </div>
+            ))}
           </div>
         </div>
-        <div className="row">
-          <div className="col l-4">
-            <div className="card--body">
-              <div className="card--body__header">
-                <h3>top customer</h3>
-              </div>
-              <div className="card--body__content">
-                <Table
-                  theadData={topCustomers.head}
-                  renderHead={(item, index) => renderHead(item, index)}
-                  tbodyData={topCustomers.body}
-                  renderBody={(item, index) => renderBody(item, index)}
-                />
-              </div>
-              <div className="card--body__footer">
-                <Link to="/dashboard/customer">view all</Link>
-              </div>
+        <div className="col l-6">
+          <div className="card--chart"></div>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col l-4">
+          <div className="card--body">
+            <div className="card--body__header">
+              <h3>top customer</h3>
+            </div>
+            <div className="card--body__content">
+              <Table
+                theadData={topCustomers.head}
+                renderHead={(item, index) => renderHead(item, index)}
+                tbodyData={topCustomers.body}
+                renderBody={(item, index) => renderBody(item, index)}
+              />
+            </div>
+            <div className="card--body__footer">
+              <Link to="/dashboard/customer">view all</Link>
             </div>
           </div>
-          <div className="col l-8">
-            <div className="card--body">
-              <div className="card--body__header">
-                <h3>latest orders</h3>
-              </div>
-              <div className="card--body__content">
-                <Table
-                  theadData={latestOrders.header}
-                  renderHead={(item, index) => renderOrderHead(item, index)}
-                  tbodyData={latestOrders.body}
-                  renderBody={(item, index) => renderOrderBody(item, index)}
-                />
-              </div>
-              <div className="card--body__footer">
-                <Link to="/">view all</Link>
-              </div>
+        </div>
+        <div className="col l-8">
+          <div className="card--body">
+            <div className="card--body__header">
+              <h3>latest orders</h3>
+            </div>
+            <div className="card--body__content">
+              <Table
+                theadData={latestOrders.header}
+                renderHead={(item, index) => renderOrderHead(item, index)}
+                tbodyData={latestOrders.body}
+                renderBody={(item, index) => renderOrderBody(item, index)}
+              />
+            </div>
+            <div className="card--body__footer">
+              <Link to="/">view all</Link>
             </div>
           </div>
         </div>
       </div>
-      <CopyRight styles={true} />
-    </section>
+    </div>
   );
 };
 

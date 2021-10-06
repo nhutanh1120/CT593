@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./../assets/css/agricultural.css";
 import FormLogin from "./../components/auth/formLogin";
-import ScrollTop from "./../components/scrollTop/scrollTop";
+import ScrollTop from "../components/layouts/scrollTop/scrollTop";
 import { apiUrl } from "./../constants";
 
 const initialState = {
