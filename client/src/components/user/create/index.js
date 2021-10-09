@@ -15,6 +15,7 @@ const initialState = {
 const Create = (props) => {
   const [state, setState] = useState(initialState);
   const { success, error } = state;
+
   const validate = () => {
     Validator({
       form: "#form__create__agricultural",
@@ -67,11 +68,9 @@ const Create = (props) => {
       },
     });
   };
+
   useEffect(() => {
-    document.addEventListener("DOMContentLoaded", validate);
-    return () => {
-      document.removeEventListener("DOMContentLoaded", validate);
-    };
+    validate();
   }, []);
   useEffect(() => {
     if (error) {
@@ -90,6 +89,7 @@ const Create = (props) => {
       }}
       style={{ display: props.styles === true ? "flex" : "none" }}
     >
+      {success && props.hideCreate(!props.styles)}
       <div id="toast"></div>
       <form
         id="form__create__agricultural"

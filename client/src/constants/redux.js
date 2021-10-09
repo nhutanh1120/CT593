@@ -6,3 +6,6 @@ const ACTIONS = {
 };
 
 export default ACTIONS;
+
+export const GET_AGRICULTURAL = "GET_AGRICULTURAL";
+export const CREATE_AGRICULTURAL = "CREATE_AGRICULTURAL";
