@@ -13,7 +13,7 @@
 }
 .dashboard--dropdown__toggle i {
   font-size: 2.5rem;
-  color: #455560;
+  color: var(--second-color);
 }
 .dashboard--dropdown__badge {
   display: flex;
@@ -36,14 +36,15 @@
   right: 0;
   width: max-content;
   max-width: 400px;
-  background-color: var(--main-bg);
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  background-color: var(--second-background);
+  box-shadow: var(--box-shadow);
   border-radius: 15px;
   overflow: hidden;
   transform-origin: top right;
   transform: scale(0);
   transition: transform 0.3s ease 0s;
   padding: 15px;
+  z-index: 100;
 }
 
 .dashboard--dropdown__content.active {

@@ -1,56 +1,44 @@
-import React, { useRef, useState, useEffect } from "react";
-
+import React, { useEffect, useRef, useState } from "react";
 import "./thememenu.css";
-
-// import { useDispatch } from "react-redux";
-
-// import ThemeAction from "./../../redux/actions/ThemeAction";
 
 const mode_settings = [
   {
     id: "light",
-    name: "Light",
+    name: "Trắng",
     background: "light-background",
-    class: "theme-mode-light",
   },
   {
     id: "dark",
-    name: "Dark",
+    name: "Đen",
     background: "dark-background",
-    class: "theme-mode-dark",
   },
 ];
 
 const color_settings = [
   {
     id: "blue",
-    name: "Blue",
+    name: "Xanh",
     background: "blue-color",
-    class: "theme-color-blue",
   },
   {
     id: "red",
-    name: "Red",
+    name: "Đỏ",
     background: "red-color",
-    class: "theme-color-red",
   },
   {
     id: "cyan",
-    name: "Cyan",
+    name: "Lục",
     background: "cyan-color",
-    class: "theme-color-cyan",
   },
   {
     id: "green",
-    name: "Green",
+    name: "Xanh lá",
     background: "green-color",
-    class: "theme-color-green",
   },
   {
     id: "orange",
-    name: "Orange",
+    name: "Cam",
     background: "orange-color",
-    class: "theme-color-orange",
   },
 ];
 
@@ -73,64 +61,58 @@ const ThemeMenu = () => {
   const menu_toggle_ref = useRef(null);
 
   clickOutsideRef(menu_ref, menu_toggle_ref);
-
   const setActiveMenu = () => menu_ref.current.classList.add("active");
-
   const closeMenu = () => menu_ref.current.classList.remove("active");
 
-  const [currMode, setcurrMode] = useState("light");
-
-  const [currColor, setcurrColor] = useState("blue");
-
-  //   const dispatch = useDispatch();
+  const [currMode, setCurrMode] = useState("light");
+  const [currColor, setCurrColor] = useState("blue");
 
   const setMode = (mode) => {
-    setcurrMode(mode.id);
-    localStorage.setItem("themeMode", mode.class);
-    // dispatch(ThemeAction.setMode(mode.class));
+    setCurrMode(mode.id);
+    document.documentElement.setAttribute("data-theme", mode.id);
+    localStorage.setItem("themeMode", mode.id);
   };
 
   const setColor = (color) => {
-    setcurrColor(color.id);
-    localStorage.setItem("colorMode", color.class);
-    // dispatch(ThemeAction.setColor(color.class));
+    setCurrColor(color.id);
+    document.documentElement.setAttribute("data-color", color.id);
+    localStorage.setItem("colorMode", color.id);
   };
 
   useEffect(() => {
-    const themeClass = mode_settings.find(
-      (e) => e.class === localStorage.getItem("themeMode", "theme-mode-light")
-    );
-
-    const colorClass = color_settings.find(
-      (e) => e.class === localStorage.getItem("colorMode", "theme-mode-light")
-    );
-
-    if (themeClass !== undefined) setcurrMode(themeClass.id);
-
-    if (colorClass !== undefined) setcurrColor(colorClass.id);
+    const currentTheme = localStorage.getItem("themeMode");
+    const currentColor = localStorage.getItem("colorMode");
+    if (currentTheme) {
+      document.documentElement.setAttribute("data-theme", currentTheme);
+      setCurrMode(currentTheme);
+    }
+    if (currentColor) {
+      document.documentElement.setAttribute("data-color", currentColor);
+      setCurrColor(currentColor);
+    }
   }, []);
 
   return (
     <div>
       <button
         ref={menu_toggle_ref}
-        className="dropdown__toggle"
+        className="dashboard--dropdown__toggle"
         onClick={() => setActiveMenu()}
       >
-        <i className="bx bx-palette"></i>
+        <i className="bx bx-cog bx-spin-hover"></i>
       </button>
-      <div ref={menu_ref} className="theme-menu">
-        <h4>Theme settings</h4>
-        <button className="theme-menu__close" onClick={() => closeMenu()}>
+      <div ref={menu_ref} className="theme--menu">
+        <h4>Cài đặt chủ đề</h4>
+        <button className="theme--menu__close" onClick={() => closeMenu()}>
           <i className="bx bx-x"></i>
         </button>
-        <div className="theme-menu__select">
-          <span>Choose mode</span>
-          <ul className="mode-list">
+        <div className="theme--menu__select">
+          <span>Chọn chế độ</span>
+          <ul className="mode--list">
             {mode_settings.map((item, index) => (
               <li key={index} onClick={() => setMode(item)}>
                 <div
-                  className={`mode-list__color ${item.background} ${
+                  className={`mode--list__color ${item.background} ${
                     item.id === currMode ? "active" : ""
                   }`}
                 >
@@ -141,13 +123,13 @@ const ThemeMenu = () => {
             ))}
           </ul>
         </div>
-        <div className="theme-menu__select">
-          <span>Choose color</span>
-          <ul className="mode-list">
+        <div className="theme--menu__select">
+          <span>Chọn màu sắc</span>
+          <ul className="mode--list">
             {color_settings.map((item, index) => (
               <li key={index} onClick={() => setColor(item)}>
                 <div
-                  className={`mode-list__color ${item.background} ${
+                  className={`mode--list__color ${item.background} ${
                     item.id === currColor ? "active" : ""
                   }`}
                 >

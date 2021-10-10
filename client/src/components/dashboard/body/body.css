@@ -5,12 +5,13 @@
 .card--body {
   padding: 30px;
   margin-bottom: 25px;
-  background-color: var(--main-bg);
+  background-color: var(--second-background);
   box-shadow: var(--box-shadow);
   border-radius: 15px;
 }
 .card--body__header {
   text-transform: capitalize;
+  color: var(--txt-color);
 }
 .card--body__header ~ .card--body__content {
   margin-top: 20px;
@@ -18,4 +19,8 @@
 .card--body__footer {
   text-align: center;
   text-transform: capitalize;
+  margin-top: 15px;
+}
+.card--body__footer a {
+  color: var(--txt-color);
 }

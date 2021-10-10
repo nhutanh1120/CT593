@@ -5,7 +5,7 @@ import notifications from "../../../../assets/JsonData/notification.json";
 import user_menu from "../../../../assets/JsonData/user_menu.json";
 import Dropdown from "../../../dashboard/dropdown/Dropdown";
 import { handleLogout } from "./../sidebar/logout/handleLogout";
-import ThemeMenu from "../../../dashboard/thememenu/ThemeMenu";
+import ThemeMenu from "../../../dashboard/thememenu/";
 import "./navbar.css";
 import "./search.css";
 import { useSelector } from "react-redux";

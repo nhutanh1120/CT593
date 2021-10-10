@@ -5,6 +5,51 @@ import Badge from "./../badge/badge";
 import Card from "./../card/card";
 import Table from "./../table/table";
 import "./body.css";
+import Chart from "react-apexcharts";
+
+const chartOptions = {
+  series: [
+    {
+      name: "Online Customers",
+      data: [40, 70, 20, 90, 36, 80, 30, 91, 60],
+    },
+    {
+      name: "Store Customers",
+      data: [40, 30, 70, 80, 40, 16, 40, 20, 51, 10],
+    },
+  ],
+  options: {
+    color: ["#6ab04c", "#2980b9"],
+    chart: {
+      background: "transparent",
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    stroke: {
+      curve: "smooth",
+    },
+    xaxis: {
+      categories: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+      ],
+    },
+    legend: {
+      position: "top",
+    },
+    grid: {
+      show: false,
+    },
+  },
+};
 
 const topCustomers = {
   head: ["user", "total orders", "total spending"],
@@ -114,21 +159,28 @@ const Body = () => {
         <h2>Dash board</h2>
       </div>
       <div className="row">
-        <div className="col l-6 c-6">
+        <div className="col l-6 m-12 c-12">
           <div className="row">
             {card.map((item, index) => (
-              <div key={index} className="col l-6">
+              <div key={index} className="col l-6 m-6 c-12">
                 <Card icon={item.icon} count={item.count} title={item.title} />
               </div>
             ))}
           </div>
         </div>
-        <div className="col l-6">
-          <div className="card--chart"></div>
+        <div className="col l-6 m-12 c-12">
+          <div className="card--chart">
+            <Chart
+              options={chartOptions.options}
+              series={chartOptions.series}
+              type="line"
+              height="100%"
+            />
+          </div>
         </div>
       </div>
       <div className="row">
-        <div className="col l-4">
+        <div className="col l-4 m-12 c-12">
           <div className="card--body">
             <div className="card--body__header">
               <h3>top customer</h3>
@@ -146,7 +198,7 @@ const Body = () => {
             </div>
           </div>
         </div>
-        <div className="col l-8">
+        <div className="col l-8 m-12 c-12">
           <div className="card--body">
             <div className="card--body__header">
               <h3>latest orders</h3>

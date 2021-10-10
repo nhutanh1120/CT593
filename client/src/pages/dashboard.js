@@ -7,24 +7,23 @@ import "./../assets/css/dashboard.css";
 import Body from "./../components/dashboard/body/body";
 import Customer from "./../components/dashboard/customer/customer";
 import CopyRight from "./../components/layouts/copyright/copyright";
-// import ThemeMenu from "./../components/dashboard/themeMenu";
 import TopNavbar from "./../components/layouts/dashboard/navbar/navbar";
 import Sidebar from "./../components/layouts/dashboard/sidebar/sidebar";
 import NotFound from "./notfound";
 
 const sidebarCurrent = [
   {
-    link: "/dashboard",
+    link: "/admin/dashboard",
     icon: "bx bx-grid-alt",
     title: "Dashboard",
   },
   {
-    link: "/dashboard/customer",
+    link: "/admin/dashboard/customer",
     icon: "bx bx-user",
     title: "User",
   },
   {
-    link: "/dashboard/message",
+    link: "/admin/dashboard/message",
     icon: "bx bx-chat",
     title: "Messages",
   },
@@ -44,12 +43,12 @@ const sidebarCurrent = [
     title: "Order",
   },
   {
-    link: "/dashboard/email",
+    link: "/admin/dashboard/email",
     icon: "bx bx-heart",
     title: "Saved",
   },
   {
-    link: "/dashboard/setting",
+    link: "/admin/dashboard/setting",
     icon: "bx bx-cog",
     title: "Setting",
   },

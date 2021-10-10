@@ -80,7 +80,7 @@
   transform: scale(0);
   transition: transform 0.3s ease 0s;
   box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
-  z-index: 1000;
+  z-index: 100;
   min-width: 160px;
   cursor: auto;
 }

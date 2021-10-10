@@ -1,20 +1,7 @@
 :root {
-  --h1-h5: black;
-  --primary-color-white: #fff;
-  --primary-background: #fff;
-  --text-muted: #6c757d;
-  --background1: #22c1c3;
-  --background2: #fdbb2d;
-  --background-dangky: #f7f7f7;
-  --bg-submit: #c3a762;
-  --box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
-  --main-bg: #ffffff;
-  --second-bg: #fafafb;
-  --txt-color: #455560;
   --txt-white: #fff;
   --main-color: #349eff;
-  --second-color: #62b4ff;
+  --second-color-primary: #62b4ff;
 
   --main-color-blue: #349eff;
   --second-color-blue: #62b4ff;
@@ -30,14 +17,74 @@
 
   --main-color-orange: #d68102;
   --second-color-orange: #fca11a;
+
+  /* sidebar  */
+  --primary-color: black;
+  --second-color: #455560;
+  --third-color: black;
+  --txt-color: #455560;
+
+  --primary-background: #e4e9f7;
+  --second-background: #fff;
+  --third-background: #fafafb;
+  --fourth-background: #fafafb;
+  --active-background: #1d1b31;
+
+  --border-color: #fff;
+  --border-color-second: #dee2e6;
+
+  --box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 [data-theme="dark"] {
-  --h1-h5: white;
-  --primary-color-white: lightgray;
-  --primary-background: #4b566b;
-  --text-muted: lightgray;
-  --background1: rgba(44, 62, 80, 0.97);
-  --background2: gray;
-  --background-dangky: rgba(44, 62, 80, 0.97);
-  --bg-submit: #141d25;
+  --primary-color: #fff;
+  --second-color: #fff;
+  --third-color: #bbb;
+  --txt-color: #bbb;
+
+  /* --primary-background: #4b566b; */
+  --primary-background: #202020;
+  --second-background: #2d2d2d;
+  --third-background: #1d1b31;
+  --fourth-background: #202020;
+  --active-background: #fff;
+
+  --border-color: transparent;
+  --border-color-second: transparent;
+
+  --box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px;
+}
+
+.light-background {
+  background-color: var(--second-background-light);
+  color: #000;
+}
+
+.dark-background {
+  background-color: #2d2d2d;
+  color: #fff;
+}
+
+.blue-color {
+  background-color: var(--main-color-blue);
+  color: #fff;
+}
+
+.red-color {
+  background-color: var(--main-color-red);
+  color: #fff;
+}
+
+.cyan-color {
+  background-color: var(--main-color-cyan);
+  color: #fff;
+}
+
+.green-color {
+  background-color: var(--main-color-green);
+  color: #fff;
+}
+
+.orange-color {
+  background-color: var(--main-color-orange);
+  color: #fff;
 }

@@ -11,7 +11,7 @@
 }
 
 .dashboard--table thead {
-  background-color: var(--second-bg);
+  background-color: var(--fourth-background);
 }
 
 .dashboard--table tr {
@@ -22,9 +22,13 @@
 .dashboard--table td {
   text-transform: capitalize;
   padding: 15px 10px;
+  color: var(--txt-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color-second);
 }
 .dashboard--table th {
   position: relative;
+  font-weight: 600;
 }
 .dashboard--table th div {
   position: absolute;

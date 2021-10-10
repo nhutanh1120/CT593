@@ -74,15 +74,15 @@ function App() {
           component={ActivationEmail}
         />
         <Route path="/forgot" component={ForgotPassword} />
-        <Route
-          exact
-          path="/dashboard"
+        <Route path="/admin/dashboard" component={Dashboard} />
+        {/* <Route
+          path="/admin/dashboard"
           component={isLogged && isAdmin ? Dashboard : NotFound}
-        />
+        /> */}
+        <Route path="/user/dashboard" component={User} />
         <Route path="/qr/:id" component={QrCode} />
         <Route path="/agricultural/:id" component={Agricultural} />
         <Route path="/test" component={Test} />
-        <Route path="/user" component={User} />
         <Route path="*" component={NotFound} />
       </Switch>
     </Router>

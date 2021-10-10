@@ -2,7 +2,7 @@
   padding: 30px;
   display: flex;
   align-items: center;
-  background-color: var(--main-bg);
+  background-color: var(--second-background);
   box-shadow: var(--box-shadow);
   border-radius: 15px;
   position: relative;
@@ -10,6 +10,7 @@
   z-index: 1;
   transition: color 0.5s ease 0s;
   margin-bottom: 25px;
+  color: var(--third-color);
 }
 
 .dashboard--card__icon {
@@ -42,7 +43,7 @@
   background-image: linear-gradient(
     to top right,
     var(--main-color),
-    var(--second-color)
+    var(--second-color-primary)
   );
   position: absolute;
   left: -50%;
@@ -61,7 +62,7 @@
 
 .card--chart {
   padding: 30px;
-  background-color: var(--main-bg);
+  background-color: var(--second-background);
   box-shadow: var(--box-shadow);
   border-radius: 15px;
   height: calc(100% - 25px);
