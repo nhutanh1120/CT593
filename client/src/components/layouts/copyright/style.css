@@ -31,3 +31,12 @@
 .copyright--bottom {
   padding-bottom: 25px;
 }
+
+@media (max-width: 450px) {
+  .copyright--bottom {
+    padding-bottom: 10px;
+  }
+  .copyright--bottom > .copyright--dashboard {
+    margin: 0 10px;
+  }
+}

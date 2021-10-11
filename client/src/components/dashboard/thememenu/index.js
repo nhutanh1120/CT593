@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./thememenu.css";
+import "./style.css";
 
 const mode_settings = [
   {

@@ -22,6 +22,7 @@
   --primary-color: black;
   --second-color: #455560;
   --third-color: black;
+  --fourth-color: #fff;
   --txt-color: #455560;
 
   --primary-background: #e4e9f7;
@@ -39,6 +40,7 @@
   --primary-color: #fff;
   --second-color: #fff;
   --third-color: #bbb;
+  --fourth-color: #1d1b31;
   --txt-color: #bbb;
 
   /* --primary-background: #4b566b; */

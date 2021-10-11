@@ -1,14 +1,14 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import profile from "./../../../../assets/img/profile.jpg";
 import notifications from "../../../../assets/JsonData/notification.json";
 import user_menu from "../../../../assets/JsonData/user_menu.json";
-import Dropdown from "../../../dashboard/dropdown/Dropdown";
+import ThemeMenu from "../../../dashboard/themeMenu/";
+import profile from "./../../../../assets/img/profile.jpg";
 import { handleLogout } from "./../sidebar/logout/handleLogout";
-import ThemeMenu from "../../../dashboard/thememenu/";
+import Dropdown from "./dropdown/Dropdown";
 import "./navbar.css";
 import "./search.css";
-import { useSelector } from "react-redux";
 
 const renderUserToggle = (user) => (
   <div className="navbar__profile--user">

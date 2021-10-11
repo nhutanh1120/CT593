@@ -66,4 +66,5 @@
   box-shadow: var(--box-shadow);
   border-radius: 15px;
   height: calc(100% - 25px);
+  z-index: 1;
 }

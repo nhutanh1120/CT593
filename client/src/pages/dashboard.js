@@ -4,6 +4,7 @@ import Email from "../components/dashboard/email";
 import Setting from "../components/dashboard/setting/setting";
 import ScrollTop from "../components/layouts/scrollTop/scrollTop";
 import "./../assets/css/dashboard.css";
+import customerList from "./../assets/JsonData/customers.json";
 import Body from "./../components/dashboard/body/body";
 import Customer from "./../components/dashboard/customer/customer";
 import CopyRight from "./../components/layouts/copyright/copyright";
@@ -15,17 +16,17 @@ const sidebarCurrent = [
   {
     link: "/admin/dashboard",
     icon: "bx bx-grid-alt",
-    title: "Dashboard",
+    title: "Bảng điều khiển",
   },
   {
     link: "/admin/dashboard/customer",
     icon: "bx bx-user",
-    title: "User",
+    title: "Người dùng",
   },
   {
     link: "/admin/dashboard/message",
     icon: "bx bx-chat",
-    title: "Messages",
+    title: "Tin nhắn",
   },
   {
     link: "/",
@@ -50,7 +51,7 @@ const sidebarCurrent = [
   {
     link: "/admin/dashboard/setting",
     icon: "bx bx-cog",
-    title: "Setting",
+    title: "Cài đặt",
   },
 ];
 function Dashboard() {
@@ -59,7 +60,7 @@ function Dashboard() {
     <div className="App">
       <Sidebar sidebarCurrent={sidebarCurrent} />
       <section className="home-section">
-        <TopNavbar />
+        <TopNavbar data={customerList} />
 
         <Switch>
           <Route exact path={match.url + "/"} component={Body}></Route>

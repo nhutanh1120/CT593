@@ -10,7 +10,9 @@
   box-shadow: var(--box-shadow);
   transition: right 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
+.theme--menu h4 {
+  color: var(--second-color);
+}
 .theme--menu.active {
   right: 0;
 }
@@ -25,9 +27,13 @@
   border: 0;
   cursor: pointer;
 }
+.theme--menu__close i {
+  color: var(--primary-color);
+}
 
 .theme--menu__select {
   margin-top: 40px;
+  color: var(--txt-color);
 }
 
 .mode--list {

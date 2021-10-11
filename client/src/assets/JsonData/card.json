@@ -1,22 +1,22 @@
 [
   {
-    "icon": "bx bx-shopping-bag",
+    "icon": "bx bx-run",
     "count": "1,995",
-    "title": "Total sales"
+    "title": "Người dùng"
   },
   {
-    "icon": "bx bx-cart",
+    "icon": "bx bx-donate-blood",
     "count": "2,001",
-    "title": "Daily visits"
+    "title": "Nông sản"
   },
   {
-    "icon": "bx bx-dollar-circle",
-    "count": "$2,632",
-    "title": "Total income"
+    "icon": "bx bxs-florist",
+    "count": "2,632",
+    "title": "Cây trồng"
   },
   {
-    "icon": "bx bx-receipt",
+    "icon": "bx bxl-baidu",
     "count": "1,711",
-    "title": "Total orders"
+    "title": "Vật nuôi"
   }
 ]

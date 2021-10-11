@@ -80,6 +80,7 @@
   z-index: 3;
   background: var(--active-background);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  color: var(--second-background);
   padding: 6px 12px;
   border-radius: 4px;
   font-size: 15px;
@@ -245,7 +246,7 @@
   font-weight: 500;
   margin: 18px;
 }
-@media (max-width: 420px) {
+@media (max-width: 450px) {
   .dashboard--sidebar li .tooltip {
     display: none;
   }
@@ -253,15 +254,7 @@
     left: -100%;
   }
   .home-section {
-    width: 100;
-    left: 0;
-  }
-}
-@media (max-width: 450px) {
-  .dashboard--sidebar {
-    left: -100%;
-  }
-  .home-section {
+    padding-top: 100px;
     width: 100%;
     left: 0;
   }

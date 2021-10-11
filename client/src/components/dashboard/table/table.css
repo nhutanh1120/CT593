@@ -67,6 +67,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  color: var(--third-color);
 }
 
 .table__pagination--item.active,
@@ -77,6 +78,6 @@
 }
 
 .table__pagination--item:hover {
-  color: var(--txt-white);
+  color: var(--fourth-color);
   background-color: var(--second-color);
 }
