@@ -1,5 +1,5 @@
 .product__card {
-  background-color: #fff;
+  background-color: var(--second-background);
   padding: 10px 10px 0;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -18,7 +18,7 @@
 }
 .product__header__content h5 {
   font-size: 18px;
-  color: rgba(0, 0, 0, 0.7);
+  color: var(--second-color);
   font-weight: 700;
   text-transform: capitalize;
   line-height: 1;
@@ -40,6 +40,7 @@
   align-items: center;
   font-size: 14px;
   padding-bottom: 3px;
+  color: var(--txt-color);
 }
 .product__footer--end {
   display: flex;
@@ -56,6 +57,9 @@
   border-radius: 10px;
   cursor: pointer;
 }
+.product__footer--notification > i {
+  color: var(--txt-color);
+}
 .product__footer--action {
   position: relative;
   padding: 5px 8px;
@@ -65,8 +69,17 @@
 .product__footer--notification:hover {
   background-color: #e6f2ff;
 }
+.product__footer--notification:hover i {
+  color: black;
+}
 .product__footer--action:hover {
   background-color: #e6f2ff;
+}
+.product__footer--action > i {
+  color: var(--txt-color);
+}
+.product__footer--action:hover i {
+  color: black;
 }
 .product__dropdown__content {
   position: absolute;

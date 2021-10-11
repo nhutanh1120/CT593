@@ -1,17 +1,17 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { apiUrl } from "../../../constants";
+import { createAgriculturalRequest } from "../../../redux/actions/agriculturalActions";
+import {
+  showErrorToast,
+  showSuccessToast,
+} from "../../utils/notification/message";
 import Validator from "../../utils/validation/Vanilla";
 import "./style.css";
-import {
-  showSuccessToast,
-  showErrorToast,
-} from "../../utils/notification/message";
 
 const initialState = {
   success: "",
   error: "",
 };
+
 const Create = (props) => {
   const [state, setState] = useState(initialState);
   const { success, error } = state;
@@ -49,21 +49,27 @@ const Create = (props) => {
             supplierBreed: data.supplierBreed,
             timeBreed: data.timeBreed,
           };
-          try {
-            const res = await axios.post(apiUrl + "/agricultural/create", {
-              producer,
-              breed,
-            });
-            if (res.data.success) {
-              setState({ success: res.data.success, error: "" });
-            }
-          } catch (error) {
-            error?.response?.data?.message &&
-              setState({
-                success: "",
-                error: Math.random(),
-              });
-          }
+          createAgriculturalRequest(
+            props.token,
+            props.dispatch,
+            producer,
+            breed
+          );
+          // try {
+          //   const res = await axios.post(apiUrl + "/agricultural/create", {
+          //     producer,
+          //     breed,
+          //   });
+          //   if (res.data.success) {
+          //     setState({ success: res.data.success, error: "" });
+          //   }
+          // } catch (error) {
+          //   error?.response?.data?.message &&
+          //     setState({
+          //       success: "",
+          //       error: Math.random(),
+          //     });
+          // }
         })(data);
       },
     });

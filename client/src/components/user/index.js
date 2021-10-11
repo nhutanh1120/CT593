@@ -1,44 +1,39 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  deleteAgriculturalRequest,
+  fetchAgricultural,
+} from "../../redux/actions/agriculturalActions";
 import "./../dashboard/body/body.css";
 import Create from "./create";
 import "./index.css";
 import ProductItem from "./productItem/productItem";
-import axios from "axios";
-import { apiUrl } from "../../constants";
 
 const Body = () => {
-  // const agricultural = useSelector((state) => state.agricultural);
-  // console.log(typeof agricultural);
-  const [agricultural, setstate] = useState(null);
-  useEffect(() => {
-    axios({
-      method: "get",
-      url: apiUrl + "/agricultural/all/read",
-      data: null,
-    })
-      .then((res) => {
-        setstate(res.data.agricultural);
-        console.log(res.data);
-      })
-      .catch((error) => {});
-  }, []);
+  const agricultural = useSelector((state) => state.agricultural);
+  const token = useSelector((state) => state.token);
+  const dispatch = useDispatch();
 
-  const onDelete = async (id) => {
-    try {
-      const response = await axios.delete(
-        apiUrl + "/agricultural/delete/" + id
-      );
-    } catch (error) {
-      console.error(error);
+  useEffect(() => {
+    if (token) {
+      fetchAgricultural(token, dispatch);
     }
+  }, [token, dispatch]);
+
+  const onDelete = (id) => {
+    deleteAgriculturalRequest(token, dispatch, id);
   };
 
   const [viewCreate, setViewCreate] = useState(false);
   const hideCreate = (value) => setViewCreate(value);
   return (
     <>
-      <Create styles={viewCreate} hideCreate={hideCreate} />
+      <Create
+        styles={viewCreate}
+        hideCreate={hideCreate}
+        token={token}
+        dispatch={dispatch}
+      />
       <div className="grid body">
         <div className="dashboard__body__header">
           <h2>Sản phẩm</h2>

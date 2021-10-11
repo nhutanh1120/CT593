@@ -11,12 +11,12 @@ import NotFound from "./notfound";
 
 const sidebarCurrent = [
   {
-    link: "/user",
+    link: "/user/dashboard",
     icon: "bx bx-grid-alt",
     title: "Dashboard",
   },
   {
-    link: "/user/setting",
+    link: "/user/dashboard/setting",
     icon: "bx bx-cog",
     title: "Setting",
   },
