@@ -34,12 +34,10 @@ const UserSchema = new Schema(
     },
     role: {
       type: Number,
-      default: 0, // 0 = user, 1 = admin
+      default: 0, // 0 = user, 1 = admin,
     },
     avatar: {
       type: String,
-      default:
-        "https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png",
     },
   },
   {

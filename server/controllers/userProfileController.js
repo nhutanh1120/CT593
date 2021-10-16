@@ -33,12 +33,21 @@ const userProfileControllers = {
   // @access private
   updateUser: async (req, res) => {
     try {
-      const { username, avatar } = req.body;
+      const { fullname, phone, address, avatar, ...rest } = req.body;
+      if (!fullname || !phone || !address || !avatar) {
+        return res.status(400).json({
+          success: false,
+          message: "Please fill all fields.",
+        });
+      }
       await Users.findOneAndUpdate(
         { _id: req.user.id },
         {
-          username,
+          fullname,
+          phone,
+          address,
           avatar,
+          ...rest,
         }
       );
 
@@ -51,7 +60,7 @@ const userProfileControllers = {
     }
   },
 
-  // @Router post /api/profile/update_role/:id
+  // @Router post /api/profile/role/update/:id
   // @access private
   updateUsersRole: async (req, res) => {
     try {
@@ -72,7 +81,29 @@ const userProfileControllers = {
         .json({ success: false, message: "Internal server error." });
     }
   },
+  // @Router post /api/profile/access/update/:id
+  // @access private
+  updateUsersAccess: async (req, res) => {
+    try {
+      const { access } = req.body;
 
+      await Users.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          access,
+        }
+      );
+
+      res.json({ success: true, message: "Update Success!" });
+    } catch (error) {
+      console.log(error);
+      res
+        .status(500)
+        .json({ success: false, message: "Internal server error." });
+    }
+  },
+  // @Router post /api/profile/delete/:id
+  // @access private
   deleteUser: async (req, res) => {
     try {
       await Users.findByIdAndDelete(req.params.id);

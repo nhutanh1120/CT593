@@ -1,14 +1,39 @@
 ###
 GET http://localhost:4000/api/profile/info
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZWZmNjY3ZmVmM2FjNGIyYWM4NiIsImlhdCI6MTYzMzIzOTMxNSwiZXhwIjoxNjMzMjQwMjE1fQ.OBzMPtjeFd6ba-tkQvMYNzGFZNFE18IcqkA2iy9kuz4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZjZlNDg0NzY0MDc0OGJkOWM1ZiIsImlhdCI6MTYzNDQwNzAwNSwiZXhwIjoxNjM1MDExODA1fQ.qVSszaGowNBH9b9q9cEP5VXAMkxi3_JudGPF9ZEhtqU
 
 ###
-GET http://localhost:4000/api/profile/all_info
+GET http://localhost:4000/api/profile/all/info
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjBlN2VlMjFiMDA5Mjk2MGRiNGJhYiIsImlhdCI6MTYzMDk1ODgxNywiZXhwIjoxNjMxNTYzNjE3fQ.A9vykeICBuIUbH-Pay4w-jwXz9xcn8bev0c-BR_04Q0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZWZmNjY3ZmVmM2FjNGIyYWM4NiIsImlhdCI6MTYzNDQwNzExMywiZXhwIjoxNjM1MDExOTEzfQ.n470bv_sQGeKTYK0rzy50gMjBIxd7o8jdGb10H60JrA
+
+### 
+PATCH http://localhost:4000/api/profile/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZjZlNDg0NzY0MDc0OGJkOWM1ZiIsImlhdCI6MTYzNDQwNzAwNSwiZXhwIjoxNjM1MDExODA1fQ.qVSszaGowNBH9b9q9cEP5VXAMkxi3_JudGPF9ZEhtqU
+
+{
+    "fullname": "Luu Tran Anh Nhut",
+    "phone": "0399234016",
+    "address": "Vinh long",
+    "description": "abcd",
+    "avatar": "abcd.jpg"
+}
+###
+PATCH  http://localhost:4000/api/profile/role/update/614b5f6e4847640748bd9c5f
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZWZmNjY3ZmVmM2FjNGIyYWM4NiIsImlhdCI6MTYzNDQwNzExMywiZXhwIjoxNjM1MDExOTEzfQ.n470bv_sQGeKTYK0rzy50gMjBIxd7o8jdGb10H60JrA
+
+{
+    "role": "1"
+}
 
 ###
-PATCH  http://localhost:4000/api/auth/update_role/6120e7ee21b0092960db4bab
+PATCH  http://localhost:4000/api/profile/access/update/614b5f6e4847640748bd9c5f
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjBlN2VlMjFiMDA5Mjk2MGRiNGJhYiIsImlhdCI6MTYyOTU2MzQ5MCwiZXhwIjoxNjMwMTY4MjkwfQ.M2sk3LRP5_g-2qMq__LOcgjpXpavvCzH9cLe_0uyp-4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZWZmNjY3ZmVmM2FjNGIyYWM4NiIsImlhdCI6MTYzNDQwNzExMywiZXhwIjoxNjM1MDExOTEzfQ.n470bv_sQGeKTYK0rzy50gMjBIxd7o8jdGb10H60JrA
+
+{
+    "access": "1"
+}

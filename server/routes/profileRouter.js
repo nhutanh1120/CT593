@@ -9,23 +9,32 @@ router.get("/info", verifyToken, userProfileController.getUserInfo);
 
 // @Router get /api/profile/all/info
 router.get(
-  "/all_info",
+  "/all/info",
   verifyToken,
   authAdmin,
   userProfileController.getUsersAllInfo
 );
 
-// @Router patch /api/auth/update
+// @Router patch /api/profile/update
 router.patch("/update", verifyToken, userProfileController.updateUser);
 
-// @Router patch /api/auth/update
+// @Router patch /api/profile/role/update/:id
 router.patch(
-  "/update_role/:id",
+  "/role/update/:id",
   verifyToken,
+  authAdmin,
   userProfileController.updateUsersRole
 );
 
-// @Router delete /api/auth/delete
-router.patch("/delete/:id", verifyToken, userProfileController.deleteUser);
+// @Router patch /api/profile/access/update/:id
+router.patch(
+  "/access/update/:id",
+  verifyToken,
+  authAdmin,
+  userProfileController.updateUsersAccess
+);
+
+// @Router delete /api/profile/delete
+router.delete("/delete/:id", verifyToken, userProfileController.deleteUser);
 
 module.exports = router;

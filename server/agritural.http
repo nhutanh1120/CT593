@@ -1,14 +1,24 @@
 GET http://localhost:4000/api/agricultural/all/read
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZjZlNDg0NzY0MDc0OGJkOWM1ZiIsImlhdCI6MTYzNDQwNDg5MCwiZXhwIjoxNjM1MDA5NjkwfQ.GoxAAxYQkDwkXOI4afMwJULCICMPhLnYInyuTcQ09EE
+
+###
+GET http://localhost:4000/api/agricultural/user/read/614b5f6e4847640748bd9c5f
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZjZlNDg0NzY0MDc0OGJkOWM1ZiIsImlhdCI6MTYzNDQwNDg5MCwiZXhwIjoxNjM1MDA5NjkwfQ.GoxAAxYQkDwkXOI4afMwJULCICMPhLnYInyuTcQ09EE
 
 ###
 GET http://localhost:4000/api/agricultural/read/613c85b780213313f480c88c
 
 ### 
 DELETE http://localhost:4000/api/agricultural/delete/61337ebaa330a8090c9d2b3e
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZjZlNDg0NzY0MDc0OGJkOWM1ZiIsImlhdCI6MTYzNDQwNDg5MCwiZXhwIjoxNjM1MDA5NjkwfQ.GoxAAxYQkDwkXOI4afMwJULCICMPhLnYInyuTcQ09EE
 
 ###
 PATCH http://localhost:4000/api/agricultural/update/613c82c2fd20fd30c0581b5d
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZjZlNDg0NzY0MDc0OGJkOWM1ZiIsImlhdCI6MTYzNDQwNDg5MCwiZXhwIjoxNjM1MDA5NjkwfQ.GoxAAxYQkDwkXOI4afMwJULCICMPhLnYInyuTcQ09EE
 
 {
   "producer": {
@@ -37,6 +47,7 @@ Content-Type: application/json
 ###
 POST http://localhost:4000/api/agricultural/create
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZjZlNDg0NzY0MDc0OGJkOWM1ZiIsImlhdCI6MTYzNDQwNDg5MCwiZXhwIjoxNjM1MDA5NjkwfQ.GoxAAxYQkDwkXOI4afMwJULCICMPhLnYInyuTcQ09EE
 
 {
   "producer": {

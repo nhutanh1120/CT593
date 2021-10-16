@@ -21,6 +21,30 @@ const agriculturalControllers = {
         .json({ success: false, message: "Internal server error." });
     }
   },
+  // @Router post /api/agricultural/user/read/:id
+  // @access private
+  readGroup: async (req, res) => {
+    try {
+      const agricultural = await AgriculturalModel.find({
+        producer: {
+          user_id: req.params.id,
+        },
+      });
+
+      res.json({
+        success: true,
+        message: "read agricultural success",
+        agricultural,
+      });
+    } catch (error) {
+      console.log(error);
+      res
+        .status(500)
+        .json({ success: false, message: "Internal server error." });
+    }
+  },
+  // @Router post /api/agricultural/read/:id
+  // @access private
   readAll: async (req, res) => {
     try {
       const agricultural = await AgriculturalModel.find();
@@ -108,7 +132,12 @@ const agriculturalControllers = {
       };
 
       const agriculturalUpdate = await AgriculturalModel.findOneAndUpdate(
-        { _id: req.params.id },
+        {
+          _id: req.params.id,
+          producer: {
+            user_id: req.user.id,
+          },
+        },
         updateAgricultural,
         { new: true }
       );
@@ -132,8 +161,11 @@ const agriculturalControllers = {
     try {
       const deletedAgricultural = await AgriculturalModel.findOneAndDelete({
         _id: req.params.id,
+        producer: {
+          user_id: req.user.id,
+        },
       });
-      const deleteAll = await AgriculturalModel.deleteMany({});
+
       if (!deletedAgricultural)
         return res.status(401).json({
           success: false,
