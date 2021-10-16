@@ -38,8 +38,8 @@ const Body = () => {
         <div className="dashboard__body__header">
           <h2>Sản phẩm</h2>
           <button className="btn" onClick={() => setViewCreate(!viewCreate)}>
-            <i className="bx bx-plus-circle bx-sm bx-spin-hover"></i>&nbsp;Thêm
-            mới
+            <i class="bx bx-plus bx-sm bx-burst-hover"></i>
+            <span className="tooltip__create">thêm mới</span>
           </button>
         </div>
 

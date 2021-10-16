@@ -4,7 +4,8 @@ import Video from "./../assets/video/ot-cover-video-9-3-mb.mp4";
 import Email from "./../components/layouts/email/email";
 import Footer from "./../components/layouts/footer/footer";
 import Header from "./../components/layouts/header/header";
-import ScrollTop from "../components/layouts/scrollTop/scrollTop";
+import ScrollTop from "./../components/layouts/scrollTop/scrollTop";
+import utility from "./../assets/img/utility.png";
 
 function Home() {
   return (
@@ -41,6 +42,46 @@ function Home() {
               toàn đơn giản.
             </p>
             <button variant="outline-info">Xem chi tiết</button>
+          </div>
+        </div>
+      </div>
+      <div className="grid wide home__utility">
+        <h2 className="text-center">CÔNG CỤ TIỆN ÍCH</h2>
+        <p className="text-center">
+          Công cụ quản lý chuỗi cung ứng nông sản và truy suất nguồn gốc sản
+          phẩm một cách nhanh chóng, dể dàng, mọi lúc mọi nơi.
+        </p>
+        <div className="row">
+          <div className="col l-8 m-8 c-12">
+            <img src={utility} alt="img" />
+          </div>
+          <div className="col l-4 m-4 c-12">
+            <div className="utility__item">
+              <h5>Công cụ quản lý chuỗi cung ứng trên máy tính</h5>
+              <div className="utility__icon">
+                <div className="utility__icon--group">
+                  <i class="bx bxl-chrome"></i>
+                  <p>chrome</p>
+                </div>
+                <div className="utility__icon--group">
+                  <i class="bx bxl-firefox"></i>
+                  <p>firefox</p>
+                </div>
+              </div>
+            </div>
+            <div className="utility__item">
+              <h5>Ứng dụng truy suất nguồn gốc trên mobile</h5>
+              <div className="utility__icon">
+                <div className="utility__icon--group">
+                  <i class="bx bxl-apple"></i>
+                  <p>ios</p>
+                </div>
+                <div className="utility__icon--group">
+                  <i class="bx bxl-android"></i>
+                  <p>android</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
