@@ -29,10 +29,12 @@ export const createAgriculturalRequest = (token, dispatch, producer, breed) => {
     )
     .then((res) => {
       dispatch(createAgricultural(res));
+      console.log(res.data.success);
+      return res.data.success;
     });
 };
+
 export const createAgricultural = (data) => {
-  console.log(data);
   return {
     type: ACTIONS.CREATE_AGRICULTURAL,
     payload: data,

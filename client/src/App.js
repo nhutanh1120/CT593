@@ -29,8 +29,9 @@ import {
 } from "./redux/actions/authAction";
 
 function App() {
+  const isLogin = localStorage.getItem("firstLogin");
   const auth = useSelector((state) => state.auth);
-  const { isLogged, isAdmin } = auth;
+  // const { isLogged, isAdmin } = auth;
 
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
@@ -77,9 +78,9 @@ function App() {
         {/* <Route path="/admin/dashboard" component={Dashboard} /> */}
         <Route
           path="/admin/dashboard"
-          component={isLogged && isAdmin ? Dashboard : NotFound}
+          component={isLogin ? Dashboard : NotFound}
         />
-        <Route path="/user/dashboard" component={User} />
+        <Route path="/user/dashboard" component={isLogin ? User : NotFound} />
         <Route path="/qr/:id" component={QrCode} />
         <Route path="/agricultural/:id" component={Agricultural} />
         <Route path="/test" component={Test} />

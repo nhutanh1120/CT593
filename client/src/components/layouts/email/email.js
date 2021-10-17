@@ -7,6 +7,7 @@ import {
 } from "./../../utils/notification/message";
 import { isEmail, isEmpty } from "./../../utils/validation/Validation";
 import "./styles.css";
+import { Prompt } from "react-router-dom";
 
 const initialState = {
   email: "",
@@ -14,11 +15,13 @@ const initialState = {
   error: "",
 };
 function Email() {
+  const [formIsHalfFilledOut, setFormIsHalfFilledOut] = useState(false);
   const [state, setState] = useState(initialState);
   const { email, success, error } = state;
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     setState({ [name]: value, error: "" });
+    setFormIsHalfFilledOut(true);
   };
   const handleInput = () => {
     const error = document.querySelector(".message__error__email");
@@ -66,6 +69,12 @@ function Email() {
   }, [success, error]);
   return (
     <div className="email--padding">
+      <Prompt
+        when={formIsHalfFilledOut}
+        message={(location) =>
+          "Bạn chắc chắn muốn chuyển đến " + location.pathname
+        }
+      />
       <div id="toast"></div>
       <div className="search__email email">
         <div className="search__header">

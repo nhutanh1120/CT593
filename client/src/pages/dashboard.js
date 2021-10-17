@@ -1,5 +1,6 @@
-import React from "react";
-import { Route, Switch, useRouteMatch } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { Route, Switch, useHistory, useRouteMatch } from "react-router-dom";
 import Email from "../components/dashboard/email";
 import Setting from "../components/dashboard/setting/setting";
 import ScrollTop from "../components/layouts/scrollTop/scrollTop";
@@ -11,8 +12,12 @@ import CopyRight from "./../components/layouts/copyright/copyright";
 import TopNavbar from "./../components/layouts/dashboard/navbar/navbar";
 import Sidebar from "./../components/layouts/dashboard/sidebar/sidebar";
 import NotFound from "./notfound";
-
 const sidebarCurrent = [
+  {
+    link: "/",
+    icon: "bx bx-home",
+    title: "Trang chủ",
+  },
   {
     link: "/admin/dashboard",
     icon: "bx bx-grid-alt",
@@ -28,26 +33,26 @@ const sidebarCurrent = [
     icon: "bx bx-chat",
     title: "Tin nhắn",
   },
-  {
-    link: "/",
-    icon: "bx bx-pie-chart-alt-2",
-    title: "Analytics",
-  },
-  {
-    link: "/",
-    icon: "bx bx-folder",
-    title: "File Manager",
-  },
-  {
-    link: "/",
-    icon: "bx bx-cart-alt",
-    title: "Order",
-  },
-  {
-    link: "/admin/dashboard/email",
-    icon: "bx bx-heart",
-    title: "Saved",
-  },
+  // {
+  //   link: "/",
+  //   icon: "bx bx-pie-chart-alt-2",
+  //   title: "Analytics",
+  // },
+  // {
+  //   link: "/",
+  //   icon: "bx bx-folder",
+  //   title: "File Manager",
+  // },
+  // {
+  //   link: "/",
+  //   icon: "bx bx-cart-alt",
+  //   title: "Order",
+  // },
+  // {
+  //   link: "/admin/dashboard/email",
+  //   icon: "bx bx-heart",
+  //   title: "Saved",
+  // },
   {
     link: "/admin/dashboard/setting",
     icon: "bx bx-cog",
@@ -56,6 +61,15 @@ const sidebarCurrent = [
 ];
 function Dashboard() {
   const match = useRouteMatch();
+  const auth = useSelector((state) => state.auth);
+  const { isLogged, isAdmin } = auth;
+  const history = useHistory();
+  useEffect(() => {
+    if (!isLogged || !isAdmin) {
+      history.push("/");
+    }
+  }, [isLogged, isAdmin, history]);
+
   return (
     <div className="App">
       <Sidebar sidebarCurrent={sidebarCurrent} />

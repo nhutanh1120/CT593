@@ -1,0 +1,85 @@
+.header__hidden--view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: transparent;
+  z-index: 1;
+  display: none;
+}
+.header__sign {
+  position: relative;
+  display: flex;
+  color: #fff;
+}
+.header__sign__profile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.header__sign__profile img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+.header__sign__dropdown {
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  width: max-content;
+  max-width: 400px;
+  background-color: var(--second-background);
+  box-shadow: var(--box-shadow);
+  border-radius: 15px;
+  overflow: hidden;
+  transform-origin: top right;
+  transform: scale(0);
+  transition: transform 0.3s ease 0s;
+  padding: 15px;
+  z-index: 100;
+  color: #333;
+  cursor: auto;
+}
+.header__sign__dropdown.active {
+  transform: scale(1);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.header__sign--title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 360px;
+}
+.header__sign--title h5 {
+  font-size: 16px;
+}
+.header__sign--title span {
+  font-size: 12px;
+  cursor: pointer;
+}
+.header__sign--profile {
+  display: flex;
+  align-items: center;
+}
+.header__sign--profile img {
+  width: 45px;
+  height: 45px;
+  margin: 5px;
+}
+.header__sign--profile span p {
+  font-size: 12px;
+}
+.header__sign--item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 0;
+  color: #333;
+}
+.header__sign--item i {
+  font-size: 25px;
+  margin-right: 10px;
+}

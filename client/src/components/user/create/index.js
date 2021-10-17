@@ -16,7 +16,7 @@ const Create = (props) => {
   const [state, setState] = useState(initialState);
   const { success, error } = state;
 
-  const validate = () => {
+  (() => {
     Validator({
       form: "#form__create__agricultural",
       formGroupSelector: ".form__group",
@@ -38,7 +38,7 @@ const Create = (props) => {
         Validator.isRequired("#timeBreed", "Vui lòng chọn thời gian"),
       ],
       onSubmit: function (data) {
-        (async (data) => {
+        ((data) => {
           const producer = {
             name: data.name,
             address: data.address,
@@ -56,34 +56,33 @@ const Create = (props) => {
             breed
           );
           // try {
-          //   const res = await axios.post(apiUrl + "/agricultural/create", {
+          //   const res = await createAgriculturalRequest(
+          //     props.token,
+          //     props.dispatch,
           //     producer,
-          //     breed,
-          //   });
-          //   if (res.data.success) {
-          //     setState({ success: res.data.success, error: "" });
+          //     breed
+          //   );
+          //   console.log(res);
+          //   if (res === true) {
+          //     setState({ success: res, error: "" });
           //   }
           // } catch (error) {
-          //   error?.response?.data?.message &&
-          //     setState({
-          //       success: "",
-          //       error: Math.random(),
-          //     });
+          //   setState({
+          //     success: "",
+          //     error: Math.random(),
+          //   });
           // }
         })(data);
       },
     });
-  };
+  })();
 
   useEffect(() => {
-    validate();
-  }, []);
-  useEffect(() => {
     if (error) {
-      showErrorToast("Thao tác thất bại vui lòng kiểm tra thông tin");
+      showErrorToast("Thao tác thất bại, vui lòng kiểm tra thông tin");
     }
     if (success) {
-      showSuccessToast("Thao tác thành công.");
+      showSuccessToast("Thao tác thành công, vui lòng kiểm tra lại thông tin.");
     }
   }, [error, success]);
 

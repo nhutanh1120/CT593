@@ -91,7 +91,7 @@ const FormLogin = () => {
 
           dispatch(dispatchLogin());
           if (!id) {
-            history.push("/dashboard");
+            history.push("/");
           }
         }
       } catch (error) {
@@ -113,7 +113,7 @@ const FormLogin = () => {
       setUser({ ...user, error: "", success: res.data.message });
       localStorage.setItem("firstLogin", true);
       dispatch(dispatchLogin());
-      history.push("/dashboard");
+      history.push("/");
     } catch (error) {
       error?.response?.data?.message &&
         setUser({ ...user, error: Math.random(), success: "" });
@@ -134,7 +134,7 @@ const FormLogin = () => {
       localStorage.setItem("firstLogin", true);
 
       dispatch(dispatchLogin());
-      history.push("/dashboard");
+      history.push("/");
     } catch (error) {
       error?.response?.data?.message &&
         setUser({ ...user, error: error.response.data.message, success: "" });

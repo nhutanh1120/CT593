@@ -1,28 +1,44 @@
-import React from "react";
-import { Route, Switch, useRouteMatch } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { Route, Switch, useHistory, useRouteMatch } from "react-router-dom";
+import Setting from "../components/dashboard/setting/setting";
+import Body from "../components/user";
+import "./../assets/css/dashboard.css";
+import CopyRight from "./../components/layouts/copyright/copyright";
 import TopNavbar from "./../components/layouts/dashboard/navbar/navbar";
 import Sidebar from "./../components/layouts/dashboard/sidebar/sidebar";
-import CopyRight from "./../components/layouts/copyright/copyright";
-import Body from "../components/user";
 import Detail from "./../components/user/detail/detail";
-import "./../assets/css/dashboard.css";
-import Setting from "../components/dashboard/setting/setting";
 import NotFound from "./notfound";
 
 const sidebarCurrent = [
   {
+    link: "/",
+    icon: "bx bx-home",
+    title: "Trang chủ",
+  },
+  {
     link: "/user/dashboard",
     icon: "bx bx-grid-alt",
-    title: "Dashboard",
+    title: "Bảng điều khiển",
   },
   {
     link: "/user/dashboard/setting",
     icon: "bx bx-cog",
-    title: "Setting",
+    title: "Cài đặt",
   },
 ];
 function User() {
   const match = useRouteMatch();
+  const auth = useSelector((state) => state.auth);
+  const { isLogged, isAdmin } = auth;
+
+  const history = useHistory();
+
+  useEffect(() => {
+    if (!isLogged || isAdmin) {
+      history.push("/");
+    }
+  }, [isLogged, isAdmin, history]);
 
   return (
     <div className="App">

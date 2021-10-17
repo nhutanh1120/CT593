@@ -34,10 +34,10 @@ function Contact() {
               <img src={QR} alt="img" />
               <div className="contact__utility--button">
                 <button>
-                  <i class="bx bxl-play-store bx-md"></i>&nbsp;google play
+                  <i className="bx bxl-play-store bx-md"></i>&nbsp;google play
                 </button>
                 <button>
-                  <i class="bx bxl-apple bx-md"></i>&nbsp;app store
+                  <i className="bx bxl-apple bx-md"></i>&nbsp;app store
                 </button>
               </div>
             </div>

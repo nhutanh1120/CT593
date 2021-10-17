@@ -32,7 +32,7 @@ const renderUserMenu = (item, index) => (
     key={index}
     onClick={item?.event ? handleLogout : () => true}
   >
-    <div className="message-item">
+    <div className="message-item message-item--center">
       <i className={item.icon}></i>
       <span>{item.content}</span>
     </div>

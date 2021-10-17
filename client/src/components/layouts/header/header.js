@@ -1,9 +1,25 @@
 import React, { useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "./../../../assets/img/1.webp";
+import Profile from "./profile";
 import "./styles.css";
 
+const sign = () => (
+  <ul className="navbar--pc--list navbar--header--sign">
+    <li>
+      <NavLink className="navbar--pc--link" to="/sign">
+        Đăng nhập
+      </NavLink>
+    </li>
+    <li>
+      <NavLink className="navbar--pc--link" to="/sign">
+        Đăng ký
+      </NavLink>
+    </li>
+  </ul>
+);
 function Header({ isActiveHeader }) {
+  const isLogin = localStorage.getItem("firstLogin");
   let navbarStyle = "navbar";
 
   if (isActiveHeader) {
@@ -90,18 +106,8 @@ function Header({ isActiveHeader }) {
               </NavLink>
             </li>
           </ul>
-          <ul className="navbar--pc--list navbar--header--sign">
-            <li>
-              <NavLink className="navbar--pc--link" to="/sign">
-                Đăng nhập
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className="navbar--pc--link" to="/sign">
-                Đăng ký
-              </NavLink>
-            </li>
-          </ul>
+
+          {isLogin ? <Profile /> : sign()}
         </div>
         <label htmlFor="navbar__mobile--input" className="navbar--btn">
           <i className="bx bx-menu bx-md"></i>

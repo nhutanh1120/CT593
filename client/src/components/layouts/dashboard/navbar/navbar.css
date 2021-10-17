@@ -42,6 +42,9 @@
   padding: 10px;
   color: var(--txt-color);
 }
+.message-item.message-item--center {
+  align-items: center;
+}
 .message-item:hover {
   background-color: var(--fourth-background);
 }

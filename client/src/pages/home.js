@@ -60,11 +60,11 @@ function Home() {
               <h5>Công cụ quản lý chuỗi cung ứng trên máy tính</h5>
               <div className="utility__icon">
                 <div className="utility__icon--group">
-                  <i class="bx bxl-chrome"></i>
+                  <i className="bx bxl-chrome"></i>
                   <p>chrome</p>
                 </div>
                 <div className="utility__icon--group">
-                  <i class="bx bxl-firefox"></i>
+                  <i className="bx bxl-firefox"></i>
                   <p>firefox</p>
                 </div>
               </div>
@@ -73,11 +73,11 @@ function Home() {
               <h5>Ứng dụng truy suất nguồn gốc trên mobile</h5>
               <div className="utility__icon">
                 <div className="utility__icon--group">
-                  <i class="bx bxl-apple"></i>
+                  <i className="bx bxl-apple"></i>
                   <p>ios</p>
                 </div>
                 <div className="utility__icon--group">
-                  <i class="bx bxl-android"></i>
+                  <i className="bx bxl-android"></i>
                   <p>android</p>
                 </div>
               </div>

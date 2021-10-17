@@ -19,7 +19,7 @@
 .product__header__content h5 {
   font-size: 18px;
   color: var(--second-color);
-  font-weight: 700;
+  font-weight: 600;
   text-transform: capitalize;
   line-height: 1;
 }

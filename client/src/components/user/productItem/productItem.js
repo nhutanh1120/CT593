@@ -1,13 +1,10 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import img from "./../../../assets/img/bg.jpg";
-import { apiUrl } from "../../../constants";
-import axios from "axios";
 
 const ProductItem = ({ agricultural, onDelete }) => {
   // console.log(agricultural);
 
-  // Delete agricultural
   const onDeletes = async () => {
     // if (confirm("Bạn có chắc chắn muốn xóa sản phẩm ?")) {
     onDelete(agricultural._id);
@@ -39,9 +36,12 @@ const ProductItem = ({ agricultural, onDelete }) => {
             <img src={img} alt="img" />
           </div>
           <div className="product__header__content">
-            <h5>luu moments</h5>
-            <span>ID ứng dụng: </span>
-            <span>Loại: Nông sản</span>
+            <h5>{agricultural.breed.nameBreed}</h5>
+            <span>ID nông sản: {agricultural._id} </span>
+            <span>
+              Loại nông sản:{" "}
+              {agricultural.typeAgricultural === 0 ? "Cây trồng" : "Vật nuôi"}{" "}
+            </span>
           </div>
         </div>
         <div className="product__footer">
