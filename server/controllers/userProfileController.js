@@ -5,9 +5,10 @@ const userProfileControllers = {
   // @access private
   getUserInfo: async (req, res) => {
     try {
+      console.log("get user request");
       const user = await Users.findById(req.user.id).select("-password");
 
-      res.json({ success: true, user });
+      res.json({ success: true, message: "Get information success.", user });
     } catch (error) {
       console.log(error);
       res
@@ -20,8 +21,9 @@ const userProfileControllers = {
   getUsersAllInfo: async (req, res) => {
     try {
       const users = await Users.find().select("-password");
+      console.log("get all user request");
 
-      res.json({ success: true, users });
+      res.json({ success: true, message: "Get information success.", users });
     } catch (error) {
       console.log(error);
       res
@@ -33,6 +35,7 @@ const userProfileControllers = {
   // @access private
   updateUser: async (req, res) => {
     try {
+      console.log("update user request");
       const { fullname, phone, address, avatar, ...rest } = req.body;
       if (!fullname || !phone || !address || !avatar) {
         return res.status(400).json({
@@ -65,7 +68,7 @@ const userProfileControllers = {
   updateUsersRole: async (req, res) => {
     try {
       const { role } = req.body;
-
+      console.log("update role user request");
       await Users.findOneAndUpdate(
         { _id: req.params.id },
         {
@@ -86,7 +89,7 @@ const userProfileControllers = {
   updateUsersAccess: async (req, res) => {
     try {
       const { access } = req.body;
-
+      console.log("update access user request");
       await Users.findOneAndUpdate(
         { _id: req.params.id },
         {
@@ -107,7 +110,6 @@ const userProfileControllers = {
   deleteUser: async (req, res) => {
     try {
       await Users.findByIdAndDelete(req.params.id);
-
       res.json({ success: true, message: "Deleted Success!" });
     } catch (error) {
       console.log(error);

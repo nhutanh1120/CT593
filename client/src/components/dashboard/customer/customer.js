@@ -1,47 +1,34 @@
-import React, { useRef, useState } from "react";
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import customerList from "./../../../assets/JsonData/customers.json";
-
-const useSortableData = (items, config = null) => {
-  const [sortConfig, setSortConfig] = React.useState(config);
-
-  const sortedItems = React.useMemo(() => {
-    let sortableItems = [...items];
-    if (sortConfig !== null) {
-      sortableItems.sort((a, b) => {
-        if (a[sortConfig.key] < b[sortConfig.key]) {
-          return sortConfig.direction === "ascending" ? -1 : 1;
-        }
-        if (a[sortConfig.key] > b[sortConfig.key]) {
-          return sortConfig.direction === "ascending" ? 1 : -1;
-        }
-        return 0;
-      });
-    }
-    return sortableItems;
-  }, [items, sortConfig]);
-
-  const requestSort = (key) => {
-    let direction = "ascending";
-    if (
-      sortConfig &&
-      sortConfig.key === key &&
-      sortConfig.direction === "ascending"
-    ) {
-      direction = "descending";
-    }
-    setSortConfig({ key, direction });
-  };
-
-  return { items: sortedItems, requestSort, sortConfig };
-};
+import { apiUrl } from "./../../../constants/index";
+// import customerList from "./../../../assets/JsonData/customers.json";
+import useSortableData from "./../../utils/sort/index";
+import TbodyData from "./tbody";
 
 const Customer = () => {
+  // Get data
+  const token = useSelector((state) => state.token);
+  const [customerList, setCustomerList] = useState([]);
   const [limit, setLimit] = useState(10);
-
   const [pagination, setPagination] = useState(
     customerList.slice(0, Number(limit))
   );
+
+  useEffect(() => {
+    (async () => {
+      const res = await axios.get(apiUrl + "/profile/all/info", {
+        headers: { Authorization: "Bearer " + token },
+      });
+      setCustomerList(res.data.users);
+    })();
+  }, [token]);
+
+  useEffect(() => {
+    setPagination(customerList.slice(0, Number(limit)));
+  }, [customerList, limit]);
+
   let pages = 1;
   let range = [];
 
@@ -87,8 +74,8 @@ const Customer = () => {
       <div className="dashboard__body__header">
         <h2>Quản lý người dùng</h2>
         <button className="btn">
-          <i className="bx bx-plus-circle bx-sm bx-spin-hover"></i>&nbsp;Thêm
-          mới
+          <i className="bx bx-plus bx-sm bx-burst-hover"></i>
+          <span className="tooltip__create">thêm mới</span>
         </button>
       </div>
       <div className="row">
@@ -101,7 +88,7 @@ const Customer = () => {
                     <tr>
                       <th>#</th>
                       <th>
-                        name
+                        họ tên
                         <div
                           className="th__icon"
                           onClick={() => requestSort("name")}
@@ -119,7 +106,7 @@ const Customer = () => {
                         </div>
                       </th>
                       <th>
-                        phone
+                        số điện thoại
                         <div
                           className="th__icon"
                           onClick={() => requestSort("phone")}
@@ -128,7 +115,7 @@ const Customer = () => {
                         </div>
                       </th>
                       <th>
-                        total orders
+                        sản phẩm
                         <div
                           className="th__icon"
                           onClick={() => requestSort("total orders")}
@@ -137,7 +124,7 @@ const Customer = () => {
                         </div>
                       </th>
                       <th>
-                        total spend
+                        vai trò
                         <div
                           className="th__icon"
                           onClick={() => requestSort("total spend")}
@@ -145,28 +132,12 @@ const Customer = () => {
                           <i className="bx bx-sort"></i>
                         </div>
                       </th>
-                      <th>
-                        location
-                        <div
-                          className="th__icon"
-                          onClick={() => requestSort("location")}
-                        >
-                          <i className="bx bx-sort"></i>
-                        </div>
-                      </th>
+                      <th>hành động</th>
                     </tr>
                   </thead>
                   <tbody>
                     {items.map((item, index) => (
-                      <tr className="table__body" key={index}>
-                        <td>{index + 1}</td>
-                        <td>{item.name}</td>
-                        <td>{item.email}</td>
-                        <td>{item.phone}</td>
-                        <td>{item.total_orders}</td>
-                        <td>{item.total_spend}</td>
-                        <td>{item.location}</td>
-                      </tr>
+                      <TbodyData key={index} item={item} index={index + 1} />
                     ))}
                   </tbody>
                 </table>

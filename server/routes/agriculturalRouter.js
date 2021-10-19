@@ -10,8 +10,8 @@ router.get("/all/read", verifyToken, agriculturalControllers.readAll);
 // localhost/api/agricultural/read/:id
 router.get("/read/:id", agriculturalControllers.read);
 
-// localhost/api/agricultural/user/read/:id
-router.get("/user/read/:id", verifyToken, agriculturalControllers.readGroup);
+// localhost/api/agricultural/user/read
+router.get("/user/read", verifyToken, agriculturalControllers.readGroup);
 
 // localhost/api/agricultural/create
 router.post("/create", verifyToken, agriculturalControllers.create);

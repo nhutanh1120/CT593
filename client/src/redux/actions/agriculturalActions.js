@@ -4,7 +4,7 @@ import * as ACTIONS from "../../constants/redux";
 
 export const fetchAgricultural = (token, dispatch) => {
   axios
-    .get(apiUrl + "/agricultural/all/read", {
+    .get(apiUrl + "/agricultural/user/read", {
       headers: { Authorization: "Bearer " + token },
     })
     .then((res) => {
@@ -29,8 +29,6 @@ export const createAgriculturalRequest = (token, dispatch, producer, breed) => {
     )
     .then((res) => {
       dispatch(createAgricultural(res));
-      console.log(res.data.success);
-      return res.data.success;
     });
 };
 
@@ -47,12 +45,16 @@ export const deleteAgriculturalRequest = (token, dispatch, id) => {
       headers: { Authorization: "Bearer " + token },
     })
     .then((res) => {
-      dispatch(deleteAgricultural(id));
+      const data = {
+        id,
+        success: res.data.success,
+      };
+      dispatch(deleteAgricultural(data));
     });
 };
-export const deleteAgricultural = (id) => {
+export const deleteAgricultural = (data) => {
   return {
     type: ACTIONS.DELETE_AGRICULTURAL,
-    payload: id,
+    payload: data,
   };
 };

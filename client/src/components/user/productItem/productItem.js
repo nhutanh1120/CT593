@@ -37,10 +37,12 @@ const ProductItem = ({ agricultural, onDelete }) => {
           </div>
           <div className="product__header__content">
             <h5>{agricultural.breed.nameBreed}</h5>
-            <span>ID nông sản: {agricultural._id} </span>
+            <span>ID nông sản:&nbsp;{agricultural._id} </span>
             <span>
-              Loại nông sản:{" "}
-              {agricultural.typeAgricultural === 0 ? "Cây trồng" : "Vật nuôi"}{" "}
+              Loại nông sản:&nbsp;
+              {agricultural.breed.typeAgricultural === 0
+                ? "Cây trồng"
+                : "Vật nuôi"}
             </span>
           </div>
         </div>
@@ -72,10 +74,16 @@ const ProductItem = ({ agricultural, onDelete }) => {
             <div className="product__footer--action" onClick={handleClick}>
               <i className="bx bx-dots-horizontal-rounded bx-sm"></i>
               <div className="product__dropdown__content">
-                <Link to="/user/detail/abcd" className="product--button">
+                <Link
+                  to={"/user/detail/" + agricultural._id}
+                  className="product--button"
+                >
                   Xem chi tiết
                 </Link>
-                <Link to="/user/detail" className="product--button">
+                <Link
+                  to={"/user/detail/" + agricultural._id}
+                  className="product--button"
+                >
                   Thêm hoạt động
                 </Link>
                 <button className="product--button">Hoàn thành</button>

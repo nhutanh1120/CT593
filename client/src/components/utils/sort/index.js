@@ -1,3 +1,5 @@
+import React from "react";
+
 const useSortableData = (items, config = null) => {
   const [sortConfig, setSortConfig] = React.useState(config);
 
@@ -29,8 +31,7 @@ const useSortableData = (items, config = null) => {
     setSortConfig({ key, direction });
   };
 
-  return { dataTable: sortedItems, requestSort };
-  // const { dataTable, requestSort } = useSortableData(customerList);
-
-  // console.log(dataTable);
+  return { items: sortedItems, requestSort, sortConfig };
 };
+
+export default useSortableData;

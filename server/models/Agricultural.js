@@ -4,12 +4,12 @@ const Schema = mongoose.Schema;
 const AgriculturalSchema = new Schema(
   {
     producer: {
-      user_id: {
+      user: {
         type: Schema.Types.ObjectId,
         ref: "users",
       },
-      name: String,
-      address: { type: String, required: true },
+      name: { type: String, required: true },
+      address: { type: String, required: true }, // Địa chỉ sản xuất
     },
     breed: {
       // Quản lý giống

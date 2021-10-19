@@ -3,7 +3,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZjZlNDg0NzY0MDc0OGJkOWM1ZiIsImlhdCI6MTYzNDQwNDg5MCwiZXhwIjoxNjM1MDA5NjkwfQ.GoxAAxYQkDwkXOI4afMwJULCICMPhLnYInyuTcQ09EE
 
 ###
-GET http://localhost:4000/api/agricultural/user/read/614b5f6e4847640748bd9c5f
+GET http://localhost:4000/api/agricultural/user/read
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZjZlNDg0NzY0MDc0OGJkOWM1ZiIsImlhdCI6MTYzNDQwNDg5MCwiZXhwIjoxNjM1MDA5NjkwfQ.GoxAAxYQkDwkXOI4afMwJULCICMPhLnYInyuTcQ09EE
 

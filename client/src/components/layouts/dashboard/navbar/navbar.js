@@ -74,7 +74,7 @@ const TopNavbar = ({ data }) => {
   };
 
   const auth = useSelector((state) => state.auth);
-  const { user } = auth;
+  const { user, role } = auth;
 
   const curr_user = {
     display_name: "Nhut Anh",
@@ -85,7 +85,8 @@ const TopNavbar = ({ data }) => {
     <div className="dashboard--navbar">
       <div className="dashboard--navbar__title">
         <h1>
-          <i className="bx bx-star bx-sm"></i>&nbsp;Quản trị viên
+          <i className={role === 1 ? "bx bx-star bx-sm" : "bx bx-user"}></i>
+          &nbsp;{role === 1 ? "Quản trị viên" : "Người tiêu dùng"}
         </h1>
       </div>
       <div className="dashboard__mobile" onClick={() => alert("view sidebar")}>

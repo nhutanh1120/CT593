@@ -1,25 +1,40 @@
 import * as Types from "./../../constants/redux";
 
-const initialState = [];
+const initialState = {
+  list: [],
+  success: null,
+};
 
 const agriculturalReducer = (state = initialState, action) => {
   switch (action.type) {
     case Types.GET_AGRICULTURAL: {
-      return action.payload.data.agricultural;
+      return {
+        ...state,
+        list: action.payload.data.agricultural,
+      };
     }
     case Types.CREATE_AGRICULTURAL: {
-      const newAgricultural = [...state];
-      newAgricultural.push(action.payload);
-      console.log(action);
-      return [...newAgricultural];
+      const newAgricultural = [...state.list];
+      newAgricultural.push(action.payload.data.agricultural);
+      if (action.payload.data.success) {
+      }
+      return {
+        ...state,
+        success: action.payload.data.success ? Math.random() : false,
+        list: newAgricultural,
+      };
     }
     case Types.DELETE_AGRICULTURAL: {
-      const newAgricultural = [...state];
+      const newAgricultural = [...state.list];
       const index = newAgricultural.findIndex(
-        (item) => item._id === action.payload
+        (item) => item._id === action.payload.id
       );
       newAgricultural.splice(index, 1);
-      return [...newAgricultural];
+      return {
+        ...state,
+        success: action.payload.success ? Math.random() : false,
+        list: newAgricultural,
+      };
     }
     default:
       return state;

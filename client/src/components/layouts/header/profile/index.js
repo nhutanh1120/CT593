@@ -1,8 +1,9 @@
 import React from "react";
-import { handleLogout } from "../../dashboard/sidebar/logout/handleLogout";
-import "./style.css";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { handleLogout } from "../../dashboard/sidebar/logout/handleLogout";
+import profile from "./../../../../assets/img/profile.jpg";
+import "./style.css";
 
 const Profile = () => {
   const auth = useSelector((state) => state.auth);
@@ -36,13 +37,21 @@ const Profile = () => {
       </div>
       <div className="header__sign__profile">
         <img
-          src="https://lh3.googleusercontent.com/a/AATXAJxhGKESfjpB3GAyNxIQpsheKl74w2Qq6ylZ4MfE=s96-c"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = profile;
+          }}
+          src="https://lh3.googleusercontent.com/a/AATXAJxhGKESfjpB3GAyNxIQpsheKl74w2Qq6ylZ4MfE=s96-cccccc"
           alt="img"
           onClick={handleView}
         />
         <div className="header__sign__dropdown">
           <div className="header__sign--profile">
             <img
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = profile;
+              }}
               src="https://lh3.googleusercontent.com/a/AATXAJxhGKESfjpB3GAyNxIQpsheKl74w2Qq6ylZ4MfE=s96-c"
               alt="img"
             />

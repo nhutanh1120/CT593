@@ -8,9 +8,13 @@ import "./../dashboard/body/body.css";
 import Create from "./create";
 import "./index.css";
 import ProductItem from "./productItem/productItem";
+import {
+  showErrorToast,
+  showSuccessToast,
+} from "./../utils/notification/message";
 
 const Body = () => {
-  const agricultural = useSelector((state) => state.agricultural);
+  const agricultural = useSelector((state) => state.agricultural.list);
   const token = useSelector((state) => state.token);
   const dispatch = useDispatch();
 
@@ -26,14 +30,24 @@ const Body = () => {
 
   const [viewCreate, setViewCreate] = useState(false);
   const hideCreate = (value) => setViewCreate(value);
+
+  const success = useSelector((state) => state.agricultural.success);
+  useEffect(() => {
+    if (success !== false && success !== null) {
+      showSuccessToast("Thao tác thành công, vui lòng kiểm tra lại thông tin.");
+    }
+    if (success === false) {
+      showErrorToast("Thao tác thất bại, vui lòng kiểm tra thông tin");
+    }
+  }, [success]);
   return (
     <>
-      <Create
-        styles={viewCreate}
-        hideCreate={hideCreate}
-        token={token}
-        dispatch={dispatch}
-      />
+      {viewCreate ? (
+        <Create hideCreate={hideCreate} token={token} dispatch={dispatch} />
+      ) : (
+        ""
+      )}
+      <div id="toast"></div>
       <div className="grid body">
         <div className="dashboard__body__header">
           <h2>Sản phẩm</h2>
@@ -53,9 +67,6 @@ const Body = () => {
                 />
               ))
             : ""}
-          <div className="col l-3 c-3 m-3">a</div>
-          <div className="col l-3 c-3 m-3">a</div>
-          <div className="col l-3 c-3 m-3">a</div>
         </div>
       </div>
     </>

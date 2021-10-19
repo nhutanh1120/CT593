@@ -5,6 +5,7 @@ const agriculturalControllers = {
   // @access private
   read: async (req, res) => {
     try {
+      console.log("read agricultural request");
       const agricultural = await AgriculturalModel.findOne({
         _id: req.params.id,
       });
@@ -21,16 +22,14 @@ const agriculturalControllers = {
         .json({ success: false, message: "Internal server error." });
     }
   },
-  // @Router post /api/agricultural/user/read/:id
+  // @Router post /api/agricultural/user/read/
   // @access private
   readGroup: async (req, res) => {
     try {
       const agricultural = await AgriculturalModel.find({
-        producer: {
-          user_id: req.params.id,
-        },
+        "producer.user": req.user.id,
       });
-
+      console.log("read group agricultural request");
       res.json({
         success: true,
         message: "read agricultural success",
@@ -48,7 +47,7 @@ const agriculturalControllers = {
   readAll: async (req, res) => {
     try {
       const agricultural = await AgriculturalModel.find();
-
+      console.log("read all agricultural request");
       res.json({
         success: true,
         message: "read agricultural success",
@@ -66,7 +65,7 @@ const agriculturalControllers = {
   create: async (req, res) => {
     try {
       const { producer, breed, ...rest } = req.body;
-
+      console.log("create agricultural request");
       if (!producer?.name && !producer?.address) {
         return res.status(400).json({
           success: false,
@@ -83,8 +82,14 @@ const agriculturalControllers = {
           message: "Please fill in the breed.",
         });
       }
+      const newProducer = {
+        user: req.user.id,
+        name: producer.name,
+        address: producer.address,
+      };
+
       const newAgricultural = {
-        producer,
+        producer: newProducer,
         breed,
         ...rest,
       };
@@ -95,6 +100,7 @@ const agriculturalControllers = {
       res.json({
         success: true,
         message: "create agricultural success",
+        agricultural,
       });
     } catch (error) {
       console.log(error);
@@ -108,7 +114,7 @@ const agriculturalControllers = {
   update: async (req, res) => {
     try {
       const { producer, breed, ...rest } = req.body;
-
+      console.log("update agricultural request");
       if (!producer?.name && !producer?.address) {
         return res.status(400).json({
           success: false,
@@ -134,9 +140,7 @@ const agriculturalControllers = {
       const agriculturalUpdate = await AgriculturalModel.findOneAndUpdate(
         {
           _id: req.params.id,
-          producer: {
-            user_id: req.user.id,
-          },
+          "producer.user": req.user.id,
         },
         updateAgricultural,
         { new: true }
@@ -161,11 +165,9 @@ const agriculturalControllers = {
     try {
       const deletedAgricultural = await AgriculturalModel.findOneAndDelete({
         _id: req.params.id,
-        producer: {
-          user_id: req.user.id,
-        },
+        "producer.user": req.user.id,
       });
-
+      console.log("delete agricultural request");
       if (!deletedAgricultural)
         return res.status(401).json({
           success: false,

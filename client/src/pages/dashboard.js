@@ -54,6 +54,11 @@ const sidebarCurrent = [
   //   title: "Saved",
   // },
   {
+    link: "/admin/dashboard/email",
+    icon: "bx bx-mail-send",
+    title: "Saved",
+  },
+  {
     link: "/admin/dashboard/setting",
     icon: "bx bx-cog",
     title: "Cài đặt",
