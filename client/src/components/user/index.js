@@ -31,9 +31,6 @@ const Body = () => {
   // show form create
   const [viewCreate, setViewCreate] = useState(false);
   const hideCreate = (value) => setViewCreate(value);
-  useEffect(() => {
-    setViewCreate(false);
-  }, []);
 
   // message
   const success = useSelector((state) => state.agricultural.success);

@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { createAgriculturalRequest } from "../../../redux/actions/agriculturalActions";
 import Validator from "../../utils/validation/Vanilla";
 import "./style.css";
 
 const Create = (props) => {
-  const [state, setState] = useState(null);
   const { fullname, address } = useSelector((state) => state.auth.user);
   useEffect(() => {
     (() => {
@@ -47,17 +46,18 @@ const Create = (props) => {
               producer,
               breed
             );
-            setState(true);
+            props.hideCreate(false);
           })(data);
         },
       });
     })();
-  }, [props.token, props.dispatch, state]);
-
-  if (state) props.hideCreate(false);
+  }, [props]);
 
   return (
-    <div className="agricultural__create" onClick={() => setState(true)}>
+    <div
+      className="agricultural__create"
+      onClick={() => props.hideCreate(false)}
+    >
       <form
         id="form__create__agricultural"
         className="form__create"

@@ -1,11 +1,60 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Validator from "./../../utils/validation/Vanilla";
+import moment from "moment";
 
 const Update = ({ data, hideUpdate }) => {
-  const [state, setState] = useState(null);
-  if (state) hideUpdate(false);
-  console.log(data.producer);
+  const token = useSelector((state) => state.token);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    (() => {
+      Validator({
+        form: "#form__create__agricultural",
+        formGroupSelector: ".form__group",
+        errorSelector: ".form__message",
+        rules: [
+          Validator.isRequired("#name", "Vui lòng nhập tên đầy đủ của bạn"),
+          Validator.minLength("#name", 10),
+          Validator.isRequired("#address", "Vui lòng nhập địa chỉ sản xuất"),
+          Validator.minLength("#address", 10),
+          Validator.isRequired(
+            "#typeAgricultural",
+            "Vui lòng chọn loại nông sản"
+          ),
+          Validator.isRequired("#nameBreed", "Vui lòng nhập tên nông sản"),
+          Validator.isRequired(
+            "#supplierBreed",
+            "Vui lòng nhà cung cấp nông sản"
+          ),
+          Validator.isRequired("#timeBreed", "Vui lòng chọn thời gian"),
+        ],
+        onSubmit: function (data) {
+          ((data) => {
+            // const producer = {
+            //   name: data.name,
+            //   address: data.address,
+            // };
+            // const breed = {
+            //   typeAgricultural: data.typeAgricultural,
+            //   nameBreed: data.nameBreed,
+            //   supplierBreed: data.supplierBreed,
+            //   timeBreed: data.timeBreed,
+            // };
+            // createAgriculturalRequest(
+            //   props.token,
+            //   props.dispatch,
+            //   producer,
+            //   breed
+            // );
+            hideUpdate(false);
+          })(data);
+        },
+      });
+    })();
+  }, [token, dispatch, hideUpdate]);
   return (
-    <div className="agricultural__create" onClick={() => setState(true)}>
+    <div className="agricultural__create" onClick={() => hideUpdate(false)}>
       <form
         id="form__create__agricultural"
         className="form__create"
@@ -21,7 +70,7 @@ const Update = ({ data, hideUpdate }) => {
             type="text"
             placeholder="Tên hiển thị"
             className="form__control"
-            defaultValue={data.producer.name ? data.name : ""}
+            defaultValue={data.producer.name ? data.producer.name : ""}
           />
           <span className="form__message"></span>
         </div>
@@ -35,7 +84,7 @@ const Update = ({ data, hideUpdate }) => {
             type="text"
             placeholder="Địa chỉ sản xuất"
             className="form__control"
-            defaultValue={data.producer.address ? data.address : ""}
+            defaultValue={data.producer.address ? data.producer.address : ""}
           />
           <span className="form__message"></span>
         </div>
@@ -47,8 +96,11 @@ const Update = ({ data, hideUpdate }) => {
             name="typeAgricultural"
             id="typeAgricultural"
             className="form__control"
+            defaultValue={
+              data.breed.typeAgricultural ? data.breed.typeAgricultural : ""
+            }
           >
-            <option value="">--Loại nông sản--</option>
+            <option value="">- - Loại nông sản - -</option>
             <option value="0">Cây trồng</option>
             <option value="1">Vật nuôi</option>
           </select>
@@ -64,6 +116,7 @@ const Update = ({ data, hideUpdate }) => {
             type="text"
             placeholder="Tên nông sản"
             className="form__control"
+            defaultValue={data.breed.nameBreed ? data.breed.nameBreed : ""}
           />
           <span className="form__message"></span>
         </div>
@@ -77,6 +130,9 @@ const Update = ({ data, hideUpdate }) => {
             type="text"
             placeholder="Nhà cung cấp"
             className="form__control"
+            defaultValue={
+              data.breed.supplierBreed ? data.breed.supplierBreed : ""
+            }
           />
           <span className="form__message"></span>
         </div>
@@ -90,6 +146,11 @@ const Update = ({ data, hideUpdate }) => {
             type="date"
             placeholder="Thời gian"
             className="form__control"
+            defaultValue={
+              data.breed.timeBreed
+                ? moment(data.breed.timeBreed).format("YYYY-MM-DD")
+                : false
+            }
           />
           <span className="form__message"></span>
         </div>
