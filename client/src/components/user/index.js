@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteAgriculturalRequest,
   fetchAgricultural,
 } from "../../redux/actions/agriculturalActions";
 import "./../dashboard/body/body.css";
-import Create from "./create";
-import "./index.css";
-import ProductItem from "./productItem/productItem";
 import {
   showErrorToast,
   showSuccessToast,
 } from "./../utils/notification/message";
+import Create from "./create";
+import "./index.css";
+import ProductItem from "./productItem/productItem";
 
 const Body = () => {
   const agricultural = useSelector((state) => state.agricultural.list);
@@ -28,16 +28,27 @@ const Body = () => {
     deleteAgriculturalRequest(token, dispatch, id);
   };
 
+  // show form create
   const [viewCreate, setViewCreate] = useState(false);
   const hideCreate = (value) => setViewCreate(value);
-
-  const success = useSelector((state) => state.agricultural.success);
   useEffect(() => {
-    if (success !== false && success !== null) {
-      showSuccessToast("Thao tác thành công, vui lòng kiểm tra lại thông tin.");
-    }
-    if (success === false) {
-      showErrorToast("Thao tác thất bại, vui lòng kiểm tra thông tin");
+    setViewCreate(false);
+  }, []);
+
+  // message
+  const success = useSelector((state) => state.agricultural.success);
+  const ref = useRef(success);
+  useEffect(() => {
+    if (ref.current !== success) {
+      ref.current = success;
+      if (success !== false && success !== null) {
+        showSuccessToast(
+          "Thao tác thành công, vui lòng kiểm tra lại thông tin."
+        );
+      }
+      if (success === false) {
+        showErrorToast("Thao tác thất bại, vui lòng kiểm tra thông tin");
+      }
     }
   }, [success]);
   return (

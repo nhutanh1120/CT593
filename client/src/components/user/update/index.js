@@ -1,61 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { createAgriculturalRequest } from "../../../redux/actions/agriculturalActions";
-import Validator from "../../utils/validation/Vanilla";
-import "./style.css";
+import React, { useState } from "react";
 
-const Create = (props) => {
+const Update = ({ data, hideUpdate }) => {
   const [state, setState] = useState(null);
-  const { fullname, address } = useSelector((state) => state.auth.user);
-  useEffect(() => {
-    (() => {
-      Validator({
-        form: "#form__create__agricultural",
-        formGroupSelector: ".form__group",
-        errorSelector: ".form__message",
-        rules: [
-          Validator.isRequired("#name", "Vui lòng nhập tên đầy đủ của bạn"),
-          Validator.minLength("#name", 10),
-          Validator.isRequired("#address", "Vui lòng nhập địa chỉ sản xuất"),
-          Validator.minLength("#address", 10),
-          Validator.isRequired(
-            "#typeAgricultural",
-            "Vui lòng chọn loại nông sản"
-          ),
-          Validator.isRequired("#nameBreed", "Vui lòng nhập tên nông sản"),
-          Validator.isRequired(
-            "#supplierBreed",
-            "Vui lòng nhà cung cấp nông sản"
-          ),
-          Validator.isRequired("#timeBreed", "Vui lòng chọn thời gian"),
-        ],
-        onSubmit: function (data) {
-          ((data) => {
-            const producer = {
-              name: data.name,
-              address: data.address,
-            };
-            const breed = {
-              typeAgricultural: data.typeAgricultural,
-              nameBreed: data.nameBreed,
-              supplierBreed: data.supplierBreed,
-              timeBreed: data.timeBreed,
-            };
-            createAgriculturalRequest(
-              props.token,
-              props.dispatch,
-              producer,
-              breed
-            );
-            setState(true);
-          })(data);
-        },
-      });
-    })();
-  }, [props.token, props.dispatch, state]);
-
-  if (state) props.hideCreate(false);
-
+  if (state) hideUpdate(false);
+  console.log(data.producer);
   return (
     <div className="agricultural__create" onClick={() => setState(true)}>
       <form
@@ -73,7 +21,7 @@ const Create = (props) => {
             type="text"
             placeholder="Tên hiển thị"
             className="form__control"
-            defaultValue={fullname ? fullname : ""}
+            defaultValue={data.producer.name ? data.name : ""}
           />
           <span className="form__message"></span>
         </div>
@@ -87,7 +35,7 @@ const Create = (props) => {
             type="text"
             placeholder="Địa chỉ sản xuất"
             className="form__control"
-            defaultValue={address ? address : ""}
+            defaultValue={data.producer.address ? data.address : ""}
           />
           <span className="form__message"></span>
         </div>
@@ -145,10 +93,10 @@ const Create = (props) => {
           />
           <span className="form__message"></span>
         </div>
-        <button className="form__submit">Tạo sản phẩm</button>
+        <button className="form__submit">Cập nhật thông tin</button>
       </form>
     </div>
   );
 };
 
-export default Create;
+export default Update;
