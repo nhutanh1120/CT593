@@ -39,6 +39,35 @@ export const createAgricultural = (data) => {
   };
 };
 
+export const updateAgriculturalRequest = (
+  token,
+  dispatch,
+  producer,
+  breed,
+  id
+) => {
+  axios
+    .patch(
+      apiUrl + "/agricultural/update/" + id,
+      {
+        producer,
+        breed,
+      },
+      {
+        headers: { Authorization: "Bearer " + token },
+      }
+    )
+    .then((res) => {
+      dispatch(updateAgricultural(res.data));
+    });
+};
+export const updateAgricultural = (data) => {
+  return {
+    type: ACTIONS.UPDATE_AGRICULTURAL,
+    payload: data,
+  };
+};
+
 export const deleteAgriculturalRequest = (token, dispatch, id) => {
   axios
     .delete(apiUrl + "/agricultural/delete/" + id, {

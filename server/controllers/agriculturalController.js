@@ -131,8 +131,13 @@ const agriculturalControllers = {
           message: "Please fill in the breed.",
         });
       }
+      const newProducer = {
+        user: req.user.id,
+        name: producer.name,
+        address: producer.address,
+      };
       const updateAgricultural = {
-        producer,
+        producer: newProducer,
         breed,
         ...rest,
       };
@@ -145,6 +150,7 @@ const agriculturalControllers = {
         updateAgricultural,
         { new: true }
       );
+
       await agriculturalUpdate.save();
 
       res.json({

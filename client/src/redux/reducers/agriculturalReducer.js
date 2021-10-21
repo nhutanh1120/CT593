@@ -16,11 +16,22 @@ const agriculturalReducer = (state = initialState, action) => {
     case Types.CREATE_AGRICULTURAL: {
       const newAgricultural = [...state.list];
       newAgricultural.push(action.payload.data.agricultural);
-      if (action.payload.data.success) {
-      }
       return {
         ...state,
         success: action.payload.data.success ? Math.random() : false,
+        list: newAgricultural,
+      };
+    }
+    case Types.UPDATE_AGRICULTURAL: {
+      const newAgricultural = [...state.list];
+      const index = newAgricultural.findIndex(
+        (item) => item._id === action.payload.data._id
+      );
+      console.log(action.payload);
+      newAgricultural[index] = action.payload.data;
+      return {
+        ...state,
+        success: action.payload.success ? Math.random() : false,
         list: newAgricultural,
       };
     }

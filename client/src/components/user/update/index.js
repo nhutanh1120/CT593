@@ -1,9 +1,11 @@
+import moment from "moment";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { updateAgriculturalRequest } from "./../../../redux/actions/agriculturalActions";
 import Validator from "./../../utils/validation/Vanilla";
-import moment from "moment";
 
 const Update = ({ data, hideUpdate }) => {
+  const id = data._id;
   const token = useSelector((state) => state.token);
   const dispatch = useDispatch();
 
@@ -31,28 +33,26 @@ const Update = ({ data, hideUpdate }) => {
         ],
         onSubmit: function (data) {
           ((data) => {
-            // const producer = {
-            //   name: data.name,
-            //   address: data.address,
-            // };
-            // const breed = {
-            //   typeAgricultural: data.typeAgricultural,
-            //   nameBreed: data.nameBreed,
-            //   supplierBreed: data.supplierBreed,
-            //   timeBreed: data.timeBreed,
-            // };
-            // createAgriculturalRequest(
-            //   props.token,
-            //   props.dispatch,
-            //   producer,
-            //   breed
-            // );
+            const producer = {
+              name: data.name,
+              address: data.address,
+            };
+            const breed = {
+              typeAgricultural: data.typeAgricultural,
+              nameBreed: data.nameBreed,
+              supplierBreed: data.supplierBreed,
+              timeBreed: data.timeBreed,
+            };
+            console.log(producer);
+            console.log(breed);
+            updateAgriculturalRequest(token, dispatch, producer, breed, id);
             hideUpdate(false);
           })(data);
         },
       });
     })();
-  }, [token, dispatch, hideUpdate]);
+  }, [token, dispatch, hideUpdate, id]);
+
   return (
     <div className="agricultural__create" onClick={() => hideUpdate(false)}>
       <form
@@ -96,9 +96,7 @@ const Update = ({ data, hideUpdate }) => {
             name="typeAgricultural"
             id="typeAgricultural"
             className="form__control"
-            defaultValue={
-              data.breed.typeAgricultural ? data.breed.typeAgricultural : ""
-            }
+            defaultValue={data.breed.typeAgricultural}
           >
             <option value="">- - Loại nông sản - -</option>
             <option value="0">Cây trồng</option>
