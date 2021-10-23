@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import notifications from "../../../../assets/JsonData/notification.json";
 import user_menu from "../../../../assets/JsonData/user_menu.json";
-import ThemeMenu from "../../../dashboard/themeMenu/";
+import ThemeMenu from "./theme/";
 import profile from "./../../../../assets/img/profile.jpg";
 import { handleLogout } from "./../sidebar/logout/handleLogout";
 import Dropdown from "./dropdown/Dropdown";

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./../assets/css/agricultural.css";
-import FormLogin from "./../components/auth/formLogin";
+import FormLogin from "./../components/auth/FormLogin";
 import ScrollTop from "../components/layouts/scrollTop/scrollTop";
 import { apiUrl } from "./../constants";
 

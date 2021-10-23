@@ -7,7 +7,7 @@ import "./App.css";
 import "./assets/css/grid.css";
 import "./assets/css/theme.css";
 import "./assets/font/css2.css";
-import ActivationEmail from "./components/auth/activationEmail";
+import ActivationEmail from "./components/auth/ActivationEmail";
 import { apiUrl } from "./constants/";
 import About from "./pages/about";
 import Agricultural from "./pages/agricultural";

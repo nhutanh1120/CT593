@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./../assets/css/auth.css";
-import FormLogin from "./../components/auth/formLogin";
-import FormSignup from "./../components/auth/formSignup";
-import Panels from "./../components/auth/panels";
+import FormLogin from "./../components/auth/FormLogin";
+import FormSignup from "./../components/auth/FormSignup";
+import Panels from "./../components/auth/Panels";
 
 function Auth() {
   let sign = " ";
