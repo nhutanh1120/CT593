@@ -1,11 +1,12 @@
 import React from "react";
 import "./../assets/css/home.css";
+import utility from "./../assets/img/utility.png";
 import Video from "./../assets/video/ot-cover-video-9-3-mb.mp4";
 import Email from "./../components/layouts/email/email";
 import Footer from "./../components/layouts/footer/footer";
 import Header from "./../components/layouts/header/header";
 import ScrollTop from "./../components/layouts/scrollTop/scrollTop";
-import utility from "./../assets/img/utility.png";
+import home1 from "./../assets/img/home2.jpg";
 
 function Home() {
   return (
@@ -31,9 +32,9 @@ function Home() {
           </div>
         </div>
       </section>
-      <div>
-        <div>
-          <div className="ve-chung-toi">
+      <div className="grid wide">
+        <div className="row">
+          <div className="col l-4 ve-chung-toi">
             <span>Về chúng tôi</span>
             <p className="mt-3">
               Bằng chiếc điện thoại di động thông minh của mình, ở bất kỳ đâu,
@@ -42,6 +43,35 @@ function Home() {
               toàn đơn giản.
             </p>
             <button variant="outline-info">Xem chi tiết</button>
+          </div>
+        </div>
+      </div>
+      <div className="home__product">
+        <div className="grid wide">
+          <div className="row">
+            <div className="col l-7 m-12 c-12 home__product--left">
+              <h5>Quản lý nguồn gốc sản phẩm dể dàng</h5>
+              <p>
+                Luu moments agricultural hiện là nền tảng quản lý chuỗi cung ứng
+                nông sản và truy suất nguồn góc sản phẩm nhanh chóng.
+              </p>
+              <p>
+                Đồng hành cùng chúng tôi, bạn có thể quản lý chuỗi cung ứng của
+                mình một cách dể dàng. Với Luu moments, việc truy suất nguồn gốc
+                nông sản như cây trồng, vật nuôi... trở nên nhanh chóng, thuận
+                tiện và dễ dàng.
+              </p>
+            </div>
+            <div className="col l-5 m-12 c-12">
+              <div className="home__product--right">
+                <img src={home1} alt="images" />
+                <p>
+                  Vui lòng truy cập trang web luu moment để truy suất nguồn gốc
+                  và quản lý nông sản của bạn.
+                </p>
+                <button>Luu moment</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

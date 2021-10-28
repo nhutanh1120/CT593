@@ -4,7 +4,7 @@ import logo from "./../../../assets/img/1.webp";
 import Profile from "./profile";
 import "./styles.css";
 
-const sign = () => (
+const Sign = () => (
   <ul className="navbar--pc--list navbar--header--sign">
     <li>
       <NavLink className="navbar--pc--link" to="/sign">
@@ -107,7 +107,7 @@ function Header({ isActiveHeader }) {
             </li>
           </ul>
 
-          {isLogin ? <Profile /> : sign()}
+          {isLogin ? <Profile /> : <Sign />}
         </div>
         <label htmlFor="navbar__mobile--input" className="navbar--btn">
           <i className="bx bx-menu bx-md"></i>
