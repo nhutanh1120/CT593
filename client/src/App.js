@@ -14,7 +14,7 @@ import Agricultural from "./pages/agricultural";
 import Auth from "./pages/auth";
 import Contact from "./pages/contact";
 import Dashboard from "./pages/dashboard";
-import Events from "./pages/events";
+import Product from "./pages/product";
 import ForgotPassword from "./pages/forgotPassword";
 import Home from "./pages/home";
 import NotFound from "./pages/notfound";
@@ -66,7 +66,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/post" component={Post} />
-        <Route path="/event" component={Events} />
+        <Route path="/product" component={Product} />
         <Route path="/contact" component={Contact} />
         <Route path="/sign" component={Auth} />
         <Route

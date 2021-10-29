@@ -107,9 +107,9 @@
 
 /* product pages home  */
 .home__product {
-  background-image: url("./../img/home1.jpg");
   position: relative;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-image: url("./../img/home1.jpg");
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   height: 850px;

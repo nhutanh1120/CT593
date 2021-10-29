@@ -78,21 +78,21 @@ function Header({ isActiveHeader }) {
             <li>
               <NavLink
                 className="navbar--pc--link"
-                to="/post"
+                to="/product"
                 activeClassName="selected"
                 exact
               >
-                Tin tức
+                Nông sản
               </NavLink>
             </li>
             <li>
               <NavLink
                 className="navbar--pc--link"
-                to="/event"
+                to="/post"
                 activeClassName="selected"
                 exact
               >
-                Sự kiện
+                Tin tức
               </NavLink>
             </li>
             <li>
@@ -148,23 +148,23 @@ function Header({ isActiveHeader }) {
             <li className="navbar__mobile--item">
               <NavLink
                 className="nav__mobile--link"
+                to="/product"
+                activeClassName="isActiveMobile"
+                exact
+              >
+                <i className="bx bx-calendar-event"></i>
+                <span>Nông sản</span>
+              </NavLink>
+            </li>
+            <li className="navbar__mobile--item">
+              <NavLink
+                className="nav__mobile--link"
                 to="/post"
                 activeClassName="isActiveMobile"
                 exact
               >
                 <i className="bx bx-news"></i>
                 <span>Tin tức</span>
-              </NavLink>
-            </li>
-            <li className="navbar__mobile--item">
-              <NavLink
-                className="nav__mobile--link"
-                to="/event"
-                activeClassName="isActiveMobile"
-                exact
-              >
-                <i className="bx bx-calendar-event"></i>
-                <span>Sự kiện</span>
               </NavLink>
             </li>
             <li className="navbar__mobile--item">
