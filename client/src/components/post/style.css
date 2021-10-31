@@ -1,0 +1,89 @@
+.post__card__hidden {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: none;
+}
+.post__card {
+  max-width: 100%;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 10px;
+}
+.post__card__head {
+  position: relative;
+}
+.post__card__head img {
+  width: 100%;
+  height: 180px;
+  border-radius: 10px 10px 0 0;
+}
+.post__card--overlay {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  color: #fff;
+}
+.post__card--overlay h5 {
+  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 500;
+}
+.post__card--overlay p {
+  font-size: 12px;
+}
+.card__overlay--right {
+  position: relative;
+  cursor: pointer;
+}
+.post__card__dropdown {
+  position: absolute;
+  right: 0;
+  transform-origin: top right;
+  transform: scale(0);
+  transition: all 0.3s;
+}
+.post__card__dropdown.active {
+  transform: scale(1);
+}
+.post__card__dropdown ul {
+  background-color: #fff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  list-style: none;
+  border-radius: 10px;
+  width: max-content;
+  padding: 8px 0;
+}
+.post__card__dropdown ul li {
+  z-index: 1;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 14px;
+  padding: 5px 10px;
+}
+.post__card__dropdown ul li:hover {
+  background-color: lightpink;
+}
+.post__card__body {
+  width: 100%;
+  padding: 10px;
+}
+.post__card__body small {
+  color: rgba(0, 0, 0, 0.8);
+}
+.post__card__body h2 {
+  margin: 10px 0;
+}
+.post__card__link {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0 5px;
+}
+.post__card__link button {
+  color: blue;
+  cursor: pointer;
+}

@@ -3,3 +3,49 @@
   min-height: 70vh;
   margin-top: 60px;
 }
+.post__header {
+  position: relative;
+  text-transform: uppercase;
+  font-size: 20px;
+  margin: 20px 0 30px;
+  padding: 0 10px 5px;
+  border-bottom: 1px solid #ddbfbf;
+}
+.post__header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 125px;
+  height: 3px;
+  background-color: blue;
+}
+.post__theme {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  bottom: 0;
+  width: 33.33%;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.post__theme h2 {
+  margin: 20px 0 10px;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.post__theme__item {
+  width: max-content;
+  color: #333;
+  font-weight: 500;
+  line-height: 1.8;
+  background-color: #f2f2f2;
+  border-radius: 30px;
+  padding: 6px 16px;
+  display: block;
+}
+.post__theme__item:hover {
+  color: red;
+}
