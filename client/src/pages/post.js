@@ -37,6 +37,9 @@ const Post = () => {
             <div className="post__theme">
               <h2>CÁC CHỦ ĐỀ ĐƯỢC ĐỀ XUẤT</h2>
               <div className="post__theme__item">adnajskd</div>
+              {state.length === 0 && (
+                <div className="post__theme__item">không có dử liệu</div>
+              )}
             </div>
           </div>
         </div>

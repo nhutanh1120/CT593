@@ -9,6 +9,7 @@
   border-radius: 10px;
   margin-bottom: 20px;
   color: var(--second-color);
+  box-shadow: var(--box-shadow);
 }
 .empty span {
   text-align: center;
