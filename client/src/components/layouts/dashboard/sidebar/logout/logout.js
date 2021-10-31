@@ -11,7 +11,7 @@ const Logout = ({ fullname, permission, avatar }) => {
             e.target.onerror = null;
             e.target.src = profile;
           }}
-          src={avatar}
+          src={avatar || profile}
           alt="profileImg"
         />
         <div className="name_job">

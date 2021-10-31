@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import notifications from "../../../../assets/JsonData/notification.json";
-import user_menu from "../../../../assets/JsonData/user_menu.json";
-import ThemeMenu from "./theme/";
 import profile from "./../../../../assets/img/profile.jpg";
 import { handleLogout } from "./../sidebar/logout/handleLogout";
 import Dropdown from "./dropdown/Dropdown";
 import "./navbar.css";
 import "./search.css";
+import ThemeMenu from "./theme/";
 
 const renderUserToggle = (user) => (
   <div className="navbar__profile--user">
@@ -18,7 +17,7 @@ const renderUserToggle = (user) => (
           e.target.onerror = null;
           e.target.src = profile;
         }}
-        src={user.image}
+        src={user.image || profile}
         alt="img"
       />
     </div>
@@ -45,7 +44,7 @@ const renderNotificationItem = (item, index) => (
   </div>
 );
 
-const TopNavbar = ({ data }) => {
+const TopNavbar = ({ data, userMenu }) => {
   const [filter, setFilter] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 
@@ -133,7 +132,7 @@ const TopNavbar = ({ data }) => {
         <div className="navbar__profile--item">
           <Dropdown
             customToggle={() => renderUserToggle(curr_user)}
-            contentData={user_menu}
+            contentData={userMenu}
             renderItems={(item, index) => renderUserMenu(item, index)}
           />
         </div>

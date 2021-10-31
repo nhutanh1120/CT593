@@ -4,6 +4,7 @@ import {
   deleteAgriculturalRequest,
   fetchAgricultural,
 } from "../../redux/actions/agriculturalActions";
+import Empty from "../utils/empty/data";
 import "./../dashboard/body/body.css";
 import {
   showErrorToast,
@@ -15,6 +16,7 @@ import ProductItem from "./productItem/productItem";
 
 const Body = () => {
   const agricultural = useSelector((state) => state.agricultural.list);
+
   const token = useSelector((state) => state.token);
   const dispatch = useDispatch();
 
@@ -66,15 +68,17 @@ const Body = () => {
         </div>
 
         <div className="row dashboard__body--min--height">
-          {agricultural
-            ? agricultural.map((agricultural, index) => (
-                <ProductItem
-                  key={index}
-                  agricultural={agricultural}
-                  onDelete={onDelete}
-                />
-              ))
-            : ""}
+          {agricultural.length ? (
+            agricultural.map((agricultural, index) => (
+              <ProductItem
+                key={index}
+                agricultural={agricultural}
+                onDelete={onDelete}
+              />
+            ))
+          ) : (
+            <Empty />
+          )}
         </div>
       </div>
     </>

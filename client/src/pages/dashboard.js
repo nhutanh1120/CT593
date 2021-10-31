@@ -5,6 +5,7 @@ import Email from "../components/dashboard/email";
 import Setting from "../components/dashboard/setting/setting";
 import ScrollTop from "../components/layouts/scrollTop/scrollTop";
 import "./../assets/css/dashboard.css";
+import admin_menu from "./../assets/JsonData/admin_menu.json";
 import customerList from "./../assets/JsonData/customers.json";
 import Body from "./../components/dashboard/body/body";
 import Customer from "./../components/dashboard/customer/customer";
@@ -12,6 +13,7 @@ import CopyRight from "./../components/layouts/copyright/copyright";
 import TopNavbar from "./../components/layouts/dashboard/navbar/navbar";
 import Sidebar from "./../components/layouts/dashboard/sidebar/sidebar";
 import NotFound from "./notfound";
+
 const sidebarCurrent = [
   {
     link: "/",
@@ -79,7 +81,7 @@ function Dashboard() {
     <div className="App">
       <Sidebar sidebarCurrent={sidebarCurrent} />
       <section className="home-section">
-        <TopNavbar data={customerList} />
+        <TopNavbar data={customerList} userMenu={admin_menu} />
 
         <Switch>
           <Route exact path={match.url + "/"} component={Body}></Route>

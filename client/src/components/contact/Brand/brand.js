@@ -1,5 +1,5 @@
 import React from "react";
-import img from "./../../../assets/img/contact1.png";
+import img from "./../../../assets/img/contact.jpeg";
 import "./style.css";
 
 const Brand = () => {

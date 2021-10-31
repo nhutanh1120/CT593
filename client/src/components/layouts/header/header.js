@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
-import logo from "./../../../assets/img/1.webp";
+// import logo from "./../../../assets/img/1.webp";
+import logo from "./../../../assets/img/logo/logo1.png";
 import Profile from "./profile";
 import "./styles.css";
 
@@ -45,11 +46,12 @@ function Header({ isActiveHeader }) {
       <div className="container">
         <Link className="navbar--logo" to="/">
           <div className="navbar--logo--content">
-            <img src={logo} alt="logo" />
+            {/* <img src={logo} alt="logo" />
             <div className="logo--item">
               <h2>LUU MOMENTS</h2>
               <span>Agricultural</span>
-            </div>
+            </div> */}
+            <img src={logo} alt="logo" />
           </div>
         </Link>
         <div className="navbar--pc">

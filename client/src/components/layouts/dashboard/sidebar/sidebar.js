@@ -7,7 +7,7 @@ import "./sidebar.css";
 const Sidebar = ({ sidebarCurrent }) => {
   const auth = useSelector((state) => state.auth);
 
-  const { user, isLogged } = auth;
+  const { user, isLogged, isAdmin } = auth;
 
   useEffect(() => {
     let sidebar = document.querySelector(".dashboard--sidebar");
@@ -53,10 +53,12 @@ const Sidebar = ({ sidebarCurrent }) => {
           </li>
         ))}
 
-        {isLogged ? (
-          <Logout fullname="nhựt anh" permission="admin" avatar={user.avatar} />
-        ) : (
-          ""
+        {isLogged && (
+          <Logout
+            fullname="nhựt anh"
+            permission={(isAdmin && "quản trị") || "người dùng"}
+            avatar={user.avatar}
+          />
         )}
       </ul>
     </div>

@@ -41,9 +41,14 @@
 }
 
 /* logo  */
+.navbar--logo--content img {
+  width: 115px;
+  height: auto;
+}
+/*
 .navbar__logo {
   padding-top: 0.3125rem;
-  padding-bottom: 0.3125rem;
+  padding-bottom: 0.3125rem; 
   margin-right: 1rem;
   font-size: 1.25rem;
   text-decoration: none;
@@ -79,6 +84,7 @@
   font-size: 0.4rem;
   text-align: left;
 }
+*/
 /* end logo  */
 
 .navbar--pc {

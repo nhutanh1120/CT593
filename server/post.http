@@ -1,31 +1,32 @@
-
-###
-POST http://localhost:4000/api/post/
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTE3YzVlYjZkMDIzNzBkZDQzOTUwZTAiLCJpYXQiOjE2Mjg5NTg3NzF9.b9Di8lhKDnIzIsCG2YCir8IohKe4Ej3nxEPtkqOPqtE
-
-{
-  "title": "a", 
-  "description": "b",
-  "url": "c", 
-  "status": "LEARNING"
-}
+GET http://localhost:4000/api/post/all
 
 ###
 GET http://localhost:4000/api/post/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTE3YzVlYjZkMDIzNzBkZDQzOTUwZTAiLCJpYXQiOjE2Mjg5NTg3NzF9.b9Di8lhKDnIzIsCG2YCir8IohKe4Ej3nxEPtkqOPqtE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNTYzMjMyMywiZXhwIjoxNjM2MjM3MTIzfQ.17FdA37SlukN9t3RKseG8nP6bKdPw8eR88KH3y8aQH8
 
 ###
-PUT  http://localhost:4000/api/post/6117cd0f39838e1a1cd5b42b
+POST http://localhost:4000/api/post/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTE3YzVlYjZkMDIzNzBkZDQzOTUwZTAiLCJpYXQiOjE2Mjg5NTg3NzF9.b9Di8lhKDnIzIsCG2YCir8IohKe4Ej3nxEPtkqOPqtE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNTYzMjMyMywiZXhwIjoxNjM2MjM3MTIzfQ.17FdA37SlukN9t3RKseG8nP6bKdPw8eR88KH3y8aQH8
 
 {
-  "title": "update vue"
+  "title": "bai 2", 
+  "description": "b",
+  "attachment": "c"
 }
 
 ###
-DELETE  http://localhost:4000/api/post/6117cd0f39838e1a1cd5b42b
+PUT  http://localhost:4000/api/post/617dc53170245d55afcd15e2
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTE3YzVlYjZkMDIzNzBkZDQzOTUwZTAiLCJpYXQiOjE2Mjg5NTg3NzF9.b9Di8lhKDnIzIsCG2YCir8IohKe4Ej3nxEPtkqOPqtE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNTYzMjMyMywiZXhwIjoxNjM2MjM3MTIzfQ.17FdA37SlukN9t3RKseG8nP6bKdPw8eR88KH3y8aQH8
+
+{
+  "title": "update vue",
+  "description": "update b"
+}
+
+###
+DELETE  http://localhost:4000/api/post/617dc53170245d55afcd15e2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNTYzMjMyMywiZXhwIjoxNjM2MjM3MTIzfQ.17FdA37SlukN9t3RKseG8nP6bKdPw8eR88KH3y8aQH8

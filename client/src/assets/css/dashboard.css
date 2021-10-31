@@ -2,7 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 0 20px;
+  margin: 10px 0;
+  min-height: 50px;
 }
 .dashboard__body__header h2 {
   background-color: var(--second-background);
@@ -27,6 +28,7 @@
 }
 .dashboard__body__header button i {
   font-weight: bold;
+  margin-top: 4px;
 }
 .dashboard__body__header button .tooltip__create {
   position: absolute;

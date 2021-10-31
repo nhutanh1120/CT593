@@ -2,17 +2,17 @@
   {
     "icon": "bx bx-user",
     "content": "Cá nhân",
-    "path": "/user/dashboard/"
+    "path": "/admin/dashboard/"
   },
   {
     "icon": "bx bx-wallet-alt",
     "content": "Sản phẩm",
-    "path": "/user/dashboard/saved"
+    "path": "/admin/dashboard/saved"
   },
   {
     "icon": "bx bx-cog",
     "content": "Cài đặt",
-    "path": "/user/dashboard/setting"
+    "path": "/admin/dashboard/setting"
   },
   {
     "icon": "bx bx-log-out-circle bx-rotate-180",

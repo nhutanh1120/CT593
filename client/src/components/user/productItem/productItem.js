@@ -24,17 +24,47 @@ const ProductItem = ({ agricultural, onDelete }) => {
   const handleClick = (e) => {
     const content__current = e.target.nextSibling;
     if (!content__current) return;
-    content__current.classList.toggle("active--dropdown");
+    content__current?.classList?.toggle("active--dropdown");
     ref.current.style.display = "block";
   };
   const closeElement = () => {
     const closeElements = document.querySelectorAll(".active--dropdown");
     if (!closeElements) return;
     closeElements.forEach((element) => {
-      element.classList.remove("active--dropdown");
+      element?.classList?.remove("active--dropdown");
     });
     ref.current.style.display = "none";
   };
+  const Dropdown = () => (
+    <div className="product__dropdown__content">
+      <Link to={"/user/detail/" + agricultural._id} className="product--button">
+        Xem chi tiết
+      </Link>
+      <Link to={"/user/detail/" + agricultural._id} className="product--button">
+        Thêm hoạt động
+      </Link>
+      <button
+        className="product--button"
+        onClick={() => {
+          setViewUpdate(!viewUpdate);
+          closeElement();
+        }}
+      >
+        Cập nhật thông tin
+      </button>
+      <button className="product--button">Hoàn thành</button>
+      <button className="product--button" onClick={onDeletes}>
+        Xóa sản phẩm
+      </button>
+    </div>
+  );
+  const DropdownSaved = () => (
+    <div className="product__dropdown__content">
+      <Link to={"/user/detail/" + agricultural._id} className="product--button">
+        Xem chi tiết
+      </Link>
+    </div>
+  );
   return (
     <>
       {viewUpdate ? <Update hideUpdate={hideUpdate} data={agricultural} /> : ""}
@@ -83,33 +113,7 @@ const ProductItem = ({ agricultural, onDelete }) => {
               </div>
               <div className="product__footer--action" onClick={handleClick}>
                 <i className="bx bx-dots-horizontal-rounded bx-sm"></i>
-                <div className="product__dropdown__content">
-                  <Link
-                    to={"/user/detail/" + agricultural._id}
-                    className="product--button"
-                  >
-                    Xem chi tiết
-                  </Link>
-                  <Link
-                    to={"/user/detail/" + agricultural._id}
-                    className="product--button"
-                  >
-                    Thêm hoạt động
-                  </Link>
-                  <button
-                    className="product--button"
-                    onClick={() => {
-                      setViewUpdate(!viewUpdate);
-                      closeElement();
-                    }}
-                  >
-                    Cập nhật thông tin
-                  </button>
-                  <button className="product--button">Hoàn thành</button>
-                  <button className="product--button" onClick={onDeletes}>
-                    Xóa sản phẩm
-                  </button>
-                </div>
+                {onDelete ? <Dropdown /> : <DropdownSaved />}
               </div>
             </div>
           </div>

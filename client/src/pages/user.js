@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Route, Switch, useHistory, useRouteMatch } from "react-router-dom";
+import user_menu from "../assets/JsonData/user_menu.json";
 import Setting from "../components/dashboard/setting/setting";
 import Body from "../components/user";
+import Saved from "../components/user/saved";
 import "./../assets/css/dashboard.css";
 import CopyRight from "./../components/layouts/copyright/copyright";
 import TopNavbar from "./../components/layouts/dashboard/navbar/navbar";
@@ -20,6 +22,11 @@ const sidebarCurrent = [
     link: "/user/dashboard",
     icon: "bx bx-grid-alt",
     title: "Bảng điều khiển",
+  },
+  {
+    link: "/user/dashboard/saved",
+    icon: "bx bx-heart",
+    title: "Lưu trữ",
   },
   {
     link: "/user/dashboard/setting",
@@ -44,7 +51,7 @@ function User() {
     <div className="App">
       <Sidebar sidebarCurrent={sidebarCurrent} />
       <section className="home-section">
-        <TopNavbar />
+        <TopNavbar userMenu={user_menu} />
 
         <Switch>
           <Route exact path={match.url + "/"} component={Body}></Route>
@@ -53,6 +60,7 @@ function User() {
             path={match.url + "/detail/:id"}
             component={Detail}
           ></Route>
+          <Route path={match.url + "/saved"} component={Saved}></Route>
           <Route path={match.url + "/setting"} component={Setting}></Route>
           <Route path="*" component={NotFound} />
         </Switch>
