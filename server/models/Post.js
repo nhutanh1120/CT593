@@ -15,10 +15,11 @@ const PostSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "users",
     },
+    tags: [String],
     attachment: { type: String },
     likeCount: {
-      type: Number,
-      default: 0,
+      type: Schema.Types.ObjectId,
+      ref: "users",
     },
   },
   {

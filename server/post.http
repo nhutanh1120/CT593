@@ -3,15 +3,15 @@ GET http://localhost:4000/api/post/all
 ###
 GET http://localhost:4000/api/post/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNTYzMjMyMywiZXhwIjoxNjM2MjM3MTIzfQ.17FdA37SlukN9t3RKseG8nP6bKdPw8eR88KH3y8aQH8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNTc0MTMwNCwiZXhwIjoxNjM2MzQ2MTA0fQ.W711x1Ic_bltW6pgMrfa_bndXDC5AZUi9sd7yqJuMq8
 
 ###
 POST http://localhost:4000/api/post/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNTYzMjMyMywiZXhwIjoxNjM2MjM3MTIzfQ.17FdA37SlukN9t3RKseG8nP6bKdPw8eR88KH3y8aQH8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNTc0MTMwNCwiZXhwIjoxNjM2MzQ2MTA0fQ.W711x1Ic_bltW6pgMrfa_bndXDC5AZUi9sd7yqJuMq8
 
 {
-  "title": "bai 2", 
+  "title": "bai 3", 
   "description": "b",
   "attachment": "c"
 }
@@ -19,7 +19,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiO
 ###
 PUT  http://localhost:4000/api/post/617dc53170245d55afcd15e2
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNTYzMjMyMywiZXhwIjoxNjM2MjM3MTIzfQ.17FdA37SlukN9t3RKseG8nP6bKdPw8eR88KH3y8aQH8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNTc0MTMwNCwiZXhwIjoxNjM2MzQ2MTA0fQ.W711x1Ic_bltW6pgMrfa_bndXDC5AZUi9sd7yqJuMq8
 
 {
   "title": "update vue",
@@ -29,4 +29,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiO
 ###
 DELETE  http://localhost:4000/api/post/617dc53170245d55afcd15e2
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNTYzMjMyMywiZXhwIjoxNjM2MjM3MTIzfQ.17FdA37SlukN9t3RKseG8nP6bKdPw8eR88KH3y8aQH8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNTc0MTMwNCwiZXhwIjoxNjM2MzQ2MTA0fQ.W711x1Ic_bltW6pgMrfa_bndXDC5AZUi9sd7yqJuMq8
+
+###
+PATCH http://localhost:4000/api/post/617f6f15563e102895a895d4/like
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNTc0MTMwNCwiZXhwIjoxNjM2MzQ2MTA0fQ.W711x1Ic_bltW6pgMrfa_bndXDC5AZUi9sd7yqJuMq8
+
+###
+PATCH http://localhost:4000/api/post/617f6f15563e102895a895d4/unlike
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNTc0MTMwNCwiZXhwIjoxNjM2MzQ2MTA0fQ.W711x1Ic_bltW6pgMrfa_bndXDC5AZUi9sd7yqJuMq8

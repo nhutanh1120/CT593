@@ -26,7 +26,7 @@ const postController = {
     }
   },
   createPost: async (req, res) => {
-    const { title, description, attachment, likeCount } = req.body;
+    const { title, description, attachment } = req.body;
 
     if (!title || !description)
       return res.status(400).json({
@@ -40,7 +40,6 @@ const postController = {
         description,
         author: req.user.id,
         attachment: attachment || "",
-        likeCount: likeCount || "0",
       });
       await newPost.save();
 
@@ -116,6 +115,64 @@ const postController = {
       res.json({
         success: true,
         message: "delete post success!",
+      });
+    } catch (error) {
+      console.log(error);
+      res
+        .status(500)
+        .json({ success: false, message: "Internal server error." });
+    }
+  },
+  likePost: async (req, res) => {
+    try {
+      const likePost = await Post.findByIdAndUpdate(
+        req.params.id,
+        {
+          $push: { likeCount: req.user.id },
+        },
+        { new: true }
+      );
+
+      // User not authorized or post not found
+      if (!likePost)
+        return res.status(401).json({
+          success: false,
+          message: "Post not found or user not authorized",
+        });
+
+      res.json({
+        success: true,
+        message: "like post success!",
+        post: likePost,
+      });
+    } catch (error) {
+      console.log(error);
+      res
+        .status(500)
+        .json({ success: false, message: "Internal server error." });
+    }
+  },
+  unLikePost: async (req, res) => {
+    try {
+      const unLikePost = await Post.findByIdAndUpdate(
+        req.params.id,
+        {
+          $pull: { likeCount: req.user.id },
+        },
+        { new: true }
+      );
+
+      // User not authorized or post not found
+      if (!unLikePost)
+        return res.status(401).json({
+          success: false,
+          message: "Post not found or user not authorized",
+        });
+
+      res.json({
+        success: true,
+        message: "unlike post success!",
+        post: unLikePost,
       });
     } catch (error) {
       console.log(error);

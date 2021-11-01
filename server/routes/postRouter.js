@@ -30,4 +30,14 @@ router.put("/:id", verifyToken, postController.updatePost);
 // @access Private
 router.delete("/:id", verifyToken, postController.deletePost);
 
+// @route PATCH api/posts/:id/like
+// @desc Patch post
+// @access Private
+router.patch("/:id/like", verifyToken, postController.likePost);
+
+// @route PATCH api/posts/:id/unlike
+// @desc Patch post
+// @access Private
+router.patch("/:id/unlike", verifyToken, postController.unLikePost);
+
 module.exports = router;
