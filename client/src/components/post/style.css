@@ -11,6 +11,7 @@
   max-width: 100%;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 10px;
+  margin-bottom: 20px;
 }
 .post__card__head {
   position: relative;
@@ -73,6 +74,7 @@
   padding: 10px;
 }
 .post__card__body small {
+  margin-right: 10px;
   color: rgba(0, 0, 0, 0.8);
 }
 .post__card__body h2 {

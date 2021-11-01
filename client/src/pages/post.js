@@ -17,6 +17,13 @@ const Post = () => {
     }
     fetchData();
   }, []);
+
+  const [tags, setTags] = useState([]);
+  useEffect(() => {
+    let arrayTags = [];
+    state.map((item) => (arrayTags = arrayTags.concat(item.tags)));
+    setTags([...new Set(arrayTags)]);
+  }, [state]);
   return (
     <div className="App">
       <Header />
@@ -36,7 +43,11 @@ const Post = () => {
             </div>
             <div className="post__theme">
               <h2>CÁC CHỦ ĐỀ ĐƯỢC ĐỀ XUẤT</h2>
-              <div className="post__theme__item">adnajskd</div>
+              {tags.map((item, index) => (
+                <div key={index} className="post__theme__item">
+                  {item}
+                </div>
+              ))}
               {state.length === 0 && (
                 <div className="post__theme__item">không có dử liệu</div>
               )}

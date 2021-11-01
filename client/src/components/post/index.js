@@ -1,7 +1,12 @@
+import axios from "axios";
 import moment from "moment";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { apiUrl } from "../../constants";
 import img from "./../../assets/img/bg.jpg";
 import "./style.css";
+import { showErrorToast } from "../utils/notification/message";
+import "moment/locale/vi";
 
 const dropdown = [
   {
@@ -22,14 +27,6 @@ const dropdown = [
   },
 ];
 const PostItem = ({ data, path }) => {
-  // useEffect(() => {
-  //   moment.locale("fr");
-  //   console.log(moment().localeData());
-  //   moment().lang("vi").format();
-  //   console.log(moment.locale());
-  // }, []);
-
-  console.log(data);
   const handleClick = (e) => {
     e.target.nextElementSibling.classList.toggle("active");
     document.querySelector(".post__card__hidden").style.display = "block";
@@ -38,21 +35,51 @@ const PostItem = ({ data, path }) => {
     document.querySelector(".active").classList.remove("active");
     e.target.style.display = "none";
   };
-  const handleLikeCount = () => {
-    alert("like");
+
+  const token = useSelector((state) => state.token);
+  const [state, setState] = useState(data.likeCount);
+  const [status, setStatus] = useState(false);
+  const user = useSelector((state) => state.auth.user._id);
+
+  useEffect(() => {
+    if (state?.length > 0) {
+      const isStatus = state.some((state) => state === user);
+      setStatus(isStatus);
+    }
+  }, [state, user]);
+
+  const handleLikePost = async () => {
+    if (!token || !user) {
+      showErrorToast("Thao tác thất bại, vui lòng đăng nhập để tương tác.");
+    }
+
+    let path = apiUrl + "/post/" + data._id + "/like";
+    if (status) path = apiUrl + "/post/" + data._id + "/unlike";
+
+    const response = await axios.patch(
+      path,
+      {},
+      {
+        headers: { Authorization: "Bearer " + token },
+      }
+    );
+    setState(response.data.post.likeCount);
+    setStatus(!status);
   };
+
   const handleDelete = () => {
     alert("delete");
   };
   return (
     <div className="post__card">
+      <div id="toast"></div>
       <div className="post__card__hidden" onClick={handleHidden}></div>
       <div className="post__card__head">
         <img src={img} alt="images" />
         <div className="post__card--overlay">
           <div className="card__overlay--left">
             <h5>Nhut luu</h5>
-            <p>{moment(data.createAt).fromNow()}</p>
+            <p>{moment(data.createdAt).locale("vi").fromNow()}</p>
           </div>
           <div className="card__overlay--right" onClick={handleClick}>
             <i className="bx bx-dots-horizontal-rounded bx-sm"></i>
@@ -70,12 +97,16 @@ const PostItem = ({ data, path }) => {
         </div>
       </div>
       <div className="post__card__body">
-        <small>abcds</small>
+        {data.tags.map((item, index) => (
+          <small key={index}>{item}</small>
+        ))}
         <h2>{data.title}</h2>
         <small>{data.description}</small>
         <div className="post__card__link">
-          <button onClick={handleLikeCount}>
-            <i className="bx bx-like"></i>&nbsp;Thích&nbsp;{data.likeCount}
+          <button onClick={handleLikePost}>
+            <i className={(status && "bx bxs-like") || "bx bx-like"}></i>&nbsp;
+            {state?.length || "0"}
+            &nbsp;{(status && "Đã thích") || "Thích"}
           </button>
           {!path && (
             <button onClick={handleDelete}>
