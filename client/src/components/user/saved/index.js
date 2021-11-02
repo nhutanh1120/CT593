@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Empty from "../../utils/empty/data";
 import ProductItem from "./../productItem/productItem";
@@ -6,6 +6,11 @@ import ProductItem from "./../productItem/productItem";
 const Saved = () => {
   const agricultural = useSelector((state) => state.agricultural.list);
 
+  const [state, setState] = useState([]);
+  useEffect(() => {
+    const newData = agricultural.filter((item) => item.isSuccess > 1);
+    setState(newData);
+  }, [agricultural]);
   return (
     <div className="grid body">
       <div className="dashboard__body__header">
@@ -13,8 +18,8 @@ const Saved = () => {
       </div>
 
       <div className="row dashboard__body--min--height">
-        {agricultural.length ? (
-          agricultural.map((agricultural, index) => (
+        {state.length !== 0 ? (
+          state.map((agricultural, index) => (
             <ProductItem key={index} agricultural={agricultural} />
           ))
         ) : (

@@ -9,7 +9,6 @@ import {
   showErrorToast,
   showSuccessToast,
 } from "../utils/notification/message";
-import "moment/locale/vi";
 
 const dropdown = [
   {
@@ -31,7 +30,7 @@ const dropdown = [
 ];
 const PostItem = ({ data, path, onDelete }) => {
   const handleClick = (e) => {
-    if (e.target.nextElementSibling) return;
+    if (!e.target.nextElementSibling) return;
     e.target.nextElementSibling.classList.toggle("active");
     document.querySelector(".post__card__hidden").style.display = "block";
   };
@@ -90,7 +89,7 @@ const PostItem = ({ data, path, onDelete }) => {
         <div className="post__card--overlay">
           <div className="card__overlay--left">
             <h5>Nhut luu</h5>
-            <p>{moment(data.createdAt).locale("vi").fromNow()}</p>
+            <p>{moment(data.createdAt).fromNow()}</p>
           </div>
           <div className="card__overlay--right" onClick={handleClick}>
             <i className="bx bx-dots-horizontal-rounded bx-sm"></i>
