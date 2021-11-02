@@ -31,7 +31,7 @@ const Post = () => {
         <div className="grid wide">
           <div className="row">
             <div className="l-8">
-              <h5 className="post__header">sản phẩm</h5>
+              <h5 className="post__header">phù hợp với bạn</h5>
               <div className="row">
                 {state.map((item, index) => (
                   <div className="col l-4" key={index}>

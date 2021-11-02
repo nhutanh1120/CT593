@@ -1,7 +1,10 @@
 const Post = require("./../models/Post");
+const base64 = require("file-base64");
+
 const postController = {
   getPosts: async (req, res) => {
     try {
+      console.log("Get post");
       const posts = await Post.find({ author: req.user.id }).populate(
         "author",
         ["fullname"]
@@ -16,6 +19,7 @@ const postController = {
   },
   getAllPosts: async (req, res) => {
     try {
+      console.log("Get all post");
       const posts = await Post.find();
       res.json({ success: true, message: "get all post success.", posts });
     } catch (error) {
@@ -26,7 +30,8 @@ const postController = {
     }
   },
   createPost: async (req, res) => {
-    const { title, description, attachment } = req.body;
+    console.log("Create post");
+    const { title, description, attachment, ...rest } = req.body;
 
     if (!title || !description)
       return res.status(400).json({
@@ -40,6 +45,7 @@ const postController = {
         description,
         author: req.user.id,
         attachment: attachment || "",
+        ...rest,
       });
       await newPost.save();
 
@@ -56,6 +62,7 @@ const postController = {
     }
   },
   updatePost: async (req, res) => {
+    console.log("Update post");
     const { title, description, attachment, likeCount } = req.body;
 
     // Simple validation
@@ -102,6 +109,7 @@ const postController = {
   },
   deletePost: async (req, res) => {
     try {
+      console.log("Delete post");
       const postDeleteCondition = { _id: req.params.id, author: req.user.id };
       const deletedPost = await Post.findOneAndDelete(postDeleteCondition);
 
@@ -125,6 +133,7 @@ const postController = {
   },
   likePost: async (req, res) => {
     try {
+      console.log("Like post");
       const likePost = await Post.findByIdAndUpdate(
         req.params.id,
         {
@@ -154,6 +163,7 @@ const postController = {
   },
   unLikePost: async (req, res) => {
     try {
+      console.log("Unlike post");
       const unLikePost = await Post.findByIdAndUpdate(
         req.params.id,
         {

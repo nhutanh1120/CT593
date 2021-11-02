@@ -1,0 +1,31 @@
+.post__form {
+  position: fixed;
+  right: 30px;
+  top: 140px;
+  width: 300px;
+  height: auto;
+  background-color: var(--second-background);
+  box-shadow: var(--box-shadow);
+  border-radius: 10px;
+  padding: 15px;
+}
+.post__form h5 {
+  color: var(--txt-color);
+  text-align: center;
+  margin-bottom: 10px;
+}
+.form__control.form__textarea {
+  height: 50px;
+}
+.post__form button {
+  outline: none;
+  background-color: #1dbfaf;
+  padding: 12px 16px;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  width: 100%;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}

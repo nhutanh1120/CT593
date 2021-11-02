@@ -9,12 +9,13 @@
 }
 .post__card {
   max-width: 100%;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: var(--box-shadow);
   border-radius: 10px;
   margin-bottom: 20px;
 }
 .post__card__head {
   position: relative;
+  height: 180px;
 }
 .post__card__head img {
   width: 100%;
@@ -48,12 +49,13 @@
   transform-origin: top right;
   transform: scale(0);
   transition: all 0.3s;
+  z-index: 101;
 }
 .post__card__dropdown.active {
   transform: scale(1);
 }
 .post__card__dropdown ul {
-  background-color: #fff;
+  background-color: var(--second-background);
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   list-style: none;
   border-radius: 10px;
@@ -62,22 +64,25 @@
 }
 .post__card__dropdown ul li {
   z-index: 1;
-  color: rgba(0, 0, 0, 0.8);
+  color: var(--second-color);
   font-size: 14px;
   padding: 5px 10px;
 }
 .post__card__dropdown ul li:hover {
-  background-color: lightpink;
+  background-color: blanchedalmond;
 }
 .post__card__body {
+  background-color: var(--second-background);
+  border-radius: 0 0 10px 10px;
   width: 100%;
   padding: 10px;
 }
 .post__card__body small {
   margin-right: 10px;
-  color: rgba(0, 0, 0, 0.8);
+  color: var(--txt-color);
 }
 .post__card__body h2 {
+  color: var(--third-color);
   margin: 10px 0;
 }
 .post__card__link {
@@ -86,6 +91,7 @@
   margin: 10px 0 5px;
 }
 .post__card__link button {
+  background-color: var(--fourth-background);
   color: blue;
   cursor: pointer;
 }

@@ -31,8 +31,8 @@
   right: 0;
   width: max-content;
   max-width: 400px;
-  background-color: var(--second-background);
-  box-shadow: var(--box-shadow);
+  background-color: #fff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 15px;
   overflow: hidden;
   transform-origin: top right;

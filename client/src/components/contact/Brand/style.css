@@ -37,6 +37,8 @@
   font-size: 15px;
 }
 .contact__slider--content img {
+  width: 500px;
   display: block;
-  margin: auto;
+  margin: auto auto -40px;
+  opacity: 0.7;
 }

@@ -5,7 +5,10 @@ import { useSelector } from "react-redux";
 import { apiUrl } from "../../constants";
 import img from "./../../assets/img/bg.jpg";
 import "./style.css";
-import { showErrorToast } from "../utils/notification/message";
+import {
+  showErrorToast,
+  showSuccessToast,
+} from "../utils/notification/message";
 import "moment/locale/vi";
 
 const dropdown = [
@@ -26,8 +29,9 @@ const dropdown = [
     content: "Báo cáo bài viết",
   },
 ];
-const PostItem = ({ data, path }) => {
+const PostItem = ({ data, path, onDelete }) => {
   const handleClick = (e) => {
+    if (e.target.nextElementSibling) return;
     e.target.nextElementSibling.classList.toggle("active");
     document.querySelector(".post__card__hidden").style.display = "block";
   };
@@ -67,8 +71,15 @@ const PostItem = ({ data, path }) => {
     setStatus(!status);
   };
 
-  const handleDelete = () => {
-    alert("delete");
+  const handleDelete = async () => {
+    if (!token) return;
+    const res = await axios.delete(apiUrl + "/post/" + data._id, {
+      headers: { Authorization: "Bearer " + token },
+    });
+    if (res.data.success) {
+      showSuccessToast("Thao tác thành công, vui lòng kiểm tra thông tin.");
+      onDelete(data._id);
+    }
   };
   return (
     <div className="post__card">
@@ -85,12 +96,17 @@ const PostItem = ({ data, path }) => {
             <i className="bx bx-dots-horizontal-rounded bx-sm"></i>
             <div className="post__card__dropdown">
               <ul>
-                {path &&
+                {(path &&
                   dropdown.map((item, index) => (
                     <li key={index}>
                       <i className={item.class}></i>&nbsp;{item.content}
                     </li>
-                  ))}
+                  ))) || (
+                  <li>
+                    <i className="bx bx-message-square-edit"></i>&nbsp; Chỉnh
+                    sữa bài viết
+                  </li>
+                )}
               </ul>
             </div>
           </div>

@@ -4,6 +4,7 @@ import { Route, Switch, useHistory, useRouteMatch } from "react-router-dom";
 import user_menu from "../assets/JsonData/user_menu.json";
 import Setting from "../components/dashboard/setting/setting";
 import Body from "../components/user";
+import Posts from "../components/user/post";
 import Saved from "../components/user/saved";
 import "./../assets/css/dashboard.css";
 import CopyRight from "./../components/layouts/copyright/copyright";
@@ -27,6 +28,11 @@ const sidebarCurrent = [
     link: "/user/dashboard/saved",
     icon: "bx bx-heart",
     title: "Lưu trữ",
+  },
+  {
+    link: "/user/dashboard/post",
+    icon: "bx bx-message-square-edit",
+    title: "Tin tức",
   },
   {
     link: "/user/dashboard/setting",
@@ -61,6 +67,7 @@ function User() {
             component={Detail}
           ></Route>
           <Route path={match.url + "/saved"} component={Saved}></Route>
+          <Route path={match.url + "/post"} component={Posts}></Route>
           <Route path={match.url + "/setting"} component={Setting}></Route>
           <Route path="*" component={NotFound} />
         </Switch>

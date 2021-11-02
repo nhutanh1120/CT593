@@ -1,14 +1,15 @@
 import React from "react";
 import "./../assets/css/home.css";
+import home1 from "./../assets/img/home2.jpg";
 import utility from "./../assets/img/utility.png";
 import Video from "./../assets/video/ot-cover-video-9-3-mb.mp4";
 import Email from "./../components/layouts/email/email";
 import Footer from "./../components/layouts/footer/footer";
 import Header from "./../components/layouts/header/header";
 import ScrollTop from "./../components/layouts/scrollTop/scrollTop";
-import home1 from "./../assets/img/home2.jpg";
 
 function Home() {
+  const isLogin = localStorage.getItem("firstLogin");
   return (
     <div className="App">
       <Header isActiveHeader="isActiveHeader" />
@@ -28,24 +29,29 @@ function Home() {
             </p>
           </div>
           <div className="home__header__button">
-            <button>ĐĂNG NHẬP</button>
+            <button>{(isLogin && "chi tiết") || "đăng nhập"}</button>
           </div>
         </div>
       </section>
-      <div className="grid wide">
-        <div className="row">
-          <div className="col l-4 ve-chung-toi">
-            <span>Về chúng tôi</span>
-            <p className="mt-3">
-              Bằng chiếc điện thoại di động thông minh của mình, ở bất kỳ đâu,
-              vào bất cứ thời điểm nào, chỉ bằng một động tác, bạn có thể kiểm
-              tra về nguồn gốc xuất xứ của sản phẩm hay tiến hành mua sắm hoàn
-              toàn đơn giản.
-            </p>
-            <button variant="outline-info">Xem chi tiết</button>
+      <div className="home__about">
+        <div className="grid wide">
+          <div className="row">
+            <div className="col l-6">
+              <div className="home__about__left">
+                <h2>Quản lý nguồn gốc sản phẩm dể dàng</h2>
+                <p>
+                  Bằng chiếc điện thoại di động thông minh của mình, ở bất kỳ
+                  đâu, vào bất cứ thời điểm nào, chỉ bằng một động tác, bạn có
+                  thể kiểm tra về nguồn gốc xuất xứ của sản phẩm hay tiến hành
+                  mua sắm hoàn toàn đơn giản.
+                </p>
+                <button className="btn">Xem chi tiết</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
       <div className="home__product">
         <div className="grid wide">
           <div className="row">

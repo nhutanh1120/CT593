@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 // import logo from "./../../../assets/img/1.webp";
 import logo from "./../../../assets/img/logo/logo1.png";
 import Profile from "./profile";
+import Mobile from "./profile/mobile";
 import "./styles.css";
 
 const Sign = () => (
@@ -124,6 +125,7 @@ function Header({ isActiveHeader }) {
           className="navbar__overlay"
         ></label>
         <div className="navbar__mobile">
+          {isLogin && <Mobile />}
           <ul className="navbar__mobile--list">
             <li className="navbar__mobile--item">
               <NavLink
@@ -181,7 +183,9 @@ function Header({ isActiveHeader }) {
               </NavLink>
             </li>
           </ul>
-          <ul className="navbar__mobile--sign">
+          {isLogin
+            ? ""
+            : `<ul className="navbar__mobile--sign">
             <li className="navbar__mobile--item">
               <Link className="nav__mobile--link" to="/sign">
                 <i className="bx bx-log-in"></i>
@@ -194,7 +198,8 @@ function Header({ isActiveHeader }) {
                 <span>Đăng ký</span>
               </Link>
             </li>
-          </ul>
+          </ul>`}
+
           <label
             htmlFor="navbar__mobile--input"
             className="navbar__mobile--close"
