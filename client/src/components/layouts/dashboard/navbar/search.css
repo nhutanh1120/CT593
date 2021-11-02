@@ -49,6 +49,7 @@
   box-shadow: var(--box-shadow);
   cursor: pointer;
   z-index: 100;
+  padding: 10px 0;
 }
 
 .search__result::-webkit-scrollbar {

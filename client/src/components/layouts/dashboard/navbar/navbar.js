@@ -53,7 +53,7 @@ const TopNavbar = ({ data, userMenu }) => {
     setWordEntered(searchWord);
     if (data && searchWord) {
       const newFilter = data.filter((value) => {
-        return value.name.toLowerCase().includes(searchWord.toLowerCase());
+        return value?.fullname.toLowerCase().includes(searchWord.toLowerCase());
       });
       if (searchWord === "") {
         setFilter([]);
@@ -109,7 +109,7 @@ const TopNavbar = ({ data, userMenu }) => {
         {typeof filter !== "string" && filter.length !== 0 && (
           <div className="search__result">
             {filter.slice(0, 15).map((item, index) => (
-              <div key={index}>{item.name}</div>
+              <div key={index}>{item.fullname}</div>
             ))}
           </div>
         )}

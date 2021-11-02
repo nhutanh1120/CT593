@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { apiUrl } from "./../../../constants";
-import PostItem from "./../../post/index";
-import Empty from "./../../utils/empty/data";
+import { apiUrl } from "../../../constants";
+import PostItem from "../../post/index";
+import Empty from "../../utils/empty/data";
 import FormPost from "./form";
 
 const Posts = () => {

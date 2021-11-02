@@ -54,7 +54,6 @@ const EmailBody = () => {
     if (emails) {
       let toBeAdded = emails.filter((email) => !isInList(email));
 
-      console.log(toBeAdded);
       setState({
         ...state,
         items: [...items, ...toBeAdded],

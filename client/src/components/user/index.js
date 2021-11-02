@@ -5,7 +5,7 @@ import {
   fetchAgricultural,
 } from "../../redux/actions/agriculturalActions";
 import Empty from "../utils/empty/data";
-import "./../dashboard/body/body.css";
+import "./../dashboard/style.css";
 import {
   showErrorToast,
   showSuccessToast,

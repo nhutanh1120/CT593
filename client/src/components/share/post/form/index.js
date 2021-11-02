@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Validator from "./../../../utils/validation/Vanilla";
+import Validator from "../../../utils/validation/Vanilla";
 import "./style.css";
 // import FileBase64 from "react-file-base64";
 import axios from "axios";

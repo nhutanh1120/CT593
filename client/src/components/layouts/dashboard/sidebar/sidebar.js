@@ -33,7 +33,8 @@ const Sidebar = ({ sidebarCurrent }) => {
   return (
     <div className="dashboard--sidebar">
       <div className="logo--details">
-        <i className="bx bxl-c-plus-plus icon"></i>
+        {/* <i className="bx bxl-c-plus-plus icon"></i> */}
+        <i className="bx bxs-heart-circle icon"></i>
         <div className="logo_name">Luu Moments</div>
         <i className="bx bx-menu" id="btn"></i>
       </div>

@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import card from "./../../../assets/JsonData/card.json";
-import Badge from "./../badge/badge";
-import Card from "./../card/card";
-import Table from "./../table/table";
-import "./body.css";
+import card from "../../assets/JsonData/card.json";
+import Badge from "./badge/badge";
+import Card from "./card/card";
+import Table from "./table/table";
+import "./style.css";
 import Chart from "react-apexcharts";
 
 const chartOptions = {

@@ -1,4 +1,5 @@
 import axios from "axios";
+// import React, { useRef, useState } from "react";
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -11,6 +12,7 @@ const Customer = () => {
   // Get data
   const token = useSelector((state) => state.token);
   const [customerList, setCustomerList] = useState([]);
+
   const [limit, setLimit] = useState(10);
   const [pagination, setPagination] = useState(
     customerList.slice(0, Number(limit))
@@ -71,6 +73,7 @@ const Customer = () => {
   };
   return (
     <div className="grid body">
+      <div id="toast"></div>
       <div className="dashboard__body__header">
         <h2>Quản lý người dùng</h2>
         <button className="btn">
@@ -91,7 +94,7 @@ const Customer = () => {
                         họ tên
                         <div
                           className="th__icon"
-                          onClick={() => requestSort("name")}
+                          onClick={() => requestSort("fullname")}
                         >
                           <i className="bx bx-sort"></i>
                         </div>
@@ -118,7 +121,7 @@ const Customer = () => {
                         sản phẩm
                         <div
                           className="th__icon"
-                          onClick={() => requestSort("total orders")}
+                          onClick={() => requestSort("total_orders")}
                         >
                           <i className="bx bx-sort"></i>
                         </div>
@@ -127,7 +130,7 @@ const Customer = () => {
                         vai trò
                         <div
                           className="th__icon"
-                          onClick={() => requestSort("total spend")}
+                          onClick={() => requestSort("role")}
                         >
                           <i className="bx bx-sort"></i>
                         </div>
