@@ -6,6 +6,8 @@ import FindScreen from "../screens/FindScreen";
 import ScannerScreen from "../screens/ScannerScreen";
 import ChatScreen from "../screens/ChatScreen";
 import SettingScreen from "../screens/SettingScreen";
+// import QRCodeScreen from "../screens/QRCodeScreen";
+// import SignScreen from "../screens/SignScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -45,7 +47,7 @@ export function Tabs({ focus }) {
       }}
     >
       <Tab.Screen
-        name="home"
+        name="Trang Chủ"
         component={HomeScreen}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -69,7 +71,7 @@ export function Tabs({ focus }) {
                 style={{
                   color: focused ? "#e32f45" : "#749c94",
                   fontSize: 12,
-                  width: 55,
+                  width: 65,
                   textAlign: "center",
                 }}
               >
