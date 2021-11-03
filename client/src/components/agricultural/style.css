@@ -151,9 +151,6 @@ td {
   margin: 0;
 }
 
-.agricultural--title--icon {
-  flex-shrink: 0;
-}
 /* end price */
 /* Table - PC resolution */
 @media (min-width: 740px) and (max-width: 1023px) {

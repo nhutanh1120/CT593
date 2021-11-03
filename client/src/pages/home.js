@@ -1,7 +1,7 @@
 import React from "react";
 import "./../assets/css/home.css";
 import home1 from "./../assets/img/home2.jpg";
-import utility from "./../assets/img/utility.png";
+import utility from "./../assets/img/home.png";
 import Video from "./../assets/video/ot-cover-video-9-3-mb.mp4";
 import Email from "./../components/layouts/email/email";
 import Footer from "./../components/layouts/footer/footer";

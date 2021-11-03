@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import FacebookLogin from "react-facebook-login";
+// import FacebookLogin from "react-facebook-login";
 import { GoogleLogin } from "react-google-login";
 import { useDispatch } from "react-redux";
 import { Link, useHistory, useParams } from "react-router-dom";
@@ -92,6 +92,8 @@ const FormLogin = () => {
           dispatch(dispatchLogin());
           if (!id) {
             history.push("/");
+          } else {
+            history.push("/agricultural/" + id);
           }
         }
       } catch (error) {
@@ -120,26 +122,26 @@ const FormLogin = () => {
     }
   };
 
-  const responseFacebook = async (response) => {
-    try {
-      const { accessToken, userID } = response;
-      if (!response) return;
+  // const responseFacebook = async (response) => {
+  //   try {
+  //     const { accessToken, userID } = response;
+  //     if (!response) return;
 
-      const res = await axios.post(apiUrl + "/auth/facebook/login", {
-        accessToken,
-        userID,
-      });
+  //     const res = await axios.post(apiUrl + "/auth/facebook/login", {
+  //       accessToken,
+  //       userID,
+  //     });
 
-      setUser({ ...user, error: "", success: res.data.message });
-      localStorage.setItem("firstLogin", true);
+  //     setUser({ ...user, error: "", success: res.data.message });
+  //     localStorage.setItem("firstLogin", true);
 
-      dispatch(dispatchLogin());
-      history.push("/");
-    } catch (error) {
-      error?.response?.data?.message &&
-        setUser({ ...user, error: error.response.data.message, success: "" });
-    }
-  };
+  //     dispatch(dispatchLogin());
+  //     history.push("/");
+  //   } catch (error) {
+  //     error?.response?.data?.message &&
+  //       setUser({ ...user, error: error.response.data.message, success: "" });
+  //   }
+  // };
   // Show/hide password
   const [passwordShown, setPasswordShown] = useState(false);
   const showHide = () => {
@@ -164,12 +166,12 @@ const FormLogin = () => {
             onFailure={responseGoogle}
             cookiePolicy={"single_host_origin"}
           />
-          <FacebookLogin
+          {/* <FacebookLogin
             appId="199091375537292"
             autoLoad={false}
             fields="name,email,picture"
             callback={responseFacebook}
-          />
+          /> */}
         </div>
         <p className="social--text">Hoặc đăng nhập với tài khoản của bạn</p>
         <div className="input--field">

@@ -22,12 +22,12 @@ const FormPost = () => {
             "#description",
             "Vui lòng nhập nội dung bài viết"
           ),
-          // Validator.isRequired("#attachment", "Vui lòng chọn ảnh đại diện"),
+          Validator.isRequired("#attachment", "Vui lòng chọn ảnh đại diện"),
         ],
         onSubmit: function (data) {
           (async (data) => {
-            const { tags } = data;
-            const req = { tags: [...tags], ...data };
+            const { title, description, tags } = data;
+            const req = { title, description, tags: [...tags] };
             await axios.post("http://localhost:4000/api/post/", req, {
               headers: { Authorization: "Bearer " + token },
             });

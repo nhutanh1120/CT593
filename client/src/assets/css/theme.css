@@ -30,6 +30,7 @@
   --third-background: #fafafb;
   --fourth-background: #fafafb;
   --active-background: #1d1b31;
+  --form-background: #fff;
 
   --border-color: #fff;
   --border-color-second: #dee2e6;
@@ -49,6 +50,7 @@
   --third-background: #1d1b31;
   --fourth-background: #202020;
   --active-background: #fff;
+  --form-background: #202020;
 
   --border-color: transparent;
   --border-color-second: transparent;

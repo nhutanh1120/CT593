@@ -3,7 +3,7 @@ import moment from "moment";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { apiUrl } from "../../constants";
-import img from "./../../assets/img/bg.jpg";
+import img from "./../../assets/img/Screenshot.png";
 import "./style.css";
 import {
   showErrorToast,

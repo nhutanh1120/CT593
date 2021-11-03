@@ -1,9 +1,12 @@
 .contact {
   height: 100vh !important;
 }
+.form__contact h2 {
+  color: var(--second-color);
+}
 .form__contact {
   /* background-image: linear-gradient(to right, #1cd9a6, #59adca); */
-  background-color: #fff;
+  background-color: var(--second-background);
   margin-top: 2rem !important;
   margin-bottom: 2rem !important;
   border-radius: 15px;

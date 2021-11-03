@@ -22,9 +22,15 @@ const ProductItem = ({ agricultural, onDelete }) => {
   // Handle Event
   const ref = useRef(null);
   const handleClick = (e) => {
-    const content__current = e.target.nextSibling;
+    console.log([e.target]);
+    const content__current = e.target;
     if (!content__current) return;
-    content__current?.classList?.toggle("active--dropdown");
+    if (
+      content__current.className === "product__footer--action" ||
+      content__current.className === "product__footer--notification"
+    )
+      content__current?.lastChild?.classList?.toggle("active--dropdown");
+    else content__current?.nextSibling?.classList?.toggle("active--dropdown");
     ref.current.style.display = "block";
   };
   const closeElement = () => {
@@ -37,10 +43,16 @@ const ProductItem = ({ agricultural, onDelete }) => {
   };
   const Dropdown = () => (
     <div className="product__dropdown__content">
-      <Link to={"/user/detail/" + agricultural._id} className="product--button">
+      <Link
+        to={"/user/dashboard/detail/" + agricultural._id}
+        className="product--button"
+      >
         Xem chi tiết
       </Link>
-      <Link to={"/user/detail/" + agricultural._id} className="product--button">
+      <Link
+        to={"/user/dashboard/detail/" + agricultural._id}
+        className="product--button"
+      >
         Thêm hoạt động
       </Link>
       <button
@@ -52,7 +64,9 @@ const ProductItem = ({ agricultural, onDelete }) => {
       >
         Cập nhật thông tin
       </button>
-      <button className="product--button">Hoàn thành</button>
+      <button className="product--button" onClick={() => alert("Thanh cong")}>
+        Hoàn thành
+      </button>
       <button className="product--button" onClick={onDeletes}>
         Xóa sản phẩm
       </button>

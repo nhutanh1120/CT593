@@ -46,9 +46,9 @@ const Producer = ({ agricultural, actionData }) => {
                 <thead>
                   <tr>
                     <th>Loại nông sản</th>
-                    <th>Thời gian (dd/mm/yyyy)</th>
                     <th>Tên nông sản</th>
                     <th>Nhà cung cấp</th>
+                    <th>Thời gian</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -58,13 +58,13 @@ const Producer = ({ agricultural, actionData }) => {
                         ? "Vật nuôi"
                         : "Cây trồng"}
                     </td>
+                    <td>{agricultural.breed.nameBreed}</td>
+                    <td>{agricultural.breed.supplierBreed}</td>
                     <td>
                       {moment(agricultural.breed.timeBreed).format(
                         "DD/MM/YYYY"
                       )}
                     </td>
-                    <td>{agricultural.breed.nameBreed}</td>
-                    <td>{agricultural.breed.supplierBreed}</td>
                   </tr>
                 </tbody>
               </table>
@@ -91,6 +91,7 @@ const Producer = ({ agricultural, actionData }) => {
                   <tr>
                     <th>Ngày thu hoạch</th>
                     <th>Hình ảnh sản phảm</th>
+                    <th>Hạn sử dụng</th>
                     <th>Mô tả</th>
                   </tr>
                 </tbody>

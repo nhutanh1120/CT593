@@ -17,9 +17,9 @@
 }
 .dashboard__body__header button {
   position: relative;
-  color: #fff;
+  color: var(--primary-color);
   border-radius: 50%;
-  background-color: #2bbbad !important;
+  background-color: var(--second-background);
   width: 50px;
   height: 50px;
   border: none;
