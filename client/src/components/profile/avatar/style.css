@@ -1,0 +1,13 @@
+.pane__avatar--img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.pane__avatar--img img {
+  width: 110px;
+  height: 110px;
+  border: 1px solid #333;
+  padding: 5px;
+  border-radius: 50%;
+}

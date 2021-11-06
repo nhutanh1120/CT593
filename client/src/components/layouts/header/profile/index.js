@@ -41,7 +41,7 @@ const Profile = () => {
             e.target.onerror = null;
             e.target.src = profile;
           }}
-          src="https://lh3.googleusercontent.com/a/AATXAJxhGKESfjpB3GAyNxIQpsheKl74w2Qq6ylZ4MfE=s96-cccccc"
+          src=""
           alt="img"
           onClick={handleView}
         />
@@ -52,7 +52,7 @@ const Profile = () => {
                 e.target.onerror = null;
                 e.target.src = profile;
               }}
-              src="https://lh3.googleusercontent.com/a/AATXAJxhGKESfjpB3GAyNxIQpsheKl74w2Qq6ylZ4MfE=s96-c"
+              src=""
               alt="img"
             />
             <span>

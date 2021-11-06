@@ -1,27 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Validator from "../../utils/validation/Vanilla";
 import profile from "./../../../assets/img/profile.jpg";
-import "./profile.css";
 
 const Profile = () => {
-  document.addEventListener("DOMContentLoaded", function () {
-    Validator({
-      form: "#form-1",
-      formGroupSelector: ".form__group",
-      errorSelector: ".form__message",
-      rules: [
-        Validator.isRequired("#fullname", "Vui lòng nhập tên đầy đủ của bạn"),
-        Validator.isEmail("#email", "Vui lòng nhập email đúng định dạng"),
-        Validator.minLength("#number", 10),
-        Validator.isRequired("#address", "Vui lòng nhập địa chỉ"),
-        Validator.isRequired("#description", "Vui lòng nhập mô tả"),
-      ],
-      onSubmit: function (data) {
-        // Call API
-        console.log(data);
-      },
-    });
-  });
+  useEffect(() => {
+    (() => {
+      Validator({
+        form: "#form-1",
+        formGroupSelector: ".form__group",
+        errorSelector: ".form__message",
+        rules: [
+          Validator.isRequired("#fullname", "Vui lòng nhập tên đầy đủ của bạn"),
+          Validator.isEmail("#email", "Vui lòng nhập email đúng định dạng"),
+          Validator.minLength("#number", 10),
+          Validator.isRequired("#address", "Vui lòng nhập địa chỉ"),
+          Validator.isRequired("#description", "Vui lòng nhập mô tả"),
+        ],
+        onSubmit: function (data) {
+          // Call API
+          console.log(data);
+        },
+      });
+    })();
+  }, []);
   return (
     <div className="main">
       <form action="" method="POST" className="form margin--0" id="form-1">

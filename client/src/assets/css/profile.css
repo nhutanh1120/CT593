@@ -1,0 +1,121 @@
+.tabs__info {
+  margin: 5% auto 0;
+  max-width: 920px;
+  overflow: hidden !important;
+}
+.tabs {
+  display: flex;
+  position: relative;
+  margin-left: 10%;
+}
+.tabs .line {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 6px;
+  border-radius: 15px;
+  background-color: #c23564;
+  transition: all 0.2s ease;
+}
+.tab-item {
+  min-width: 80px;
+  padding: 16px 20px 11px 20px;
+  font-size: 20px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #c23564;
+  background-color: #fff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: 5px solid transparent;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.tab-icon {
+  font-size: 24px;
+  width: 32px;
+  position: relative;
+  top: 2px;
+}
+.tab-item:hover {
+  opacity: 1;
+  background-color: rgba(194, 53, 100, 0.05);
+  border-color: rgba(194, 53, 100, 0.1);
+}
+.tab-item.active {
+  opacity: 1;
+}
+.tab-content {
+  padding: 28px 0;
+}
+.tab-pane {
+  color: #333;
+  display: none;
+}
+.tab-pane.active {
+  display: block;
+}
+.tab-pane h2 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.tab-button {
+  display: flex;
+  justify-content: space-between;
+}
+.tab-button button {
+  display: inline-block;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  padding: 12px 48px;
+  border-radius: 50px;
+  cursor: pointer;
+  min-width: 120px;
+  transition: opacity 0.2s ease;
+  user-select: none;
+  background-color: #71be34;
+}
+.tab-button .button-back.disabled,
+.tab-button .button-next.disabled {
+  opacity: 0.5 !important;
+  pointer-events: none;
+}
+.tab__pane__role {
+  margin-top: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  background: rgb(255, 255, 255);
+  box-shadow: rgb(0 82 244 / 20%) 0px 3px 8px 0px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+}
+.tab__pane__role.border {
+  border-color: blue !important;
+}
+.role__admin:last-child {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.tab__pane__role span {
+  display: block;
+  margin: auto;
+  padding: 12px;
+  width: 70%;
+  border-radius: 15px 15px 0 0;
+  color: #363f5a;
+  background-color: rgb(245, 250, 254);
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.tab__pane__title {
+  text-align: center;
+  font-size: 16px;
+  color: rgb(54, 63, 90);
+}

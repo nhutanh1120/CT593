@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
+import "./assets/css/form.css";
 import "./assets/css/grid.css";
 import "./assets/css/theme.css";
 import "./assets/font/css2.css";
@@ -20,6 +21,7 @@ import Home from "./pages/home";
 import NotFound from "./pages/notfound";
 import Post from "./pages/post";
 import Product from "./pages/product";
+import Info from "./pages/profile";
 import QrCode from "./pages/qrCode";
 import Test from "./pages/test";
 import User from "./pages/user";
@@ -84,6 +86,7 @@ function App() {
         <Route path="/user/dashboard" component={isLogin ? User : NotFound} />
         <Route path="/qr/:id" component={QrCode} />
         <Route path="/agricultural/:id" component={Agricultural} />
+        <Route path="/profile/update" component={isLogin ? Info : NotFound} />
         <Route path="/test" component={Test} />
         <Route path="*" component={NotFound} />
       </Switch>

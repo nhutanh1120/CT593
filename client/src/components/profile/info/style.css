@@ -1,0 +1,19 @@
+.tab__pane__info {
+  margin-top: 10px;
+}
+.form__group__radio {
+  display: flex;
+  align-items: center;
+  border: 1px solid #b3b3b3;
+  height: 38px;
+}
+.form__group__radio:hover {
+  border-color: #1dbfaf;
+}
+.form__group__radio input {
+  margin: 0 5px 0 15px;
+}
+.form__group__radio label {
+  color: #8d92a2;
+  font-size: 14px;
+}

@@ -61,6 +61,12 @@
   font-size: 14px;
   color: var(--txt-color);
 }
+.form__label small {
+  color: red;
+  font-size: 14px;
+  margin-left: 5px;
+  font-weight: normal;
+}
 
 .form__control {
   height: 40px;
