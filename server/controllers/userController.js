@@ -310,7 +310,7 @@ const userControllers = {
         res.json({ success: true, message: "Login success!" });
       } else {
         const newUser = new Users({
-          fullname: name,
+          forename: name,
           username: email,
           password: passwordHash,
           email,
@@ -379,7 +379,7 @@ const userControllers = {
         res.json({ success: true, message: "Login success!" });
       } else {
         const newUser = new Users({
-          name,
+          forename,
           email,
           password: passwordHash,
           avatar: picture.data.url,

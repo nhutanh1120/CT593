@@ -1,5 +1,4 @@
 const Post = require("./../models/Post");
-const base64 = require("file-base64");
 
 const postController = {
   getPosts: async (req, res) => {
@@ -7,7 +6,7 @@ const postController = {
       console.log("Get post");
       const posts = await Post.find({ author: req.user.id }).populate(
         "author",
-        ["fullname"]
+        ["forename", "surname"]
       );
       res.json({ success: true, message: "get post success.", posts });
     } catch (error) {
@@ -20,7 +19,10 @@ const postController = {
   getAllPosts: async (req, res) => {
     try {
       console.log("Get all post");
-      const posts = await Post.find();
+      const posts = await Post.find().populate("author", [
+        "forename",
+        "surname",
+      ]);
       res.json({ success: true, message: "get all post success.", posts });
     } catch (error) {
       console.log(error);

@@ -36,8 +36,8 @@ const userProfileControllers = {
   updateUser: async (req, res) => {
     try {
       console.log("update user request");
-      const { fullname, phone, address, avatar, ...rest } = req.body;
-      if (!fullname || !phone || !address || !avatar) {
+      const { forename, surname, phone, address, avatar, ...rest } = req.body;
+      if (!forename || !surname || !phone || !address || !avatar) {
         return res.status(400).json({
           success: false,
           message: "Please fill all fields.",
@@ -46,7 +46,8 @@ const userProfileControllers = {
       await Users.findOneAndUpdate(
         { _id: req.user.id },
         {
-          fullname,
+          forename,
+          surname,
           phone,
           address,
           avatar,

@@ -14,7 +14,8 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZjZlNDg0NzY0MDc0OGJkOWM1ZiIsImlhdCI6MTYzNDQwNzAwNSwiZXhwIjoxNjM1MDExODA1fQ.qVSszaGowNBH9b9q9cEP5VXAMkxi3_JudGPF9ZEhtqU
 
 {
-    "fullname": "Luu Tran Anh Nhut",
+    "forename": "Tran Anh Nhut",
+    "surname": "Luu",
     "phone": "0399234016",
     "address": "Vinh long",
     "description": "abcd",
