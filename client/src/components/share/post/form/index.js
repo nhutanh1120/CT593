@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
-import Validator from "../../../utils/validation/Vanilla";
-import "./style.css";
-// import FileBase64 from "react-file-base64";
 import axios from "axios";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import getBase64 from "../../../utils/filebases64";
+import Validator from "../../../utils/validation/Vanilla";
+import { apiUrl } from "./../../../../constants/index";
+import "./style.css";
 
 const FormPost = () => {
   const token = useSelector((state) => state.token);
@@ -14,8 +15,6 @@ const FormPost = () => {
         formGroupSelector: ".form__group",
         errorSelector: ".form__message",
         rules: [
-          Validator.isRequired("#name", "Vui lòng nhập tên đầy đủ của bạn"),
-          Validator.minLength("#name", 10),
           Validator.isRequired("#title", "Vui lòng nhập tiêu đề bài viết"),
           Validator.isRequired("#tags", "Vui lòng nhập hashtag bài viết"),
           Validator.isRequired(
@@ -26,11 +25,26 @@ const FormPost = () => {
         ],
         onSubmit: function (data) {
           (async (data) => {
-            const { title, description, tags } = data;
-            const req = { title, description, tags: [...tags] };
-            await axios.post("http://localhost:4000/api/post/", req, {
-              headers: { Authorization: "Bearer " + token },
+            const { title, description, tags, attachment } = data;
+            let attachmentBases64;
+
+            await getBase64(attachment[0]).then(
+              (data) => (attachmentBases64 = data)
+            );
+
+            const req = {
+              title,
+              description,
+              tags: [tags],
+              attachment: attachmentBases64 || "",
+            };
+            const res = await axios.post(apiUrl + "/post/", req, {
+              headers: {
+                "Access-Control-Allow-Origin": "http://localhost:3000",
+                Authorization: "Bearer " + token,
+              },
             });
+            console.log(res);
           })(data);
         },
       });
@@ -41,16 +55,6 @@ const FormPost = () => {
     <div className="post__form">
       <h5>Tạo bài viết mới</h5>
       <form id="post__form">
-        <div className="form__group">
-          <input
-            id="name"
-            name="name"
-            type="text"
-            placeholder="Tên hiển thị"
-            className="form__control"
-          />
-          <span className="form__message"></span>
-        </div>
         <div className="form__group">
           <input
             id="title"
