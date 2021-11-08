@@ -29,3 +29,35 @@
   border-radius: 8px;
   cursor: pointer;
 }
+.post__create {
+  position: absolute;
+  right: 10px;
+  top: 2px;
+  color: var(--primary-color);
+  box-shadow: var(--box-shadow);
+  border-radius: 50%;
+  padding: 2px;
+  cursor: pointer;
+}
+.post__create span {
+  position: absolute;
+  width: max-content;
+  top: calc(100% + 5px);
+  right: 0;
+  color: black;
+  padding: 5px 10px;
+  font-size: 12px;
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+  z-index: 100;
+  transition: all 0.3s;
+  transform-origin: top right;
+  transform: scale(0);
+}
+.post__create:hover span {
+  transform: scale(1);
+}
+.post__create i {
+  position: relative;
+  top: 2px;
+}

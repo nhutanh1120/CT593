@@ -1,14 +1,13 @@
 import axios from "axios";
 import moment from "moment";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { apiUrl } from "../../constants";
-import img from "./../../assets/img/home.png";
-import "./style.css";
+import { apiUrl } from "./../../constants/index";
 import {
   showErrorToast,
   showSuccessToast,
-} from "../utils/notification/message";
+} from "./../utils/notification/message";
+import "./style.css";
 
 const dropdown = [
   {
@@ -28,15 +27,15 @@ const dropdown = [
     content: "Báo cáo bài viết",
   },
 ];
-const PostItem = ({ data, path, onDelete }) => {
+const PostItem = ({ data, path, onDelete, onUpdate }) => {
   const handleClick = (e) => {
     if (!e.target.nextElementSibling) return;
     e.target.nextElementSibling.classList.toggle("active");
     document.querySelector(".post__card__hidden").style.display = "block";
   };
-  const handleHidden = (e) => {
+  const handleHidden = () => {
     document.querySelector(".active").classList.remove("active");
-    e.target.style.display = "none";
+    document.querySelector(".post__card__hidden").style.display = "none";
   };
 
   const token = useSelector((state) => state.token);
@@ -85,10 +84,10 @@ const PostItem = ({ data, path, onDelete }) => {
       <div id="toast"></div>
       <div className="post__card__hidden" onClick={handleHidden}></div>
       <div className="post__card__head">
-        <img src={img} alt="images" />
+        <img src={data.attachment} alt="images" />
         <div className="post__card--overlay">
           <div className="card__overlay--left">
-            <h5>Nhut luu</h5>
+            <h5>{data.author.surname + " " + data.author.forename}</h5>
             <p>{moment(data.createdAt).fromNow()}</p>
           </div>
           <div className="card__overlay--right" onClick={handleClick}>
@@ -101,7 +100,12 @@ const PostItem = ({ data, path, onDelete }) => {
                       <i className={item.class}></i>&nbsp;{item.content}
                     </li>
                   ))) || (
-                  <li>
+                  <li
+                    onClick={() => {
+                      onUpdate(data._id);
+                      handleHidden();
+                    }}
+                  >
                     <i className="bx bx-message-square-edit"></i>&nbsp; Chỉnh
                     sữa bài viết
                   </li>

@@ -65,7 +65,7 @@ const postController = {
   },
   updatePost: async (req, res) => {
     console.log("Update post");
-    const { title, description, attachment, likeCount } = req.body;
+    const { title, description, attachment, ...rest } = req.body;
 
     // Simple validation
     if (!title || !description)
@@ -79,7 +79,7 @@ const postController = {
         title,
         description,
         attachment: attachment || "",
-        likeCount: likeCount || "0",
+        ...rest,
       };
 
       const postUpdateCondition = { _id: req.params.id, author: req.user.id };

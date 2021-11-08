@@ -23,6 +23,22 @@ const Posts = () => {
     const newArray = state.filter((item) => item._id !== data);
     setState(newArray);
   };
+  const onCreate = (data) => {
+    let newArray = [...state];
+    newArray.push(data);
+    setState(newArray);
+  };
+  const [dataUpdate, setDataUpdate] = useState(null);
+  const onUpdate = (id) => {
+    const newArray = state.find((item) => item._id === id);
+    setDataUpdate(newArray);
+  };
+  const handleUpdate = (data) => {
+    let newArray = [...state];
+    const index = newArray.findIndex((item) => item._id === data._id);
+    newArray[index] = data;
+    setState(newArray);
+  };
   return (
     <div className="grid body">
       <div className="dashboard__body__header">
@@ -33,13 +49,17 @@ const Posts = () => {
           <div className="row">
             {state.map((item, index) => (
               <div className="col l-4" key={index}>
-                <PostItem data={item} onDelete={onDelete} />
+                <PostItem data={item} onDelete={onDelete} onUpdate={onUpdate} />
               </div>
             ))}
             {state.length === 0 && <Empty />}
           </div>
         </div>
-        <FormPost />
+        <FormPost
+          onCreate={onCreate}
+          dataUpdate={dataUpdate}
+          onUpdate={handleUpdate}
+        />
       </div>
     </div>
   );
