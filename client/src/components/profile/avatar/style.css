@@ -11,3 +11,19 @@
   padding: 5px;
   border-radius: 50%;
 }
+.btn__submit {
+  display: block;
+  margin: auto;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  padding: 12px 48px;
+  border-radius: 50px;
+  cursor: pointer;
+  min-width: 120px;
+  transition: opacity 0.2s ease;
+  user-select: none;
+  background-color: #71be34;
+}

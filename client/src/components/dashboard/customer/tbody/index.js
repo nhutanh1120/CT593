@@ -7,7 +7,7 @@ import {
   showSuccessToast,
 } from "../../../utils/notification/message";
 
-const isRole = (key = 0) => {
+const isRole = (key) => {
   switch (key) {
     case "1":
       return "quản trị";
@@ -27,14 +27,9 @@ const TbodyData = ({ item, index }) => {
   const token = useSelector((state) => state.token);
   const handleAccess = async () => {
     let access = item.access;
-    if (access < 2) {
-      access = 2;
-    } else {
-      access = 0;
-    }
     const res = await axios.patch(
       apiUrl + "/profile/access/update/" + item._id,
-      { access },
+      { access: !access },
       {
         headers: { Authorization: "Bearer " + token },
       }
@@ -60,10 +55,10 @@ const TbodyData = ({ item, index }) => {
         </button>
         <button className="tbody__action" onClick={handleAccess}>
           <div className="action__tooltip">
-            {item.access < 2 ? "Khóa" : "Mở khóa"}
+            {(item.access && "Khóa") || "Mở khóa"}
           </div>
           <span className="lock">
-            <i className={item.access < 2 ? "bx bx-x" : "bx bx-check"}></i>
+            <i className={(item.access && "bx bx-x") || "bx bx-check"}></i>
           </span>
         </button>
       </td>

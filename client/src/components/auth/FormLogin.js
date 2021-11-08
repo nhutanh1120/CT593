@@ -6,13 +6,17 @@ import { useDispatch } from "react-redux";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { apiUrl } from "./../../constants";
 import { dispatchLogin } from "./../../redux/actions/authAction";
-import { showErrorToast } from "./../utils/notification/message";
+import {
+  showErrorToast,
+  showWarningToast,
+} from "./../utils/notification/message";
 import { isEmpty, isLength, isMatch } from "./../utils/validation/Validation";
 
 const initialState = {
   username: "",
   password: "",
   error: "",
+  warning: "",
 };
 
 const FormLogin = () => {
@@ -21,7 +25,7 @@ const FormLogin = () => {
   const history = useHistory();
   const { id } = useParams();
 
-  const { username, password, error } = user;
+  const { username, password, error, warning } = user;
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
@@ -84,7 +88,13 @@ const FormLogin = () => {
             withCredentials: true,
           }
         );
-        if (res.data.success) {
+        if (res.data.success && !res.data.refresh_token) {
+          setUser({
+            ...user,
+            warning: Math.random(),
+          });
+          return;
+        } else if (res.data.success) {
           setUser({ ...user, error: "" });
 
           localStorage.setItem("firstLogin", true);
@@ -112,13 +122,20 @@ const FormLogin = () => {
       const res = await axios.post(apiUrl + "/auth/google/login", {
         tokenId: response.tokenId,
       });
-      setUser({ ...user, error: "", success: res.data.message });
+      if (res.data.success && !res.data.refresh_token) {
+        setUser({
+          ...user,
+          warning: Math.random(),
+        });
+        return;
+      }
+      setUser({ ...user, error: "", warning: "" });
       localStorage.setItem("firstLogin", true);
       dispatch(dispatchLogin());
       history.push("/");
     } catch (error) {
       error?.response?.data?.message &&
-        setUser({ ...user, error: Math.random(), success: "" });
+        setUser({ ...user, error: Math.random(), warning: "" });
     }
   };
 
@@ -152,7 +169,10 @@ const FormLogin = () => {
     if (error) {
       showErrorToast("Tài khoản hoặc mật khẩu không chính xác.");
     }
-  }, [error]);
+    if (warning) {
+      showWarningToast("Tài khoản của bạn đã bị khóa.");
+    }
+  }, [error, warning]);
 
   return (
     <>

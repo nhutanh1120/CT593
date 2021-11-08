@@ -20,6 +20,22 @@ const Sign = () => (
     </li>
   </ul>
 );
+const SignMobile = () => (
+  <ul className="navbar__mobile--sign">
+    <li className="navbar__mobile--item">
+      <Link className="nav__mobile--link" to="/sign">
+        <i className="bx bx-log-in"></i>
+        <span>Đăng nhập</span>
+      </Link>
+    </li>
+    <li className="navbar__mobile--item">
+      <Link className="nav__mobile--link" to="/sign">
+        <i className="bx bx-add-to-queue"></i>
+        <span>Đăng ký</span>
+      </Link>
+    </li>
+  </ul>
+);
 function Header({ isActiveHeader }) {
   const isLogin = localStorage.getItem("firstLogin");
   let navbarStyle = "navbar";
@@ -183,22 +199,7 @@ function Header({ isActiveHeader }) {
               </NavLink>
             </li>
           </ul>
-          {isLogin
-            ? ""
-            : `<ul className="navbar__mobile--sign">
-            <li className="navbar__mobile--item">
-              <Link className="nav__mobile--link" to="/sign">
-                <i className="bx bx-log-in"></i>
-                <span>Đăng nhập</span>
-              </Link>
-            </li>
-            <li className="navbar__mobile--item">
-              <Link className="nav__mobile--link" to="/sign">
-                <i className="bx bx-add-to-queue"></i>
-                <span>Đăng ký</span>
-              </Link>
-            </li>
-          </ul>`}
+          {isLogin ? "" : <SignMobile />}
 
           <label
             htmlFor="navbar__mobile--input"

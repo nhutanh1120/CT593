@@ -43,7 +43,7 @@ const sidebarCurrent = [
 function User() {
   const match = useRouteMatch();
   const auth = useSelector((state) => state.auth);
-  const { isLogged, isAdmin } = auth;
+  const { isLogged, isAdmin, isUpdate } = auth;
 
   const history = useHistory();
 
@@ -51,7 +51,10 @@ function User() {
     if (!isLogged || isAdmin) {
       history.push("/");
     }
-  }, [isLogged, isAdmin, history]);
+    if (!isUpdate) {
+      history.push("/profile/update");
+    }
+  }, [isLogged, isAdmin, isUpdate, history]);
 
   return (
     <div className="App">

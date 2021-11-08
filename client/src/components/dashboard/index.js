@@ -199,7 +199,7 @@ const Body = () => {
               />
             </div>
             <div className="card--body__footer">
-              <Link to="/dashboard/customer">view all</Link>
+              <Link to="/admin/dashboard/customer">view all</Link>
             </div>
           </div>
         </div>
@@ -217,7 +217,7 @@ const Body = () => {
               />
             </div>
             <div className="card--body__footer">
-              <Link to="/">view all</Link>
+              <Link to="/admin/dashboard/product">view all</Link>
             </div>
           </div>
         </div>

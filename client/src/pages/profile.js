@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import Header from "../components/layouts/header/header";
-import RoleItem from "../components/profile/Role";
-import "./../assets/css/profile.css";
-
-import InfoItem from "../components/profile/info";
 import AvatarItem from "../components/profile/avatar";
 import ContactItem from "../components/profile/contact";
+import InfoItem from "../components/profile/info";
+import RoleItem from "../components/profile/Role";
+import "./../assets/css/profile.css";
 
 const initialState = [
   {
@@ -41,6 +42,19 @@ const initialState = [
 ];
 
 const Info = () => {
+  const auth = useSelector((state) => state.auth);
+  const { isLogged, isUpdate } = auth;
+  const history = useHistory();
+
+  useEffect(() => {
+    if (!isLogged || isUpdate) {
+      history.push("/");
+    }
+  }, [isLogged, isUpdate, history]);
+
+  /**
+   * Change tabs
+   */
   useEffect(() => {
     const $ = document.querySelector.bind(document);
     const $$ = document.querySelectorAll.bind(document);
@@ -111,19 +125,32 @@ const Info = () => {
     };
   }, []);
 
-  // ---------- Role --------
+  /**
+   * Get role from component role
+   * remove border role in role items
+   */
   const [dataRole, setDataRole] = useState(initialState);
   const [role, setRole] = useState(0);
   const indexOld = useRef(0);
-  const roleValue = (indexNew) => {
+  const roleValue = (index) => {
     const newArray = dataRole;
     newArray[indexOld.current].active = false;
-    newArray[indexNew].active = true;
+    newArray[index].active = true;
 
     setDataRole(newArray);
-    setRole(newArray[indexNew].value);
-    indexOld.current = indexNew;
+    setRole(newArray[index].value);
+    indexOld.current = index;
   };
+
+  /**
+   * Get information personal
+   */
+  const [info, setInfo] = useState({});
+  /**
+   * Get contact
+   */
+  const [contact, setContact] = useState({});
+
   return (
     <div className="App">
       <Header />
@@ -171,19 +198,19 @@ const Info = () => {
             <p className="tab__pane__title">
               Vui lòng, cập nhật thông tin cá nhân.
             </p>
-            <InfoItem />
+            <InfoItem info={setInfo} />
           </div>
           <div className="tab-pane">
             <p className="tab__pane__title">
               Vui lòng, cho chúng tôi biết địa chỉ liên hệ với bạn.
             </p>
-            <ContactItem />
+            <ContactItem contact={setContact} />
           </div>
           <div className="tab-pane">
             <p className="tab__pane__title">
               Vui lòng, cập nhật ảnh đại diện để mọi người đều biết đến bạn.
             </p>
-            <AvatarItem />
+            <AvatarItem role={role} info={info} contact={contact} />
           </div>
         </div>
         <div className="tab-button">

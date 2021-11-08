@@ -3,18 +3,18 @@ import Validator from "../../utils/validation/Vanilla";
 import "./style.css";
 
 const initialState = {
-  name: "",
+  forename: "",
   surname: "",
   male: true,
   birthday: "",
-  error: "",
 };
-const InfoItem = () => {
+const InfoItem = ({ info }) => {
   const [state, setState] = useState(initialState);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setState({ ...state, [name]: value, error: "" });
+    setState({ ...state, [name]: value });
+    info({ ...state, [name]: value });
   };
 
   useEffect(() => {
@@ -24,10 +24,9 @@ const InfoItem = () => {
         formGroupSelector: ".form__group",
         errorSelector: ".form__message",
         rules: [
-          Validator.isRequired("#name", "Vui lòng nhập Tên của bạn"),
-          Validator.minLength("#name", 5),
+          Validator.isRequired("#forename", "Vui lòng nhập Tên của bạn"),
+          Validator.minLength("#forename", 5),
           Validator.isRequired("#surname", "Vui lòng nhập Họ của bạn"),
-          Validator.minLength("#surname", 5),
           Validator.isRequired("#birthday", "Vui lòng chọn ngày sinh của bạn"),
         ],
       });
@@ -45,9 +44,9 @@ const InfoItem = () => {
                   <small>*</small>
                 </label>
                 <input
-                  id="name"
-                  name="name"
-                  placeholder="Nhập địa chỉ"
+                  id="forename"
+                  name="forename"
+                  placeholder="Tên của bạn"
                   type="text"
                   className="form__control"
                   onChange={handleChange}

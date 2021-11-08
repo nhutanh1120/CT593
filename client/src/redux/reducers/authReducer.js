@@ -3,6 +3,7 @@ import ACTIONS from "./../../constants/redux";
 const initialState = {
   user: [],
   isLogged: false,
+  isUpdate: false,
   isAdmin: false,
 };
 
@@ -17,6 +18,7 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload.user,
+        isUpdate: action.payload.isUpdate,
         isAdmin: action.payload.isAdmin,
       };
     default:

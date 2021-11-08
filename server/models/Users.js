@@ -24,6 +24,14 @@ const UserSchema = new Schema(
       require: [true, "Please enter your name!"],
       unique: true,
     },
+    male: {
+      type: Boolean,
+      default: true,
+    },
+    birthday: {
+      type: Date,
+    },
+    social: { type: String },
     phone: { type: Number },
     address: {
       type: String,

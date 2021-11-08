@@ -7,7 +7,7 @@ import "./mobile.css";
 
 const Mobile = () => {
   const auth = useSelector((state) => state.auth);
-  const { isAdmin } = auth;
+  const { isAdmin, user } = auth;
   return (
     <>
       <div className="sign__images__header">
@@ -16,7 +16,7 @@ const Mobile = () => {
             e.target.onerror = null;
             e.target.src = profile;
           }}
-          src="https://lh3.googleusercontent.com/a/AATXAJxhGKESfjpB3GAyNxIQpsheKl74w2Qq6ylZ4MfE=s96-cccccc"
+          src={user.avatar}
           alt="img"
         />
         <p>Nhut Anh</p>

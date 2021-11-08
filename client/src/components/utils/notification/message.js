@@ -61,3 +61,11 @@ export function showSuccessToast(message) {
     duration: 5000,
   });
 }
+export function showWarningToast(message) {
+  toast({
+    title: "Cảnh báo!",
+    message,
+    type: "warning",
+    duration: 5000,
+  });
+}

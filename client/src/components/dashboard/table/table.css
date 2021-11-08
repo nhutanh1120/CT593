@@ -138,3 +138,7 @@
 .table__body--action:hover .bx-show {
   color: red;
 }
+.tbody__action .lock i,
+.tbody__action .view i {
+  color: var(--second-color);
+}

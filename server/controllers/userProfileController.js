@@ -36,26 +36,31 @@ const userProfileControllers = {
   updateUser: async (req, res) => {
     try {
       console.log("update user request");
-      const { forename, surname, phone, address, avatar, ...rest } = req.body;
-      if (!forename || !surname || !phone || !address || !avatar) {
+      const { forename, surname, phone, address, birthday, avatar, ...rest } =
+        req.body;
+      if (!forename || !surname || !phone || !address || !birthday || !avatar) {
+        console.log("A");
         return res.status(400).json({
           success: false,
           message: "Please fill all fields.",
         });
       }
-      await Users.findOneAndUpdate(
+      const userUpdate = await Users.findOneAndUpdate(
         { _id: req.user.id },
         {
           forename,
           surname,
           phone,
           address,
+          birthday,
           avatar,
+          check: true,
           ...rest,
-        }
+        },
+        { new: true }
       );
 
-      res.json({ success: true, message: "Update Success!" });
+      res.json({ success: true, message: "Update Success!", user: userUpdate });
     } catch (error) {
       console.log(error);
       res

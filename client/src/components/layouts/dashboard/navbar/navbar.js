@@ -72,11 +72,14 @@ const TopNavbar = ({ data, userMenu }) => {
     setWordEntered("");
   };
 
+  /**
+   * Get information personal
+   */
   const auth = useSelector((state) => state.auth);
   const { user, role } = auth;
 
   const curr_user = {
-    display_name: "Nhut Anh",
+    display_name: user.surname + " " + user.forename,
     image: user.avatar,
   };
 

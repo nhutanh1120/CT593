@@ -56,7 +56,7 @@ const Sidebar = ({ sidebarCurrent }) => {
 
         {isLogged && (
           <Logout
-            fullname="nhựt anh"
+            fullname={user.surname + " " + user.forename + "sdasfghjasdsad"}
             permission={(isAdmin && "quản trị") || "người dùng"}
             avatar={user.avatar}
           />

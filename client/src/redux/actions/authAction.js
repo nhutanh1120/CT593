@@ -20,6 +20,7 @@ export const dispatchGetUser = (res) => {
     type: ACTIONS.GET_USER,
     payload: {
       user: res.data.user,
+      isUpdate: res.data.user.check,
       isAdmin: res.data.user.role === 1 ? true : false,
     },
   };

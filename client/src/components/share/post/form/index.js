@@ -40,7 +40,6 @@ const FormPost = () => {
             };
             const res = await axios.post(apiUrl + "/post/", req, {
               headers: {
-                "Access-Control-Allow-Origin": "http://localhost:3000",
                 Authorization: "Bearer " + token,
               },
             });
