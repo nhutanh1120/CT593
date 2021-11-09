@@ -9,6 +9,7 @@ import "./style.css";
 
 const FormPost = ({ onCreate, dataUpdate, onUpdate }) => {
   const [state, setState] = useState(false);
+  const user = useSelector((state) => state.auth.user);
   useEffect(() => {
     if (dataUpdate) {
       setState(dataUpdate);
@@ -56,7 +57,16 @@ const FormPost = ({ onCreate, dataUpdate, onUpdate }) => {
                 showSuccessToast(
                   "Thao tác thành công, vui lòng kiểm tra thông tin"
                 );
-                onCreate(res.data.post);
+                const { _id } = res.data.post;
+                const data = {
+                  ...res.data.post,
+                  author: {
+                    _id,
+                    forename: user.forename,
+                    surname: user.surname,
+                  },
+                };
+                onCreate(data);
               }
             } else {
               const res = await axios.put(apiUrl + "/post/" + state._id, req, {
@@ -68,7 +78,16 @@ const FormPost = ({ onCreate, dataUpdate, onUpdate }) => {
                 showSuccessToast(
                   "Thao tác thành công, vui lòng kiểm tra thông tin"
                 );
-                onUpdate(res.data.post);
+                const { _id } = res.data.post._id;
+                const data = {
+                  ...res.data.post,
+                  author: {
+                    _id,
+                    forename: user.forename,
+                    surname: user.surname,
+                  },
+                };
+                onUpdate(data);
                 setState(null);
               }
             }
@@ -77,7 +96,7 @@ const FormPost = ({ onCreate, dataUpdate, onUpdate }) => {
         },
       });
     })();
-  }, [token, onCreate, state, onUpdate]);
+  }, [token, onCreate, state, onUpdate, user]);
   return (
     <div className="post__form">
       <h5>{(state && "Chỉnh sữa bài viết") || "Tạo bài viết mới"}</h5>

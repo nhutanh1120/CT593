@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ScrollTop from "../components/layouts/scrollTop/scrollTop";
-import PostItem from "../components/post";
+import PostItem from "../components//share/post/post";
 import Empty from "../components/utils/empty/data";
 import { apiUrl } from "../constants";
 import "./../assets/css/post.css";

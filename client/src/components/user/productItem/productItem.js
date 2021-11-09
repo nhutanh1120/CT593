@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import img from "./../../../assets/img/bg.jpg";
 import Update from "./../update";
+import moment from "moment";
 
 const ProductItem = ({ agricultural, onDelete }) => {
-  // console.log(agricultural);
-
+  console.log(agricultural);
   const onDeletes = async () => {
     // if (confirm("Bạn có chắc chắn muốn xóa sản phẩm ?")) {
     onDelete(agricultural._id);
@@ -22,7 +22,6 @@ const ProductItem = ({ agricultural, onDelete }) => {
   // Handle Event
   const ref = useRef(null);
   const handleClick = (e) => {
-    console.log([e.target]);
     const content__current = e.target;
     if (!content__current) return;
     if (
@@ -81,7 +80,7 @@ const ProductItem = ({ agricultural, onDelete }) => {
   );
   return (
     <>
-      {viewUpdate ? <Update hideUpdate={hideUpdate} data={agricultural} /> : ""}
+      {viewUpdate && <Update hideUpdate={hideUpdate} data={agricultural} />}
       <div className="col l-3 m-6 c-12">
         <div className="div__hidden" onClick={closeElement} ref={ref}></div>
         <div className="product__card">
@@ -111,12 +110,30 @@ const ProductItem = ({ agricultural, onDelete }) => {
               >
                 <i className="bx bx-bell bx-sm"></i>
                 <div className="product__dropdown__content product--width">
-                  <Link to="/" className="product--a">
-                    a
+                  <Link to="/user/dashboard" className="product--a">
+                    <i className="bx bx-check-circle bx-sm"></i>
+                    <span>
+                      <p>
+                        Bạn đã tạo thành công sản phẩm&nbsp;
+                        <b>{agricultural.breed.nameBreed}</b>
+                      </p>
+                      <small>{moment(agricultural.createdAt).fromNow()}</small>
+                    </span>
                   </Link>
-                  <Link to="/" className="product--a">
-                    a
-                  </Link>
+                  {agricultural.createdAt !== agricultural.updatedAt && (
+                    <Link to="/user/dashboard" className="product--a">
+                      <i className="bx bx-check-circle bx-sm"></i>
+                      <span>
+                        <p>
+                          Bạn đã cập nhật sản phẩm thành công&nbsp;
+                          <b>{agricultural.breed.nameBreed}</b>
+                        </p>
+                        <small>
+                          {moment(agricultural.updatedAt).fromNow()}
+                        </small>
+                      </span>
+                    </Link>
+                  )}
                   <Link to="/" className="product--a">
                     a
                   </Link>

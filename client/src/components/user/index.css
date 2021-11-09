@@ -117,16 +117,29 @@
   background-color: rgb(239, 239, 239) !important;
 }
 .product__dropdown__content .product--a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   border-radius: 5px;
-  display: block;
   margin-bottom: 5px;
-  padding: 5px 10px;
+  padding: 5px;
   cursor: pointer;
   width: 100%;
-  text-align: left;
   background: none !important;
   outline: none;
+}
+.product--a span {
+  padding-left: 5px;
+}
+.product--a span b {
+  text-transform: capitalize;
+}
+.product--a span p {
+  font-size: 12px;
+}
+.product--a small {
+  font-size: 10px;
 }
 .product__dropdown__content .product--a:hover {
   background-color: rgb(239, 239, 239) !important;

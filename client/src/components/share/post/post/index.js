@@ -2,11 +2,11 @@ import axios from "axios";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { apiUrl } from "./../../constants/index";
+import { apiUrl } from "../../../../constants/index";
 import {
   showErrorToast,
   showSuccessToast,
-} from "./../utils/notification/message";
+} from "../../../utils/notification/message";
 import "./style.css";
 
 const dropdown = [
@@ -28,6 +28,7 @@ const dropdown = [
   },
 ];
 const PostItem = ({ data, path, onDelete, onUpdate }) => {
+  // console.log(data);
   const handleClick = (e) => {
     if (!e.target.nextElementSibling) return;
     e.target.nextElementSibling.classList.toggle("active");
