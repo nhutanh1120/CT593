@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { handleLogout } from "../../dashboard/sidebar/logout/handleLogout";
@@ -7,7 +7,12 @@ import "./style.css";
 
 const Profile = () => {
   const auth = useSelector((state) => state.auth);
-  const { isAdmin } = auth;
+  const [fullName, setFullName] = useState(false);
+  const { isAdmin, user } = auth;
+  useEffect(() => {
+    if (user.forename && user.surname)
+      setFullName(user.forename + " " + user.surname);
+  }, [user.forename, user.surname]);
 
   const handleView = (e) => {
     const hidden = document.querySelector(".header__hidden--view");
@@ -41,7 +46,7 @@ const Profile = () => {
             e.target.onerror = null;
             e.target.src = profile;
           }}
-          src=""
+          src={user.avatar || ""}
           alt="img"
           onClick={handleView}
         />
@@ -52,12 +57,12 @@ const Profile = () => {
                 e.target.onerror = null;
                 e.target.src = profile;
               }}
-              src=""
+              src={user.avatar || "avatar"}
               alt="img"
             />
             <span>
-              <h5>Lưu Trần Anh nhựt</h5>
-              <p>@nhutanh@gmail.com</p>
+              <h5>{fullName || "Chưa cập nhật"}</h5>
+              <p>{"@" + user.email || "@luumoments@gmail.com"}</p>
             </span>
           </div>
           <Link to={isAdmin ? "/admin/dashboard" : "/user/dashboard"}>

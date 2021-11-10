@@ -1,0 +1,32 @@
+POST http://localhost:4000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "distributor",
+  "password": "1234567",
+  "email": "nhutanh@gmail.com"
+}
+###
+POST http://localhost:4000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "distributor",
+  "password": "1234567"
+}
+
+###
+GET http://localhost:4000/api/agricultural/all/read
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOGJmMzRjOGQwMjMzNGEyZmQxMjRiNCIsImlhdCI6MTYzNjU2MTgyNSwiZXhwIjoxNjM3MTY2NjI1fQ.Vrxn42mknoDnKRpfA8Pga39P4EYvsJkDaSSIFCPn8N0
+
+###
+POST http://localhost:4000/api/agricultural/distributor/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOGJmMzRjOGQwMjMzNGEyZmQxMjRiNCIsImlhdCI6MTYzNjU2MTgyNSwiZXhwIjoxNjM3MTY2NjI1fQ.Vrxn42mknoDnKRpfA8Pga39P4EYvsJkDaSSIFCPn8N0
+
+{
+    "id": "618b6eb359c8742b5fdbcc7b",
+    "start": "Xuan Hiep, Tra On, Vinh Long",
+    "end": "Hung loi, Ninh Kieu, Can Tho"
+}

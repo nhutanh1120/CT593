@@ -36,6 +36,7 @@ const sendEmail = (to, url, txt) => {
   //   },
   // });
   console.log("Gửi mail thành công");
+  console.log(url);
   // const mailOptions = {
   //   from: SENDER_EMAIL_ADDRESS,
   //   to: to,

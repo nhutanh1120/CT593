@@ -89,6 +89,7 @@ const AgriculturalSchema = new Schema(
         email: { type: String },
         address: { type: String },
       },
+      nameStore: { type: String },
       addressRetail: { type: String },
       price: { type: Number },
     },

@@ -1,0 +1,33 @@
+POST http://localhost:4000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "retailer",
+  "password": "1234567",
+  "email": "nhutanh5@gmail.com"
+}
+###
+POST http://localhost:4000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "retailer",
+  "password": "1234567"
+}
+
+###
+GET http://localhost:4000/api/agricultural/all/read
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOGMwZjBhYjhhZWNlYjc3OTJkZWU5NyIsImlhdCI6MTYzNjU2OTY1NywiZXhwIjoxNjM3MTc0NDU3fQ.Y3OIU4lqjTxNa35YCdoC4tWi0IUazlEzjWw8tMGb-Vo
+
+###
+POST http://localhost:4000/api/agricultural/retailer/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOGMwZjBhYjhhZWNlYjc3OTJkZWU5NyIsImlhdCI6MTYzNjU2OTY1NywiZXhwIjoxNjM3MTc0NDU3fQ.Y3OIU4lqjTxNa35YCdoC4tWi0IUazlEzjWw8tMGb-Vo
+
+{
+    "id": "618b6eb359c8742b5fdbcc7b",
+    "store": "Bach hoa xanh",
+    "address": "Hung loi, Ninh Kieu, Can Tho",
+    "price": 10000
+}

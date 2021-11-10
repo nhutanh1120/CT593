@@ -1,4 +1,4 @@
-const AgriculturalModel = require("./../models/Agricultural");
+const AgriculturalModel = require("./../../models/Agricultural");
 
 const agriculturalControllers = {
   // @Router post /api/agricultural/read/:id
@@ -26,10 +26,36 @@ const agriculturalControllers = {
   // @access private
   readGroup: async (req, res) => {
     try {
-      const agricultural = await AgriculturalModel.find({
-        "producer.user": req.user.id,
-      });
       console.log("read group agricultural request");
+      let agricultural = {};
+      switch (req.role) {
+        case 2:
+          agricultural = await AgriculturalModel.find({
+            "producer.user": req.user.id,
+          });
+          break;
+        case 3:
+          agricultural = await AgriculturalModel.find({
+            "distributor.profile.user": req.user.id,
+          });
+          break;
+        case 4:
+          agricultural = await AgriculturalModel.find({
+            "processing.profile.user": req.user.id,
+          });
+          break;
+        case 5:
+          agricultural = await AgriculturalModel.find({
+            "retailer.profile.user": req.user.id,
+          });
+          break;
+        default:
+          agricultural = await AgriculturalModel.find({
+            "producer.user": req.user.id,
+          });
+          break;
+      }
+
       res.json({
         success: true,
         message: "read agricultural success",
@@ -69,7 +95,7 @@ const agriculturalControllers = {
       if (req.role !== 2)
         return res.status(400).json({
           success: false,
-          message: "Please fill in the breed.",
+          message: "User resources access denied.",
         });
 
       const { producer, breed, ...rest } = req.body;
@@ -126,7 +152,7 @@ const agriculturalControllers = {
       if (req.role !== 2)
         return res.status(400).json({
           success: false,
-          message: "Please fill in the breed.",
+          message: "User resources access denied.",
         });
       const { producer, breed, ...rest } = req.body;
 
@@ -186,11 +212,36 @@ const agriculturalControllers = {
   // @access private
   delete: async (req, res) => {
     try {
-      const deletedAgricultural = await AgriculturalModel.findOneAndDelete({
-        _id: req.params.id,
-        "producer.user": req.user.id,
-      });
       console.log("delete agricultural request");
+      let deletedAgricultural = {};
+      switch (req.role) {
+        case 2:
+          deletedAgricultural = await AgriculturalModel.findOneAndDelete({
+            _id: req.params.id,
+            "producer.user": req.user.id,
+          });
+          break;
+        case 3:
+          deletedAgricultural = await AgriculturalModel.findOneAndDelete({
+            "distributor.profile.user": req.user.id,
+          });
+          break;
+        case 4:
+          deletedAgricultural = await AgriculturalModel.findOneAndDelete({
+            "processing.profile.user": req.user.id,
+          });
+          break;
+        case 5:
+          deletedAgricultural = await AgriculturalModel.findOneAndDelete({
+            "retailer.profile.user": req.user.id,
+          });
+          break;
+        default:
+          deletedAgricultural = await AgriculturalModel.find({
+            "producer.user": req.user.id,
+          });
+          break;
+      }
       if (!deletedAgricultural)
         return res.status(401).json({
           success: false,

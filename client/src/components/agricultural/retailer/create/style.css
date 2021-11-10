@@ -1,0 +1,12 @@
+.create__retailer {
+  width: 400px;
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+}
+.create__retailer h2 {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 14px;
+}

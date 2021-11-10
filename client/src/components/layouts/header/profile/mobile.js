@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { handleLogout } from "../../dashboard/sidebar/logout/handleLogout";
@@ -8,6 +8,11 @@ import "./mobile.css";
 const Mobile = () => {
   const auth = useSelector((state) => state.auth);
   const { isAdmin, user } = auth;
+  const [fullName, setFullName] = useState(false);
+  useEffect(() => {
+    if (user.forename && user.surname)
+      setFullName(user.forename + " " + user.surname);
+  }, [user.forename, user.surname]);
   return (
     <>
       <div className="sign__images__header">
@@ -16,10 +21,11 @@ const Mobile = () => {
             e.target.onerror = null;
             e.target.src = profile;
           }}
-          src={user.avatar}
+          src={user.avatar || "avatar"}
           alt="img"
         />
-        <p>Nhut Anh</p>
+        <p>{fullName || "Chưa cập nhật"}</p>
+        <small>{"@" + user.email || "@luumoments@gmail.com"}</small>
       </div>
       <ul className="navbar__mobile--sign border__sign">
         <li className="navbar__mobile--item">

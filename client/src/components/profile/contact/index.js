@@ -72,7 +72,7 @@ const ContactItem = ({ contact }) => {
             <div className="col l-6">
               <div className="form__group pane__radio">
                 <label htmlFor="address" className="form__label">
-                  Địa chỉ liên hệ
+                  Địa chỉ liên hệ<small>*</small>
                 </label>
                 <input
                   id="address"
