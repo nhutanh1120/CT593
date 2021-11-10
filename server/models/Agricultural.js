@@ -9,39 +9,91 @@ const AgriculturalSchema = new Schema(
         ref: "users",
       },
       name: { type: String, required: true },
-      address: { type: String, required: true }, // Địa chỉ sản xuất
+      phone: { type: Number, required: true },
+      email: { type: String, required: true },
+      address: { type: String, required: true }, // Dia chi lien he
     },
     breed: {
-      // Quản lý giống
       typeAgricultural: {
-        // Loại nông sản -> Cây trồng (0) hoặc vật nuôi (1)
-        type: Number,
+        type: Number, // Cây trồng (0), vật nuôi (1)
         required: true,
       },
-      nameBreed: String, // Tên giống
-      supplierBreed: String, // Nhà cung cấp
-      timeBreed: { type: Date, default: Date.now() }, // Thời gian xuống giống
+      nameBreed: { type: String },
+      supplierBreed: { type: String },
+      addressBreed: { type: String }, //Dia chi san xuat
+      timeBreed: { type: Date, default: Date.now() },
     },
     actions: [
-      // Quản lý các hoạt động
       {
-        typeAction: Number, // Loại hoạt động -> Phun thuốc (0), rải phân (1), thức ăn (2)
+        typeAction: Number, // thuoc (0), phan bon / thuc an (1)
         listAction: [
           {
-            nameAction: String, // Tên
-            supplierAction: String, // Nhà cung cấp
+            nameAction: String,
+            supplierAction: String,
           },
         ],
-        timeAction: { type: Date, default: Date.now() }, // Thời gian
+        timeAction: { type: Date, default: Date.now() },
       },
     ],
     harvest: {
-      timeAgricultural: { type: Date, default: Date.now() }, // Thời gian thu hoạch
-      imgUrl: String, // Ảnh sản phẩm
+      times: { type: Date },
+      images: { type: String },
+      expiry: { type: Number }, //Day
+    },
+    distributor: {
+      profile: {
+        user: {
+          type: Schema.Types.ObjectId,
+          ref: "users",
+        },
+        name: { type: String },
+        phone: { type: Number },
+        email: { type: String },
+        address: { type: String },
+      },
+      start: { type: String },
+      end: { type: String },
+    },
+    processing: {
+      profile: {
+        user: {
+          type: Schema.Types.ObjectId,
+          ref: "users",
+        },
+        name: { type: String },
+        phone: { type: Number },
+        email: { type: String },
+        address: { type: String },
+      },
+      nameProduct: {
+        type: String,
+      },
+      images: { type: String },
+      dateManufacture: { type: Date },
+      expiry: { type: Number },
+      ingredients: [
+        {
+          name: String,
+          supplier: String,
+        },
+      ],
+    },
+    retailer: {
+      profile: {
+        user: {
+          type: Schema.Types.ObjectId,
+          ref: "users",
+        },
+        name: { type: String },
+        phone: { type: Number },
+        email: { type: String },
+        address: { type: String },
+      },
+      addressRetail: { type: String },
+      price: { type: Number },
     },
     isSuccess: {
-      // 0-> create, 1-> info, 2-> success
-      type: Number,
+      type: Number, // 0-> create, 1-> info, 2-> success
       default: 0,
     },
   },
