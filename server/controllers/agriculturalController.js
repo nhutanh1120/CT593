@@ -64,9 +64,16 @@ const agriculturalControllers = {
   // @access private
   create: async (req, res) => {
     try {
-      const { producer, breed, ...rest } = req.body;
       console.log("create agricultural request");
-      if (!producer?.name && !producer?.address) {
+
+      if (req.role !== 2)
+        return res.status(400).json({
+          success: false,
+          message: "Please fill in the breed.",
+        });
+
+      const { producer, breed, ...rest } = req.body;
+      if (!producer?.name) {
         return res.status(400).json({
           success: false,
           message: "Please fill in the producer.",
@@ -85,7 +92,9 @@ const agriculturalControllers = {
       const newProducer = {
         user: req.user.id,
         name: producer.name,
-        address: producer.address,
+        phone: req.information.phone,
+        email: req.information.email,
+        address: req.information.address,
       };
 
       const newAgricultural = {
@@ -113,9 +122,15 @@ const agriculturalControllers = {
   // @access private
   update: async (req, res) => {
     try {
-      const { producer, breed, ...rest } = req.body;
       console.log("update agricultural request");
-      if (!producer?.name && !producer?.address) {
+      if (req.role !== 2)
+        return res.status(400).json({
+          success: false,
+          message: "Please fill in the breed.",
+        });
+      const { producer, breed, ...rest } = req.body;
+
+      if (!producer?.name) {
         return res.status(400).json({
           success: false,
           message: "Please fill in the producer.",
@@ -134,7 +149,9 @@ const agriculturalControllers = {
       const newProducer = {
         user: req.user.id,
         name: producer.name,
-        address: producer.address,
+        phone: req.information.phone,
+        email: req.information.email,
+        address: req.information.address,
       };
       const updateAgricultural = {
         producer: newProducer,

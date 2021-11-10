@@ -1,35 +1,34 @@
 GET http://localhost:4000/api/agricultural/all/read
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZjZlNDg0NzY0MDc0OGJkOWM1ZiIsImlhdCI6MTYzNDQwNDg5MCwiZXhwIjoxNjM1MDA5NjkwfQ.GoxAAxYQkDwkXOI4afMwJULCICMPhLnYInyuTcQ09EE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNjUyNDk2MiwiZXhwIjoxNjM3MTI5NzYyfQ.7UBr-KfWWnRIULyjKAsRMZcduIhscHPR_6wom1TS_8c
 
 ###
-GET http://localhost:4000/api/agricultural/user/read
+GET http://localhos613c82c2fd20fd30c0581b5dt:4000/api/agricultural/user/read
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZjZlNDg0NzY0MDc0OGJkOWM1ZiIsImlhdCI6MTYzNDQwNDg5MCwiZXhwIjoxNjM1MDA5NjkwfQ.GoxAAxYQkDwkXOI4afMwJULCICMPhLnYInyuTcQ09EE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNjUyNDk2MiwiZXhwIjoxNjM3MTI5NzYyfQ.7UBr-KfWWnRIULyjKAsRMZcduIhscHPR_6wom1TS_8c
 
 ###
 GET http://localhost:4000/api/agricultural/read/613c85b780213313f480c88c
 
 ### 
-DELETE http://localhost:4000/api/agricultural/delete/61337ebaa330a8090c9d2b3e
+DELETE http://localhost:4000/api/agricultural/delete/618b6ce759c8742b5fdbcc72
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZjZlNDg0NzY0MDc0OGJkOWM1ZiIsImlhdCI6MTYzNDQwNDg5MCwiZXhwIjoxNjM1MDA5NjkwfQ.GoxAAxYQkDwkXOI4afMwJULCICMPhLnYInyuTcQ09EE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNjUyNDk2MiwiZXhwIjoxNjM3MTI5NzYyfQ.7UBr-KfWWnRIULyjKAsRMZcduIhscHPR_6wom1TS_8c
 
 ###
-PATCH http://localhost:4000/api/agricultural/update/613c82c2fd20fd30c0581b5d
+PATCH http://localhost:4000/api/agricultural/update/618b6a94d3c8a82899655c83
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZjZlNDg0NzY0MDc0OGJkOWM1ZiIsImlhdCI6MTYzNDQwNDg5MCwiZXhwIjoxNjM1MDA5NjkwfQ.GoxAAxYQkDwkXOI4afMwJULCICMPhLnYInyuTcQ09EE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNjUyNDk2MiwiZXhwIjoxNjM3MTI5NzYyfQ.7UBr-KfWWnRIULyjKAsRMZcduIhscHPR_6wom1TS_8c
 
 {
   "producer": {
-    "user_id": "6120e7ee21b0092960db4bab",
-    "name": "Luu Tran Anh Nhut a",
-    "address": "Xuân hiệp, trà ôn, vĩnh longs"
+    "name": "Luu Tran Anh Nhut update"
   },
   "breed": {
     "typeAgricultural": 0,
     "nameBreed": "ca rot update",
-    "supplierBreed": "update"
+    "supplierBreed": "update",
+    "addressBreed": "Xuân hiệp, trà ôn, vĩnh longs"
   },
   "actions": [
             {
@@ -47,18 +46,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZjZlN
 ###
 POST http://localhost:4000/api/agricultural/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZjZlNDg0NzY0MDc0OGJkOWM1ZiIsImlhdCI6MTYzNDQwNDg5MCwiZXhwIjoxNjM1MDA5NjkwfQ.GoxAAxYQkDwkXOI4afMwJULCICMPhLnYInyuTcQ09EE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNjUyNDk2MiwiZXhwIjoxNjM3MTI5NzYyfQ.7UBr-KfWWnRIULyjKAsRMZcduIhscHPR_6wom1TS_8c
 
 {
   "producer": {
-      "user_id": "6120e7ee21b0092960db4bab",
-      "name": "Luu Tran Anh Nhut",
-      "address": "Xuân hiệp, trà ôn, vĩnh long"
+      "name": "Luu Tran Anh Nhut"
     },
   "breed": {
       "typeAgricultural": 1,
       "nameBreed": "ca rot",
-      "supplierBreed": "abcdefgh"
+      "supplierBreed": "abcdefgh",
+      "addressBreed": "Xuân hiệp, trà ôn, vĩnh long"
     },
   "actions": [
               {

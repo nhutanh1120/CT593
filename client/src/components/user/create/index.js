@@ -32,12 +32,12 @@ const Create = (props) => {
           ((data) => {
             const producer = {
               name: data.name,
-              address: data.address,
             };
             const breed = {
               typeAgricultural: data.typeAgricultural,
               nameBreed: data.nameBreed,
               supplierBreed: data.supplierBreed,
+              addressBreed: data.address,
               timeBreed: data.timeBreed,
             };
             createAgriculturalRequest(
