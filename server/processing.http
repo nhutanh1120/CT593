@@ -1,0 +1,49 @@
+POST http://localhost:4000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "processing",
+  "password": "1234567",
+  "email": "nhutanh5p@gmail.com"
+}
+###
+POST http://localhost:4000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "processing",
+  "password": "1234567"
+}
+
+###
+GET http://localhost:4000/api/agricultural/all/read
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOGQ1N2U5NDcxNGY1NThiMjNmMjJlYSIsImlhdCI6MTYzNjY1MzE1MSwiZXhwIjoxNjM3MjU3OTUxfQ.bgDuTrnKjKHlki0CaX6OyEKjdkRHlVMz6SsbEnNE_Mo
+
+###
+POST http://localhost:4000/api/agricultural/processing/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOGQ1N2U5NDcxNGY1NThiMjNmMjJlYSIsImlhdCI6MTYzNjY1MzE1MSwiZXhwIjoxNjM3MjU3OTUxfQ.bgDuTrnKjKHlki0CaX6OyEKjdkRHlVMz6SsbEnNE_Mo
+
+{
+    "id": "618d523585c6113e425903f1",
+    "nameProduct": "Gan ran",
+    "images": "imgages ga ran",
+    "dateManufacture": "12-11-2021",
+    "expiry": 21,
+    "ingredients": [
+        {
+        "name": "bot mi",
+        "supplier": "abc..."
+        },
+        {
+        "name": "Dau",
+        "supplier": "abcd..."
+        }
+    ]
+}
+
+###
+DELETE http://localhost:4000/api/agricultural/delete/618c14200e0aaec99034e367
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNjUyNDk2MiwiZXhwIjoxNjM3MTI5NzYyfQ.7UBr-KfWWnRIULyjKAsRMZcduIhscHPR_6wom1TS_8c

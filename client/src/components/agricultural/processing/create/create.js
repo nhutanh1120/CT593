@@ -8,9 +8,32 @@ import Validator from "./../../../utils/validation/Vanilla";
 import "./style.css";
 import { apiUrl } from "../../../../constants";
 import { useSelector } from "react-redux";
-import Ingredients from "./ingredients/ingredients";
+import IngredientsFormCreate from "./ingredients/form";
+import getBase64 from "../../../utils/filebases64";
+import IngredientsItem from "./ingredients/ingredients";
 
 const CreateProcessing = () => {
+  const [ingredients, setIngredients] = useState([]);
+
+  const [viewForm, setViewForm] = useState(false);
+  const onViewForm = () => setViewForm(false);
+
+  const onCreate = (data) => {
+    let newArray = [...ingredients];
+    newArray.push(data);
+    setIngredients(newArray);
+  };
+  const onDelete = (index) => {
+    let newArray = [...ingredients];
+    newArray.splice(index, 1);
+    setIngredients(newArray);
+  };
+  const onUpdate = (index, data) => {
+    let newArray = [...ingredients];
+    newArray[index] = data;
+    setIngredients(newArray);
+  };
+
   const token = useSelector((state) => state.token);
   useEffect(() => {
     (() => {
@@ -19,54 +42,51 @@ const CreateProcessing = () => {
         formGroupSelector: ".form__group",
         errorSelector: ".form__message",
         rules: [
-          Validator.isRequired("#name", "Vui lòng nhập tên cửa hàng."),
-          Validator.isRequired("#date", "Vui lòng nhập địa chỉ."),
-          Validator.isRequired("#expiry", "Vui lòng nhập địa chỉ."),
-          Validator.isRequired("#images", "Vui lòng nhập giá sản phẩm."),
+          Validator.isRequired("#name", "Vui lòng nhập tên sản phẩm."),
+          Validator.isRequired("#date", "Vui lòng nhập ngày sản xuất."),
+          Validator.isRequired("#expiry", "Vui lòng nhập hạn sử dụng."),
+          Validator.isRequired("#images", "Vui lòng chọn hình ảnh sản phẩm."),
         ],
         onSubmit: function (data) {
-          console.log(data);
-          const id = "618b6eb359c8742b5fdbcc7b";
-          // (async (data) => {
+          const id = "618d5a9b32dc6763ada3ceae";
 
-          //   try {
-          //     const res = await axios.post(
-          //       apiUrl + "/agricultural/processing/create",
-          //       {
-          //         store: data.store,
-          //         address: data.address,
-          //         price: data.price,
-          //         id,
-          //       },
-          //       {
-          //         headers: { Authorization: "Bearer " + token },
-          //       }
-          //     );
-          //     if (res.data.success) {
-          //       showSuccessToast(
-          //         "Thao tác thành công, vui lòng kiểm tra thông tin."
-          //       );
-          //     }
-          //   } catch (error) {
-          //     error.response.data.message &&
-          //       showErrorToast("Thao tác thất bại, vui lòng thử lại sau.");
-          //   }
-          // })(data);
+          (async (data) => {
+            let images;
+            await getBase64(data.images[0]).then((data) => (images = data));
+            const processing = {
+              id: id,
+              nameProduct: data.name,
+              images: images,
+              dateManufacture: data.date,
+              expiry: data.expiry,
+              ingredients: ingredients || [],
+            };
+            try {
+              const res = await axios.post(
+                apiUrl + "/agricultural/processing/create",
+                processing,
+                {
+                  headers: { Authorization: "Bearer " + token },
+                }
+              );
+              console.log(res.data);
+              if (res.data.success) {
+                showSuccessToast(
+                  "Thao tác thành công, vui lòng kiểm tra thông tin."
+                );
+              }
+            } catch (error) {
+              error.response.data.message &&
+                showErrorToast("Thao tác thất bại, vui lòng thử lại sau.");
+            }
+          })(data);
         },
       });
     })();
-  }, [token]);
-  const [addIngredients, setAddIngredients] = useState(false);
-  const [ingredients, setIngredients] = useState([]);
-  const onDelete = () => setAddIngredients(false);
-  const setData = (data) => {
-    let newArray = [...ingredients];
-    newArray.push(data);
-    setIngredients(newArray);
-  };
-  console.log(ingredients);
+  }, [token, ingredients]);
   return (
     <div className="create__processing">
+      <div id="toast"></div>
       <form id="create__processing">
         <h2>Chế biến sản phẩm</h2>
         <div className="form__group">
@@ -89,7 +109,7 @@ const CreateProcessing = () => {
           <input
             id="date"
             name="date"
-            type="text"
+            type="date"
             placeholder="Đại chỉ bán sản phấm"
             className="form__control"
           />
@@ -120,13 +140,20 @@ const CreateProcessing = () => {
           />
           <span className="form__message"></span>
         </div>
-        {addIngredients && (
-          <Ingredients setData={setData} onDelete={onDelete} />
+        {ingredients &&
+          ingredients.map((item, index) => (
+            <IngredientsItem
+              key={index}
+              index={index}
+              data={item}
+              onUpdate={onUpdate}
+              onDelete={onDelete}
+            />
+          ))}
+        {viewForm && (
+          <IngredientsFormCreate setData={onCreate} onViewForm={onViewForm} />
         )}
-        <div
-          className="form__group__add"
-          onClick={() => setAddIngredients(true)}
-        >
+        <div className="form__group__add" onClick={() => setViewForm(true)}>
           <div className="form__group__add--title">
             <i className="bx bx-clipboard bx-sm"></i>
           </div>

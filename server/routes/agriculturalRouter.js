@@ -5,6 +5,7 @@ const authAdmin = require("./../middleware/authAdmin");
 const userAccess = require("./../middleware/userAccess");
 const agriculturalControllers = require("./../controllers/agricultural/agriculturalController");
 const distributorControllers = require("./../controllers/agricultural/distributorController");
+const processingControllers = require("./../controllers/agricultural/processingController");
 const retailerControllers = require("./../controllers/agricultural/retailerController");
 
 // localhost/api/agricultural/all/read
@@ -52,6 +53,17 @@ router.post(
 );
 
 /**
+ * Processing Router
+ * localhost/api/agricultural/reatailer/create
+ */
+router.post(
+  "/processing/create",
+  verifyToken,
+  userAccess,
+  processingControllers.create
+);
+
+/**
  * Retailer Router
  * localhost/api/agricultural/reatailer/create
  */
@@ -61,4 +73,5 @@ router.post(
   userAccess,
   retailerControllers.create
 );
+
 module.exports = router;
