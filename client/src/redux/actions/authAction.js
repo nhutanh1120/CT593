@@ -25,3 +25,13 @@ export const dispatchGetUser = (res) => {
     },
   };
 };
+
+export const dispatchUpdateProfileUser = (res) => {
+  console.log(res);
+  return {
+    type: ACTIONS.UPDATE_PROFILE_USER,
+    payload: {
+      user: res.data.user,
+    },
+  };
+};

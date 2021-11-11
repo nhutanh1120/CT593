@@ -1,6 +1,7 @@
 import React from "react";
+import moment from "moment";
 
-const Processing = () => {
+const Processing = ({ data }) => {
   return (
     <div className="agricultural--processing">
       <div className="agricultural--header">
@@ -12,30 +13,74 @@ const Processing = () => {
       </div>
 
       <div className="agricultural--contain">
-        {/* <table>
-                <tbody>
-                  <tr>
-                    <th>Tổng cân nặng mỗi tháng</th>
-                    <th>Về HN(đ/kg)</th>
-                    <th>Về SG(đ/kg)</th>
-                  </tr>
-                  <tr>
-                    <td>Dưới 150kg</td>
-                    <td>23.500</td>
-                    <td>29.500</td>
-                  </tr>
-                  <tr>
-                    <td>Từ 150kg đến 2000kg</td>
-                    <td>22.500</td>
-                    <td>28.500</td>
-                  </tr>
-                  <tr>
-                    <td>Trên 2000kg</td>
-                    <td>21.500</td>
-                    <td>27.500</td>
-                  </tr>
-                </tbody>
-              </table> */}
+        <div className="agricultural--title">
+          <span className="agricultural--title--icon">1</span>
+          <p>THÔNG TIN NHÀ CUNG CẤP</p>
+        </div>
+        <div className="agricultural__supplier__header">
+          <div>
+            <ul>
+              <li>Họ tên: {data?.profile?.name}</li>
+              <li>Địa chỉ liên hệ: {data?.profile?.address}</li>
+            </ul>
+          </div>
+          <div>
+            <ul>
+              <li>Email: {data?.profile?.email}</li>
+              <li>Số điện thoại: {data?.profile?.phone}</li>
+            </ul>
+          </div>
+        </div>
+        <div className="agricultural--title">
+          <span className="agricultural--title--icon">2</span>
+          <p>thông tin về sản phẩm được chế biến</p>
+        </div>
+        <div className="table--content">
+          <table>
+            <thead>
+              <tr>
+                <th>Tên sản phẩm</th>
+                <th>Ảnh đại diện</th>
+                <th>Ngày sản xuất</th>
+                <th>Hạn sử dụng (kể từ ngày sản xuất)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{data?.nameProduct}</td>
+                <td>
+                  <img src={data?.images} alt="images" />
+                </td>
+                <td>{moment(data?.dateManufacture).format("DD-MM-YYYY")}</td>
+                <td>{data?.expiry}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div className="agricultural--title">
+          <span className="agricultural--title--icon">3</span>
+          <p>thông tin về các phụ liệu được thêm vào</p>
+        </div>
+        <div className="table--content">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Tên phụ liệu</th>
+                <th>Nhà cung cấp</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data?.ingredients?.map((item, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{item.name}</td>
+                  <td>{item.supplier}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

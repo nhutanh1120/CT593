@@ -1,40 +1,56 @@
 import React from "react";
 
-const Distributor = () => {
+const Distributor = ({ data }) => {
   return (
     <div className="agricultural--share">
       <div className="agricultural--header">
-        <h3>CHUỗi PHÂN PHỐI</h3>
+        <h3>NHÀ PHÂN PHỐI</h3>
         <p>(Quá trình chuyển nông sản đến với khách hàng)</p>
       </div>
 
       <div className="agricultural--contain">
-        <div className="table--content">
-          {/* <table>
-        <tbody>
-          <tr>
-            <th>Tổng cân nặng mỗi tháng</th>
-            <th>Về HN(đ/kg)</th>
-            <th>Về SG(đ/kg)</th>
-          </tr>
-          <tr>
-            <td>Dưới 150kg</td>
-            <td>23.500</td>
-            <td>29.500</td>
-          </tr>
-          <tr>
-            <td>Từ 150kg đến 2000kg</td>
-            <td>22.500</td>
-            <td>28.500</td>
-          </tr>
-          <tr>
-            <td>Trên 2000kg</td>
-            <td>21.500</td>
-            <td>27.500</td>
-          </tr>
-        </tbody>
-      </table> */}
-        </div>
+        {data && (
+          <>
+            <div className="agricultural--title">
+              <span className="agricultural--title--icon">1</span>
+              <p>thông tin nhà phân phối</p>
+            </div>
+            <div className="agricultural__supplier__header">
+              <div>
+                <ul>
+                  <li>Họ tên: {data?.profile?.name}</li>
+                  <li>Địa chỉ liên hệ: {data?.profile?.address}</li>
+                </ul>
+              </div>
+              <div>
+                <ul>
+                  <li>Email: {data?.profile?.email}</li>
+                  <li>Số điện thoại: {data?.profile?.phone}</li>
+                </ul>
+              </div>
+            </div>
+            <div className="agricultural--title">
+              <span className="agricultural--title--icon">2</span>
+              <p>Thông tin về phân phối</p>
+            </div>
+            <div className="table--content">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Địa chỉ bắt đầu</th>
+                    <th>Địa chỉ kết thúc</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{data?.start}</td>
+                    <td>{data?.end}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

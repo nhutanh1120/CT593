@@ -33,3 +33,268 @@
   text-align: center;
   line-height: 3;
 }
+
+.agricultural {
+  max-width: 1110px;
+  width: 100%;
+  padding: 0;
+  display: block;
+  margin: 0 auto;
+  padding: 0 10px 50px 10px;
+  line-height: 16px !important;
+  font-family: "Roboto", sans-serif !important;
+  box-sizing: border-box !important;
+}
+
+.heading--h2 {
+  text-align: center;
+  font-size: 30px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #30373b;
+  padding: 80px 10px 0 10px;
+  margin: 0;
+}
+
+/* end problems */
+.text--p {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  padding: 0 10px;
+}
+
+/* end handle */
+
+.agricultural--box {
+  box-shadow: 0 0 10px 1px #888;
+}
+
+.agricultural--header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #c1392b;
+  color: #fff;
+  padding: 10px 20px;
+  width: 102%;
+  right: 1%;
+  position: relative;
+}
+
+.agricultural--header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  border-top: 10px solid #c1392b;
+  border-left: 10px solid transparent;
+}
+
+.agricultural--header::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  border-top: 10px solid #c1392b;
+  border-right: 10px solid transparent;
+}
+
+.agricultural--header h3 {
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.agricultural--header p {
+  margin: 0;
+  font-size: 14px;
+  padding-left: 10px;
+}
+
+.agricultural--contain {
+  padding: 30px;
+}
+
+.agricultural--contain p {
+  padding-right: 10px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.agricultural__supplier__header {
+  display: flex;
+  justify-content: space-between;
+}
+.agricultural__supplier__header > div ul:last-child {
+  margin-right: 50px;
+}
+.agricultural--contain ul {
+  width: max-content;
+  padding: 0px;
+  list-style-type: none;
+  margin: 0px 0px 10px 30px;
+}
+.agricultural--contain ul li {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.table--content table {
+  width: 100%;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.table--content table,
+th,
+td {
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #dee2e6;
+  border-collapse: collapse;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.table--content th {
+  background-color: #969494;
+  color: #fff;
+  border-bottom: 2px solid #fff;
+}
+
+.table--content tr:nth-child(even) td {
+  background-color: #f5f5f5;
+}
+.table--content tr:nth-child(odd) td {
+  background: #ececec;
+}
+
+.table--content tr td img {
+  width: 100px;
+  height: auto;
+}
+.agricultural--title--icon {
+  text-align: center;
+  line-height: 20px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  color: #fff;
+  border-radius: 100%;
+  background-color: #c1392b;
+  flex-shrink: 0;
+}
+
+.agricultural--title {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.agricultural--title p {
+  text-transform: uppercase;
+  font-size: 15px;
+  margin: 0;
+}
+
+/* end price */
+/* Table - PC resolution */
+@media (min-width: 740px) and (max-width: 1023px) {
+  .agricultural {
+    width: 720px;
+  }
+}
+
+/* > PC resolution and < 1240px */
+@media (min-width: 1024px) and (max-width: 1239px) {
+  .agricultural {
+    width: 984px;
+  }
+}
+
+/* Mobile & Tablet */
+@media (max-width: 1023px) {
+  .heading-h2 {
+    font-size: 24px;
+  }
+
+  .heading-h2 {
+    padding-top: 110px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 740px) and (max-width: 1023px) {
+  .agricultural--header::after {
+    bottom: -7px;
+    border-top: 7px solid #c1392b;
+    border-left: 7px solid transparent;
+  }
+
+  .agricultural--header::before {
+    bottom: -7px;
+    border-top: 7px solid #c1392b;
+    border-right: 7px solid transparent;
+  }
+}
+
+/* Mobile */
+@media (max-width: 739px) {
+  .agricultural {
+    max-width: 540px;
+  }
+
+  .heading--h2 {
+    margin-top: -130px;
+  }
+
+  .text--p {
+    margin-bottom: 30px;
+    font-weight: 400;
+  }
+
+  .agricultural--contain {
+    padding: 0;
+  }
+
+  .agricultural--header {
+    width: 100%;
+    right: 0;
+  }
+
+  .agricultural--header::before,
+  .agricultural--header::after {
+    display: none;
+  }
+
+  .agricultural--header p {
+    padding: 0;
+  }
+
+  .agricultural--contain p {
+    padding-right: 5px;
+    padding-left: 10px;
+  }
+  .table--content {
+    overflow-x: scroll;
+  }
+}
+
+@media (max-width: 820px) {
+  .agricultural--title-icon {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+/* > PC resolution and < 1240px */
+@media (min-width: 1024px) and (max-width: 1239px) {
+  .wide {
+    width: 984px;
+  }
+}

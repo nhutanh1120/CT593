@@ -10,6 +10,7 @@ const userAccess = async (req, res, next) => {
         .json({ success: false, message: "User resources access denied." });
     }
     req.information = {
+      name: user.surname + " " + user.forename,
       phone: user.phone,
       email: user.email,
       address: user.address,

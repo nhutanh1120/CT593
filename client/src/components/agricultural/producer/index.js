@@ -25,7 +25,7 @@ const Producer = ({ agricultural, actionData }) => {
           <div className="agricultural--contain">
             <div className="price_order-calculate">
               <p>
-                <b>Thông tin về sản phẩm</b>
+                <b>Thông tin về nông sản</b>
               </p>
             </div>
 
@@ -33,14 +33,27 @@ const Producer = ({ agricultural, actionData }) => {
               <span className="agricultural--title--icon">1</span>
               <p>THÔNG TIN NHÀ CUNG CẤP</p>
             </div>
-            <ul>
-              <li>Họ tên: {agricultural.producer.name}</li>
-              <li>Địa chỉ sản xuất: {agricultural.producer.address}</li>
-            </ul>
+            <div className="agricultural__supplier__header">
+              <div>
+                <ul>
+                  <li>Họ tên: {agricultural.producer.name}</li>
+                  <li>Địa chỉ liên hệ: {agricultural.producer.address}</li>
+                </ul>
+              </div>
+              <div>
+                <ul>
+                  <li>Email: {agricultural.producer.email}</li>
+                  <li>Số điện thoại: {agricultural.producer.phone}</li>
+                </ul>
+              </div>
+            </div>
             <div className="agricultural--title">
               <span className="agricultural--title--icon">2</span>
               <p>THÔNG TIN VỀ GIỐNG</p>
             </div>
+            <ul>
+              <li>Địa chỉ sản xuất: {agricultural.breed.addressBreed}</li>
+            </ul>
             <div className="table--content">
               <table>
                 <thead>
@@ -78,7 +91,11 @@ const Producer = ({ agricultural, actionData }) => {
             </div>
 
             {actionData.map((data, index) => (
-              <TableAction action={data} key={index} />
+              <TableAction
+                action={data}
+                type={agricultural.breed.typeAgricultural}
+                key={index}
+              />
             ))}
 
             <div className="agricultural--title">
@@ -87,12 +104,20 @@ const Producer = ({ agricultural, actionData }) => {
             </div>
             <div className="table--content">
               <table>
-                <tbody>
+                <thead>
                   <tr>
                     <th>Ngày thu hoạch</th>
                     <th>Hình ảnh sản phảm</th>
                     <th>Hạn sử dụng</th>
                     <th>Mô tả</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{agricultural?.harvest?.times}</td>
+                    <td>{agricultural?.harvest?.images}</td>
+                    <td>{agricultural?.harvest?.expiry}</td>
+                    <td>{agricultural?.harvest?.description}</td>
                   </tr>
                 </tbody>
               </table>

@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { apiUrl } from "../../../constants";
 import getBase64 from "../../utils/filebases64";
 import profile from "./../../../assets/img/profile.jpg";
+import { dispatchUpdateProfileUser } from "./../../../redux/actions/authAction";
 import {
   showErrorToast,
   showWarningToast,
@@ -20,6 +21,7 @@ function isEmpty(value) {
   return false;
 }
 const AvatarItem = ({ role, info, contact }) => {
+  const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
   const [state, setState] = useState(initialState);
 
@@ -65,6 +67,7 @@ const AvatarItem = ({ role, info, contact }) => {
     if (!res?.data?.success) {
       showErrorToast("Thao tác thất bại, vui lòng kiểm tra thông tin.");
     } else {
+      dispatch(dispatchUpdateProfileUser(res));
       history.push("/");
     }
   };
