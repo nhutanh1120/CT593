@@ -26,7 +26,12 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOGJmMzRjOGQwMjMzNGEyZmQxMjRiNCIsImlhdCI6MTYzNjU2MTgyNSwiZXhwIjoxNjM3MTY2NjI1fQ.Vrxn42mknoDnKRpfA8Pga39P4EYvsJkDaSSIFCPn8N0
 
 {
-    "id": "618b6eb359c8742b5fdbcc7b",
+    "id": "618d4f59d288003688ce0707",
     "start": "Xuan Hiep, Tra On, Vinh Long",
     "end": "Hung loi, Ninh Kieu, Can Tho"
 }
+
+###
+DELETE http://localhost:4000/api/agricultural/delete/618c14200e0aaec99034e367
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNjUyNDk2MiwiZXhwIjoxNjM3MTI5NzYyfQ.7UBr-KfWWnRIULyjKAsRMZcduIhscHPR_6wom1TS_8c

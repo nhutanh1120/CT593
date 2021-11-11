@@ -24,13 +24,16 @@ const retailerControllers = {
       const agriculturalOld = await AgriculturalModel.findOne({
         _id: id,
       });
-      const { producer, breed, actions, harvest, ...rest } = agriculturalOld;
+      const { producer, breed, actions, harvest, distributor, processing } =
+        agriculturalOld;
 
       const newAgricultural = {
         producer,
         breed,
         actions,
         harvest,
+        distributor,
+        processing,
         retailer: {
           profile: {
             user: req.user.id,
@@ -40,7 +43,7 @@ const retailerControllers = {
           addressRetail: address,
           price,
         },
-        ...rest,
+        administrator: req.user.id,
       };
 
       const agricultural = new AgriculturalModel(newAgricultural);

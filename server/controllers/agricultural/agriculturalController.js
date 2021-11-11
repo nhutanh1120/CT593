@@ -27,34 +27,9 @@ const agriculturalControllers = {
   readGroup: async (req, res) => {
     try {
       console.log("read group agricultural request");
-      let agricultural = {};
-      switch (req.role) {
-        case 2:
-          agricultural = await AgriculturalModel.find({
-            "producer.user": req.user.id,
-          });
-          break;
-        case 3:
-          agricultural = await AgriculturalModel.find({
-            "distributor.profile.user": req.user.id,
-          });
-          break;
-        case 4:
-          agricultural = await AgriculturalModel.find({
-            "processing.profile.user": req.user.id,
-          });
-          break;
-        case 5:
-          agricultural = await AgriculturalModel.find({
-            "retailer.profile.user": req.user.id,
-          });
-          break;
-        default:
-          agricultural = await AgriculturalModel.find({
-            "producer.user": req.user.id,
-          });
-          break;
-      }
+      const agricultural = await AgriculturalModel.find({
+        administrator: req.user.id,
+      });
 
       res.json({
         success: true,
@@ -126,6 +101,7 @@ const agriculturalControllers = {
       const newAgricultural = {
         producer: newProducer,
         breed,
+        administrator: req.user.id,
         ...rest,
       };
 
@@ -188,7 +164,7 @@ const agriculturalControllers = {
       const agriculturalUpdate = await AgriculturalModel.findOneAndUpdate(
         {
           _id: req.params.id,
-          "producer.user": req.user.id,
+          administrator: req.user.id,
         },
         updateAgricultural,
         { new: true }
@@ -213,35 +189,11 @@ const agriculturalControllers = {
   delete: async (req, res) => {
     try {
       console.log("delete agricultural request");
-      let deletedAgricultural = {};
-      switch (req.role) {
-        case 2:
-          deletedAgricultural = await AgriculturalModel.findOneAndDelete({
-            _id: req.params.id,
-            "producer.user": req.user.id,
-          });
-          break;
-        case 3:
-          deletedAgricultural = await AgriculturalModel.findOneAndDelete({
-            "distributor.profile.user": req.user.id,
-          });
-          break;
-        case 4:
-          deletedAgricultural = await AgriculturalModel.findOneAndDelete({
-            "processing.profile.user": req.user.id,
-          });
-          break;
-        case 5:
-          deletedAgricultural = await AgriculturalModel.findOneAndDelete({
-            "retailer.profile.user": req.user.id,
-          });
-          break;
-        default:
-          deletedAgricultural = await AgriculturalModel.find({
-            "producer.user": req.user.id,
-          });
-          break;
-      }
+      const deletedAgricultural = await AgriculturalModel.findOneAndDelete({
+        _id: req.params.id,
+        administrator: req.user.id,
+      });
+
       if (!deletedAgricultural)
         return res.status(401).json({
           success: false,

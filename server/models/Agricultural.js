@@ -38,46 +38,51 @@ const AgriculturalSchema = new Schema(
     harvest: {
       times: { type: Date },
       images: { type: String },
-      expiry: { type: Number }, //Day
+      expiry: { type: Number }, // Day
+      description: { type: String },
     },
-    distributor: {
-      profile: {
-        user: {
-          type: Schema.Types.ObjectId,
-          ref: "users",
+    distributor: [
+      {
+        profile: {
+          user: {
+            type: Schema.Types.ObjectId,
+            ref: "users",
+          },
+          name: { type: String },
+          phone: { type: Number },
+          email: { type: String },
+          address: { type: String },
         },
-        name: { type: String },
-        phone: { type: Number },
-        email: { type: String },
-        address: { type: String },
+        start: { type: String },
+        end: { type: String },
       },
-      start: { type: String },
-      end: { type: String },
-    },
-    processing: {
-      profile: {
-        user: {
-          type: Schema.Types.ObjectId,
-          ref: "users",
+    ],
+    processing: [
+      {
+        profile: {
+          user: {
+            type: Schema.Types.ObjectId,
+            ref: "users",
+          },
+          name: { type: String },
+          phone: { type: Number },
+          email: { type: String },
+          address: { type: String },
         },
-        name: { type: String },
-        phone: { type: Number },
-        email: { type: String },
-        address: { type: String },
-      },
-      nameProduct: {
-        type: String,
-      },
-      images: { type: String },
-      dateManufacture: { type: Date },
-      expiry: { type: Number },
-      ingredients: [
-        {
-          name: String,
-          supplier: String,
+        nameProduct: {
+          type: String,
         },
-      ],
-    },
+        images: { type: String },
+        dateManufacture: { type: Date },
+        expiry: { type: Number },
+        ingredients: [
+          {
+            name: String,
+            supplier: String,
+          },
+        ],
+      },
+    ],
     retailer: {
       profile: {
         user: {
@@ -93,7 +98,11 @@ const AgriculturalSchema = new Schema(
       addressRetail: { type: String },
       price: { type: Number },
     },
-    isSuccess: {
+    administrator: {
+      type: Schema.Types.ObjectId,
+      ref: "users",
+    },
+    status: {
       type: Number, // 0-> create, 1-> info, 2-> success
       default: 0,
     },

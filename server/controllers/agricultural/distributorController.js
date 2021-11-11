@@ -24,21 +24,27 @@ const distributorControllers = {
       const agriculturalOld = await AgriculturalModel.findOne({
         _id: id,
       });
-      const { producer, breed, actions, harvest } = agriculturalOld;
+      const { producer, breed, actions, harvest, distributor, processing } =
+        agriculturalOld;
+
+      const data = {
+        profile: {
+          user: req.user.id,
+          ...req.information,
+        },
+        start: start,
+        end: end,
+      };
+      distributor.push(data);
 
       const newAgricultural = {
         producer,
         breed,
         actions,
         harvest,
-        distributor: {
-          profile: {
-            user: req.user.id,
-            ...req.information,
-          },
-          start: start,
-          end: end,
-        },
+        distributor: distributor,
+        processing,
+        administrator: req.user.id,
       };
 
       const agricultural = new AgriculturalModel(newAgricultural);
