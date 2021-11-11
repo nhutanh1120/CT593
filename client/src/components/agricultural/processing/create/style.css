@@ -1,0 +1,42 @@
+.create__processing {
+  width: 400px;
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+}
+.create__processing input,
+.create__processing .form__submit {
+  position: relative;
+  z-index: 100;
+}
+.create__processing h2 {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 14px;
+}
+.create__processing .form__group__add {
+  border: 1px solid #b3b3b3;
+  height: 100px;
+  border-radius: 3px;
+  display: block;
+  color: #b3b3b3;
+  cursor: pointer;
+}
+.form__group__add h2 {
+  margin: 6px;
+}
+.form__group__add small {
+  display: block;
+  text-align: center;
+}
+.create__processing .form__group__add:hover {
+  border-color: #1dbfaf;
+  color: #1dbfaf;
+}
+.form__group__add--title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}

@@ -1,9 +1,9 @@
 import React from "react";
-import CreateRetailer from "../components/agricultural/retailer/create/create";
+import CreateProcessing from "../components/agricultural/processing/create/create";
 
 const Agricultural = () => {
   return (
-    <CreateRetailer />
+    <CreateProcessing />
     // <div>
     //   <div className="grid wide">
     //     <div className="row">
