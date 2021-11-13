@@ -48,6 +48,10 @@ function App() {
         dispatch({ type: "GET_TOKEN", payload: res.data.access_token });
       };
       getToken();
+      /**
+       * Get token after 13m
+       */
+      // setInterval(() => getToken(), 13 * 60 * 1000); // 13 * 60 * 1000
     }
   }, [auth.isLogged, dispatch]);
 

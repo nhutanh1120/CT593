@@ -21,11 +21,6 @@ const authReducer = (state = initialState, action) => {
         isUpdate: action.payload.isUpdate,
         isAdmin: action.payload.isAdmin,
       };
-    case ACTIONS.UPDATE_PROFILE_USER:
-      return {
-        ...state,
-        user: action.payload.user,
-      };
     default:
       return state;
   }

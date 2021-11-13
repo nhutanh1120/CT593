@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { apiUrl } from "../../../constants";
 import getBase64 from "../../utils/filebases64";
 import profile from "./../../../assets/img/profile.jpg";
-import { dispatchUpdateProfileUser } from "./../../../redux/actions/authAction";
+import { dispatchGetUser } from "./../../../redux/actions/authAction";
 import {
   showErrorToast,
   showWarningToast,
@@ -67,7 +67,7 @@ const AvatarItem = ({ role, info, contact }) => {
     if (!res?.data?.success) {
       showErrorToast("Thao tác thất bại, vui lòng kiểm tra thông tin.");
     } else {
-      dispatch(dispatchUpdateProfileUser(res));
+      dispatch(dispatchGetUser(res));
       history.push("/");
     }
   };
