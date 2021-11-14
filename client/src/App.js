@@ -39,8 +39,7 @@ function App() {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
   useEffect(() => {
-    const firstLogin = localStorage.getItem("firstLogin");
-    if (firstLogin) {
+    if (isLogin) {
       const getToken = async () => {
         const res = await axios.get(apiUrl + "/auth/refresh", {
           withCredentials: true,
@@ -53,7 +52,7 @@ function App() {
        */
       // setInterval(() => getToken(), 13 * 60 * 1000); // 13 * 60 * 1000
     }
-  }, [auth.isLogged, dispatch]);
+  }, [auth.isLogged, isLogin, dispatch]);
 
   useEffect(() => {
     if (token) {
@@ -89,7 +88,7 @@ function App() {
         />
         <Route path="/user/dashboard" component={isLogin ? User : NotFound} />
         <Route path="/qr/:id" component={QrCode} />
-        <Route path="/agricultural/:id" component={Agricultural} />
+        <Route path="/agricultural" component={Agricultural} />
         <Route path="/profile/update" component={isLogin ? Info : NotFound} />
         <Route path="/test" component={Test} />
         <Route path="*" component={NotFound} />

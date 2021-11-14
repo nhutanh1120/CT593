@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 // import FacebookLogin from "react-facebook-login";
 import { GoogleLogin } from "react-google-login";
 import { useDispatch } from "react-redux";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { apiUrl } from "./../../constants";
 import { dispatchLogin } from "./../../redux/actions/authAction";
 import {
@@ -23,7 +23,6 @@ const FormLogin = () => {
   const [user, setUser] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();
-  const { id } = useParams();
 
   const { username, password, error, warning } = user;
 
@@ -100,11 +99,8 @@ const FormLogin = () => {
           localStorage.setItem("firstLogin", true);
 
           dispatch(dispatchLogin());
-          if (!id) {
-            history.push("/");
-          } else {
-            history.push("/agricultural/" + id);
-          }
+
+          history.goBack();
         }
       } catch (error) {
         error?.response?.data?.message &&
@@ -131,8 +127,10 @@ const FormLogin = () => {
       }
       setUser({ ...user, error: "", warning: "" });
       localStorage.setItem("firstLogin", true);
+
       dispatch(dispatchLogin());
-      history.push("/");
+
+      history.goBack();
     } catch (error) {
       error?.response?.data?.message &&
         setUser({ ...user, error: Math.random(), warning: "" });

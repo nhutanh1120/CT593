@@ -36,14 +36,14 @@ const Producer = ({ agricultural, actionData }) => {
             <div className="agricultural__supplier__header">
               <div>
                 <ul>
-                  <li>Họ tên: {agricultural.producer.name}</li>
-                  <li>Địa chỉ liên hệ: {agricultural.producer.address}</li>
+                  <li>Họ tên: {agricultural?.producer?.name}</li>
+                  <li>Địa chỉ liên hệ: {agricultural?.producer?.address}</li>
                 </ul>
               </div>
               <div>
                 <ul>
-                  <li>Email: {agricultural.producer.email}</li>
-                  <li>Số điện thoại: {agricultural.producer.phone}</li>
+                  <li>Email: {agricultural?.producer?.email}</li>
+                  <li>Số điện thoại: {agricultural?.producer?.phone}</li>
                 </ul>
               </div>
             </div>
@@ -52,7 +52,7 @@ const Producer = ({ agricultural, actionData }) => {
               <p>THÔNG TIN VỀ GIỐNG</p>
             </div>
             <ul>
-              <li>Địa chỉ sản xuất: {agricultural.breed.addressBreed}</li>
+              <li>Địa chỉ sản xuất: {agricultural?.breed?.addressBreed}</li>
             </ul>
             <div className="table--content">
               <table>
@@ -71,10 +71,10 @@ const Producer = ({ agricultural, actionData }) => {
                         ? "Vật nuôi"
                         : "Cây trồng"}
                     </td>
-                    <td>{agricultural.breed.nameBreed}</td>
-                    <td>{agricultural.breed.supplierBreed}</td>
+                    <td>{agricultural?.breed?.nameBreed}</td>
+                    <td>{agricultural?.breed?.supplierBreed}</td>
                     <td>
-                      {moment(agricultural.breed.timeBreed).format(
+                      {moment(agricultural?.breed?.timeBreed).format(
                         "DD/MM/YYYY"
                       )}
                     </td>

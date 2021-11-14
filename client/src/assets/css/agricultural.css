@@ -37,7 +37,6 @@
 .agricultural {
   max-width: 1110px;
   width: 100%;
-  padding: 0;
   display: block;
   margin: 0 auto;
   padding: 0 10px 50px 10px;
@@ -201,7 +200,22 @@ td {
   font-size: 15px;
   margin: 0;
 }
-
+.agricultural__undo__button {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  text-transform: capitalize;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.agricultural__undo__button i {
+  margin-left: 10px;
+}
 /* end price */
 /* Table - PC resolution */
 @media (min-width: 740px) and (max-width: 1023px) {
@@ -259,7 +273,7 @@ td {
   }
 
   .agricultural--contain {
-    padding: 0;
+    padding: 0 0 30px;
   }
 
   .agricultural--header {
@@ -290,11 +304,26 @@ td {
     margin-left: 10px;
     margin-right: 10px;
   }
+  .agricultural__supplier__header {
+    display: block;
+  }
 }
 
 /* > PC resolution and < 1240px */
 @media (min-width: 1024px) and (max-width: 1239px) {
   .wide {
     width: 984px;
+  }
+}
+@media (max-width: 375px) {
+  .agricultural {
+    padding: 0;
+  }
+  .agricultural--contain ul li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+    font-size: 14px;
   }
 }

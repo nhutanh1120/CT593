@@ -1,8 +1,15 @@
+.app__create__retailer {
+  width: 100%;
+  height: 100%;
+  background-color: #e4e9f7;
+  padding: 130px 0 50px;
+}
 .create__retailer {
   width: 400px;
   margin: auto;
   padding: 10px;
   border-radius: 10px;
+  background-color: #fff;
   box-shadow: var(--box-shadow);
 }
 .create__retailer h2 {

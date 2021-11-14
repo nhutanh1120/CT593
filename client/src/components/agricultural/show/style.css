@@ -1,0 +1,109 @@
+/* show form create */
+.agricultural__show {
+  position: fixed;
+  top: 100px;
+  right: 10px;
+  z-index: 100;
+}
+.agricultural__show--head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background-color: #e4e9f7;
+  box-shadow: 0px 4px 16px rgba(17, 17, 26, 0.1);
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 99;
+}
+.agricultural__show--head i {
+  font-weight: bold;
+}
+.agricultural__show--head span {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: calc(100% + 15px);
+  width: max-content;
+  padding: 10px;
+  text-transform: capitalize;
+  font-size: 14px;
+  box-shadow: 0px 4px 16px rgba(17, 17, 26, 0.1);
+  background-color: #e4e9f7;
+  border-radius: 5px;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.agricultural__show:hover span {
+  opacity: 1;
+}
+.agricultural__show--head span::after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  width: 10px;
+  height: 10px;
+  background-color: #e4e9f7;
+  transform: rotate(45deg);
+}
+.agricultural__show--body {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: max-content;
+  height: max-content;
+  background-color: #fff;
+  z-index: 99;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  display: none;
+}
+.agricultural__dialog {
+  width: 330px;
+}
+.agricultural__hidden {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background-color: #333;
+  opacity: 0.8;
+  display: none;
+}
+.agricultural__dialog h1 {
+  padding: 15px;
+  font-size: 16px;
+  background-color: #f5f6f7;
+  border-bottom: #e5e5e5;
+  border-radius: 10px 10px 0 0;
+}
+.agricultural__dialog p {
+  padding: 24px 15px;
+  font-size: 14px;
+  line-height: 1.5;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.agricultural__dialog button {
+  display: block;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.agricultural__dialog a {
+  display: block;
+  border-top: 1px solid #f2f2f2;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+  background-color: transparent;
+  cursor: pointer;
+}

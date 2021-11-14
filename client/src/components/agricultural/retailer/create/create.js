@@ -1,16 +1,21 @@
 import axios from "axios";
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
+import { apiUrl } from "../../../../constants";
 import {
   showErrorToast,
   showSuccessToast,
 } from "./../../../utils/notification/message";
 import Validator from "./../../../utils/validation/Vanilla";
 import "./style.css";
-import { apiUrl } from "../../../../constants";
-import { useSelector } from "react-redux";
 
 const CreateRetailer = () => {
   const token = useSelector((state) => state.token);
+  const { id } = useParams();
+  const history = useHistory();
+  console.log(history);
+
   useEffect(() => {
     (() => {
       Validator({
@@ -25,9 +30,9 @@ const CreateRetailer = () => {
           Validator.isRequired("#price", "Vui lòng nhập giá sản phẩm."),
         ],
         onSubmit: function (data) {
-          const id = "618b6eb359c8742b5fdbcc7b";
           (async (data) => {
             try {
+              console.log(id);
               const res = await axios.post(
                 apiUrl + "/agricultural/retailer/create",
                 {
@@ -53,52 +58,62 @@ const CreateRetailer = () => {
         },
       });
     })();
-  }, [token]);
+  }, [token, id]);
   return (
-    <div className="create__retailer">
-      <form id="create__retailer">
-        <h2>bán lẻ sản phẩm</h2>
-        <div className="form__group">
-          <label htmlFor="store" className="form__label">
-            Tên cửa hàng
-          </label>
-          <input
-            id="store"
-            name="store"
-            type="text"
-            placeholder="Tên cửa hàng bán sản phấm"
-            className="form__control"
-          />
-          <span className="form__message"></span>
-        </div>
-        <div className="form__group">
-          <label htmlFor="address" className="form__label">
-            Địa chỉ
-          </label>
-          <input
-            id="address"
-            name="address"
-            type="text"
-            placeholder="Đại chỉ bán sản phấm"
-            className="form__control"
-          />
-          <span className="form__message"></span>
-        </div>
-        <div className="form__group">
-          <label htmlFor="price" className="form__label">
-            Giá sản phẩm
-          </label>
-          <input
-            id="price"
-            name="price"
-            type="number"
-            placeholder="VD: 20000"
-            className="form__control"
-          />
-          <span className="form__message"></span>
-        </div>
-        <button className="form__submit">Gửi</button>
-      </form>
+    <div className="app__create__retailer">
+      <div id="toast"></div>
+      <button
+        className="agricultural__undo__button"
+        onClick={() => history.goBack()}
+      >
+        Quay lại
+        <i className="bx bx-undo"></i>
+      </button>
+      <div className="create__retailer">
+        <form id="create__retailer">
+          <h2>bán lẻ sản phẩm</h2>
+          <div className="form__group">
+            <label htmlFor="store" className="form__label">
+              Tên cửa hàng
+            </label>
+            <input
+              id="store"
+              name="store"
+              type="text"
+              placeholder="Tên cửa hàng bán sản phấm"
+              className="form__control"
+            />
+            <span className="form__message"></span>
+          </div>
+          <div className="form__group">
+            <label htmlFor="address" className="form__label">
+              Địa chỉ
+            </label>
+            <input
+              id="address"
+              name="address"
+              type="text"
+              placeholder="Đại chỉ bán sản phấm"
+              className="form__control"
+            />
+            <span className="form__message"></span>
+          </div>
+          <div className="form__group">
+            <label htmlFor="price" className="form__label">
+              Giá sản phẩm
+            </label>
+            <input
+              id="price"
+              name="price"
+              type="number"
+              placeholder="VD: 20000"
+              className="form__control"
+            />
+            <span className="form__message"></span>
+          </div>
+          <button className="form__submit">Gửi</button>
+        </form>
+      </div>
     </div>
   );
 };

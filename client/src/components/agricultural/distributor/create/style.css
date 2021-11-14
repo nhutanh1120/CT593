@@ -1,9 +1,16 @@
+.app__create__distributor {
+  width: 100%;
+  height: 100%;
+  background-color: #e4e9f7;
+  padding: 130px 0 50px;
+}
 .create__distributor {
   width: 400px;
   margin: auto;
   padding: 10px;
   border-radius: 10px;
   box-shadow: var(--box-shadow);
+  background-color: #fff;
 }
 .create__distributor h2 {
   text-align: center;

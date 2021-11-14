@@ -48,7 +48,7 @@ const IngredientsItem = ({ data, index, onUpdate, onDelete }) => {
               e.target.parentElement.parentElement.classList.remove("active");
             }}
           >
-            <i className="bx bx-plus"></i>
+            <i className="bx bx-edit-alt"></i>
             <span>Cập nhật phụ liệu</span>
           </div>
           <div
