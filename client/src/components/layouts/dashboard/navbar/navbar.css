@@ -35,6 +35,9 @@
 .navbar__profile--item ~ .navbar__profile--item {
   margin-left: 20px;
 }
+.navbar__profile--item a {
+  text-transform: capitalize;
+}
 
 .message-item {
   display: flex;
@@ -51,6 +54,10 @@
 .message-item > i {
   margin-right: 10px;
   font-size: 1.5rem;
+}
+.message-item span,
+.message-item small {
+  display: block;
 }
 
 .navbar__profile--user {

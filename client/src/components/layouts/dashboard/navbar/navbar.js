@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import notifications from "../../../../assets/JsonData/notification.json";
+import handleMessage from "../../../utils/handle/message";
 import profile from "./../../../../assets/img/profile.jpg";
 import { handleLogout } from "./../sidebar/logout/handleLogout";
 import Dropdown from "./dropdown/Dropdown";
@@ -40,7 +41,13 @@ const renderUserMenu = (item, index) => (
 const renderNotificationItem = (item, index) => (
   <div className="message-item" key={index}>
     <i className={item.icon}></i>
-    <span>{item.content}</span>
+    <div className="message-item-content">
+      <span>
+        <b>{item.title}</b>&nbsp;
+        {item.content}
+      </span>
+      <small>{moment(item.time).fromNow()}</small>
+    </div>
   </div>
 );
 
@@ -83,6 +90,17 @@ const TopNavbar = ({ data, userMenu }) => {
     image: user.avatar,
   };
 
+  /**
+   * handle data Message
+   */
+  const [message, setMessage] = useState([]);
+  useEffect(() => {
+    const newMessage = user.message;
+    if (newMessage) {
+      const data = handleMessage(newMessage, 4);
+      setMessage(data);
+    }
+  }, [user.message]);
   return (
     <div className="dashboard--navbar">
       <div className="dashboard--navbar__title">
@@ -126,10 +144,10 @@ const TopNavbar = ({ data, userMenu }) => {
         <div className="navbar__profile--item">
           <Dropdown
             icon="bx bx-bell bx-tada-hover"
-            badge="12"
-            contentData={notifications}
+            badge={user?.message?.length || "0"}
+            contentData={message}
             renderItems={(item, index) => renderNotificationItem(item, index)}
-            renderFooter={() => <Link to="/">View All</Link>}
+            renderFooter={() => <Link to="/">Xem tất cả</Link>}
           />
         </div>
         <div className="navbar__profile--item">

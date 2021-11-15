@@ -8,7 +8,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiO
 ###
 POST http://localhost:4000/api/post/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNTc0MTMwNCwiZXhwIjoxNjM2MzQ2MTA0fQ.W711x1Ic_bltW6pgMrfa_bndXDC5AZUi9sd7yqJuMq8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNjk1MTY1MCwiZXhwIjoxNjM3NTU2NDUwfQ.e2KF5daQZXrd8NULBpejTP8qv9ZwDj6bel_QuRsLeAU
 
 {
   "title": "bai 3", 

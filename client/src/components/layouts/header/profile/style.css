@@ -83,3 +83,10 @@
   font-size: 25px;
   margin-right: 10px;
 }
+.header__message__content small {
+  display: block;
+}
+.header__message__content a {
+  display: block;
+  text-align: center;
+}

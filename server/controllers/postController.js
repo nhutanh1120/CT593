@@ -1,4 +1,5 @@
 const Post = require("./../models/Post");
+const Users = require("./../models/Users");
 
 const postController = {
   getPosts: async (req, res) => {
@@ -51,10 +52,24 @@ const postController = {
       });
       await newPost.save();
 
+      const userNotification = await Users.findByIdAndUpdate(
+        req.user.id,
+        {
+          $push: {
+            message: {
+              title: title,
+              status: "create_post",
+            },
+          },
+        },
+        { new: true }
+      );
+
       res.json({
         success: true,
         message: "Create post success!",
         post: newPost,
+        notification: userNotification.message,
       });
     } catch (error) {
       console.log(error);
@@ -97,10 +112,24 @@ const postController = {
           message: "Post not found or user not authorized",
         });
 
+      const userNotification = await Users.findByIdAndUpdate(
+        req.user.id,
+        {
+          $push: {
+            message: {
+              title: title,
+              status: "update_post",
+            },
+          },
+        },
+        { new: true }
+      );
+
       res.json({
         success: true,
         message: "Excellent progress!",
         post: updatedPost,
+        notification: userNotification.message,
       });
     } catch (error) {
       console.log(error);
@@ -122,9 +151,23 @@ const postController = {
           message: "Post not found or user not authorized",
         });
 
+      const userNotification = await Users.findByIdAndUpdate(
+        req.user.id,
+        {
+          $push: {
+            message: {
+              title: "Quản trị viên",
+              status: "delete_post",
+            },
+          },
+        },
+        { new: true }
+      );
+
       res.json({
         success: true,
         message: "delete post success!",
+        notification: userNotification.message,
       });
     } catch (error) {
       console.log(error);

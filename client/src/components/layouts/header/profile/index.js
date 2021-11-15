@@ -1,14 +1,38 @@
-import React, { useState, useEffect } from "react";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { handleLogout } from "../../dashboard/sidebar/logout/handleLogout";
 import profile from "./../../../../assets/img/profile.jpg";
 import "./style.css";
+import handleMessage from "./../../../utils/handle/message";
+
+const MessageView = ({ item }) => (
+  <div className="header__sign--item">
+    <i className={item.icon}></i>
+    <div className="header__message__content">
+      <span>
+        <b>{item.title}</b>&nbsp;
+        {item.content}
+      </span>
+      <small>{moment(item.time).fromNow()}</small>
+    </div>
+  </div>
+);
 
 const Profile = () => {
   const auth = useSelector((state) => state.auth);
   const [fullName, setFullName] = useState(false);
   const { isAdmin, user } = auth;
+
+  const [message, setMessage] = useState([]);
+  useEffect(() => {
+    if (user.message) {
+      const data = handleMessage(user.message, 4);
+      setMessage(data);
+    }
+  }, [user.message]);
+
   useEffect(() => {
     if (user.forename && user.surname)
       setFullName(user.forename + " " + user.surname);
@@ -37,7 +61,14 @@ const Profile = () => {
             <h5>Thông báo</h5>
             <span>Đánh dấu tất cả đã đọc</span>
           </div>
-          <div className="header__sign--item">abcas</div>
+          {message.map((item, index) => (
+            <MessageView item={item} key={index} />
+          ))}
+          {message && (
+            <div className="header__message__content">
+              <Link to="/user/dashboard">Xem tất cả</Link>
+            </div>
+          )}
         </div>
       </div>
       <div className="header__sign__profile">

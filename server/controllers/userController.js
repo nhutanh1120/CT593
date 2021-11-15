@@ -111,6 +111,12 @@ const userControllers = {
         username,
         password,
         email,
+        message: [
+          {
+            title: "luu moment",
+            status: "create_account",
+          },
+        ],
       });
 
       await newUser.save();

@@ -1,21 +1,36 @@
 [
   {
+    "status": "create_account",
+    "icon": "bx bx-info-circle",
+    "content": "Chào mừng bạn đã gia nhập Luu Monents"
+  },
+  {
+    "status": "create_post",
+    "icon": "bx bx-check-circle",
+    "content": "Bạn đã tạo bài viết thành công, hãy tạo thêm nhiều bài viết nữa nhé."
+  },
+  {
+    "status": "update_post",
+    "icon": "bx bx-info-circle",
+    "content": "Bài viết của bạn đã được cập nhật thành công, vui lòng kiểm tra lại thông tin nhé."
+  },
+  {
+    "status": "delete_post",
     "icon": "bx bx-error",
-    "content": "Curabitur id eros quis nunc suscipit blandit"
+    "content": "Bài viết của bạn đã được xóa, hãy tạo thêm nhiều bài viết nữa nhé."
   },
   {
-    "icon": "bx bx-package",
-    "content": "Duis malesuada justo eu sapien elementum, in semper diam posuere"
+    "status": "create_product",
+    "icon": "bx bx-check-circle",
+    "content": "Bạn đã tạo sản phẩm thành công, hãy tạo thêm nhiều bài viết nữa nhé."
   },
   {
-    "icon": "bx bx-cart",
-    "content": "Donec at nisi sit amet tortor commodo porttitor pretium a erat"
+    "status": "create_product_check",
+    "icon": "bx bx-info-circle",
+    "content": "Sản phẩm của bạn đã hoàn thành, chúng tối sẽ xem sét và duyệt sớm nhất."
   },
   {
-    "icon": "bx bx-error",
-    "content": "In gravida mauris et nisi"
-  },
-  {
+    "status": "create_account4",
     "icon": "bx bx-cart",
     "content": "Curabitur id eros quis nunc suscipit blandit"
   }

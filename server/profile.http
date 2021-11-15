@@ -1,7 +1,7 @@
 ###
 GET http://localhost:4000/api/profile/info
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI1ZjZlNDg0NzY0MDc0OGJkOWM1ZiIsImlhdCI6MTYzNDQwNzAwNSwiZXhwIjoxNjM1MDExODA1fQ.qVSszaGowNBH9b9q9cEP5VXAMkxi3_JudGPF9ZEhtqU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNjk1MjU2MywiZXhwIjoxNjM2OTUzNDYzfQ.TOwGWyjULYdFZD9jKrmuwYiCKW9XXs-GCHtftuVOpjA
 
 ###
 GET http://localhost:4000/api/profile/all/info

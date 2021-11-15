@@ -56,7 +56,8 @@ const UserSchema = new Schema(
     },
     message: [
       {
-        title: { type: String, default: "create_account" },
+        title: { type: String },
+        status: { type: String },
         time: { type: Date, default: Date.now() },
       },
     ],

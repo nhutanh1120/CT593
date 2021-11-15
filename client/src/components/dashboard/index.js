@@ -217,7 +217,7 @@ const Body = () => {
               />
             </div>
             <div className="card--body__footer">
-              <Link to="/admin/dashboard/product">view all</Link>
+              <Link to="/admin/dashboard/product">Xem tất cả</Link>
             </div>
           </div>
         </div>
