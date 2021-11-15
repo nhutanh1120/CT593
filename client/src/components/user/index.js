@@ -19,7 +19,7 @@ const Body = () => {
 
   const [state, setState] = useState([]);
   useEffect(() => {
-    const newData = agricultural.filter((item) => item.isSuccess <= 1);
+    const newData = agricultural.filter((item) => item.status <= 1);
     setState(newData);
   }, [agricultural]);
 

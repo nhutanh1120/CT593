@@ -58,7 +58,7 @@ const UserSchema = new Schema(
       {
         title: { type: String },
         status: { type: String },
-        time: { type: Date, default: Date.now() },
+        time: { type: Date, default: Date.now },
       },
     ],
   },

@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import getBase64 from "../../../utils/filebases64";
-import Validator from "../../../utils/validation/Vanilla";
+import { useDispatch, useSelector } from "react-redux";
 import { apiUrl } from "./../../../../constants/index";
+import { dispatchPushMessage } from "./../../../../redux/actions/authAction";
+import getBase64 from "./../../../utils/filebases64";
 import { showSuccessToast } from "./../../../utils/notification/message";
+import Validator from "./../../../utils/validation/Vanilla";
 import "./style.css";
 
 const FormPost = ({ onCreate, dataUpdate, onUpdate }) => {
@@ -17,6 +18,7 @@ const FormPost = ({ onCreate, dataUpdate, onUpdate }) => {
   }, [dataUpdate]);
 
   const token = useSelector((state) => state.token);
+  const dispatch = useDispatch();
   useEffect(() => {
     (() => {
       Validator({
@@ -67,6 +69,7 @@ const FormPost = ({ onCreate, dataUpdate, onUpdate }) => {
                   },
                 };
                 onCreate(data);
+                dispatch(dispatchPushMessage(res.data.notification));
               }
             } else {
               const res = await axios.put(apiUrl + "/post/" + state._id, req, {
@@ -89,6 +92,7 @@ const FormPost = ({ onCreate, dataUpdate, onUpdate }) => {
                 };
                 onUpdate(data);
                 setState(null);
+                dispatch(dispatchPushMessage(res.data.notification));
               }
             }
             document.getElementById("post__form").reset();
@@ -96,7 +100,7 @@ const FormPost = ({ onCreate, dataUpdate, onUpdate }) => {
         },
       });
     })();
-  }, [token, onCreate, state, onUpdate, user]);
+  }, [token, onCreate, state, onUpdate, user, dispatch]);
   return (
     <div className="post__form">
       <h5>{(state && "Chỉnh sữa bài viết") || "Tạo bài viết mới"}</h5>

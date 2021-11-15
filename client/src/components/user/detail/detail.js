@@ -1,8 +1,8 @@
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import "./style.css";
-import moment from "moment";
 
 const initialState = {
   breed: {
@@ -19,6 +19,7 @@ const initialState = {
 };
 const Detail = () => {
   const { id } = useParams();
+  const history = useHistory();
   const data = useSelector((state) => state.agricultural.list);
   const [state, setState] = useState(initialState);
   useEffect(() => {
@@ -32,7 +33,8 @@ const Detail = () => {
     <div className="grid body">
       <div className="dashboard__body__header">
         <h2>
-          Sản phẩm&nbsp;/&nbsp;Chi tiết&nbsp;/&nbsp;
+          <span onClick={() => history.goBack()}>Sản phẩm /</span>&nbsp;
+          <span>Chi tiết /</span>&nbsp;
           <small>{breed.nameBreed}</small>
         </h2>
       </div>

@@ -15,6 +15,13 @@
   font-weight: 600;
   box-shadow: var(--box-shadow);
 }
+.dashboard__body__header h2 span {
+  font-weight: 500;
+  cursor: pointer;
+}
+.dashboard__body__header h2 span ~ small {
+  font-weight: 500;
+}
 .dashboard__body__header button {
   position: relative;
   color: var(--primary-color);

@@ -21,6 +21,13 @@ const authReducer = (state = initialState, action) => {
         isUpdate: action.payload.isUpdate,
         isAdmin: action.payload.isAdmin,
       };
+    case ACTIONS.PUSH_MESSAGE:
+      const newUser = state.user;
+      newUser.message = action.payload.message;
+      return {
+        ...state,
+        user: newUser,
+      };
     default:
       return state;
   }

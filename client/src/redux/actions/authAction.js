@@ -25,3 +25,12 @@ export const dispatchGetUser = (res) => {
     },
   };
 };
+
+export const dispatchPushMessage = (res) => {
+  return {
+    type: ACTIONS.PUSH_MESSAGE,
+    payload: {
+      message: res,
+    },
+  };
+};

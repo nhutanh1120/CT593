@@ -1,8 +1,9 @@
 import axios from "axios";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { apiUrl } from "../../../../constants/index";
+import { dispatchPushMessage } from "../../../../redux/actions/authAction";
 import {
   showErrorToast,
   showSuccessToast,
@@ -70,6 +71,7 @@ const PostItem = ({ data, path, onDelete, onUpdate }) => {
     setStatus(!status);
   };
 
+  const dispatch = useDispatch();
   const handleDelete = async () => {
     if (!token) return;
     const res = await axios.delete(apiUrl + "/post/" + data._id, {
@@ -78,6 +80,7 @@ const PostItem = ({ data, path, onDelete, onUpdate }) => {
     if (res.data.success) {
       showSuccessToast("Thao tác thành công, vui lòng kiểm tra thông tin.");
       onDelete(data._id);
+      dispatch(dispatchPushMessage(res.data.notification));
     }
   };
   return (

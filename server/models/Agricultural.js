@@ -21,7 +21,7 @@ const AgriculturalSchema = new Schema(
       nameBreed: { type: String },
       supplierBreed: { type: String },
       addressBreed: { type: String }, //Dia chi san xuat
-      timeBreed: { type: Date, default: Date.now() },
+      timeBreed: { type: Date, default: Date.now },
     },
     actions: [
       {
@@ -32,7 +32,7 @@ const AgriculturalSchema = new Schema(
             supplierAction: String,
           },
         ],
-        timeAction: { type: Date, default: Date.now() },
+        timeAction: { type: Date, default: Date.now },
       },
     ],
     harvest: {
