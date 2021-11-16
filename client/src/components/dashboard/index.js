@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Chart from "react-apexcharts";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import card from "../../assets/JsonData/card.json";
+import {
+  dispatchGetAllAgricultural,
+  fetchAllAgricultural,
+} from "./../../redux/actions/getAllAgriculturalActions";
 import Badge from "./badge/badge";
 import Card from "./card/card";
-import Table from "./table/table";
 import "./style.css";
-import Chart from "react-apexcharts";
+import Table from "./table/table";
 
 const chartOptions = {
   series: [
@@ -158,6 +163,18 @@ const renderOrderBody = (item, index) => (
   </tr>
 );
 const Body = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (dispatch) {
+      const getUser = () => {
+        return fetchAllAgricultural().then((res) => {
+          dispatch(dispatchGetAllAgricultural(res));
+        });
+      };
+      getUser();
+    }
+  }, [dispatch]);
   return (
     <div className="grid body">
       <div className="dashboard__body__header">
