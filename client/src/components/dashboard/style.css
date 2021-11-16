@@ -24,6 +24,13 @@
 .card--body__footer a {
   color: var(--txt-color);
 }
+.card--body__footer button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  text-transform: capitalize;
+  cursor: pointer;
+}
 @media (max-width: 450px) {
   .grid.body {
     max-width: calc(100% - 20px);

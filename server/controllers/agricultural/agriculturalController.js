@@ -47,7 +47,10 @@ const agriculturalControllers = {
   // @access private
   readAll: async (req, res) => {
     try {
-      const agricultural = await AgriculturalModel.find();
+      const agricultural = await AgriculturalModel.find().populate(
+        "administrator",
+        ["forename", "surname"]
+      );
       console.log("read all agricultural request");
       res.json({
         success: true,

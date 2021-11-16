@@ -1,3 +1,16 @@
 .dashboard__email {
   min-height: 500px;
 }
+.table__select__all {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-left: 8px;
+}
+.table__select__all input {
+  margin-right: 5px;
+}
+.table__select__all select {
+  width: 150px;
+}

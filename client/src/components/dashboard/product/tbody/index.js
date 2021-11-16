@@ -1,26 +1,22 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { apiUrl } from "../../../../constants";
 import {
   showErrorToast,
   showSuccessToast,
 } from "../../../utils/notification/message";
 
-const isRole = (key) => {
+const isStatus = (key) => {
   switch (key) {
     case 1:
-      return "quản trị";
+      return "Chờ duyệt";
     case 2:
-      return "sản xuất";
-    case 3:
-      return "phân phối";
-    case 4:
-      return "chế biến";
-    case 5:
-      return "bán lẽ";
+      return "Đã duyệt";
     default:
-      return "khách hàng";
+      return "Đang phát triển";
   }
 };
 const TbodyData = ({ item, index }) => {
@@ -46,32 +42,38 @@ const TbodyData = ({ item, index }) => {
       });
     } else showErrorToast("Thao tác thất bại, vui lòng kiểm tra thông tin");
   };
+  // console.log("state", state);
   return (
     <tr className="table__body" key={index}>
       <td>{index}</td>
-      <td>
-        {(state.forename && `${state.surname} ${state.forename}`) ||
-          "Chưa cập nhật"}
-      </td>
-      <td>{state.email || "Chưa cập nhật"}</td>
-      <td>{state.phone || "Chưa cập nhật"}</td>
-      <td>{state.total_orders || "0"}</td>
-      <td>{isRole(state.role)}</td>
+      <td>{state.fullname || "Chưa cập nhật"}</td>
+      <td>{state.breed || "Chưa cập nhật"}</td>
+      <td>{(state.type === "0" && "Cây trồng") || "vật nuôi"}</td>
+      <td>{moment(state.update).format("DD.MM.YYYY") || "0"}</td>
+      <td>{isStatus(state.status)}</td>
       <td className="table__body--action">
-        <button className="tbody__action" onClick={() => alert("Xem chi tiet")}>
+        <Link
+          className="tbody__action"
+          to={"/agricultural/" + state.id}
+          target="_blank"
+        >
           <div className="action__tooltip">Xem chi tiết</div>
           <span className="view">
             <i className="bx bx-show"></i>
           </span>
-        </button>
-        <button className="tbody__action" onClick={handleAccess}>
-          <div className="action__tooltip">
-            {(state.access && "Khóa") || "Mở khóa"}
-          </div>
-          <span className="lock">
-            <i className={(state.access && "bx bx-x") || "bx bx-check"}></i>
-          </span>
-        </button>
+        </Link>
+        {state.status <= 1 && (
+          <button className="tbody__action" onClick={handleAccess}>
+            <div className="action__tooltip">
+              {(state.status === 1 && "Duyệt") || "Chưa yêu cầu"}
+            </div>
+            <span className="lock">
+              <i
+                className={(state.status === 1 && "bx bx-x") || "bx bx-check"}
+              ></i>
+            </span>
+          </button>
+        )}
       </td>
     </tr>
   );

@@ -5,7 +5,7 @@
     "email": "brois0@unicef.org",
     "location": "Bator",
     "phone": "+62 745 807 7685",
-    "role": "4",
+    "role": 4,
     "total_orders": 24011
   },
   {
@@ -14,7 +14,7 @@
     "email": "mjunifer1@buzzfeed.com",
     "location": "Bromma",
     "phone": "+46 993 722 3008",
-    "role": "4",
+    "role": 4,
     "total_orders": 60195
   },
   {
@@ -23,7 +23,7 @@
     "email": "fbaylay2@purevolume.com",
     "location": "Atalaia",
     "phone": "+55 232 355 3569",
-    "role": "4",
+    "role": 4,
     "total_orders": 96328
   },
   {
@@ -32,7 +32,7 @@
     "email": "bmonelli3@amazonaws.com",
     "location": "Martingança",
     "phone": "+351 734 876 8127",
-    "role": "2",
+    "role": 2,
     "total_orders": 78768
   },
   {
@@ -41,7 +41,7 @@
     "email": "ishoppee4@webmd.com",
     "location": "Lincoln",
     "phone": "+54 410 442 6083",
-    "role": "1",
+    "role": 1,
     "total_orders": 26045
   },
   {
@@ -50,7 +50,7 @@
     "email": "ghaking5@icio.us",
     "location": "Sangzhou",
     "phone": "+86 722 902 9706",
-    "role": "3",
+    "role": 3,
     "total_orders": 90771
   },
   {
@@ -59,7 +59,7 @@
     "email": "cacum6@scribd.com",
     "location": "Huzhen",
     "phone": "+86 805 547 3640",
-    "role": "0",
+    "role": 0,
     "total_orders": 97842
   },
   {
@@ -68,7 +68,7 @@
     "email": "ahaig7@live.com",
     "location": "Gizel’",
     "phone": "+7 623 158 0485",
-    "role": "4",
+    "role": 4,
     "total_orders": 85298
   },
   {
@@ -77,7 +77,7 @@
     "email": "erobardet8@google.co.jp",
     "location": "Uyugan",
     "phone": "+63 406 595 5538",
-    "role": "1",
+    "role": 1,
     "total_orders": 38959
   },
   {
@@ -86,7 +86,7 @@
     "email": "nhallatt9@tamu.edu",
     "location": "Liuhao",
     "phone": "+86 194 283 7223",
-    "role": "1",
+    "role": 1,
     "total_orders": 48049
   },
   {
@@ -95,7 +95,7 @@
     "email": "sgardenera@mozilla.com",
     "location": "Bosanski Brod",
     "phone": "+387 494 626 9847",
-    "role": "428",
+    "role": 4,
     "total_orders": 24961
   },
   {
@@ -104,7 +104,7 @@
     "email": "wberardb@state.tx.us",
     "location": "Athy",
     "phone": "+353 884 996 4703",
-    "role": "3",
+    "role": 3,
     "total_orders": 24986
   },
   {
@@ -113,7 +113,7 @@
     "email": "bmonikerc@g.co",
     "location": "Conceição da Abóboda",
     "phone": "+351 122 281 8005",
-    "role": "2",
+    "role": 2,
     "total_orders": 38671
   },
   {
@@ -122,7 +122,7 @@
     "email": "dmacgibbond@mashable.com",
     "location": "Manjakandriana",
     "phone": "+261 550 422 8564",
-    "role": "0",
+    "role": 0,
     "total_orders": 5702
   },
   {
@@ -131,7 +131,7 @@
     "email": "tonione@msn.com",
     "location": "Hadžići",
     "phone": "+387 213 246 0301",
-    "role": "1",
+    "role": 1,
     "total_orders": 7145
   },
   {
@@ -140,7 +140,7 @@
     "email": "acavillaf@live.com",
     "location": "Redcliff",
     "phone": "+263 941 369 6625",
-    "role": "3",
+    "role": 3,
     "total_orders": 33108
   },
   {
@@ -149,7 +149,7 @@
     "email": "fwyndhamg@nbcnews.com",
     "location": "Hekou",
     "phone": "+86 922 171 8017",
-    "role": "2",
+    "role": 2,
     "total_orders": 85286
   },
   {
@@ -158,7 +158,7 @@
     "email": "bskermerh@reverbnation.com",
     "location": "Sinop",
     "phone": "+55 598 223 7882",
-    "role": "1",
+    "role": 1,
     "total_orders": 45914
   },
   {
@@ -167,7 +167,7 @@
     "email": "vlambertazzii@eepurl.com",
     "location": "Kolodenka",
     "phone": "+380 633 380 2502",
-    "role": "3",
+    "role": 3,
     "total_orders": 83235
   },
   {
@@ -176,7 +176,7 @@
     "email": "ttolcharj@auda.org.au",
     "location": "Guofu",
     "phone": "+86 445 679 1332",
-    "role": "1",
+    "role": 1,
     "total_orders": 51836
   },
   {
@@ -185,7 +185,7 @@
     "email": "ejahnckek@ox.ac.uk",
     "location": "Benešov nad Ploučnicí",
     "phone": "+420 856 496 9100",
-    "role": "5",
+    "role": 5,
     "total_orders": 9523
   },
   {
@@ -194,7 +194,7 @@
     "email": "iranyelldl@i2i.jp",
     "location": "Camperdown",
     "phone": "+27 913 964 5397",
-    "role": "3",
+    "role": 3,
     "total_orders": 96017
   },
   {
@@ -203,7 +203,7 @@
     "email": "aboisem@nhs.uk",
     "location": "Esuk Oron",
     "phone": "+234 958 752 1521",
-    "role": "1",
+    "role": 1,
     "total_orders": 83833
   },
   {
@@ -212,7 +212,7 @@
     "email": "rgoodacren@opera.com",
     "location": "Isoka",
     "phone": "+260 860 266 9740",
-    "role": "3",
+    "role": 3,
     "total_orders": 15703
   },
   {
@@ -221,7 +221,7 @@
     "email": "cguerroo@ca.gov",
     "location": "Qingxi",
     "phone": "+86 699 529 4527",
-    "role": "3",
+    "role": 3,
     "total_orders": 67669
   },
   {
@@ -230,7 +230,7 @@
     "email": "ofonteynep@baidu.com",
     "location": "Shanshi",
     "phone": "+86 910 656 7153",
-    "role": "3",
+    "role": 3,
     "total_orders": 7629
   },
   {
@@ -239,7 +239,7 @@
     "email": "llakemanq@weather.com",
     "location": "Juḩr ad Dīk",
     "phone": "+970 799 528 5168",
-    "role": "5",
+    "role": 5,
     "total_orders": 41097
   },
   {
@@ -248,7 +248,7 @@
     "email": "tmapstoner@guardian.co.uk",
     "location": "Tunoshna",
     "phone": "+7 872 475 3601",
-    "role": "1",
+    "role": 1,
     "total_orders": 43948
   },
   {
@@ -257,7 +257,7 @@
     "email": "pbondss@washingtonpost.com",
     "location": "Youchou",
     "phone": "+86 863 508 4897",
-    "role": "0",
+    "role": 0,
     "total_orders": 43674
   },
   {
@@ -266,7 +266,7 @@
     "email": "kgallafantt@technorati.com",
     "location": "Bi’r al ‘Abd",
     "phone": "+20 755 903 3395",
-    "role": "0",
+    "role": 0,
     "total_orders": 37331
   },
   {
@@ -275,7 +275,7 @@
     "email": "mmikalskiu@alexa.com",
     "location": "Mailsi",
     "phone": "+92 366 853 6414",
-    "role": "1",
+    "role": 1,
     "total_orders": 18534
   },
   {
@@ -284,7 +284,7 @@
     "email": "xduggonv@seattletimes.com",
     "location": "Heredia",
     "phone": "+506 818 346 5321",
-    "role": "0",
+    "role": 0,
     "total_orders": 37539
   },
   {
@@ -293,7 +293,7 @@
     "email": "jcollesw@ifeng.com",
     "location": "Upernavik",
     "phone": "+299 126 679 5677",
-    "role": "3",
+    "role": 3,
     "total_orders": 96742
   },
   {
@@ -302,7 +302,7 @@
     "email": "lcoltonx@wikimedia.org",
     "location": "Toba",
     "phone": "+381 522 893 7829",
-    "role": "5",
+    "role": 5,
     "total_orders": 74692
   },
   {
@@ -311,7 +311,7 @@
     "email": "tbarstowy@pcworld.com",
     "location": "Ciseda",
     "phone": "+62 673 109 7943",
-    "role": "0",
+    "role": 0,
     "total_orders": 77309
   },
   {
@@ -320,7 +320,7 @@
     "email": "uknellerz@nbcnews.com",
     "location": "Ústí nad Orlicí",
     "phone": "+420 264 829 9892",
-    "role": "2",
+    "role": 2,
     "total_orders": 79235
   },
   {
@@ -329,7 +329,7 @@
     "email": "ebearward10@reference.com",
     "location": "Nueva Requena",
     "phone": "+51 171 197 4985",
-    "role": "3",
+    "role": 3,
     "total_orders": 78996
   },
   {
@@ -338,7 +338,7 @@
     "email": "svoss11@buzzfeed.com",
     "location": "Şanā’",
     "phone": "+967 264 158 8142",
-    "role": "4",
+    "role": 4,
     "total_orders": 13036
   },
   {
@@ -347,7 +347,7 @@
     "email": "hiacovacci12@vk.com",
     "location": "Ibaraki",
     "phone": "+81 667 109 6968",
-    "role": "3",
+    "role": 3,
     "total_orders": 9334
   },
   {
@@ -356,7 +356,7 @@
     "email": "nhaggis13@huffingtonpost.com",
     "location": "Kuruman",
     "phone": "+27 607 540 0504",
-    "role": "6",
+    "role": 6,
     "total_orders": 44276
   },
   {
@@ -365,7 +365,7 @@
     "email": "jstanett14@wiley.com",
     "location": "Memphis",
     "phone": "+1 901 510 8058",
-    "role": "2",
+    "role": 2,
     "total_orders": 50590
   },
   {
@@ -374,7 +374,7 @@
     "email": "wgoodin15@examiner.com",
     "location": "Metsavan",
     "phone": "+374 984 762 7075",
-    "role": "6",
+    "role": 6,
     "total_orders": 23993
   },
   {
@@ -383,7 +383,7 @@
     "email": "dde16@usatoday.com",
     "location": "Vysotsk",
     "phone": "+7 139 494 7185",
-    "role": "1",
+    "role": 1,
     "total_orders": 75048
   },
   {
@@ -392,7 +392,7 @@
     "email": "etwamley17@nps.gov",
     "location": "Nishishinminato",
     "phone": "+81 421 209 0703",
-    "role": "4",
+    "role": 4,
     "total_orders": 50193
   },
   {
@@ -401,7 +401,7 @@
     "email": "atuison18@cpanel.net",
     "location": "Solidaridad",
     "phone": "+52 551 840 1861",
-    "role": "6",
+    "role": 6,
     "total_orders": 67402
   },
   {
@@ -410,7 +410,7 @@
     "email": "rhatrick19@mayoclinic.com",
     "location": "Domampot",
     "phone": "+63 134 141 4104",
-    "role": "0",
+    "role": 0,
     "total_orders": 90685
   },
   {
@@ -419,7 +419,7 @@
     "email": "tcrannage1a@uiuc.edu",
     "location": "Putrajawa",
     "phone": "+62 347 309 9849",
-    "role": "2",
+    "role": 2,
     "total_orders": 18308
   },
   {
@@ -428,7 +428,7 @@
     "email": "ghannabus1b@wiley.com",
     "location": "Carvalhal",
     "phone": "+351 746 761 5629",
-    "role": "5",
+    "role": 5,
     "total_orders": 93658
   },
   {
@@ -437,7 +437,7 @@
     "email": "karnolds1c@sbwire.com",
     "location": "Dolní Černilov",
     "phone": "+420 569 892 7749",
-    "role": "3",
+    "role": 3,
     "total_orders": 25454
   },
   {
@@ -446,7 +446,7 @@
     "email": "cnazer1d@rediff.com",
     "location": "Alexandria",
     "phone": "+1 703 933 3296",
-    "role": "0",
+    "role": 0,
     "total_orders": 65533
   },
   {
@@ -455,7 +455,7 @@
     "email": "sacom1e@addtoany.com",
     "location": "Marondera",
     "phone": "+263 724 289 3246",
-    "role": "3",
+    "role": 3,
     "total_orders": 27138
   },
   {
@@ -464,7 +464,7 @@
     "email": "cblondin1f@fema.gov",
     "location": "Chaykovskaya",
     "phone": "+7 724 810 8399",
-    "role": "1",
+    "role": 1,
     "total_orders": 85693
   },
   {
@@ -473,7 +473,7 @@
     "email": "wshorland1g@histats.com",
     "location": "Shanyang",
     "phone": "+86 515 873 6275",
-    "role": "5",
+    "role": 5,
     "total_orders": 64141
   },
   {
@@ -482,7 +482,7 @@
     "email": "tmannering1h@etsy.com",
     "location": "Colima",
     "phone": "+506 985 540 3341",
-    "role": "4",
+    "role": 4,
     "total_orders": 24038
   },
   {
@@ -491,7 +491,7 @@
     "email": "jagglio1i@slideshare.net",
     "location": "Yinji",
     "phone": "+86 659 330 5270",
-    "role": "2",
+    "role": 2,
     "total_orders": 82050
   },
   {
@@ -500,7 +500,7 @@
     "email": "rschoales1j@parallels.com",
     "location": "Jiancheng",
     "phone": "+86 272 227 4958",
-    "role": "4",
+    "role": 4,
     "total_orders": 82839
   },
   {
@@ -509,7 +509,7 @@
     "email": "cfirsby1k@xrea.com",
     "location": "Artur Nogueira",
     "phone": "+55 238 356 2094",
-    "role": "0",
+    "role": 0,
     "total_orders": 16879
   },
   {
@@ -518,7 +518,7 @@
     "email": "toakenford1l@sun.com",
     "location": "La Francia",
     "phone": "+54 425 742 5491",
-    "role": "1",
+    "role": 1,
     "total_orders": 35823
   },
   {
@@ -527,7 +527,7 @@
     "email": "rrounds1m@arizona.edu",
     "location": "Sé",
     "phone": "+351 554 677 9118",
-    "role": "6",
+    "role": 6,
     "total_orders": 67929
   },
   {
@@ -536,7 +536,7 @@
     "email": "cciraldo1n@google.com",
     "location": "Šentvid pri Stični",
     "phone": "+386 906 510 2232",
-    "role": "1",
+    "role": 1,
     "total_orders": 2684
   },
   {
@@ -545,7 +545,7 @@
     "email": "vstocker1o@census.gov",
     "location": "Shazi",
     "phone": "+86 922 785 8999",
-    "role": "3",
+    "role": 3,
     "total_orders": 49514
   },
   {
@@ -554,7 +554,7 @@
     "email": "csutcliff1p@gmpg.org",
     "location": "Kargasok",
     "phone": "+7 513 592 9428",
-    "role": "2",
+    "role": 2,
     "total_orders": 96664
   },
   {
@@ -563,7 +563,7 @@
     "email": "nlincke1q@china.com.cn",
     "location": "Tegalbuleud",
     "phone": "+62 383 930 3878",
-    "role": "2",
+    "role": 2,
     "total_orders": 67231
   },
   {
@@ -572,7 +572,7 @@
     "email": "squilligan1r@cnn.com",
     "location": "Nakhon Luang",
     "phone": "+66 794 209 8355",
-    "role": "0",
+    "role": 0,
     "total_orders": 499
   },
   {
@@ -581,7 +581,7 @@
     "email": "werwin1s@delicious.com",
     "location": "Edsbyn",
     "phone": "+46 581 583 0609",
-    "role": "3",
+    "role": 3,
     "total_orders": 74623
   },
   {
@@ -590,7 +590,7 @@
     "email": "zattwood1t@nifty.com",
     "location": "Shibushi",
     "phone": "+81 401 511 4244",
-    "role": "6",
+    "role": 6,
     "total_orders": 86419
   },
   {
@@ -599,7 +599,7 @@
     "email": "stebald1u@house.gov",
     "location": "Yelyzavethradka",
     "phone": "+380 408 617 1812",
-    "role": "1",
+    "role": 1,
     "total_orders": 83677
   },
   {
@@ -608,7 +608,7 @@
     "email": "pburwin1v@ameblo.jp",
     "location": "Kertasari",
     "phone": "+62 421 758 8843",
-    "role": "0",
+    "role": 0,
     "total_orders": 99939
   },
   {
@@ -617,7 +617,7 @@
     "email": "spurdey1w@arstechnica.com",
     "location": "Hīsh",
     "phone": "+963 365 813 0051",
-    "role": "3",
+    "role": 3,
     "total_orders": 5869
   },
   {
@@ -626,7 +626,7 @@
     "email": "apembry1x@google.ru",
     "location": "Yangji",
     "phone": "+86 339 318 7176",
-    "role": "3",
+    "role": 3,
     "total_orders": 31960
   },
   {
@@ -635,7 +635,7 @@
     "email": "kdaud1y@ted.com",
     "location": "Palhoça",
     "phone": "+55 517 473 6728",
-    "role": "3",
+    "role": 3,
     "total_orders": 79377
   },
   {
@@ -644,7 +644,7 @@
     "email": "mfutter1z@yellowbook.com",
     "location": "Blachownia",
     "phone": "+48 173 298 9740",
-    "role": "1",
+    "role": 1,
     "total_orders": 37061
   },
   {
@@ -653,7 +653,7 @@
     "email": "shinkens20@shareasale.com",
     "location": "Río Hondo",
     "phone": "+502 657 950 5432",
-    "role": "0",
+    "role": 0,
     "total_orders": 9905
   },
   {
@@ -662,7 +662,7 @@
     "email": "jmcmurty21@fotki.com",
     "location": "Dalududalu",
     "phone": "+62 491 202 8200",
-    "role": "4",
+    "role": 4,
     "total_orders": 33691
   },
   {
@@ -671,7 +671,7 @@
     "email": "nmcgunley22@qq.com",
     "location": "Alicante/Alacant",
     "phone": "+34 792 752 4796",
-    "role": "2",
+    "role": 2,
     "total_orders": 87254
   },
   {
@@ -680,7 +680,7 @@
     "email": "mtimson23@nature.com",
     "location": "Paniówki",
     "phone": "+48 211 545 0147",
-    "role": "3",
+    "role": 3,
     "total_orders": 64181
   },
   {
@@ -689,7 +689,7 @@
     "email": "kblucher24@booking.com",
     "location": "Xiangyanglu",
     "phone": "+86 548 699 1455",
-    "role": "0",
+    "role": 0,
     "total_orders": 68525
   },
   {
@@ -698,7 +698,7 @@
     "email": "marndtsen25@wp.com",
     "location": "Shizuoka-shi",
     "phone": "+81 586 415 9966",
-    "role": "4",
+    "role": 4,
     "total_orders": 95142
   },
   {
@@ -707,7 +707,7 @@
     "email": "bboothby26@simplemachines.org",
     "location": "Los Cóndores",
     "phone": "+54 161 829 2347",
-    "role": "3",
+    "role": 3,
     "total_orders": 75052
   },
   {
@@ -716,7 +716,7 @@
     "email": "sgerrit27@sitemeter.com",
     "location": "Paingar",
     "phone": "+86 573 121 9461",
-    "role": "0",
+    "role": 0,
     "total_orders": 55581
   },
   {
@@ -725,7 +725,7 @@
     "email": "bhawyes28@un.org",
     "location": "Cihua",
     "phone": "+86 545 455 0770",
-    "role": "9",
+    "role": 9,
     "total_orders": 58310
   },
   {
@@ -734,7 +734,7 @@
     "email": "rslemming29@bloglines.com",
     "location": "Dawu Chengguanzhen",
     "phone": "+86 740 215 8983",
-    "role": "3",
+    "role": 3,
     "total_orders": 5454
   },
   {
@@ -743,7 +743,7 @@
     "email": "aabernethy2a@google.nl",
     "location": "Abbeville",
     "phone": "+33 155 902 8183",
-    "role": "0",
+    "role": 0,
     "total_orders": 23440
   },
   {
@@ -752,7 +752,7 @@
     "email": "beade2b@columbia.edu",
     "location": "Plato",
     "phone": "+57 498 368 3733",
-    "role": "3",
+    "role": 3,
     "total_orders": 17501
   },
   {
@@ -761,7 +761,7 @@
     "email": "icausley2c@virginia.edu",
     "location": "Acton Vale",
     "phone": "+1 992 294 1907",
-    "role": "2",
+    "role": 2,
     "total_orders": 25553
   },
   {
@@ -770,7 +770,7 @@
     "email": "agarth2d@wiley.com",
     "location": "Melfi",
     "phone": "+235 627 502 0870",
-    "role": "1",
+    "role": 1,
     "total_orders": 56715
   },
   {
@@ -779,7 +779,7 @@
     "email": "tsessuns2e@desdev.cn",
     "location": "General Alvear",
     "phone": "+54 890 389 9195",
-    "role": "1",
+    "role": 1,
     "total_orders": 52444
   },
   {
@@ -788,7 +788,7 @@
     "email": "sgodbold2f@miitbeian.gov.cn",
     "location": "Arvayheer",
     "phone": "+976 574 510 5888",
-    "role": "3",
+    "role": 3,
     "total_orders": 55259
   },
   {
@@ -797,7 +797,7 @@
     "email": "lwheatcroft2g@netlog.com",
     "location": "Terpsithéa",
     "phone": "+30 802 453 1790",
-    "role": "4",
+    "role": 4,
     "total_orders": 63611
   },
   {
@@ -806,7 +806,7 @@
     "email": "bscutchin2h@usatoday.com",
     "location": "Ganxi",
     "phone": "+86 823 166 6095",
-    "role": "0",
+    "role": 0,
     "total_orders": 93350
   },
   {
@@ -815,7 +815,7 @@
     "email": "abatten2i@google.com.au",
     "location": "Petaling Jaya",
     "phone": "+60 560 404 2745",
-    "role": "4",
+    "role": 4,
     "total_orders": 7586
   },
   {
@@ -824,7 +824,7 @@
     "email": "bemery2j@loc.gov",
     "location": "Pau",
     "phone": "+33 814 263 4404",
-    "role": "0",
+    "role": 0,
     "total_orders": 49842
   },
   {
@@ -833,7 +833,7 @@
     "email": "kbertomieu2k@biglobe.ne.jp",
     "location": "Tabwakea Village",
     "phone": "+686 287 696 5776",
-    "role": "2",
+    "role": 2,
     "total_orders": 59480
   },
   {
@@ -842,7 +842,7 @@
     "email": "hlivick2l@wiley.com",
     "location": "Phù Mỹ",
     "phone": "+84 585 419 2646",
-    "role": "4",
+    "role": 4,
     "total_orders": 2668
   },
   {
@@ -851,7 +851,7 @@
     "email": "edaintry2m@ustream.tv",
     "location": "Sámara",
     "phone": "+506 371 708 7960",
-    "role": "2",
+    "role": 2,
     "total_orders": 56769
   },
   {
@@ -860,7 +860,7 @@
     "email": "adinneen2n@sitemeter.com",
     "location": "Llacanora",
     "phone": "+51 722 599 3677",
-    "role": "2",
+    "role": 2,
     "total_orders": 87255
   },
   {
@@ -869,7 +869,7 @@
     "email": "kwhittlesea2o@list-manage.com",
     "location": "Bantardawa",
     "phone": "+62 122 286 5695",
-    "role": "1",
+    "role": 1,
     "total_orders": 25818
   },
   {
@@ -878,7 +878,7 @@
     "email": "jyeudall2p@wikimedia.org",
     "location": "Jargalant",
     "phone": "+976 154 383 3816",
-    "role": "3",
+    "role": 3,
     "total_orders": 39010
   },
   {
@@ -887,7 +887,7 @@
     "email": "cbaden2q@shop-pro.jp",
     "location": "Santa Fe",
     "phone": "+63 702 332 2827",
-    "role": "2",
+    "role": 2,
     "total_orders": 49922
   },
   {
@@ -896,7 +896,7 @@
     "email": "amcvrone2r@ihg.com",
     "location": "Dongfeng",
     "phone": "+86 630 450 6014",
-    "role": "1",
+    "role": 1,
     "total_orders": 32514
   }
 ]

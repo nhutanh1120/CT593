@@ -9,7 +9,7 @@ const processingControllers = require("./../controllers/agricultural/processingC
 const retailerControllers = require("./../controllers/agricultural/retailerController");
 
 // localhost/api/agricultural/all/read
-router.get("/all/read", verifyToken, agriculturalControllers.readAll);
+router.get("/all/read", agriculturalControllers.readAll);
 
 // localhost/api/agricultural/read/:id
 router.get("/read/:id", agriculturalControllers.read);

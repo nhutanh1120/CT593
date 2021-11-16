@@ -2,7 +2,6 @@ import axios from "axios";
 // import React, { useRef, useState } from "react";
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { apiUrl } from "./../../../constants/index";
 // import customerList from "./../../../assets/JsonData/customers.json";
 import useSortableData from "./../../utils/sort/index";
@@ -94,7 +93,7 @@ const Customer = () => {
                         họ tên
                         <div
                           className="th__icon"
-                          onClick={() => requestSort("fullname")}
+                          onClick={() => requestSort("surname")}
                         >
                           <i className="bx bx-sort"></i>
                         </div>
@@ -162,9 +161,9 @@ const Customer = () => {
               ) : null}
             </div>
             <div className="card--body__footer">
-              <Link to="/" onClick={clickViewAll}>
+              <button onClick={clickViewAll}>
                 {view ? "Thu gọn" : "Xem tất cả"}
-              </Link>
+              </button>
             </div>
           </div>
         </div>

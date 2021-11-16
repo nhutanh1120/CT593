@@ -36,7 +36,7 @@ const sidebarCurrent = [
   {
     link: "/admin/dashboard/product",
     icon: "bx bx-basket",
-    title: "Sản phẩm",
+    title: "Nông sản",
   },
   {
     link: "/admin/dashboard/message",
@@ -51,7 +51,7 @@ const sidebarCurrent = [
   {
     link: "/admin/dashboard/email",
     icon: "bx bx-mail-send",
-    title: "Saved",
+    title: "Gửi mail",
   },
   {
     link: "/admin/dashboard/setting",
