@@ -30,7 +30,6 @@ const Product = () => {
             update: item.updatedAt,
             status: item.status,
           };
-          console.log(item);
           newArray.push(newObject);
           return newArray;
         });

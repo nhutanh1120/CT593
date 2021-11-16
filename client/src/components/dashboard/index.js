@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
 import Chart from "react-apexcharts";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import card from "../../assets/JsonData/card.json";
 import {
   dispatchGetAllAgricultural,
   fetchAllAgricultural,
 } from "./../../redux/actions/getAllAgriculturalActions";
+import {
+  fetchAllUsers,
+  dispatchGetAllUsers,
+} from "./../../redux/actions/usersAction";
 import Badge from "./badge/badge";
 import Card from "./card/card";
 import "./style.css";
@@ -164,17 +168,27 @@ const renderOrderBody = (item, index) => (
 );
 const Body = () => {
   const dispatch = useDispatch();
-
+  const token = useSelector((state) => state.token);
   useEffect(() => {
     if (dispatch) {
-      const getUser = () => {
+      const getAllAgricultural = () => {
         return fetchAllAgricultural().then((res) => {
           dispatch(dispatchGetAllAgricultural(res));
         });
       };
-      getUser();
+      getAllAgricultural();
     }
   }, [dispatch]);
+  useEffect(() => {
+    if (token) {
+      const getAllUser = () => {
+        return fetchAllUsers(token).then((res) => {
+          dispatch(dispatchGetAllUsers(res));
+        });
+      };
+      getAllUser();
+    }
+  }, [token, dispatch]);
   return (
     <div className="grid body">
       <div className="dashboard__body__header">
