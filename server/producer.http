@@ -1,0 +1,60 @@
+GET http://localhost:4000/api/agricultural/user/read
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNzE3ODM5MSwiZXhwIjoxNjM3NzgzMTkxfQ.KRnOZ3eoi6woFMeozHYi2Z2SMwX1GQPctgbCshhI3f8
+
+###
+POST http://localhost:4000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "nhutanh",
+  "password": "1234567"
+}
+###
+POST http://localhost:4000/api/agricultural/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNzE3ODM5MSwiZXhwIjoxNjM3NzgzMTkxfQ.KRnOZ3eoi6woFMeozHYi2Z2SMwX1GQPctgbCshhI3f8
+
+{
+  "producer": {
+      "name": "Luu Tran Anh Nhut"
+    },
+  "breed": {
+      "typeAgricultural": 1,
+      "nameBreed": "ca rot",
+      "supplierBreed": "abcdefgh",
+      "addressBreed": "Xuân hiệp, trà ôn, vĩnh long"
+    }
+}
+###
+PATCH http://localhost:4000/api/agricultural/producer/update/61955c5ccc94ee22621e2bba
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNzE3ODM5MSwiZXhwIjoxNjM3NzgzMTkxfQ.KRnOZ3eoi6woFMeozHYi2Z2SMwX1GQPctgbCshhI3f8
+
+{
+
+    "typeAction": 0,
+    "timeAction": "12-12-2021",
+    "listAction": [
+            {
+                "nameAction": "thuoc 1",
+                "supplierAction": "update"
+            },  
+            {
+                "nameAction": "thuoc 2",
+                "supplierAction": "update"
+            }
+    ]       
+}
+
+###
+PATCH http://localhost:4000/api/agricultural/producer/finish/61955c5ccc94ee22621e2bba
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQ3YTdiODZhZWI1NzBlNjJhMzAyYyIsImlhdCI6MTYzNzE3ODM5MSwiZXhwIjoxNjM3NzgzMTkxfQ.KRnOZ3eoi6woFMeozHYi2Z2SMwX1GQPctgbCshhI3f8
+
+{
+    "times": "12-12-2021",
+    "images": "attachmentBases64",
+    "expiry": 10, 
+    "description": ""
+}

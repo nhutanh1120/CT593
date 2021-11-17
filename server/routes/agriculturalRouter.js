@@ -4,6 +4,7 @@ const verifyToken = require("./../middleware/auth");
 const authAdmin = require("./../middleware/authAdmin");
 const userAccess = require("./../middleware/userAccess");
 const agriculturalControllers = require("./../controllers/agricultural/agriculturalController");
+const producerControllers = require("./../controllers/agricultural/producerController");
 const distributorControllers = require("./../controllers/agricultural/distributorController");
 const processingControllers = require("./../controllers/agricultural/processingController");
 const retailerControllers = require("./../controllers/agricultural/retailerController");
@@ -41,6 +42,21 @@ router.delete(
   agriculturalControllers.delete
 );
 
+// localhost/api/agricultural/producer/update/:id
+router.patch(
+  "/producer/update/:id",
+  verifyToken,
+  userAccess,
+  producerControllers.update
+);
+
+// localhost/api/agricultural/producer/finish/:id
+router.patch(
+  "/producer/finish/:id",
+  verifyToken,
+  userAccess,
+  producerControllers.finish
+);
 /**
  * Distributor Router
  * localhost/api/agricultural/distributor/create
