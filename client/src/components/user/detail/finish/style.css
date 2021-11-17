@@ -1,0 +1,38 @@
+.finish__agricultural {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.finish__agricultural form {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: auto;
+  z-index: 100;
+}
+.finish__agricultural__hidden {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  background-color: black;
+  opacity: 0.8;
+}
+.finish__agricultural__hidden:hover {
+  cursor: url("./../../../../assets/img/icon/close.png"), auto;
+}
+.form__success {
+  width: 360px;
+  min-height: 100px;
+  padding: 32px 24px;
+  text-align: center;
+  background: var(--second-background);
+  border-radius: 2px;
+  margin: 24px;
+  align-self: center;
+  box-shadow: 0 2px 5px 0 rgba(51, 62, 73, 0.1);
+}

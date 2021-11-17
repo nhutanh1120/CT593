@@ -3,6 +3,7 @@
   background-color: var(--second-background);
   border-radius: 10px;
   padding: 20px;
+  margin-bottom: 25px;
 }
 .dashboard__detail h2 {
   font-size: 18px;
@@ -40,12 +41,32 @@
   flex-shrink: 0;
 }
 .detail__producer--content {
+  display: flex;
+  justify-content: space-between;
   margin-left: 30px;
+  padding-right: 50px;
   font-size: 14px;
   color: var(--txt-color);
 }
+.detail__producer--content span p {
+  line-height: 1.5;
+}
 .detail__table {
   overflow-x: auto;
+}
+
+.detail__table p {
+  margin: 0 30px 10px;
+  font-size: 14px;
+  color: var(--txt-color);
+}
+.detail__table__header {
+  margin-bottom: 10px;
+  padding-left: 30px;
+}
+.detail__table__header p {
+  line-height: 1.5;
+  margin: 0;
 }
 .detail__table table {
   width: 100%;
@@ -75,4 +96,74 @@ td {
 }
 .detail__table table tr:nth-child(odd) td {
   background: #ececec;
+}
+.detail__table__input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 300px;
+}
+.detail__table__input input,
+.detail__table__input select {
+  width: 200px;
+  height: 24px;
+}
+
+.detail__table.active {
+  position: relative;
+  z-index: 100 !important;
+  border: 1px solid black;
+  background-color: rgba(67, 172, 221, 0.4);
+  padding: 20px 40px;
+  transition: all 0.3s;
+}
+
+.detail__table .detail__table__create {
+  position: absolute;
+  right: 150px;
+  top: 0;
+  padding: 5px;
+  background-color: #198754;
+  color: #fff;
+  cursor: pointer;
+}
+.detail__table__create ~ .detail__table__create {
+  right: 100px;
+}
+.detail__table .detail__table__create span {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: calc(100% + 15px);
+  right: -36px;
+  font-size: 14px;
+  width: max-content;
+  background-color: #198754;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transform: scale(0);
+  transition: all 0.3s;
+}
+.detail__table .detail__table__create span::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  width: 8px;
+  height: 8px;
+  background-color: #198754;
+  transform: rotate(45deg);
+}
+.detail__table .detail__table__create:hover span {
+  transform: scale(1);
+}
+
+.create__detail__table__hidden {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  display: none;
 }

@@ -1,0 +1,64 @@
+.detail__action--table {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.detail__action--thead {
+  background-color: #969494;
+  color: #fff;
+}
+.detail__action--th,
+.detail__action--td {
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #dee2e6;
+  border-collapse: collapse;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 400;
+}
+.detail__action--tbody .detail__action--tr:nth-child(even) span {
+  background-color: #f5f5f5;
+}
+.detail__action--tbody .detail__action--tr:nth-child(odd) span {
+  background: #ececec;
+}
+.detail__action--tr {
+  display: grid;
+  position: relative;
+  align-items: center;
+  grid-template-columns: 10% 45% 45%;
+}
+.detail__action--delete {
+  position: absolute;
+  left: calc(100% + 5px);
+  cursor: pointer;
+}
+.detail__action--td {
+  height: 100%;
+}
+.detail__action--td input {
+  outline: none;
+  background-color: transparent;
+  width: 90%;
+  border: none;
+}
+.detail__action--td input::-webkit-input-placeholder {
+  text-align: center;
+}
+
+.detail__action--td input:-moz-placeholder {
+  /* Firefox 18- */
+  text-align: center;
+}
+.detail__action--td input::-moz-placeholder {
+  /* Firefox 19+ */
+  text-align: center;
+}
+
+.detail__action--td input:-ms-input-placeholder {
+  text-align: center;
+}
+.detail__action--td .form__message {
+  display: block;
+  text-align: center;
+}

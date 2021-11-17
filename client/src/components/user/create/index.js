@@ -140,7 +140,6 @@ const Create = (props) => {
             id="timeBreed"
             name="timeBreed"
             type="date"
-            placeholder="Thời gian"
             className="form__control"
           />
           <span className="form__message"></span>

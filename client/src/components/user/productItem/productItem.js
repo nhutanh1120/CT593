@@ -63,9 +63,12 @@ const ProductItem = ({ agricultural, onDelete }) => {
       >
         Cập nhật thông tin
       </button>
-      <button className="product--button" onClick={() => alert("Thanh cong")}>
+      <Link
+        to={"/user/dashboard/detail/" + agricultural._id}
+        className="product--button"
+      >
         Hoàn thành
-      </button>
+      </Link>
       <button className="product--button" onClick={onDeletes}>
         Xóa sản phẩm
       </button>
