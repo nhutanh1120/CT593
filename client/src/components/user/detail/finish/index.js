@@ -42,7 +42,7 @@ const Finish = (props) => {
               description: data.description || "",
             };
             const res = await axios.patch(
-              apiUrl + "/agricultural/update/" + id,
+              apiUrl + "/agricultural//producer/finish/" + id,
               req,
               {
                 headers: {
@@ -55,7 +55,7 @@ const Finish = (props) => {
                 "Thao tác thành công, vui lòng kiểm tra thông tin"
               );
 
-              dispatch(updateAgricultural(res.data));
+              dispatch(updateAgricultural({ data: res.data.agricultural }));
               dispatch(dispatchPushMessage(res.data.notification));
               props.hideSuccess(false);
             }
@@ -98,7 +98,7 @@ const Finish = (props) => {
         </div>
         <div className="form__group">
           <label htmlFor="images" className="form__label">
-            Nhà cung cấp
+            Ảnh nông sản
           </label>
           <input
             id="images"

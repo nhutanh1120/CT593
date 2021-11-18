@@ -137,9 +137,21 @@ const ProductItem = ({ agricultural, onDelete }) => {
                       </span>
                     </Link>
                   )}
-                  <Link to="/" className="product--a">
-                    a
-                  </Link>
+                  {agricultural.status !== 0 && (
+                    <Link to={"/qr/" + agricultural._id} className="product--a">
+                      <i className="bx bx-qr bx-sm"></i>
+                      <span>
+                        <p>
+                          Sản phẩm đã được duyệt thành công, xem mà qr của sản
+                          phẩm&nbsp;
+                          <b>{agricultural.breed.nameBreed}</b>
+                        </p>
+                        <small>
+                          {moment(agricultural.updatedAt).fromNow()}
+                        </small>
+                      </span>
+                    </Link>
+                  )}
                   <Link to="/" className="product--a">
                     a
                   </Link>

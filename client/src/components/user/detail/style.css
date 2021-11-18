@@ -167,3 +167,8 @@ td {
   z-index: 99;
   display: none;
 }
+
+.detail__table--img {
+  width: 100px;
+  height: auto;
+}

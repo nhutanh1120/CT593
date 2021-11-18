@@ -148,7 +148,7 @@ const Detail = () => {
                     <table>
                       <thead>
                         <tr>
-                          <th>Hình ảnh sản phảm</th>
+                          <th>Hình ảnh nông sản</th>
                           <th>Ngày thu hoạch</th>
                           <th>Hạn sử dụng</th>
                           <th>Mô tả</th>
@@ -156,7 +156,13 @@ const Detail = () => {
                       </thead>
                       <tbody>
                         <tr>
-                          <td>{state.harvest.images}</td>
+                          <td>
+                            <img
+                              className="detail__table--img"
+                              src={state.harvest.images}
+                              alt="images"
+                            />
+                          </td>
                           <td>
                             {moment(state.harvest.times).format("DD-MM-YYYY")}
                           </td>

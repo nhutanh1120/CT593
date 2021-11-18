@@ -25,13 +25,13 @@
     "content": "Bạn đã tạo sản phẩm thành công, hãy tạo thêm nhiều bài viết nữa nhé."
   },
   {
-    "status": "create_product_check",
+    "status": "finish_agricultural",
     "icon": "bx bx-info-circle",
     "content": "Sản phẩm của bạn đã hoàn thành, chúng tối sẽ xem sét và duyệt sớm nhất."
   },
   {
-    "status": "create_account4",
-    "icon": "bx bx-cart",
-    "content": "Curabitur id eros quis nunc suscipit blandit"
+    "status": "check_agricultural",
+    "icon": "bx bx-qr",
+    "content": "Sản phẩm đã hoàn thành và đang chờ bạn duyệt."
   }
 ]

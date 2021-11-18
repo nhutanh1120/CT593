@@ -43,8 +43,6 @@ const Update = ({ data, hideUpdate }) => {
               supplierBreed: data.supplierBreed,
               timeBreed: data.timeBreed,
             };
-            console.log(producer);
-            console.log(breed);
             updateAgriculturalRequest(token, dispatch, producer, breed, id);
             hideUpdate(false);
           })(data);

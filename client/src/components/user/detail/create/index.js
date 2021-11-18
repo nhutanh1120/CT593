@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { apiUrl } from "./../../../../constants";
 import { updateAgricultural } from "./../../../../redux/actions/agriculturalActions";
-import { dispatchPushMessage } from "./../../../../redux/actions/authAction";
 import { showSuccessToast } from "./../../../utils/notification/message";
 import ActionListItem from "./list";
 import ActionListCreate from "./list/create";
@@ -59,14 +58,14 @@ const CreateAction = ({ setHiddenCreate, type }) => {
         "Vui lòng chọn loại hoạt động";
       ok = false;
     }
-    if (state.listAction.length < 1) {
+    if (state.listAction.length === 0) {
       document.getElementById("listAction").innerText =
         "Vui lòng nhập sản phẩm sử dụng";
       ok = false;
     }
     if (ok === true) {
       const res = await axios.patch(
-        apiUrl + "/agricultural/update/" + id,
+        apiUrl + "/agricultural/producer/update/" + id,
         state,
         {
           headers: {
@@ -76,9 +75,7 @@ const CreateAction = ({ setHiddenCreate, type }) => {
       );
       if (res?.data?.success) {
         showSuccessToast("Thao tác thành công, vui lòng kiểm tra thông tin");
-
-        dispatch(updateAgricultural(res.data));
-        dispatch(dispatchPushMessage(res.data.notification));
+        dispatch(updateAgricultural({ data: res.data.agricultural }));
         setHiddenCreate(false);
       }
     }
