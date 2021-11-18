@@ -8,6 +8,7 @@ const producerControllers = require("./../controllers/agricultural/producerContr
 const distributorControllers = require("./../controllers/agricultural/distributorController");
 const processingControllers = require("./../controllers/agricultural/processingController");
 const retailerControllers = require("./../controllers/agricultural/retailerController");
+const administratorControllers = require("./../controllers/agricultural/administratorController");
 
 // localhost/api/agricultural/all/read
 router.get("/all/read", agriculturalControllers.readAll);
@@ -88,6 +89,17 @@ router.post(
   verifyToken,
   userAccess,
   retailerControllers.create
+);
+
+/**
+ * Admin Router
+ * localhost/api/agricultural/admin/:id
+ */
+router.patch(
+  "/admin/:id",
+  verifyToken,
+  authAdmin,
+  administratorControllers.check
 );
 
 module.exports = router;

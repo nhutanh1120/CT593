@@ -92,7 +92,7 @@
   flex-direction: column;
   padding: 5px;
   cursor: pointer;
-  margin-right: 5px;
+  margin: 0 0 5px 5px;
   z-index: 2;
   background-color: var(--second-background);
   border: 1px solid var(--third-color);
@@ -142,4 +142,10 @@
 .tbody__action .lock i,
 .tbody__action .view i {
   color: var(--second-color);
+}
+
+@media (max-width: 920px) {
+  .table__body--action {
+    display: inline-block;
+  }
 }

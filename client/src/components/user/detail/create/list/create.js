@@ -30,6 +30,7 @@ const ActionListCreate = ({ index, setData }) => {
       if (ok === true) {
         setData(state);
         setState(initialState);
+        document.getElementById("nameFocus").focus();
       }
     }
   };
@@ -39,6 +40,7 @@ const ActionListCreate = ({ index, setData }) => {
     if (ok === true) {
       setData(state);
       setState(initialState);
+      document.getElementById("nameFocus").focus();
     }
   };
 
@@ -53,6 +55,7 @@ const ActionListCreate = ({ index, setData }) => {
         <input
           type="text"
           name="nameAction"
+          id="nameFocus"
           value={state.nameAction}
           onChange={handleChange}
           onInput={handleInput}

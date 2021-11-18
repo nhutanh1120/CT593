@@ -4,10 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { apiUrl } from "../../../../constants";
-import {
-  showErrorToast,
-  showSuccessToast,
-} from "../../../utils/notification/message";
+import { showSuccessToast } from "../../../utils/notification/message";
 
 const isStatus = (key) => {
   switch (key) {
@@ -25,26 +22,21 @@ const TbodyData = ({ item, index }) => {
   useEffect(() => {
     setState(item);
   }, [item]);
-  const handleAccess = async () => {
-    let access = state.access;
+  const handleCheck = async () => {
     const res = await axios.patch(
-      apiUrl + "/profile/access/update/" + state._id,
-      { access: !access },
+      apiUrl + "/agricultural/admin/" + state.id,
+      null,
       {
         headers: { Authorization: "Bearer " + token },
       }
     );
-    if (res.data.success) {
+    if (res?.data?.success) {
       showSuccessToast("Thao tác thành công, vui lòng kiểm tra thông tin.");
-      setState({
-        ...state,
-        access: !state.access,
-      });
-    } else showErrorToast("Thao tác thất bại, vui lòng kiểm tra thông tin");
+    }
   };
-  // console.log("state", state);
+
   return (
-    <tr className="table__body" key={index}>
+    <tr className="table__body">
       <td>{index}</td>
       <td>{state.fullname || "Chưa cập nhật"}</td>
       <td>{state.breed || "Chưa cập nhật"}</td>
@@ -63,13 +55,15 @@ const TbodyData = ({ item, index }) => {
           </span>
         </Link>
         {state.status <= 1 && (
-          <button className="tbody__action" onClick={handleAccess}>
+          <button className="tbody__action" onClick={handleCheck}>
             <div className="action__tooltip">
               {(state.status === 1 && "Duyệt") || "Chưa yêu cầu"}
             </div>
             <span className="lock">
               <i
-                className={(state.status === 1 && "bx bx-x") || "bx bx-check"}
+                className={
+                  (state.status === 1 && "bx bx-check ") || "bx bx-no-entry"
+                }
               ></i>
             </span>
           </button>

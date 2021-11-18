@@ -85,6 +85,7 @@ const producerControllers = {
             expiry: expiry,
             description: description,
           },
+          status: 1,
         },
         { new: true }
       );

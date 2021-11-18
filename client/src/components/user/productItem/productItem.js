@@ -137,8 +137,26 @@ const ProductItem = ({ agricultural, onDelete }) => {
                       </span>
                     </Link>
                   )}
+                  {agricultural.status === 1 && (
+                    <Link to={"/user/dashboard"} className="product--a">
+                      <i className="bx bx-info-circle bx-sm"></i>
+                      <span>
+                        <p>
+                          Sản phẩm của bạn đã được gửi cho kiểm duyệt viên&nbsp;
+                          <b>{agricultural.breed.nameBreed}</b>
+                        </p>
+                        <small>
+                          {moment(agricultural.updatedAt).fromNow()}
+                        </small>
+                      </span>
+                    </Link>
+                  )}
                   {agricultural.status !== 0 && (
-                    <Link to={"/qr/" + agricultural._id} className="product--a">
+                    <Link
+                      to={"/qr/" + agricultural._id}
+                      target="_blank"
+                      className="product--a"
+                    >
                       <i className="bx bx-qr bx-sm"></i>
                       <span>
                         <p>

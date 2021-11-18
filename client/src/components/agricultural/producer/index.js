@@ -106,16 +106,22 @@ const Producer = ({ agricultural, actionData }) => {
               <table>
                 <thead>
                   <tr>
-                    <th>Ngày thu hoạch</th>
                     <th>Hình ảnh sản phảm</th>
+                    <th>Ngày thu hoạch</th>
                     <th>Hạn sử dụng</th>
                     <th>Mô tả</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>{agricultural?.harvest?.times}</td>
-                    <td>{agricultural?.harvest?.images}</td>
+                    <td>
+                      <img src={agricultural?.harvest?.images} alt="images" />
+                    </td>
+                    <td>
+                      {moment(agricultural?.harvest?.times).format(
+                        "DD-MM-YYYY"
+                      )}
+                    </td>
                     <td>{agricultural?.harvest?.expiry}</td>
                     <td>{agricultural?.harvest?.description}</td>
                   </tr>
