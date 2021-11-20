@@ -7,7 +7,7 @@ import {
   FlatList,
   Animated,
 } from "react-native";
-import SlideShowItem from "../components/SlideShow";
+import SlideShowItem from "./../components/SlideShow";
 import slideshowData from "./../assets/Json/personal";
 
 const SettingScreen = ({ navigation }) => {

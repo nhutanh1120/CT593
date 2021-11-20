@@ -1,13 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import HomeScreen from "../screens/HomeScreen";
-import FindScreen from "../screens/FindScreen";
-import ScannerScreen from "../screens/ScannerScreen";
-import ChatScreen from "../screens/ChatScreen";
-import SettingScreen from "../screens/SettingScreen";
-// import QRCodeScreen from "../screens/QRCodeScreen";
-// import SignScreen from "../screens/SignScreen";
+import HomeScreen from "./../screens/HomeScreen";
+import PostScreen from "./../screens/PostScreen";
+import ScannerScreen from "./../screens/ScannerScreen";
+import ChatScreen from "./../screens/ChatScreen";
+import SettingScreen from "./../screens/SettingScreen";
+// import QRCodeScreen from "./../screens/QRCodeScreen";
+// import SignScreen from "./../screens/SignScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -82,8 +82,8 @@ export function Tabs({ focus }) {
         }}
       />
       <Tab.Screen
-        name="post"
-        component={FindScreen}
+        name="Tin tức"
+        component={PostScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <View
@@ -210,7 +210,7 @@ export function Tabs({ focus }) {
 
 const styles = StyleSheet.create({
   shadow: {
-    shadowColor: "#7F5DF0",
+    shadowColor: "lightblue", // #7F5DF0
     shadowOffset: {
       width: 0,
       height: 10,
