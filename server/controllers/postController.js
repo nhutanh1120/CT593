@@ -23,6 +23,7 @@ const postController = {
       const posts = await Post.find().populate("author", [
         "forename",
         "surname",
+        "images",
       ]);
       res.json({ success: true, message: "get all post success.", posts });
     } catch (error) {

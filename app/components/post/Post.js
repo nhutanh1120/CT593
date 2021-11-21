@@ -1,25 +1,21 @@
 import React from "react";
-import {
-  View,
-  Button,
-  Text,
-  StyleSheet,
-  Image,
-  Dimensions,
-} from "react-native";
+import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
+import Profile from "./../../assets/img/profile.jpg";
 
-const PostItem = () => {
+const PostItem = (props) => {
   const dimensions = Dimensions.get("window");
   const imageWidth = dimensions.width;
   return (
     <View style={[styles.container, { width: imageWidth - 20 }]}>
       <View style={styles.header}>
         <Image
-          source={require("./../../assets/img/personal.png")}
+          source={{ uri: props.data.author?.images || Profile }}
           style={{ width: 30, height: 30, borderRadius: 15 }}
         />
         <View style={{ paddingLeft: 5 }}>
-          <Text style={{ fontWeight: "bold" }}>Luu tran anh nhut</Text>
+          <Text
+            style={{ fontWeight: "bold" }}
+          >{`${props.data.author?.surname} ${props.data.author?.forename}`}</Text>
           <Text style={{ fontSize: 10 }}>Luu tran anh nhut</Text>
         </View>
       </View>
@@ -29,12 +25,10 @@ const PostItem = () => {
         </Text>
         <Text style={{ color: "blue", marginTop: 5 }}>#abcd</Text>
       </View>
-      <Text style={{ marginTop: 10 }}>
-        fghjklasdasdv dasdhbjnaksld asdjnkasld
-      </Text>
+      <Text style={{ marginTop: 10 }}>{props.data.description}</Text>
       <Image
-        style={{ width: imageWidth - 30, height: 200 }}
-        source={require("./../../assets/img/personal.png")}
+        style={{ width: imageWidth - 40, height: 200 }}
+        source={{ uri: props.data.attachment || Profile }}
       />
     </View>
   );
