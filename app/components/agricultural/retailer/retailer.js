@@ -5,12 +5,25 @@ import Title from "./../share/title";
 import Profile from "./../share/profile";
 
 const Retailer = ({ data }) => {
-  console.log("retailer", data);
+  const DataBody = () => (
+    <>
+      <Title number="1" title="Thông tin nhà bán lẻ" />
+      <Profile data={data.profile} />
+      <Title number="2" title="Thông tin cửa hàng" />
+      <View style={{ paddingLeft: 25 }}>
+        <Text style={{ marginBottom: 3 }}>Tên cửa hàng: {data.nameStore}</Text>
+        <Text style={{ marginBottom: 3 }}>
+          Địa chỉ cửa hàng: {data.addressRetail}
+        </Text>
+        <Text>Giá sản phẩm: {data.price}</Text>
+      </View>
+    </>
+  );
+
   return (
     <View>
       <Head content="Nhà bán lẻ" />
-      {data?.profile && <Title number="1" title="Thông tin nhà bán lẻ" />}
-      {data?.profile && <Profile data={data.profile} />}
+      {data?.profile && <DataBody />}
     </View>
   );
 };

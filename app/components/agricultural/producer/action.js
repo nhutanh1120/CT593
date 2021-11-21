@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import { View, Text, StyleSheet } from "react-native";
 
 const typeAction = (typeBreed, typeAction) => {
@@ -18,7 +19,8 @@ const Action = ({ type, data }) => {
         Loại hoạt động: {typeAction(type, data.typeAction)}
       </Text>
       <Text style={{ lineHeight: 20 }}>
-        Thời gian diễn ra hoạt động: {data.timeAction}
+        Thời gian diễn ra hoạt động:{" "}
+        {moment(data.timeAction).format("DD.MM.YYYY")}
       </Text>
       <View style={{ marginVertical: 5 }}>
         <View style={styles.tr}>

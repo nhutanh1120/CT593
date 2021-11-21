@@ -1,6 +1,7 @@
 import React from "react";
 import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
-import Profile from "./../../assets/img/profile.jpg";
+import profile from "./../../assets/img/profile.jpg";
+import moment from "moment";
 
 const PostItem = (props) => {
   const dimensions = Dimensions.get("window");
@@ -9,26 +10,29 @@ const PostItem = (props) => {
     <View style={[styles.container, { width: imageWidth - 20 }]}>
       <View style={styles.header}>
         <Image
-          source={{ uri: props.data.author?.images || Profile }}
+          source={{ uri: props.data.author?.images || profile }}
           style={{ width: 30, height: 30, borderRadius: 15 }}
         />
         <View style={{ paddingLeft: 5 }}>
           <Text
             style={{ fontWeight: "bold" }}
           >{`${props.data.author?.surname} ${props.data.author?.forename}`}</Text>
-          <Text style={{ fontSize: 10 }}>Luu tran anh nhut</Text>
+          <Text style={{ fontSize: 10 }}>
+            {moment(props.data.createdAt).fromNow()}
+          </Text>
         </View>
       </View>
       <View style={{ flex: 1, flexDirection: "row" }}>
-        <Text style={{ color: "blue", marginTop: 5, marginRight: 5 }}>
-          #abcd
-        </Text>
-        <Text style={{ color: "blue", marginTop: 5 }}>#abcd</Text>
+        {props.data.tags.map((item, index) => (
+          <Text style={styles.tag} key={index}>
+            {item}
+          </Text>
+        ))}
       </View>
       <Text style={{ marginTop: 10 }}>{props.data.description}</Text>
       <Image
         style={{ width: imageWidth - 40, height: 200 }}
-        source={{ uri: props.data.attachment || Profile }}
+        source={{ uri: props.data.attachment || profile }}
       />
     </View>
   );
@@ -51,5 +55,10 @@ const styles = StyleSheet.create({
   image: {
     width: 300,
     height: 200,
+  },
+  tag: {
+    color: "blue",
+    marginTop: 5,
+    marginRight: 5,
   },
 });

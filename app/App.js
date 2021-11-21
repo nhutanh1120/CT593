@@ -5,20 +5,21 @@ import { Tabs } from "./navigation/tabs";
 // import SignScreen from "./screens/SignScreen";
 // import QRCodeScreen from "./screens/QRCodeScreen";
 import AgriculturalScreen from "./screens/AgriculturalScreen";
+import "moment/locale/vi";
 
 export default function App() {
-  // return (
-  //   <NavigationContainer>
-  //     <Tabs />
-  //   </NavigationContainer>
-  // );
   return (
-    <View style={styles.container}>
-      {/* <QRCodeScreen />
-      <SignScreen /> */}
-      <AgriculturalScreen />
-    </View>
+    <NavigationContainer>
+      <Tabs />
+    </NavigationContainer>
   );
+  // return (
+  //   <View style={styles.container}>
+  //     {/* <QRCodeScreen />
+  //     <SignScreen /> */}
+  //     <AgriculturalScreen />
+  //   </View>
+  // );
 }
 
 const styles = StyleSheet.create({

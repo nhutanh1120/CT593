@@ -4,6 +4,7 @@ import Head from "./../share/head";
 import Profile from "./../share/profile";
 import Title from "./../share/title";
 import Action from "./action";
+import moment from "moment";
 
 const Producer = ({ data }) => {
   return (
@@ -27,7 +28,8 @@ const Producer = ({ data }) => {
           Địa chỉ sản xuất nông sản: {data.breed.addressBreed}
         </Text>
         <Text style={{ paddingVertical: 2 }}>
-          Thời gian sản xuất: {data.breed.timeBreed}
+          Thời gian sản xuất:&nbsp;
+          {moment(data.breed.timeBreed).format("DD.MM.YYYY")}
         </Text>
       </View>
       <Title number="3" title="Thông tin về hoạt động" />
@@ -39,7 +41,9 @@ const Producer = ({ data }) => {
         <View style={{ paddingLeft: 25 }}>
           <Image source={require("./../../../assets/img/profile.jpg")} />
           <Text style={{ paddingVertical: 2 }}>
-            Thời gian thu hoach: {data.harvest.times}
+            Thời gian thu hoach:&nbsp;
+            {moment(data.harvest.times).format("DD.MM.YYYY")}(
+            {moment(data.harvest.times).fromNow()})
           </Text>
           <Text style={{ paddingVertical: 2 }}>
             Hạn sử dụng: {data.harvest.expiry} ngày
