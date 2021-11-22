@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { Dimensions, ScrollView, StyleSheet, Text, View } from "react-native";
 import CopyRight from "./../components/copyright/copyright";
 import PostItem from "./../components/post/Post";
 
@@ -21,6 +21,11 @@ const PostScreen = ({ navigation }) => {
         {state.map((item, index) => (
           <PostItem key={index} data={item} />
         ))}
+        {state.length === 0 && (
+          <View style={styles.empty}>
+            <Text>Không có dử liệu</Text>
+          </View>
+        )}
         <CopyRight margin={0} />
       </ScrollView>
     </View>
@@ -29,14 +34,25 @@ const PostScreen = ({ navigation }) => {
 
 export default PostScreen;
 
+const { width } = Dimensions.get("screen");
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "lightblue",
     alignItems: "center",
     justifyContent: "center",
-    paddingLeft: 10,
-    paddingRight: 10,
+    paddingHorizontal: 10,
     paddingBottom: 100,
+  },
+  empty: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    width: width - 20,
+    paddingVertical: 40,
+    marginTop: 20,
+    backgroundColor: "#fff",
+    borderRadius: 10,
   },
 });

@@ -1,19 +1,20 @@
-import React from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import React, { useEffect } from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import ChatScreen from "./../screens/ChatScreen";
 import HomeScreen from "./../screens/HomeScreen";
 import PostScreen from "./../screens/PostScreen";
 import ScannerScreen from "./../screens/ScannerScreen";
-import ChatScreen from "./../screens/ChatScreen";
-import SettingScreen from "./../screens/SettingScreen";
+import AuthNavigator from "./stack";
 // import QRCodeScreen from "./../screens/QRCodeScreen";
 // import SignScreen from "./../screens/SignScreen";
 
 const Tab = createBottomTabNavigator();
 
 const CustomTabBarBottom = ({ children: children, onPress }) => {
+  console.log(onPress);
   return (
-    <TouchableOpacity style={styles.button} onPress={() => alert("QR")}>
+    <TouchableOpacity style={styles.button} onPress={onPress}>
       <View
         style={{
           width: 70,
@@ -34,6 +35,7 @@ export function Tabs({ focus }) {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
+          display: "block",
           position: "absolute",
           bottom: 15,
           left: 10,
@@ -47,9 +49,10 @@ export function Tabs({ focus }) {
       }}
     >
       <Tab.Screen
-        name="Trang Chủ"
+        name="Home"
         component={HomeScreen}
         options={{
+          title: "Trang Chủ",
           tabBarIcon: ({ focused }) => (
             <View
               style={{
@@ -82,9 +85,10 @@ export function Tabs({ focus }) {
         }}
       />
       <Tab.Screen
-        name="Tin tức"
+        name="Post"
         component={PostScreen}
         options={{
+          title: "Tin tức",
           tabBarIcon: ({ focused }) => (
             <View
               style={{
@@ -135,9 +139,10 @@ export function Tabs({ focus }) {
         }}
       />
       <Tab.Screen
-        name="chat"
+        name="Chat"
         component={ChatScreen}
         options={{
+          title: "Tin nhắn",
           tabBarIcon: ({ focused }) => (
             <View
               style={{
@@ -159,20 +164,21 @@ export function Tabs({ focus }) {
                 style={{
                   color: focused ? "#e32f45" : "#749c94",
                   fontSize: 12,
-                  width: 30,
+                  width: 50,
                   textAlign: "center",
                 }}
               >
-                Chat
+                Tin nhắn
               </Text>
             </View>
           ),
         }}
       />
       <Tab.Screen
-        name="Cá Nhân"
-        component={SettingScreen}
+        name="Personal"
+        component={AuthNavigator}
         options={{
+          title: "Cá Nhân",
           tabBarIcon: ({ focused }) => (
             <View
               style={{

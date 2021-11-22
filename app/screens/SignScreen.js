@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -6,86 +6,147 @@ import {
   StyleSheet,
   Dimensions,
   Image,
-  TouchableOpacity,
+  TextInput,
 } from "react-native";
-import * as Animatable from "react-native-animatable";
-// import LinearGradient from "react-native-linear-gradient";
 
+const initialState = {
+  username: "",
+  password: "",
+};
+const errorState = {
+  usernameError: "",
+  passwordError: "",
+};
 export default function SignScreen() {
+  const [state, setState] = useState(initialState);
+  const [error, setError] = useState(errorState);
+  const handlePress = () => {
+    let ok = true;
+    if (state.username === "") {
+      ok = false;
+      setError({
+        passwordError: error.passwordError,
+        usernameError: "Vui lòng nhập tài khoản",
+      });
+      console.log("a");
+    }
+    if (state.password === "") {
+      ok = false;
+      setError({
+        usernameError: error.usernameError,
+        passwordError: "Vui lòng nhập mật khẩu",
+      });
+      console.log("b");
+    }
+    if (ok === true) {
+      setError(errorState);
+      alert("a");
+    }
+  };
+  console.log(error);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Animatable.Image
-          animation="bounceIn"
-          source={require("./../assets/favicon.png")}
-          style={styles.logo}
-          resizeMode="stretch"
+        <Image
+          style={styles.image}
+          source={require("./../assets/icons/heart.png")}
         />
-        <Text>Header</Text>
+        <Text style={styles.title}>Luu Moments</Text>
       </View>
       <View style={styles.footer}>
-        <Text>Footer</Text>
-        <Text>Footer</Text>
-        <View>
-          <TouchableOpacity onPress={() => alert("abcd")}>
-            {/* <LinearGradient
-              colors={["#08d4c4", "#01ab9d"]}
-              style={styles.signIn}
-            > */}
-            <Text>Get started</Text>
-            {/* </LinearGradient> */}
-          </TouchableOpacity>
+        <View style={styles.formGroup}>
+          <TextInput
+            style={styles.formControl}
+            value={state.username}
+            placeholder="Tài khoản"
+            onChangeText={(username) => {
+              setState({ ...state, username });
+              setError({ ...error, usernameError: "" });
+            }}
+          />
+          <Text style={styles.message}>{error.usernameError}</Text>
         </View>
-
-        <Button></Button>
+        <View style={styles.formGroup}>
+          <TextInput
+            style={styles.formControl}
+            value={state.password}
+            placeholder="Mật khẩu"
+            onChangeText={(password) => {
+              setState({ ...state, password });
+              setError({ ...error, passwordError: "" });
+            }}
+            secureTextEntry="true"
+          />
+          <Text style={styles.message}>{error.passwordError}</Text>
+        </View>
+        <View>
+          <Button
+            style={styles.submit}
+            title="Đăng nhập"
+            onPress={handlePress}
+          />
+        </View>
       </View>
     </View>
   );
 }
 
-const { height } = Dimensions.get("screen");
-const height_logo = height * 0.28;
+const { width, height } = Dimensions.get("screen");
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: "column",
     backgroundColor: "#009387",
   },
   header: {
-    flex: 2,
+    flex: 3,
+    flexDirection: "column",
+    width: width,
     justifyContent: "center",
     alignItems: "center",
   },
+  image: {
+    width: 50,
+    height: 50,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "600",
+    textTransform: "capitalize",
+  },
   footer: {
-    flex: 1,
+    flex: 7,
+    flexDirection: "column",
+    width: width,
     backgroundColor: "#fff",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
+    // borderRadius: 30,
+    // marginHorizontal: 10,
+    // marginBottom: 10,
     paddingVertical: 50,
     paddingHorizontal: 30,
   },
-  logo: {
-    width: height_logo,
-    height: height_logo,
+  formGroup: {
+    marginBottom: 10,
   },
-  text: {
-    color: "gray",
-    marginTop: 5,
-  },
-  button: {
-    alignItems: "flex-end",
-    marginTop: 30,
-  },
-  signIn: {
-    width: 150,
+  formControl: {
     height: 40,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 50,
-    flexDirection: "row",
+    paddingLeft: 10,
+    borderWidth: 1,
+    borderColor: "#333",
+    borderRadius: 10,
   },
-  textSign: {
-    color: "#fff",
-    fontSize: "bold",
+  message: {
+    marginTop: 5,
+    fontSize: 12,
+    color: "red",
+    paddingLeft: 20,
+  },
+  submit: {
+    width: 100,
+    height: 50,
+    borderRadius: 10,
   },
 });
