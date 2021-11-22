@@ -8,7 +8,9 @@ import Retailer from "./../components/agricultural/retailer/retailer";
 import CopyRight from "./../components/copyright/copyright";
 import Head from "./../components/agricultural/share/head";
 
-const AgriculturalScreen = ({ id = "618d5a9b32dc6763ada3ceae" }) => {
+const AgriculturalScreen = ({ route }) => {
+  const { id } = route.params;
+  console.log("id   " + id);
   const dimensions = Dimensions.get("window");
   const widthScreen = dimensions.width;
   const [state, setState] = useState([]);

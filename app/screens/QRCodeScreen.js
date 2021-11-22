@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 
-export default function QRCodeScreen() {
+export default function QRCodeScreen({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
-  const [text, setText] = useState("Not yet scanned");
+  const [text, setText] = useState("Chưa được quét");
 
   const askForCameraPermission = () => {
     (async () => {
@@ -22,7 +22,10 @@ export default function QRCodeScreen() {
   // What happens when we scan the bar code
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    setText(data);
+    if (data) {
+      let stringNew = data.slice(data.lastIndexOf("/") + 1, data.length);
+      setText(stringNew);
+    }
     console.log("Type: " + type + "\nData: " + data);
   };
 
@@ -30,16 +33,16 @@ export default function QRCodeScreen() {
   if (hasPermission === null) {
     return (
       <View style={styles.container}>
-        <Text>Requesting for camera permission</Text>
+        <Text>Yêu cầu quyền truy cập với máy ảnh</Text>
       </View>
     );
   }
   if (hasPermission === false) {
     return (
       <View style={styles.container}>
-        <Text style={{ margin: 10 }}>No access to camera</Text>
+        <Text style={{ margin: 10 }}>Không có quyền truy cập vào máy ảnh</Text>
         <Button
-          title={"Allow Camera"}
+          title={"Cho phép truy cập máy ảnh"}
           onPress={() => askForCameraPermission()}
         />
       </View>
@@ -49,18 +52,25 @@ export default function QRCodeScreen() {
   // Return the View
   return (
     <View style={styles.container}>
-      <View style={styles.barcodebox}>
+      <View style={styles.barcodeBox}>
         <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
           style={{ height: 400, width: 400 }}
         />
       </View>
-      <Text style={styles.maintext}>{text}</Text>
+      <Text style={styles.mainText}>{text}</Text>
 
       {scanned && (
         <Button
-          title={"Scan again?"}
+          title={"Quét lại?"}
           onPress={() => setScanned(false)}
+          color="tomato"
+        />
+      )}
+      {scanned && (
+        <Button
+          title={"Quét lại?"}
+          onPress={() => navigation.navigate("Agricultural", { id: text })}
           color="tomato"
         />
       )}
@@ -75,11 +85,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  maintext: {
+  mainText: {
     fontSize: 16,
     margin: 20,
   },
-  barcodebox: {
+  barcodeBox: {
     alignItems: "center",
     justifyContent: "center",
     height: 300,

@@ -1,15 +1,15 @@
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { useEffect } from "react";
-import SettingScreen from "./../screens/SettingScreen";
-import LoginScreen from "./../screens/LoginScreen";
-import RegisterScreen from "./../screens/RegisterScreen";
+import ScannerScreen from "../screens/ScannerScreen";
+import QRCodeScreen from "../screens/QRCodeScreen";
+import AgriculturalScreen from "../screens/AgriculturalScreen";
 
 const Stack = createNativeStackNavigator();
 
-const AuthNavigator = (props) => {
+const ScannerNavigator = (props) => {
   useEffect(() => {
-    const tabHiddenRoutes = ["Login", "Register"];
+    const tabHiddenRoutes = ["QRCode", "Agricultural"];
     let nameScreen = getFocusedRouteNameFromRoute(props.route);
     if (tabHiddenRoutes.includes(nameScreen)) {
       props.navigation.setOptions({
@@ -34,24 +34,24 @@ const AuthNavigator = (props) => {
     }
   }, [props]);
   return (
-    <Stack.Navigator initialRouteName="Setting">
+    <Stack.Navigator initialRouteName="Scanner">
       <Stack.Screen
-        name="Setting"
-        component={SettingScreen}
-        options={{ headerShown: false, title: "Cá nhân" }}
+        name="Scanner"
+        component={ScannerScreen}
+        options={{ headerShown: false, title: "Quét mã QR" }}
       />
       <Stack.Screen
-        name="Login"
-        component={LoginScreen}
-        options={{ title: "Đăng nhập" }}
+        name="QRCode"
+        component={QRCodeScreen}
+        options={{ title: "Quét mã QR" }}
       />
       <Stack.Screen
-        name="Register"
-        component={RegisterScreen}
-        options={{ title: "Đăng ký" }}
+        name="Agricultural"
+        component={AgriculturalScreen}
+        options={{ title: "Truy suất sản phẩm" }}
       />
     </Stack.Navigator>
   );
 };
 
-export default AuthNavigator;
+export default ScannerNavigator;

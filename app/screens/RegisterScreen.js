@@ -12,38 +12,60 @@ import {
 const initialState = {
   username: "",
   password: "",
+  cfPassword: "",
+  email: "",
 };
 const errorState = {
   usernameError: "",
   passwordError: "",
+  emailError: "",
+  cfPasswordError: "",
 };
-export default function SignScreen() {
+export default function RegisterScreen() {
   const [state, setState] = useState(initialState);
-  const [error, setError] = useState(errorState);
+  const [errors, setErrors] = useState(errorState);
   const handlePress = () => {
     let ok = true;
     if (state.username === "") {
       ok = false;
-      setError({
-        passwordError: error.passwordError,
+      setErrors({
         usernameError: "Vui lòng nhập tài khoản",
+        passwordError: errors.passwordError,
+        cfPasswordError: errors.cfPasswordError,
+        emailError: errors.emailError,
       });
-      console.log("a");
     }
     if (state.password === "") {
       ok = false;
-      setError({
-        usernameError: error.usernameError,
+      setErrors({
+        usernameError: errors.usernameError,
         passwordError: "Vui lòng nhập mật khẩu",
+        cfPasswordError: errors.cfPasswordError,
+        emailError: errors.emailError,
       });
-      console.log("b");
+    }
+    if (state.cfPassword === "" && state.password !== state.cfPassword) {
+      ok = false;
+      setErrors({
+        usernameError: errors.usernameError,
+        passwordError: errors.passwordError,
+        cfPasswordError: "Mật khẩu không khớp",
+        emailError: errors.emailError,
+      });
+    }
+    if (state.email === "") {
+      ok = false;
+      setErrors({
+        usernameError: errors.usernameError,
+        passwordError: errors.passwordError,
+        cfPasswordError: errors.cfPasswordError,
+        emailError: "Vui lòng nhập Email",
+      });
     }
     if (ok === true) {
-      setError(errorState);
-      alert("a");
+      alert(state);
     }
   };
-  console.log(error);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -61,10 +83,22 @@ export default function SignScreen() {
             placeholder="Tài khoản"
             onChangeText={(username) => {
               setState({ ...state, username });
-              setError({ ...error, usernameError: "" });
+              setErrors({ ...errors, usernameError: "" });
             }}
           />
-          <Text style={styles.message}>{error.usernameError}</Text>
+          <Text style={styles.message}>{errors.usernameError}</Text>
+        </View>
+        <View style={styles.formGroup}>
+          <TextInput
+            style={styles.formControl}
+            value={state.email}
+            placeholder="Email"
+            onChangeText={(email) => {
+              setState({ ...state, email });
+              setErrors({ ...errors, emailError: "" });
+            }}
+          />
+          <Text style={styles.message}>{errors.emailError}</Text>
         </View>
         <View style={styles.formGroup}>
           <TextInput
@@ -73,25 +107,34 @@ export default function SignScreen() {
             placeholder="Mật khẩu"
             onChangeText={(password) => {
               setState({ ...state, password });
-              setError({ ...error, passwordError: "" });
+              setErrors({ ...errors, passwordError: "" });
             }}
             secureTextEntry="true"
           />
-          <Text style={styles.message}>{error.passwordError}</Text>
+          <Text style={styles.message}>{errors.passwordError}</Text>
+        </View>
+        <View style={styles.formGroup}>
+          <TextInput
+            style={styles.formControl}
+            value={state.cfPassword}
+            placeholder="Mật khẩu"
+            onChangeText={(cfPassword) => {
+              setState({ ...state, cfPassword });
+              setErrors({ ...errors, cfPasswordError: "" });
+            }}
+            secureTextEntry="true"
+          />
+          <Text style={styles.message}>{errors.cfPasswordError}</Text>
         </View>
         <View>
-          <Button
-            style={styles.submit}
-            title="Đăng nhập"
-            onPress={handlePress}
-          />
+          <Button style={styles.submit} title="Đăng ký" onPress={handlePress} />
         </View>
       </View>
     </View>
   );
 }
 
-const { width, height } = Dimensions.get("screen");
+const { width } = Dimensions.get("screen");
 
 const styles = StyleSheet.create({
   container: {

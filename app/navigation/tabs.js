@@ -1,18 +1,15 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import React, { useEffect } from "react";
+import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import ChatScreen from "./../screens/ChatScreen";
 import HomeScreen from "./../screens/HomeScreen";
 import PostScreen from "./../screens/PostScreen";
-import ScannerScreen from "./../screens/ScannerScreen";
+import ScannerNavigator from "./scanStack";
 import AuthNavigator from "./stack";
-// import QRCodeScreen from "./../screens/QRCodeScreen";
-// import SignScreen from "./../screens/SignScreen";
 
 const Tab = createBottomTabNavigator();
 
 const CustomTabBarBottom = ({ children: children, onPress }) => {
-  console.log(onPress);
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
       <View
@@ -52,7 +49,7 @@ export function Tabs({ focus }) {
         name="Home"
         component={HomeScreen}
         options={{
-          title: "Trang Chủ",
+          title: "Trang chủ",
           tabBarIcon: ({ focused }) => (
             <View
               style={{
@@ -121,9 +118,10 @@ export function Tabs({ focus }) {
         }}
       />
       <Tab.Screen
-        name="scanner"
-        component={ScannerScreen}
+        name="Scan"
+        component={ScannerNavigator}
         options={{
+          title: "Quét mã QR",
           tabBarIcon: ({ focused }) => (
             <Image
               source={require("./../assets/icons/qr-scan.png")}
@@ -178,7 +176,7 @@ export function Tabs({ focus }) {
         name="Personal"
         component={AuthNavigator}
         options={{
-          title: "Cá Nhân",
+          title: "Cá nhân",
           tabBarIcon: ({ focused }) => (
             <View
               style={{
