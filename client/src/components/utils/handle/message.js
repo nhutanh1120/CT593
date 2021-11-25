@@ -8,9 +8,9 @@ const handleMessage = (message, index) => {
       (statusItem) => item.status === statusItem.status
     );
     const messageObject = {
-      icon: messageItem.icon,
+      icon: messageItem?.icon || "",
       title: item.title,
-      content: messageItem.content,
+      content: messageItem?.content || "",
       time: item.time,
     };
     newArray.push(messageObject);

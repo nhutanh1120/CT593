@@ -8,6 +8,7 @@ import {
   Image,
   TextInput,
 } from "react-native";
+import axios from "axios";
 
 const initialState = {
   username: "",
@@ -20,30 +21,36 @@ const errorState = {
 export default function LoginScreen() {
   const [state, setState] = useState(initialState);
   const [error, setError] = useState(errorState);
-  const handlePress = () => {
+  const handlePress = async () => {
     let ok = true;
+    let message = {
+      passwordError: "",
+      usernameError: "",
+    };
     if (state.username === "") {
       ok = false;
-      setError({
-        passwordError: error.passwordError,
+      message = {
+        ...message,
         usernameError: "Vui lòng nhập tài khoản",
-      });
-      console.log("a");
+      };
     }
     if (state.password === "") {
       ok = false;
-      setError({
-        usernameError: error.usernameError,
+      message = {
+        ...message,
         passwordError: "Vui lòng nhập mật khẩu",
-      });
-      console.log("b");
+      };
     }
-    if (ok === true) {
-      setError(errorState);
-      alert("a");
+    if (ok === false) {
+      setError(message);
+    } else {
+      const response = await axios.post(
+        "http://localhost:4000/api/auth/login",
+        state
+      );
+      console.log(response);
     }
   };
-  console.log(error);
   return (
     <View style={styles.container}>
       <View style={styles.header}>

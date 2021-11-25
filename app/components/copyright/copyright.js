@@ -7,7 +7,7 @@ const CopyRight = ({ margin }) => {
       <Text>
         Bản quyền thiết kế{" "}
         <Text style={{ fontWeight: "bold", textTransform: "capitalize" }}>
-          luu trần anh nhựt
+          lưu trần anh nhựt
         </Text>
       </Text>
     </View>
