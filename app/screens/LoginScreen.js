@@ -1,14 +1,15 @@
+import axios from "axios";
 import React, { useState } from "react";
 import {
-  View,
-  Text,
   Button,
-  StyleSheet,
   Dimensions,
   Image,
+  StyleSheet,
+  Text,
   TextInput,
+  View,
 } from "react-native";
-import axios from "axios";
+import { storeData, storeProfile } from "./../components/handle/store";
 
 const initialState = {
   username: "",
@@ -18,7 +19,7 @@ const errorState = {
   usernameError: "",
   passwordError: "",
 };
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
   const [state, setState] = useState(initialState);
   const [error, setError] = useState(errorState);
   const handlePress = async () => {
@@ -45,10 +46,14 @@ export default function LoginScreen() {
       setError(message);
     } else {
       const response = await axios.post(
-        "http://localhost:4000/api/auth/login",
+        "http://localhost:4000/api/auth/mobile/login",
         state
       );
-      console.log(response);
+      if (response) {
+        storeProfile(response.data.user);
+        storeData(response.data.refresh_token);
+        navigation.navigate("Setting");
+      }
     }
   };
   return (

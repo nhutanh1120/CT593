@@ -1,13 +1,21 @@
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SettingScreen from "./../screens/SettingScreen";
 import LoginScreen from "./../screens/LoginScreen";
 import RegisterScreen from "./../screens/RegisterScreen";
+import { getData } from "./../components/handle/store";
+import PersonalScreen from "./../screens/PersonalScreen";
 
 const Stack = createNativeStackNavigator();
 
 const AuthNavigator = (props) => {
+  const [state, setState] = useState(null);
+  getData().then((res) => {
+    if (res) setState(res);
+    else setState(null);
+  });
+
   useEffect(() => {
     const tabHiddenRoutes = ["Login", "Register"];
     let nameScreen = getFocusedRouteNameFromRoute(props.route);
@@ -33,11 +41,12 @@ const AuthNavigator = (props) => {
       });
     }
   }, [props]);
+
   return (
     <Stack.Navigator initialRouteName="Setting">
       <Stack.Screen
         name="Setting"
-        component={SettingScreen}
+        component={(state && PersonalScreen) || SettingScreen}
         options={{ headerShown: false, title: "Cá nhân" }}
       />
       <Stack.Screen

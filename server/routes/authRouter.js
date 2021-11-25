@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const verifyToken = require("./../middleware/auth");
 const userControllers = require("./../controllers/userController");
+const mobileControllers = require("./../controllers/mobileController");
 
 //localhost/api/auth/register
 router.post("/register", userControllers.register);
@@ -31,5 +32,13 @@ router.post("/google/login", userControllers.googleLogin);
 // @social Login
 // @http://localhost:4000/api/auth/facebook/login
 router.post("/facebook/login", userControllers.facebookLogin);
+
+/**
+ * Handle mobile
+ * @Router post /api/auth/mobile/login
+ * @Router post /api/auth/mobile/logout
+ */
+router.post("/mobile/login", mobileControllers.login);
+router.delete("/mobile/logout", mobileControllers.logout);
 
 module.exports = router;
