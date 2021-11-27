@@ -77,10 +77,16 @@ const FormLogin = () => {
 
     if (check === true) {
       try {
-        const res = await axios.post(apiUrl + "/auth/login", {
-          username,
-          password,
-        });
+        const res = await axios.post(
+          apiUrl + "/auth/login",
+          {
+            username,
+            password,
+          },
+          {
+            withCredentials: true,
+          }
+        );
         if (res.data.success && !res.data.refresh_token) {
           setUser({
             ...user,

@@ -5,7 +5,6 @@ import Update from "./../update";
 import moment from "moment";
 
 const ProductItem = ({ agricultural, onDelete }) => {
-  console.log(agricultural);
   const onDeletes = async () => {
     // if (confirm("Bạn có chắc chắn muốn xóa sản phẩm ?")) {
     onDelete(agricultural._id);

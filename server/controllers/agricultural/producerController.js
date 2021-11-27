@@ -52,6 +52,47 @@ const producerControllers = {
         .json({ success: false, message: "Internal server error." });
     }
   },
+  // @Router post /api/agricultural/producer/action/delete/:id
+  // @access private
+  delete: async (req, res) => {
+    try {
+      console.log("delete producer agricultural request");
+
+      if (req.role !== 2)
+        return res.status(400).json({
+          success: false,
+          message: "User resources access denied.",
+        });
+
+      const { id } = req.body;
+
+      const agriculturalUpdate = await AgriculturalModel.findOneAndUpdate(
+        {
+          _id: req.params.id,
+          administrator: req.user.id,
+        },
+        {
+          $pull: {
+            actions: {
+              _id: id,
+            },
+          },
+        },
+        { new: true }
+      );
+
+      res.json({
+        success: true,
+        message: "update producer agricultural success",
+        agricultural: agriculturalUpdate,
+      });
+    } catch (error) {
+      console.log(error);
+      res
+        .status(500)
+        .json({ success: false, message: "Internal server error." });
+    }
+  },
   // @Router post /api/agricultural/producer/finish/:id
   // @access private
   finish: async (req, res) => {

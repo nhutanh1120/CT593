@@ -1,11 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { createAgriculturalRequest } from "../../../redux/actions/agriculturalActions";
 import Validator from "../../utils/validation/Vanilla";
 import "./style.css";
 
 const Create = (props) => {
-  const { fullname, address } = useSelector((state) => state.auth.user);
+  const { surname, forename, address } = useSelector(
+    (state) => state.auth.user
+  );
+  const [fullname, setFullname] = useState("");
+  useEffect(() => {
+    setFullname(`${surname} ${forename}`);
+  }, [surname, forename]);
   useEffect(() => {
     (() => {
       Validator({

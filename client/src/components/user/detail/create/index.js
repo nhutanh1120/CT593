@@ -120,6 +120,7 @@ const CreateAction = ({ setHiddenCreate, type }) => {
             <span className="detail__action--th">#</span>
             <span className="detail__action--th">Tên sản phẩm sử dụng</span>
             <span className="detail__action--th">Nhà cung cấp</span>
+            <span className="detail__action--th">Thời gian cách ly</span>
           </div>
         </div>
         <div className="detail__action--tbody">

@@ -1,5 +1,12 @@
+import axios from "axios";
 import moment from "moment";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router";
+import { apiUrl } from "./../../../../constants";
+import { updateAgricultural } from "./../../../../redux/actions/agriculturalActions";
+import { showSuccessToast } from "./../../../utils/notification/message";
+import "./style.css";
 
 const TbodyItem = ({ data, index }) => {
   return (
@@ -7,6 +14,7 @@ const TbodyItem = ({ data, index }) => {
       <td>{index + 1}</td>
       <td>{data.nameAction}</td>
       <td>{data.supplierAction}</td>
+      <td>{data.isolation}</td>
     </tr>
   );
 };
@@ -26,14 +34,38 @@ const initialState = {
   timeAction: "",
 };
 const Actions = ({ data }) => {
-  console.log(data);
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.token);
   const [state, setState] = useState(initialState);
+  const ref = useRef(null);
   useEffect(() => {
     setState(data);
   }, [data]);
-  console.log(state);
+  const handleClick = () => {
+    ref.current.firstChild.classList.toggle("active");
+  };
+  const onDelete = async (e) => {
+    e.stopPropagation();
+    const res = await axios.patch(
+      apiUrl + "/agricultural/producer/delete/" + id,
+      { id: state._id },
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    if (res?.data?.success) {
+      showSuccessToast("Thao tác thành công, vui lòng kiểm tra thông tin");
+      dispatch(updateAgricultural({ data: res.data.agricultural }));
+    }
+  };
   return (
-    <div className="detail__table">
+    <div className="detail__table delete" onClick={handleClick} ref={ref}>
+      <div className="action__delete" onClick={onDelete}>
+        <i className="bx bx-trash"></i>
+      </div>
       <div className="detail__table__header">
         <p>Hoạt động:&nbsp;{typeAction(1, state.typeAction)}</p>
         <p>
@@ -47,6 +79,7 @@ const Actions = ({ data }) => {
             <th>#</th>
             <th>Tên sản phẩm sử dụng</th>
             <th>Nhà cung cấp</th>
+            <th>Thời gian cách ly</th>
           </tr>
         </thead>
         <tbody>

@@ -21,9 +21,9 @@ function ActivationEmail() {
               activation_token,
             }
           );
-          setSuccess(res.data.message);
+          if (res) setSuccess("Tài khoản đã được kích hoạt!");
         } catch (error) {
-          error.response.data.message && setErr(error.response.data.message);
+          error.response.data.message && setErr("Xác thực không thành công!");
         }
       };
       activationEmail();

@@ -35,7 +35,6 @@ const Detail = () => {
     setState(agricultural);
   }, [data, id]);
 
-  console.log(state);
   const { breed, producer } = state;
 
   /**
@@ -136,9 +135,14 @@ const Detail = () => {
                   style={{ display: (viewCreateAction && "block") || "none" }}
                   onClick={() => setViewCreateAction(false)}
                 ></div>
-                <button onClick={() => setViewCreateAction(true)}>
-                  Them hoat dong
-                </button>
+                <div
+                  className="create__detail__table__button"
+                  onClick={() => setViewCreateAction(true)}
+                >
+                  <i className="bx bx-file bx-sm"></i>
+                  <h5>Thêm hoạt động</h5>
+                  <p>Thêm hoạt động vào hồ sơ nông sản</p>
+                </div>
                 <div className="detail__producer--title">
                   <span>4</span>
                   <p>thông tin thu hoạch</p>

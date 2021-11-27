@@ -43,12 +43,23 @@ router.delete(
   agriculturalControllers.delete
 );
 
+/**
+ * Producer Router
+ */
 // localhost/api/agricultural/producer/update/:id
 router.patch(
   "/producer/update/:id",
   verifyToken,
   userAccess,
   producerControllers.update
+);
+
+// localhost/api/agricultural/producer/delete/:id
+router.patch(
+  "/producer/delete/:id",
+  verifyToken,
+  userAccess,
+  producerControllers.delete
 );
 
 // localhost/api/agricultural/producer/finish/:id

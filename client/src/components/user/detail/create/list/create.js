@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const initialState = {
   nameAction: "",
   supplierAction: "",
+  isolation: 0,
 };
 const ActionListCreate = ({ index, setData }) => {
   const [state, setState] = useState(initialState);
@@ -20,6 +21,11 @@ const ActionListCreate = ({ index, setData }) => {
     if (state.supplierAction === "") {
       document.getElementById("supplierAction").innerText =
         "Vui lòng nhập tên nhà cung cấp";
+      ok = false;
+    }
+    if (state.isolation < 0) {
+      document.getElementById("isolation").innerText =
+        "Thời gian cách ly lớn hơn 0.";
       ok = false;
     }
     return ok;
@@ -75,6 +81,18 @@ const ActionListCreate = ({ index, setData }) => {
           placeholder="Vui lòng nhập tên nhà cung cấp"
         />
         <span id="supplierAction" className="form__message"></span>
+      </span>
+      <span className="detail__action--td">
+        <input
+          type="number"
+          name="isolation"
+          onChange={handleChange}
+          onInput={handleInput}
+          onKeyUp={handleKeyUp}
+          defaultValue="0"
+          placeholder="Vui lòng nhập thời gian cách ly"
+        />
+        <span id="isolation" className="form__message"></span>
       </span>
       <div className="detail__action--delete" onClick={handleSubmit}>
         <i className="bx bx-plus"></i>

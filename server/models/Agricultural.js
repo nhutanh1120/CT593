@@ -30,6 +30,7 @@ const AgriculturalSchema = new Schema(
           {
             nameAction: String,
             supplierAction: String,
+            isolation: Number,
           },
         ],
         timeAction: { type: Date, default: Date.now },

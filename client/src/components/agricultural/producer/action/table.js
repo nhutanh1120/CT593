@@ -28,6 +28,7 @@ const TableAction = ({ action, type }) => {
             <th>#</th>
             <th>Tên sản phẩm sử dụng</th>
             <th>Nhà cung cấp</th>
+            <th>Thời gian cách ly</th>
           </tr>
         </thead>
         <tbody>
@@ -36,6 +37,10 @@ const TableAction = ({ action, type }) => {
               <td>{index + 1}</td>
               <td>{listAction.nameAction}</td>
               <td>{listAction.supplierAction}</td>
+              <td>
+                {(listAction.isolation === 0 && "Không cần cách ly") ||
+                  `${listAction.isolation} ngày`}
+              </td>
             </tr>
           ))}
         </tbody>

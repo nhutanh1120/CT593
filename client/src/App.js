@@ -8,7 +8,7 @@ import "./App.css";
 import "./assets/css/form.css";
 import "./assets/css/grid.css";
 import "./assets/css/theme.css";
-import "./assets/font/css2.css";
+// import "./assets/font/css2.css";
 import ActivationEmail from "./components/auth/ActivationEmail";
 import { apiUrl } from "./constants/";
 import About from "./pages/about";
@@ -50,7 +50,7 @@ function App() {
       /**
        * Get token after 13m
        */
-      // setInterval(() => getToken(), 13 * 60 * 1000); // 13 * 60 * 1000
+      setInterval(() => getToken(), 13 * 60 * 1000); // 13 * 60 * 1000
     }
   }, [auth.isLogged, isLogin, dispatch]);
 
