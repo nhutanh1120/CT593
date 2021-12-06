@@ -22,7 +22,7 @@ const Retailer = ({ data }) => {
 
   return (
     <View>
-      <Head content="Nhà bán lẻ" />
+      <Head content="Đại lý bán lẻ" />
       {data?.profile && <DataBody />}
     </View>
   );

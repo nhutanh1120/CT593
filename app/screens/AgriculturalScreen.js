@@ -10,7 +10,8 @@ import Head from "./../components/agricultural/share/head";
 
 const AgriculturalScreen = ({ route }) => {
   const { id } = route.params;
-  console.log("id   " + id);
+  // let id = "61a090904b810a21ebe74a3f";
+  // console.log("id   " + id);
   const dimensions = Dimensions.get("window");
   const widthScreen = dimensions.width;
   const [state, setState] = useState([]);
@@ -27,30 +28,41 @@ const AgriculturalScreen = ({ route }) => {
   return (
     <View style={[styles.container, { width: widthScreen }]}>
       <ScrollView>
-        <View>
-          <Text
-            style={{
-              textAlign: "center",
-              textTransform: "capitalize",
-              fontWeight: "bold",
-              marginTop: 10,
-            }}
-          >
-            Truy suất nguồn gốc sản phẩm
-          </Text>
-          <Text style={{ textAlign: "center" }}>
-            Thông tin được công bố rõ ràng, công khai và nhất quán với hệ thống
-            phần mềm. Tuyệt đối không có dử liệu ảo, chi phí phát sinh.
-          </Text>
+        <View
+          style={{
+            backgroundColor: "white",
+            marginTop: 10,
+            paddingVertical: 10,
+            borderRadius: 10,
+          }}
+        >
+          <View>
+            <Text
+              style={{
+                textAlign: "center",
+                textTransform: "capitalize",
+                fontWeight: "bold",
+                marginTop: 10,
+              }}
+            >
+              Truy suất nguồn gốc sản phẩm
+            </Text>
+            <Text style={{ textAlign: "center" }}>
+              Thông tin được công bố rõ ràng, công khai và nhất quán với hệ
+              thống phần mềm. Tuyệt đối không có dử liệu ảo, chi phí phát sinh.
+            </Text>
+          </View>
+          {state.length !== 0 && <Producer data={state} />}
+          {(state?.distributor?.length !== 0 &&
+            state?.distributor?.map((item, index) => (
+              <Distributor key={index} data={item} />
+            ))) || <Head content="Chuỗi phân phối" />}
+          {(state?.processing?.length !== 0 &&
+            state?.processing?.map((item, index) => (
+              <Processing key={index} data={item} />
+            ))) || <Head content="Chuỗi chế biến" />}
+          <Retailer data={state.retailer} />
         </View>
-        {state.length !== 0 && <Producer data={state} />}
-        {state?.distributor?.map((item, index) => (
-          <Distributor key={index} data={item} />
-        )) || <Head content="Chuỗi phân phối" />}
-        {state?.processing?.map((item, index) => (
-          <Processing key={index} data={item} />
-        )) || <Head content="Chuỗi chế biến" />}
-        <Retailer data={state.retailer} />
         <CopyRight margin={0} />
       </ScrollView>
     </View>
