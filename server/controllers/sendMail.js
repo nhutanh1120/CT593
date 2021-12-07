@@ -19,50 +19,50 @@ const oauth2Client = new OAuth2(
 
 // send mail
 const sendEmail = (to, url, txt) => {
-  // oauth2Client.setCredentials({
-  //   refresh_token: MAILING_SERVICE_REFRESH_TOKEN,
-  // });
+  oauth2Client.setCredentials({
+    refresh_token: MAILING_SERVICE_REFRESH_TOKEN,
+  });
 
-  // const accessToken = oauth2Client.getAccessToken();
-  // const smtpTransport = nodemailer.createTransport({
-  //   service: "gmail",
-  //   auth: {
-  //     type: "OAuth2",
-  //     user: SENDER_EMAIL_ADDRESS,
-  //     clientId: MAILING_SERVICE_CLIENT_ID,
-  //     clientSecret: MAILING_SERVICE_CLIENT_SECRET,
-  //     refreshToken: MAILING_SERVICE_REFRESH_TOKEN,
-  //     accessToken,
-  //   },
-  // });
+  const accessToken = oauth2Client.getAccessToken();
+  const smtpTransport = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      type: "OAuth2",
+      user: SENDER_EMAIL_ADDRESS,
+      clientId: MAILING_SERVICE_CLIENT_ID,
+      clientSecret: MAILING_SERVICE_CLIENT_SECRET,
+      refreshToken: MAILING_SERVICE_REFRESH_TOKEN,
+      accessToken,
+    },
+  });
   console.log("Gửi mail thành công");
   console.log(url);
-  // const mailOptions = {
-  //   from: SENDER_EMAIL_ADDRESS,
-  //   to: to,
-  //   subject: "Luu Moments",
-  //   html: `
-  //           <div style="max-width: 700px; margin:auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
-  //           <h2 style="text-align: center; text-transform: uppercase;color: teal;">Welcome to the luu moments.</h2>
-  //           <p>Congratulations! You're almost set to start using <b>LUU MOMENTS</b>.
-  //               Just click the button below to validate your email address.
-  //           </p>
+  const mailOptions = {
+    from: SENDER_EMAIL_ADDRESS,
+    to: to,
+    subject: "Luu Moments",
+    html: `
+            <div style="max-width: 700px; margin:auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
+            <h2 style="text-align: center; text-transform: uppercase;color: teal;">Chào mừng bạn đến với luu moments</h2>
+            <p>Xin chúc mừng! Bạn sắp bắt đầu sử dụng <b>LUU MOMENTS</b>.
+              Vui lòng nhấp vào nút bên dưới để xác thực địa chỉ email của bạn.
+            </p>
 
-  //           <a href=${url} style="background: crimson; text-decoration: none; color: white; padding: 10px 20px; margin: 10px 0; display: inline-block;">${txt}</a>
+            <a href=${url} style="background: crimson; text-decoration: none; color: white; padding: 10px 20px; margin: 10px 0; display: inline-block;">${txt}</a>
 
-  //           <p>If the button doesn't work for any reason, you can also click on the link below:</p>
+            <p>Nếu bạn không phải là người yêu cầu xác thực, vui lòng bỏ qua email này.</p>
 
-  //           <div>Thanks,</div>
-  //           <div>Luu Moments Team</div>
-  //           </div>
-  //       `,
-  // };
+            <div>Trân trọng,</div>
+            <div>Luu Moments Team</div>
+            </div>
+        `,
+  };
 
-  // smtpTransport.sendMail(mailOptions, (err, infer) => {
-  //   if (err) return err;
-  //   console.log("Trạng thái email " + infer);
-  //   return infer;
-  // });
+  smtpTransport.sendMail(mailOptions, (err, infer) => {
+    if (err) return err;
+    console.log("Status send email " + infer);
+    return infer;
+  });
 };
 
 module.exports = sendEmail;
