@@ -4,13 +4,14 @@
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 101;
 }
 .finish__agricultural form {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
   margin: auto;
-  z-index: 100;
+  z-index: 102;
 }
 .finish__agricultural__hidden {
   position: fixed;

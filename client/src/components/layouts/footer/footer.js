@@ -81,14 +81,28 @@ function Footer() {
                   <i className="bx bx-label"></i>
                   &nbsp;
                   <span>
-                    <Link to="/">Chính sách đổi trả</Link>
+                    <Link to="/">Chính sách nhà sản xuất</Link>
                   </span>
                 </li>
                 <li>
                   <i className="bx bx-label"></i>
                   &nbsp;
                   <span>
-                    <Link to="/">Chính sách vận chuyển</Link>
+                    <Link to="/">Chính sách nhà phân phối</Link>
+                  </span>
+                </li>{" "}
+                <li>
+                  <i className="bx bx-label"></i>
+                  &nbsp;
+                  <span>
+                    <Link to="/">Chính sách nhà chế biến</Link>
+                  </span>
+                </li>{" "}
+                <li>
+                  <i className="bx bx-label"></i>
+                  &nbsp;
+                  <span>
+                    <Link to="/">Chính sách nhà bán lẻ</Link>
                   </span>
                 </li>
                 <li>

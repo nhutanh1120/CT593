@@ -75,7 +75,7 @@ const CreateDistributor = () => {
               id="start"
               name="start"
               type="text"
-              placeholder="VD: "
+              placeholder="Vui lòng nhập địa chỉ"
               className="form__control"
             />
             <span className="form__message"></span>
@@ -88,7 +88,7 @@ const CreateDistributor = () => {
               id="end"
               name="end"
               type="text"
-              placeholder="VD: Nhựt Lưu"
+              placeholder="Vui lòng nhập địa chỉ"
               className="form__control"
             />
             <span className="form__message"></span>
