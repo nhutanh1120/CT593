@@ -11,15 +11,16 @@ import Head from "./../components/agricultural/share/head";
 const AgriculturalScreen = ({ route }) => {
   const { id } = route.params;
   // let id = "61a090904b810a21ebe74a3f";
-  // console.log("id   " + id);
+  console.log("id   " + id);
   const dimensions = Dimensions.get("window");
   const widthScreen = dimensions.width;
   const [state, setState] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "http://localhost:4000/api/agricultural/read/" + id
+        "http://192.168.43.133:4000/api/agricultural/read/" + id
       );
+      //http://localhost:4000/api/agricultural/read/
       setState(response?.data?.agricultural);
     };
     fetchData();

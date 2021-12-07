@@ -39,7 +39,10 @@ const Producer = ({ data }) => {
       <Title number="4" title="Thông tin thu hoạch" />
       {data.harvest && (
         <View style={{ paddingLeft: 25 }}>
-          <Image source={require("./../../../assets/img/profile.jpg")} />
+          <Image
+            source={require("./../../../assets/img/profile.jpg")}
+            style={{ width: 50, height: 50 }}
+          />
           <Text style={{ paddingVertical: 2 }}>
             Thời gian thu hoach:&nbsp;
             {moment(data.harvest.times).format("DD.MM.YYYY")}(

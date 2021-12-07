@@ -23,7 +23,7 @@ export default function QRCodeScreen({ navigation }) {
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
     if (data) {
-      let stringNew = data.slice(data.lastIndexOf("/") + 1, data.length);
+      let stringNew = data.slice(data.lastIndexOf("(10)") + 4, data.length);
       setText(stringNew);
     }
     console.log("Type: " + type + "\nData: " + data);
@@ -69,7 +69,7 @@ export default function QRCodeScreen({ navigation }) {
       )}
       {scanned && (
         <Button
-          title={"Quét lại?"}
+          title={"Xem ngay?"}
           onPress={() => navigation.navigate("Agricultural", { id: text })}
           color="tomato"
         />
