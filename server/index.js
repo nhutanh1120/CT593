@@ -9,6 +9,7 @@ const uploadRouter = require("./routes/uploadRouter");
 const agriculturalRouter = require("./routes/agriculturalRouter");
 const profileRouter = require("./routes/profileRouter");
 const contactRouter = require("./routes/contactRouter");
+const blockchainRouter = require("./routes/blockchainRouter");
 
 const conn = require("./config/db");
 const fileUpload = require("express-fileupload");
@@ -38,6 +39,7 @@ app.use("/api/post", postRouter);
 app.use("/api/agricultural", agriculturalRouter);
 app.use("/api/profile", profileRouter);
 app.use("/api/contact", contactRouter);
+app.use("/api/blockchain", blockchainRouter);
 
 conn.connect();
 app.listen(port, () => console.log("Server running on port " + port));

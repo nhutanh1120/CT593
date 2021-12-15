@@ -43,7 +43,11 @@ const AgriculturalContent = () => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get(apiUrl + "/agricultural/read/" + id, null);
+        let idNew = id.slice(id.lastIndexOf("(10)") + 4, id.length);
+        const res = await axios.get(
+          apiUrl + "/agricultural/read/" + idNew,
+          null
+        );
         if (res.data.success === true) {
           setAgricultural(res.data.agricultural);
           setActionData(res.data.agricultural.actions);
@@ -57,7 +61,6 @@ const AgriculturalContent = () => {
       }
     })(id);
   }, [id]);
-
   return (
     <>
       {(showError && (
