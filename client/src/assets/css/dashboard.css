@@ -69,3 +69,34 @@
 .dashboard__body--min--height {
   min-height: 70vh;
 }
+.dashboard__blockchain {
+  position: fixed;
+  bottom: 150px;
+  right: 25px;
+  padding: 10px;
+  background-color: rgb(22, 80, 189);
+  z-index: 101;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+}
+.dashboard__blockchain .blockchain__link {
+  color: #fff;
+}
+.dashboard__blockchain span {
+  position: absolute;
+  bottom: calc(100% + 15px);
+  right: 0;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--txt-color);
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+  transform-origin: bottom right;
+  transform: scale(0);
+  transition: 0.2s;
+}
+.dashboard__blockchain:hover span {
+  transform: scale(1);
+}

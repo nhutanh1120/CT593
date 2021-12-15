@@ -1,54 +1,48 @@
-import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
-import { apiUrl } from "./../../../constants";
+import Web3 from "web3";
+import { ABI, ADDRESS_SMART_CONTRACT } from "./../../../constants/contract";
 import useSortableData from "./../../utils/sort/index";
-import "./style.css";
-import TbodyData from "./tbody";
+import TbodyData from "./../tbody";
 
-const Product = () => {
-  // Get data
-  const token = useSelector((state) => state.token);
-  const [agriculturalList, setAgriculturalList] = useState([]);
+const Ethereum = () => {
+  //create contract metamask
+  const [dataBlockchain, setDataBlockchain] = useState([]);
+  useEffect(() => {
+    const web3 = new Web3(window.ethereum);
+    window.ethereum.enable();
+    const contract = new web3.eth.Contract(ABI, ADDRESS_SMART_CONTRACT);
+    const getAllDataFromBlockchain = () => {
+      contract.methods
+        .getAllAgricultural()
+        .call()
+        .then((data) => {
+          setDataBlockchain(data);
+          console.log("success", data);
+        })
+        .catch((err) => console.log(err));
+    };
+    let check = true;
+    if (check) getAllDataFromBlockchain();
+    return () => {
+      check = false;
+    };
+  }, []);
 
   const [limit, setLimit] = useState(10);
   const [pagination, setPagination] = useState(
-    agriculturalList.slice(0, Number(limit))
+    dataBlockchain.slice(0, Number(limit))
   );
 
   useEffect(() => {
-    (async () => {
-      const res = await axios.get(apiUrl + "/agricultural/all/read");
-      if (res?.data?.success) {
-        const newArray = [];
-        res.data.agricultural.map((item) => {
-          const newObject = {
-            id: item._id,
-            fullname: `${item.administrator.surname} ${item.administrator.forename}`,
-            breed: item.breed.nameBreed,
-            type: item.breed.typeAgricultural,
-            update: item.updatedAt,
-            status: item.status,
-          };
-          newArray.push(newObject);
-          return newArray;
-        });
-        setAgriculturalList(newArray);
-      }
-    })();
-  }, [token]);
-  console.log(agriculturalList);
-
-  useEffect(() => {
-    setPagination(agriculturalList.slice(0, Number(limit)));
-  }, [agriculturalList, limit]);
+    setPagination(dataBlockchain.slice(0, Number(limit)));
+  }, [dataBlockchain, limit]);
 
   let pages = 1;
   let range = [];
 
   if (limit !== undefined) {
-    let page = Math.floor(agriculturalList.length / Number(limit));
-    pages = agriculturalList?.length % Number(limit) === 0 ? page : page + 1;
+    let page = Math.floor(dataBlockchain?.length / Number(limit));
+    pages = dataBlockchain?.length % Number(limit) === 0 ? page : page + 1;
     range = [...Array(pages).keys()];
   }
 
@@ -57,7 +51,7 @@ const Product = () => {
   const selectPage = (page) => {
     const start = Number(limit) * page;
     const end = start + Number(limit);
-    setPagination(agriculturalList.slice(start, end));
+    setPagination(dataBlockchain.slice(start, end));
     setCurrPage(page);
   };
   // sort
@@ -68,10 +62,10 @@ const Product = () => {
   const [view, setView] = useState(false);
   const clickViewAll = (event) => {
     event.preventDefault();
-    if (agriculturalList.length < 10) return;
+    if (dataBlockchain.length < 0) return;
     if (!view) {
-      setLimit(agriculturalList.length);
-      setPagination(agriculturalList.slice(0, agriculturalList.length));
+      setLimit(dataBlockchain.length);
+      setPagination(dataBlockchain.slice(0, dataBlockchain.length));
       setView(!view);
       ref.current = {
         limit,
@@ -83,14 +77,15 @@ const Product = () => {
       setView(!view);
     }
   };
+
   return (
     <div className="grid body dashboard__product">
       <div id="toast"></div>
       <div className="dashboard__body__header">
         <h2>Quản lý nông sản</h2>
         <button className="btn">
-          <i className="bx bx-plus bx-sm bx-burst-hover"></i>
-          <span className="tooltip__create">thêm mới</span>
+          <i className="bx bx-station bx-sm bx-burst-hover"></i>
+          <span className="tooltip__create">kết nối metamask</span>
         </button>
       </div>
       <div className="row">
@@ -103,46 +98,46 @@ const Product = () => {
                     <tr>
                       <th>#</th>
                       <th>
-                        tên người dùng
+                        Đại chỉ ví
                         <div
                           className="th__icon"
-                          onClick={() => requestSort("fullname")}
+                          onClick={() => requestSort("walletAddress")}
                         >
                           <i className="bx bx-sort"></i>
                         </div>
                       </th>
                       <th>
-                        Tên nông sản
+                        Người kiểm duyệt
                         <div
                           className="th__icon"
-                          onClick={() => requestSort("breed")}
+                          onClick={() => requestSort("censor")}
                         >
                           <i className="bx bx-sort"></i>
                         </div>
                       </th>
                       <th>
-                        loại nông sản
+                        Nông phẩm
                         <div
                           className="th__icon"
-                          onClick={() => requestSort("type")}
+                          onClick={() => requestSort("id")}
                         >
                           <i className="bx bx-sort"></i>
                         </div>
                       </th>
                       <th>
-                        ngày cập nhật
+                        chuỗi băm
                         <div
                           className="th__icon"
-                          onClick={() => requestSort("update")}
+                          onClick={() => requestSort("hashString")}
                         >
                           <i className="bx bx-sort"></i>
                         </div>
                       </th>
                       <th>
-                        trạng thái
+                        thời gian
                         <div
                           className="th__icon"
-                          onClick={() => requestSort("status")}
+                          onClick={() => requestSort("createTime")}
                         >
                           <i className="bx bx-sort"></i>
                         </div>
@@ -185,4 +180,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default Ethereum;

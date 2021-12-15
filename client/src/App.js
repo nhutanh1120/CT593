@@ -14,6 +14,7 @@ import { apiUrl } from "./constants/";
 import About from "./pages/about";
 import Agricultural from "./pages/agricultural";
 import Auth from "./pages/auth";
+import Blockchain from "./pages/blockchain";
 import Contact from "./pages/contact";
 import Dashboard from "./pages/dashboard";
 import ForgotPassword from "./pages/forgotPassword";
@@ -81,10 +82,13 @@ function App() {
           component={ActivationEmail}
         />
         <Route path="/forgot" component={ForgotPassword} />
-        {/* <Route path="/admin/dashboard" component={Dashboard} /> */}
         <Route
           path="/admin/dashboard"
           component={isLogin ? Dashboard : NotFound}
+        />
+        <Route
+          path="/manager/blockchain"
+          component={isLogin ? Blockchain : NotFound}
         />
         <Route path="/user/dashboard" component={isLogin ? User : NotFound} />
         <Route path="/qr/:id" component={QrCode} />

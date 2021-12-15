@@ -1,12 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { apiUrl } from "./../../../constants";
-import useSortableData from "./../../utils/sort/index";
-import "./style.css";
+import { apiUrl } from "./../../constants/index";
+import useSortableData from "./../utils/sort/index";
 import TbodyData from "./tbody";
 
-const Product = () => {
+const Censor = () => {
   // Get data
   const token = useSelector((state) => state.token);
   const [agriculturalList, setAgriculturalList] = useState([]);
@@ -47,7 +46,7 @@ const Product = () => {
   let range = [];
 
   if (limit !== undefined) {
-    let page = Math.floor(agriculturalList.length / Number(limit));
+    let page = Math.floor(agriculturalList?.length / Number(limit));
     pages = agriculturalList?.length % Number(limit) === 0 ? page : page + 1;
     range = [...Array(pages).keys()];
   }
@@ -68,7 +67,7 @@ const Product = () => {
   const [view, setView] = useState(false);
   const clickViewAll = (event) => {
     event.preventDefault();
-    if (agriculturalList.length < 10) return;
+    if (agriculturalList.length < 0) return;
     if (!view) {
       setLimit(agriculturalList.length);
       setPagination(agriculturalList.slice(0, agriculturalList.length));
@@ -83,14 +82,41 @@ const Product = () => {
       setView(!view);
     }
   };
+
+  /**
+   * Connect metamask
+   */
+  let account = null;
+  const connectMM = () => {
+    let provider = window.ethereum;
+    if (typeof provider !== "undefined") {
+      provider
+        .request({ method: "eth_requestAccounts" })
+        .then((accounts) => {
+          account = accounts[0];
+          console.log(`Selected account is ${account}`);
+        })
+        .catch((error) => {
+          console.log(error);
+          return;
+        });
+
+      window.ethereum.on("accountsChanged", function (accounts) {
+        account = accounts[0];
+        console.log(`Selected account changed to ${account}`);
+      });
+    } else {
+      alert("Bạn chưa cài đặt metamask!");
+    }
+  };
   return (
     <div className="grid body dashboard__product">
       <div id="toast"></div>
-      <div className="dashboard__body__header">
-        <h2>Quản lý nông sản</h2>
+      <div className="dashboard__body__header" onClick={connectMM}>
+        <h2 style={{ width: "max-content" }}>Quản lý nông sản</h2>
         <button className="btn">
-          <i className="bx bx-plus bx-sm bx-burst-hover"></i>
-          <span className="tooltip__create">thêm mới</span>
+          <i className="bx bx-station bx-sm bx-burst-hover"></i>
+          <span className="tooltip__create">kết nối metamask</span>
         </button>
       </div>
       <div className="row">
@@ -185,4 +211,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default Censor;

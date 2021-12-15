@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Route, Switch, useHistory, useRouteMatch } from "react-router-dom";
+import {
+  Route,
+  Switch,
+  useHistory,
+  useRouteMatch,
+  Link,
+} from "react-router-dom";
 import Email from "../components/dashboard/email";
 import ScrollTop from "./../components/layouts/scrollTop/scrollTop";
 import Posts from "./../components/share/post";
@@ -102,9 +108,14 @@ function Dashboard() {
           ></Route>
           <Route path="*" component={NotFound} />
         </Switch>
-
         <CopyRight styles={true} />
       </section>
+      <div className="dashboard__blockchain">
+        <Link to="/manager/blockchain" className="blockchain__link">
+          <i className="bx bx-data bx-md"></i>
+        </Link>
+        <span>Blockchain</span>
+      </div>
       <ScrollTop />
     </div>
   );
