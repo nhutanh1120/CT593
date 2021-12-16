@@ -33,5 +33,10 @@
     "status": "check_agricultural",
     "icon": "bx bx-qr",
     "content": "Sản phẩm đã hoàn thành và đang chờ bạn duyệt."
+  },
+  {
+    "status": "status_success",
+    "icon": "bx bx-check-circle",
+    "content": "Sản phẩm của bạn đã được chúng tôi duyệt."
   }
 ]

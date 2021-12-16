@@ -28,7 +28,7 @@ const itemSocial = [
 
 const iconSocial = (item, index) => (
   <span className={item.class} key={index}>
-    <Link to={item.link}>
+    <Link to={{ pathname: item.link }}>
       <i className={item.icon}></i>
     </Link>
   </span>
@@ -61,13 +61,13 @@ function Footer() {
             </div>
             <div className="footer__header">THEO DÕI FANPAGE</div>
             <div className="footer__text">
-              <Link to="https://www.facebook.com/">
+              <Link to={{ pathname: "https://www.facebook.com/" }}>
                 <i className="bx bxl-facebook"></i>
                 <span>&nbsp;Facebook</span>
               </Link>
             </div>
             <div className="footer__text">
-              <Link to="https://instagram.com">
+              <Link to={{ pathname: "https://instagram.com" }}>
                 <i className="bx bxl-instagram"></i>
                 <span>&nbsp;Instagram</span>
               </Link>

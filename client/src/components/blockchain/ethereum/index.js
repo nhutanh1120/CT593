@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Web3 from "web3";
 import { ABI, ADDRESS_SMART_CONTRACT } from "./../../../constants/contract";
 import useSortableData from "./../../utils/sort/index";
-import TbodyData from "./../tbody";
+import TbodyData from "./tbody";
 
 const Ethereum = () => {
   //create contract metamask
@@ -84,8 +84,8 @@ const Ethereum = () => {
       <div className="dashboard__body__header">
         <h2>Quản lý nông sản</h2>
         <button className="btn">
-          <i className="bx bx-station bx-sm bx-burst-hover"></i>
-          <span className="tooltip__create">kết nối metamask</span>
+          <i className="bx bx-check bx-sm bx-burst-hover"></i>
+          <span className="tooltip__create">kiểm tra</span>
         </button>
       </div>
       <div className="row">

@@ -1,0 +1,12 @@
+.text__overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+.text__overflow:hover {
+  overflow-x: scroll !important;
+  text-overflow: clip !important;
+}
+.text__overflow::-webkit-scrollbar {
+  display: none;
+}

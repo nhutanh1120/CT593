@@ -99,6 +99,7 @@
 }
 .product__dropdown__content.product--width {
   min-width: 280px !important;
+  min-height: 200px !important;
 }
 .product__dropdown__content .product--button {
   border: none;
@@ -129,6 +130,7 @@
   outline: none;
 }
 .product--a span {
+  flex-grow: 1;
   padding-left: 5px;
 }
 .product--a span b {

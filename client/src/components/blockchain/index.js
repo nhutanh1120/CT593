@@ -1,13 +1,14 @@
-import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { apiUrl } from "./../../constants/index";
+import Web3 from "web3";
+import { ABI, ADDRESS_SMART_CONTRACT } from "./../../constants/contract";
 import useSortableData from "./../utils/sort/index";
 import TbodyData from "./tbody";
+import "./style.css";
 
 const Censor = () => {
   // Get data
-  const token = useSelector((state) => state.token);
+  const agriculturalAll = useSelector((state) => state.agriculturalAll);
   const [agriculturalList, setAgriculturalList] = useState([]);
 
   const [limit, setLimit] = useState(10);
@@ -16,11 +17,10 @@ const Censor = () => {
   );
 
   useEffect(() => {
-    (async () => {
-      const res = await axios.get(apiUrl + "/agricultural/all/read");
-      if (res?.data?.success) {
-        const newArray = [];
-        res.data.agricultural.map((item) => {
+    if (agriculturalAll) {
+      const newArray = [];
+      agriculturalAll.map((item) => {
+        if (item.status === 1) {
           const newObject = {
             id: item._id,
             fullname: `${item.administrator.surname} ${item.administrator.forename}`,
@@ -30,13 +30,12 @@ const Censor = () => {
             status: item.status,
           };
           newArray.push(newObject);
-          return newArray;
-        });
-        setAgriculturalList(newArray);
-      }
-    })();
-  }, [token]);
-  console.log(agriculturalList);
+        }
+        return newArray;
+      });
+      setAgriculturalList(newArray);
+    }
+  }, [agriculturalAll]);
 
   useEffect(() => {
     setPagination(agriculturalList.slice(0, Number(limit)));
@@ -67,7 +66,7 @@ const Censor = () => {
   const [view, setView] = useState(false);
   const clickViewAll = (event) => {
     event.preventDefault();
-    if (agriculturalList.length < 0) return;
+    if (agriculturalList.length < 10) return;
     if (!view) {
       setLimit(agriculturalList.length);
       setPagination(agriculturalList.slice(0, agriculturalList.length));
@@ -83,17 +82,16 @@ const Censor = () => {
     }
   };
 
-  /**
-   * Connect metamask
-   */
-  let account = null;
+  // Connect metamask
+  // let account = null;
+  const [account, setAccount] = useState(null);
   const connectMM = () => {
     let provider = window.ethereum;
     if (typeof provider !== "undefined") {
       provider
         .request({ method: "eth_requestAccounts" })
         .then((accounts) => {
-          account = accounts[0];
+          setAccount(accounts[0]);
           console.log(`Selected account is ${account}`);
         })
         .catch((error) => {
@@ -102,13 +100,33 @@ const Censor = () => {
         });
 
       window.ethereum.on("accountsChanged", function (accounts) {
-        account = accounts[0];
+        setAccount(accounts[0]);
         console.log(`Selected account changed to ${account}`);
       });
     } else {
       alert("Bạn chưa cài đặt metamask!");
     }
   };
+  //create contract infura
+  const provider_Infura = new Web3.providers.WebsocketProvider(
+    "wss://rinkeby.infura.io/ws/v3/ae82f11804ff4cd58a7ef8bb0ebe4f42"
+  );
+  const web3_infura = new Web3(provider_Infura);
+  const contract_Infura = new web3_infura.eth.Contract(
+    ABI,
+    ADDRESS_SMART_CONTRACT
+  );
+  console.log(contract_Infura);
+  contract_Infura.events.sendStatus(
+    { filter: {}, fromBlock: "latest" },
+    function (error, event) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log(event);
+      }
+    }
+  );
   return (
     <div className="grid body dashboard__product">
       <div id="toast"></div>
@@ -178,7 +196,12 @@ const Censor = () => {
                   </thead>
                   <tbody>
                     {items.map((item, index) => (
-                      <TbodyData key={index} item={item} index={index + 1} />
+                      <TbodyData
+                        key={index}
+                        item={item}
+                        index={index + 1}
+                        account={account}
+                      />
                     ))}
                   </tbody>
                 </table>

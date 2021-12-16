@@ -3,11 +3,12 @@ import { Route, Switch, useRouteMatch } from "react-router";
 import ScrollTop from "../components/layouts/scrollTop/scrollTop";
 import "./../assets/css/agricultural.css";
 import AgriculturalContent from "./../components/agricultural/";
+import CreateDistributor from "./../components/agricultural/distributor/create/create";
+import AgriculturalManager from "./../components/agricultural/manager";
+import CreateProcessing from "./../components/agricultural/processing/create/create";
+import CreateRetailer from "./../components/agricultural/retailer/create/create";
 import Footer from "./../components/layouts/footer/footer";
 import Header from "./../components/layouts/header/header";
-import CreateProcessing from "./../components/agricultural/processing/create/create";
-import CreateDistributor from "./../components/agricultural/distributor/create/create";
-import CreateRetailer from "./../components/agricultural/retailer/create/create";
 
 const Agricultural = () => {
   const match = useRouteMatch();
@@ -19,6 +20,11 @@ const Agricultural = () => {
           exact
           path={match.url + "/:id"}
           component={AgriculturalContent}
+        ></Route>
+        <Route
+          exact
+          path={match.url + "/manager/:id"}
+          component={AgriculturalManager}
         ></Route>
         <Route
           exact

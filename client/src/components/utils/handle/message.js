@@ -3,7 +3,12 @@ import notifications from "./../../../assets/JsonData/notification.json";
 const handleMessage = (message, index) => {
   let newArray = [];
   const newMessage = message;
-  newMessage.slice(newMessage.length - index, newMessage.length).map((item) => {
+  let start = 0;
+  let end = newMessage.length;
+  if (newMessage.length > index) {
+    start = newMessage.length - index;
+  }
+  newMessage.slice(start, end).map((item) => {
     let messageItem = notifications.find(
       (statusItem) => item.status === statusItem.status
     );
