@@ -18,7 +18,7 @@ const AgriculturalScreen = ({ route }) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "http://192.168.43.133:4000/api/agricultural/read/" + id
+        "http://192.168.43.133:4000/api/blockchain/mobile/read/" + id
       );
       //http://localhost:4000/api/agricultural/read/
       setState(response?.data?.agricultural);

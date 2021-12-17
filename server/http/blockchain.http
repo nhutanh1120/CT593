@@ -1,7 +1,7 @@
 GET http://localhost:4000/api/blockchain/read/61bbb24589ca97cc4fa4d97a
 
 ###
-GET http://localhost:4000/api/agricultural/read/61bb2581ca113b195a3c7aa7
+GET http://localhost:4000/api/blockchain/mobile/read/61bbb24589ca97cc4fa4d97a
 
 ###
 PUT http://localhost:4000/api/blockchain/restore/a

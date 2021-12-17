@@ -8,6 +8,9 @@ const administratorControllers = require("./../controllers/agricultural/administ
 // localhost/api/blockchain/read/:id
 router.get("/read/:id", blockchainControllers.read);
 
+// localhost/api/blockchain/mobile/read/:id
+router.get("/mobile/read/:id", blockchainControllers.readMobile);
+
 // localhost/api/blockchain/restore/:id
 router.put(
   "/restore/:id",
