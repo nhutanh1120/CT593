@@ -7,6 +7,8 @@ import Processing from "./processing";
 import Producer from "./producer";
 import Retailer from "./retailer/retailer";
 import ShowSupplier from "./show";
+import Web3 from "web3";
+import { ABI, ADDRESS_SMART_CONTRACT } from "./../../constants/contract";
 
 const showErrorAgricultural = (message) => (
   <div className="showError-agricultural">
@@ -44,18 +46,31 @@ const AgriculturalContent = () => {
     (async () => {
       try {
         let idNew = id.slice(id.lastIndexOf("(10)") + 4, id.length);
-        const res = await axios.get(
-          apiUrl + "/agricultural/read/" + idNew,
-          null
-        );
-        if (res.data.success === true) {
-          setAgricultural(res.data.agricultural);
-          setActionData(res.data.agricultural.actions);
-          setDistributor(res.data.agricultural.distributor);
-          setProcessing(res.data.agricultural.processing);
-          setRetailer(res.data.agricultural.retailer);
-          setShowError(true);
-        }
+        const res = await axios.get(apiUrl + "/blockchain/read/" + idNew, null);
+        console.log(res.data);
+
+        const web3 = new Web3(window.ethereum);
+        window.ethereum.enable();
+        const contract_MM = new web3.eth.Contract(ABI, ADDRESS_SMART_CONTRACT);
+        contract_MM.methods
+          .getAgricultural(idNew)
+          .call()
+          .then((data) => {
+            console.log(data);
+            console.log(res.data);
+            if (
+              res.data.success === true &&
+              res.data.hash === data.hashString
+            ) {
+              setAgricultural(res.data.agricultural);
+              setActionData(res.data.agricultural.actions);
+              setDistributor(res.data.agricultural.distributor);
+              setProcessing(res.data.agricultural.processing);
+              setRetailer(res.data.agricultural.retailer);
+              setShowError(true);
+            }
+          })
+          .catch((error) => console.log(error));
       } catch (error) {
         setShowError(error?.response?.data?.success);
       }

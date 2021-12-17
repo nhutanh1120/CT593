@@ -41,8 +41,8 @@ const Sidebar = ({ sidebarCurrent }) => {
       <ul className="nav--list">
         <li>
           <i className="bx bx-search"></i>
-          <input type="text" placeholder="Search..." />
-          <span className="tooltip">Search</span>
+          <input type="text" placeholder="Tìm kiếm..." />
+          <span className="tooltip">Tìm kiếm</span>
         </li>
         {sidebarCurrent.map((item, index) => (
           <li key={index}>
@@ -56,7 +56,7 @@ const Sidebar = ({ sidebarCurrent }) => {
 
         {isLogged && (
           <Logout
-            fullname={user.surname + " " + user.forename + "sdasfghjasdsad"}
+            fullname={user.surname + " " + user.forename}
             permission={(isAdmin && "quản trị") || "người dùng"}
             avatar={user.avatar}
           />

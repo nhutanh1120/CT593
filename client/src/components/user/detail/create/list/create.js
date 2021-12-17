@@ -89,7 +89,7 @@ const ActionListCreate = ({ index, setData }) => {
           onChange={handleChange}
           onInput={handleInput}
           onKeyUp={handleKeyUp}
-          defaultValue="0"
+          defaultValue={state.isolation}
           placeholder="Vui lòng nhập thời gian cách ly"
         />
         <span id="isolation" className="form__message"></span>

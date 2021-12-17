@@ -16,7 +16,6 @@ import { projectId, projectSecret } from "./../../../constants/ipfs";
 const TbodyData = ({ item, index, account }) => {
   const token = useSelector((state) => state.token);
   const user = useSelector((state) => state.auth.user);
-  const agriculturalAll = useSelector((state) => state.agriculturalAll);
 
   const handleCheck = async () => {
     if (window.ethereum === "undefined") {
@@ -27,7 +26,21 @@ const TbodyData = ({ item, index, account }) => {
       showErrorToast("Vui long kết nối metamask!");
       return;
     }
-    const data = agriculturalAll.find((data) => (data._id = item.id));
+    const data = await axios.get(apiUrl + "/agricultural/read/" + item.id);
+    let { agricultural } = data.data;
+    const dataSave = {
+      _id: agricultural._id,
+      producer: agricultural.producer,
+      breed: agricultural.breed,
+      actions: agricultural.actions,
+      harvest: agricultural.harvest,
+      distributor: agricultural.distributor,
+      processing: agricultural.processing,
+      retailer: agricultural?.retailer || null,
+      administrator: agricultural.administrator,
+      status: 2,
+    };
+    console.log(JSON.stringify(dataSave));
 
     const web3 = new Web3(window.ethereum);
     window.ethereum.enable();
@@ -48,8 +61,9 @@ const TbodyData = ({ item, index, account }) => {
       },
     });
 
-    ipfs.add(JSON.stringify(data)).then((res) => {
+    ipfs.add(JSON.stringify(dataSave)).then((res) => {
       console.log(res);
+
       contract.methods.addAgricultural(item.id, user._id, res.path).send({
         from: account,
       });

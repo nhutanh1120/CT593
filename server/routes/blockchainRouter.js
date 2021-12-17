@@ -11,8 +11,8 @@ router.get("/read/:id", blockchainControllers.read);
 // localhost/api/blockchain/restore/:id
 router.put(
   "/restore/:id",
-  verifyToken,
-  authAdmin,
+  // verifyToken,
+  // authAdmin,
   blockchainControllers.restore
 );
 

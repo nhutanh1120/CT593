@@ -1,8 +1,10 @@
 const AgriculturalModel = require("./../../models/Agricultural");
+const axios = require("axios");
 const Hash = require("ipfs-only-hash");
+const ipfs = process.env.IPFS || "https://ipfs.infura.io:5001/api/v0/cat?arg=";
 
 const blockchainControllers = {
-  // @Router post /api/agricultural/read/:id
+  // @Router post /api/blockchain/read/:id
   // @access private
   read: async (req, res) => {
     try {
@@ -10,9 +12,24 @@ const blockchainControllers = {
       const agricultural = await AgriculturalModel.findOne({
         _id: req.params.id,
       });
+      const dataSave = {
+        _id: agricultural._id,
+        producer: agricultural.producer,
+        breed: agricultural.breed,
+        actions: agricultural.actions,
+        harvest: agricultural.harvest,
+        distributor: agricultural.distributor,
+        processing: agricultural.processing,
+        retailer: agricultural?.retailer?.profile?.user
+          ? agricultural?.retailer
+          : null,
+        administrator: agricultural.administrator,
+        status: agricultural.status,
+      };
 
-      // const data = "Hello word!";
-      const hash = await Hash.of(agricultural);
+      console.log(JSON.stringify(dataSave));
+
+      const hash = await Hash.of(JSON.stringify(dataSave));
       console.log(hash);
 
       res.json({
@@ -28,15 +45,25 @@ const blockchainControllers = {
         .json({ success: false, message: "Internal server error." });
     }
   },
-  // @Router post /api/agricultural/read/:id
+  // @Router post /api/blockchain/restore/:id
   // @access private
   restore: async (req, res) => {
     try {
       console.log("read agricultural request");
-      const updateAgricultural = req.body;
+      const hash = req.body;
+
+      if (hash === "") {
+        return res.status(400).json({
+          success: false,
+          message: "Hash string cannot be empty.",
+        });
+      }
+
+      const response = await axios.get(ipfs + hash);
+
       const agricultural = await AgriculturalModel.findByIdAndUpdate(
         req.params.id,
-        updateAgricultural,
+        response.data,
         { new: true }
       );
 
