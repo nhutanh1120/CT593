@@ -4,6 +4,7 @@ import {
   Button,
   Dimensions,
   Image,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -58,52 +59,56 @@ export default function LoginScreen({ navigation }) {
   };
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Image
-          style={styles.image}
-          source={require("./../assets/icons/heart.png")}
-        />
-        <Text style={styles.title}>Luu Moments</Text>
-      </View>
-      <View style={styles.footer}>
-        <View style={styles.formGroup}>
-          <TextInput
-            style={styles.formControl}
-            value={state.username}
-            placeholder="Tài khoản"
-            onChangeText={(username) => {
-              setState({ ...state, username });
-              setError({ ...error, usernameError: "" });
-            }}
-          />
-          <Text style={styles.message}>{error.usernameError}</Text>
+      <ScrollView>
+        <View style={styles.body}>
+          <View style={styles.header}>
+            <Image
+              style={styles.image}
+              source={require("./../assets/icons/heart.png")}
+            />
+            <Text style={styles.title}>Luu Moments</Text>
+          </View>
+          <View style={styles.footer}>
+            <View style={styles.formGroup}>
+              <TextInput
+                style={styles.formControl}
+                value={state.username}
+                placeholder="Tài khoản"
+                onChangeText={(username) => {
+                  setState({ ...state, username });
+                  setError({ ...error, usernameError: "" });
+                }}
+              />
+              <Text style={styles.message}>{error.usernameError}</Text>
+            </View>
+            <View style={styles.formGroup}>
+              <TextInput
+                style={styles.formControl}
+                value={state.password}
+                placeholder="Mật khẩu"
+                onChangeText={(password) => {
+                  setState({ ...state, password });
+                  setError({ ...error, passwordError: "" });
+                }}
+                secureTextEntry="true"
+              />
+              <Text style={styles.message}>{error.passwordError}</Text>
+            </View>
+            <View>
+              <Button
+                style={styles.submit}
+                title="Đăng nhập"
+                onPress={handlePress}
+              />
+            </View>
+          </View>
         </View>
-        <View style={styles.formGroup}>
-          <TextInput
-            style={styles.formControl}
-            value={state.password}
-            placeholder="Mật khẩu"
-            onChangeText={(password) => {
-              setState({ ...state, password });
-              setError({ ...error, passwordError: "" });
-            }}
-            secureTextEntry="true"
-          />
-          <Text style={styles.message}>{error.passwordError}</Text>
-        </View>
-        <View>
-          <Button
-            style={styles.submit}
-            title="Đăng nhập"
-            onPress={handlePress}
-          />
-        </View>
-      </View>
+      </ScrollView>
     </View>
   );
 }
 
-const { width } = Dimensions.get("screen");
+const { width, height } = Dimensions.get("screen");
 
 const styles = StyleSheet.create({
   container: {
@@ -117,6 +122,12 @@ const styles = StyleSheet.create({
     width: width,
     justifyContent: "center",
     alignItems: "center",
+  },
+  body: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    height: height - 65,
   },
   image: {
     width: 50,

@@ -43,7 +43,7 @@ const SettingScreen = ({ navigation }) => {
         </View>
         <View style={styles.footer}>
           <Pressable
-            style={[styles.button, { backgroundColor: "#5f0a87" }]}
+            style={[styles.button, { backgroundColor: "#005792" }]}
             onPress={() => navigation.navigate("Login")}
           >
             <Text style={styles.text}>Đăng nhập</Text>

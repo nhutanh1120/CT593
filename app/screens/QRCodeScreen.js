@@ -22,10 +22,7 @@ export default function QRCodeScreen({ navigation }) {
   // What happens when we scan the bar code
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    if (data) {
-      let stringNew = data.slice(data.lastIndexOf("(10)") + 4, data.length);
-      setText(stringNew);
-    }
+    setText(data);
     console.log("Type: " + type + "\nData: " + data);
   };
 

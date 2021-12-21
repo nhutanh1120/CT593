@@ -1,11 +1,11 @@
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
-import SettingScreen from "./../screens/SettingScreen";
-import LoginScreen from "./../screens/LoginScreen";
-import RegisterScreen from "./../screens/RegisterScreen";
-import { getData } from "./../components/handle/store";
-import PersonalScreen from "./../screens/PersonalScreen";
+import { getData } from "../components/handle/store";
+import LoginScreen from "../screens/LoginScreen";
+import PersonalScreen from "../screens/PersonalScreen";
+import RegisterScreen from "../screens/RegisterScreen";
+import SettingScreen from "../screens/SettingScreen";
 
 const Stack = createNativeStackNavigator();
 

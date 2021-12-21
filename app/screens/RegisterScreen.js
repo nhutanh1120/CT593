@@ -7,6 +7,7 @@ import {
   Dimensions,
   Image,
   TextInput,
+  ScrollView,
 } from "react-native";
 
 const initialState = {
@@ -68,73 +69,81 @@ export default function RegisterScreen() {
   };
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Image
-          style={styles.image}
-          source={require("./../assets/icons/heart.png")}
-        />
-        <Text style={styles.title}>Luu Moments</Text>
-      </View>
-      <View style={styles.footer}>
-        <View style={styles.formGroup}>
-          <TextInput
-            style={styles.formControl}
-            value={state.username}
-            placeholder="Tài khoản"
-            onChangeText={(username) => {
-              setState({ ...state, username });
-              setErrors({ ...errors, usernameError: "" });
-            }}
-          />
-          <Text style={styles.message}>{errors.usernameError}</Text>
+      <ScrollView>
+        <View style={styles.body}>
+          <View style={styles.header}>
+            <Image
+              style={styles.image}
+              source={require("./../assets/icons/heart.png")}
+            />
+            <Text style={styles.title}>Luu Moments</Text>
+          </View>
+          <View style={styles.footer}>
+            <View style={styles.formGroup}>
+              <TextInput
+                style={styles.formControl}
+                value={state.username}
+                placeholder="Tài khoản"
+                onChangeText={(username) => {
+                  setState({ ...state, username });
+                  setErrors({ ...errors, usernameError: "" });
+                }}
+              />
+              <Text style={styles.message}>{errors.usernameError}</Text>
+            </View>
+            <View style={styles.formGroup}>
+              <TextInput
+                style={styles.formControl}
+                value={state.email}
+                placeholder="Email"
+                onChangeText={(email) => {
+                  setState({ ...state, email });
+                  setErrors({ ...errors, emailError: "" });
+                }}
+              />
+              <Text style={styles.message}>{errors.emailError}</Text>
+            </View>
+            <View style={styles.formGroup}>
+              <TextInput
+                style={styles.formControl}
+                value={state.password}
+                placeholder="Mật khẩu"
+                onChangeText={(password) => {
+                  setState({ ...state, password });
+                  setErrors({ ...errors, passwordError: "" });
+                }}
+                secureTextEntry="true"
+              />
+              <Text style={styles.message}>{errors.passwordError}</Text>
+            </View>
+            <View style={styles.formGroup}>
+              <TextInput
+                style={styles.formControl}
+                value={state.cfPassword}
+                placeholder="Mật khẩu"
+                onChangeText={(cfPassword) => {
+                  setState({ ...state, cfPassword });
+                  setErrors({ ...errors, cfPasswordError: "" });
+                }}
+                secureTextEntry="true"
+              />
+              <Text style={styles.message}>{errors.cfPasswordError}</Text>
+            </View>
+            <View>
+              <Button
+                style={styles.submit}
+                title="Đăng ký"
+                onPress={handlePress}
+              />
+            </View>
+          </View>
         </View>
-        <View style={styles.formGroup}>
-          <TextInput
-            style={styles.formControl}
-            value={state.email}
-            placeholder="Email"
-            onChangeText={(email) => {
-              setState({ ...state, email });
-              setErrors({ ...errors, emailError: "" });
-            }}
-          />
-          <Text style={styles.message}>{errors.emailError}</Text>
-        </View>
-        <View style={styles.formGroup}>
-          <TextInput
-            style={styles.formControl}
-            value={state.password}
-            placeholder="Mật khẩu"
-            onChangeText={(password) => {
-              setState({ ...state, password });
-              setErrors({ ...errors, passwordError: "" });
-            }}
-            secureTextEntry="true"
-          />
-          <Text style={styles.message}>{errors.passwordError}</Text>
-        </View>
-        <View style={styles.formGroup}>
-          <TextInput
-            style={styles.formControl}
-            value={state.cfPassword}
-            placeholder="Mật khẩu"
-            onChangeText={(cfPassword) => {
-              setState({ ...state, cfPassword });
-              setErrors({ ...errors, cfPasswordError: "" });
-            }}
-            secureTextEntry="true"
-          />
-          <Text style={styles.message}>{errors.cfPasswordError}</Text>
-        </View>
-        <View>
-          <Button style={styles.submit} title="Đăng ký" onPress={handlePress} />
-        </View>
-      </View>
+      </ScrollView>
     </View>
   );
 }
 
-const { width } = Dimensions.get("screen");
+const { width, height } = Dimensions.get("screen");
 
 const styles = StyleSheet.create({
   container: {
@@ -148,6 +157,12 @@ const styles = StyleSheet.create({
     width: width,
     justifyContent: "center",
     alignItems: "center",
+  },
+  body: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    height: height - 65,
   },
   image: {
     width: 50,

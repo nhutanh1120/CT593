@@ -1,11 +1,11 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import ChatScreen from "./../screens/ChatScreen";
 import HomeScreen from "./../screens/HomeScreen";
 import PostScreen from "./../screens/PostScreen";
-import ScannerNavigator from "./scanStack";
-import AuthNavigator from "./stack";
+import ScannerNavigator from "./ScanStack";
+import AuthNavigator from "./SettingStack";
+import ChatNavigator from "./ChatStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -138,7 +138,7 @@ export function Tabs({ focus }) {
       />
       <Tab.Screen
         name="Chat"
-        component={ChatScreen}
+        component={ChatNavigator}
         options={{
           title: "Tin nhắn",
           tabBarIcon: ({ focused }) => (

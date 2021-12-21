@@ -1,33 +1,36 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Dimensions, ScrollView, StyleSheet, View, Text } from "react-native";
+import { Dimensions, ScrollView, StyleSheet, Text, View } from "react-native";
+import { GTIN, LENGTH } from "./../constants";
 import Distributor from "./../components/agricultural/distributor/distributor";
-import Producer from "./../components/agricultural/producer/producer";
 import Processing from "./../components/agricultural/processing/processing";
+import Producer from "./../components/agricultural/producer/producer";
 import Retailer from "./../components/agricultural/retailer/retailer";
-import CopyRight from "./../components/copyright/copyright";
 import Head from "./../components/agricultural/share/head";
+import CopyRight from "./../components/copyright/copyright";
 
 const AgriculturalScreen = ({ route }) => {
   const { id } = route.params;
-  // let id = "61a090904b810a21ebe74a3f";
-  console.log("id   " + id);
-  const dimensions = Dimensions.get("window");
-  const widthScreen = dimensions.width;
+  // let id = "61db93c83286b7168ecefcdd";
+  // console.log("id   " + id);
   const [state, setState] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(
-        "http://192.168.43.133:4000/api/blockchain/mobile/read/" + id
-      );
-      //http://localhost:4000/api/agricultural/read/
-      setState(response?.data?.agricultural);
+      let idNew = "";
+      if (id) {
+        idNew = id.slice(id.lastIndexOf(GTIN) + LENGTH, id.length);
+        //http://localhost:4000/api/agricultural/blockchain/mobileread/
+        const response = await axios.get(
+          "http://192.168.43.133:4000/api/blockchain/mobile/read/" + idNew
+        );
+        setState(response?.data?.agricultural);
+      }
     };
     fetchData();
   }, []);
 
   return (
-    <View style={[styles.container, { width: widthScreen }]}>
+    <View style={styles.container}>
       <ScrollView>
         <View
           style={{
@@ -72,6 +75,7 @@ const AgriculturalScreen = ({ route }) => {
 
 export default AgriculturalScreen;
 
+const { width } = Dimensions.get("window");
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -79,6 +83,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 10,
-    paddingBottom: 100,
+    paddingBottom: 10,
+    width: width,
   },
 });
