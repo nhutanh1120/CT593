@@ -2,7 +2,10 @@ import React, { useEffect } from "react";
 import Chart from "react-apexcharts";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import card from "../../assets/JsonData/card.json";
+// import card from "./../../assets/JsonData/card.json";
+import CardData from "./../../assets/JsonData/dashboard/card.js";
+import TopCustomers from "./../../assets/JsonData/dashboard/topCustomer.js";
+import LatestAgricultural from "./../../assets/JsonData/dashboard/lastAgricultural";
 import {
   dispatchGetAllAgricultural,
   fetchAllAgricultural,
@@ -20,11 +23,11 @@ const chartOptions = {
   series: [
     {
       name: "Cây Trồng",
-      data: [40, 70, 20, 90, 36, 80, 30, 91, 60],
+      data: [0, 25, 0, 0, 0, 0, 0, 25, 0, 4],
     },
     {
       name: "Vật Nuôi",
-      data: [40, 30, 70, 80, 40, 16, 40, 20, 51, 10],
+      data: [0, 17, 5, 0, 0, 0, 0, 20, 0, 6],
     },
   ],
   options: {
@@ -39,17 +42,7 @@ const chartOptions = {
       curve: "smooth",
     },
     xaxis: {
-      categories: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-      ],
+      categories: ["16", "17", "18", "19", "20", "21", "22", "23", "24", "25"],
     },
     legend: {
       position: "top",
@@ -60,37 +53,6 @@ const chartOptions = {
   },
 };
 
-const topCustomers = {
-  head: ["Người dùng", "nông sản", "hoàn thành"],
-  body: [
-    {
-      username: "john doe",
-      agricultural: "490",
-      success: "70",
-    },
-    {
-      username: "frank iva",
-      agricultural: "250",
-      success: "250",
-    },
-    {
-      username: "anthony baker",
-      agricultural: "120",
-      success: "40",
-    },
-    {
-      username: "frank iva",
-      agricultural: "110",
-      success: "51",
-    },
-    {
-      username: "anthony baker",
-      agricultural: "80",
-      success: "40",
-    },
-  ],
-};
-
 const renderHead = (item, index) => <th key={index}>{item}</th>;
 const renderBody = (item, index) => (
   <tr className="table__body" key={index}>
@@ -99,52 +61,6 @@ const renderBody = (item, index) => (
     <td>{item.success}</td>
   </tr>
 );
-
-const latestAgricultural = {
-  header: ["# id", "người dùng", "tên nông sản", "ngày", "trạng thái"],
-  body: [
-    {
-      id: "#OD1711",
-      user: "john doe",
-      date: "17 Jun 2021",
-      name: "Succulent Seeds",
-      status: "shipping",
-      content: "construct",
-    },
-    {
-      id: "#OD1712",
-      user: "frank iva",
-      date: "1 Jun 2021",
-      name: "Nature Hills",
-      status: "paid",
-      content: "success",
-    },
-    {
-      id: "#OD1713",
-      user: "anthony baker",
-      date: "27 Jun 2021",
-      name: "Rise with the Sun",
-      status: "pending",
-      content: "pending",
-    },
-    {
-      id: "#OD1712",
-      user: "frank iva",
-      date: "1 Jun 2021",
-      name: "Location Irrigation",
-      status: "paid",
-      content: "success",
-    },
-    {
-      id: "#OD1713",
-      user: "anthony baker",
-      date: "27 Jun 2021",
-      name: "New Ag",
-      status: "refund",
-      content: "cancel",
-    },
-  ],
-};
 
 const agriculturalStatus = {
   shipping: "primary",
@@ -189,6 +105,19 @@ const Body = () => {
       getAllUser();
     }
   }, [token, dispatch]);
+
+  // Get data from redux
+  let card;
+  let topCustomers;
+  let latestAgricultural;
+
+  const getData = () => {
+    card = CardData();
+    topCustomers = TopCustomers();
+    latestAgricultural = LatestAgricultural();
+  };
+  getData();
+
   return (
     <div className="grid body">
       <div className="dashboard__body__header">

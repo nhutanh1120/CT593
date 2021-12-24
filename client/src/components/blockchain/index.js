@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import Web3 from "web3";
-import { ABI, ADDRESS_SMART_CONTRACT } from "./../../constants/contract";
 import useSortableData from "./../utils/sort/index";
 import TbodyData from "./tbody";
 import "./style.css";
+import {
+  showSuccessToast,
+  showErrorToast,
+} from "./../utils/notification/message";
 
 const Censor = () => {
   // Get data
@@ -93,6 +95,7 @@ const Censor = () => {
         .then((accounts) => {
           setAccount(accounts[0]);
           console.log(`Selected account is ${account}`);
+          showSuccessToast("Kết nối metamask thành công!");
         })
         .catch((error) => {
           console.log(error);
@@ -104,29 +107,10 @@ const Censor = () => {
         console.log(`Selected account changed to ${account}`);
       });
     } else {
-      alert("Bạn chưa cài đặt metamask!");
+      showErrorToast("Bạn chưa cài đặt metamask!");
     }
   };
-  //create contract infura
-  const provider_Infura = new Web3.providers.WebsocketProvider(
-    "wss://rinkeby.infura.io/ws/v3/ae82f11804ff4cd58a7ef8bb0ebe4f42"
-  );
-  const web3_infura = new Web3(provider_Infura);
-  const contract_Infura = new web3_infura.eth.Contract(
-    ABI,
-    ADDRESS_SMART_CONTRACT
-  );
-  console.log(contract_Infura);
-  contract_Infura.events.sendStatus(
-    { filter: {}, fromBlock: "latest" },
-    function (error, event) {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log(event);
-      }
-    }
-  );
+
   return (
     <div className="grid body dashboard__product">
       <div id="toast"></div>

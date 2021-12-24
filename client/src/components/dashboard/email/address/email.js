@@ -7,7 +7,7 @@ const initialState = {
   value: "",
   error: null,
 };
-const EmailBody = () => {
+const EmailBody = ({ dataFormEmail }) => {
   const [state, setState] = useState(initialState);
 
   const { items, value, error } = state;
@@ -32,6 +32,7 @@ const EmailBody = () => {
           items: [...items, email],
           value: "",
         });
+        dataFormEmail([...state.items, email]);
       }
     }
   };

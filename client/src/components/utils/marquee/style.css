@@ -1,0 +1,28 @@
+.marquee {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: violet;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.marquee div {
+  font-size: 18px;
+  font-family: verdana;
+  padding-left: 100%;
+  display: inline-block;
+  animation: animate 10s linear infinite;
+  color: black;
+}
+.marquee div b {
+  color: red;
+}
+
+@keyframes animate {
+  100% {
+    transform: translate(-100%, 0);
+  }
+}

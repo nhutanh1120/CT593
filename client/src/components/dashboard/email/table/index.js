@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import useSortableData from "./../../../utils/sort/index";
 import TbodyData from "./tbody";
 
-const TableEmail = ({ customerList }) => {
+const TableEmail = ({ customerList, dataEmail }) => {
   const [limit, setLimit] = useState(10);
   const [pagination, setPagination] = useState(
     customerList.slice(0, Number(limit))
@@ -74,7 +74,9 @@ const TableEmail = ({ customerList }) => {
     const newArray = sendMail.filter((item) => item !== data);
     setSendMail(newArray);
   };
-  console.log(sendMail);
+  useEffect(() => {
+    dataEmail(sendMail);
+  }, [sendMail, dataEmail]);
   return (
     <div className="card--body">
       <div className="card--body__content">

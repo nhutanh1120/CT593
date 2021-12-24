@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { apiUrl } from "../../constants";
+import { apiUrl, GTIN, LENGTH } from "./../../constants";
 import Distributor from "./distributor/distributor";
 import Processing from "./processing";
 import Producer from "./producer";
@@ -45,7 +45,9 @@ const AgriculturalContent = () => {
   useEffect(() => {
     (async () => {
       try {
-        let idNew = id.slice(id.lastIndexOf("(10)") + 4, id.length);
+        let idNew = id.slice(id.lastIndexOf(GTIN) + LENGTH, id.length);
+        // console.log(id.lastIndexOf(GTIN));
+        // console.log(idNew);
         const res = await axios.get(apiUrl + "/blockchain/read/" + idNew, null);
         console.log(res.data);
 

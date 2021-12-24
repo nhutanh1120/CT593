@@ -1,10 +1,49 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { apiUrl } from "./../../../../constants";
+import { showSuccessToast } from "./../../../utils/notification/message";
+import Validator from "./../../../utils/validation/Vanilla";
 import "./style.css";
 
-const FormEmail = () => {
+const FormEmail = ({ dataSend }) => {
+  console.log(dataSend);
+  const token = useSelector((state) => state.token);
+  useEffect(() => {
+    (() => {
+      Validator({
+        form: "#email__form",
+        formGroupSelector: ".form__group",
+        errorSelector: ".form__message",
+        rules: [
+          Validator.isRequired("#name", "Vui lòng nhập tên của bạn"),
+          Validator.isRequired("#title", "Vui lòng nhập tiêu đề"),
+          Validator.isRequired("#description", "Vui lòng nhập nội dung"),
+        ],
+        onSubmit: function (data) {
+          (async (data) => {
+            const dataSubmit = {
+              address: dataSend,
+              name: data.name,
+              title: data.title,
+              description: data.description,
+            };
+            console.log(dataSubmit);
+            const res = await axios.post(apiUrl + "/email/send", dataSubmit, {
+              headers: { Authorization: "Bearer " + token },
+            });
+            if (res.data.success) {
+              showSuccessToast("Gửi mail thành công!");
+            }
+          })(data);
+        },
+      });
+    })();
+  }, [dataSend, token]);
   return (
     <div className="email__form">
       <h5>Tạo thư mới</h5>
+      <div id="toast"></div>
       <form id="email__form">
         <div className="form__group">
           <input

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import img from "./../../../assets/img/bg.jpg";
 import Update from "./../update";
 import moment from "moment";
+import { GTIN } from "./../../../constants";
 
 const ProductItem = ({ agricultural, onDelete }) => {
   const onDeletes = async () => {
@@ -75,7 +76,10 @@ const ProductItem = ({ agricultural, onDelete }) => {
   );
   const DropdownSaved = () => (
     <div className="product__dropdown__content">
-      <Link to={"/user/detail/" + agricultural._id} className="product--button">
+      <Link
+        to={"/agricultural/" + GTIN + agricultural._id}
+        className="product--button"
+      >
         Xem chi tiết
       </Link>
     </div>
