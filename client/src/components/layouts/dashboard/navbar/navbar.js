@@ -60,7 +60,9 @@ const TopNavbar = ({ data, userMenu }) => {
     setWordEntered(searchWord);
     if (data && searchWord) {
       const newFilter = data.filter((value) => {
-        return value?.fullname.toLowerCase().includes(searchWord.toLowerCase());
+        return value?.breed?.nameBreed
+          .toLowerCase()
+          .includes(searchWord.toLowerCase());
       });
       if (searchWord === "") {
         setFilter([]);
@@ -130,7 +132,9 @@ const TopNavbar = ({ data, userMenu }) => {
         {typeof filter !== "string" && filter.length !== 0 && (
           <div className="search__result">
             {filter.slice(0, 15).map((item, index) => (
-              <div key={index}>{item.fullname}</div>
+              <Link to={"/agricultural/manger/" + item._id} key={index}>
+                <div>{item?.breed?.nameBreed}</div>
+              </Link>
             ))}
           </div>
         )}

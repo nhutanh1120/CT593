@@ -46,7 +46,7 @@ const TbodyData = ({ item, index }) => {
       <td className="table__body--action">
         <Link
           className="tbody__action"
-          to={"/agricultural/" + state.id}
+          to={"/agricultural/manager/" + state.id}
           target="_blank"
         >
           <div className="action__tooltip">Xem chi tiết</div>

@@ -44,6 +44,7 @@ const retailerControllers = {
           price,
         },
         administrator: req.user.id,
+        status: 1,
       };
 
       const agricultural = new AgriculturalModel(newAgricultural);

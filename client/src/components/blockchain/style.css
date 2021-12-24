@@ -10,3 +10,7 @@
 .text__overflow::-webkit-scrollbar {
   display: none;
 }
+
+.color__red {
+  background-color: chartreuse;
+}

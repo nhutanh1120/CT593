@@ -23,11 +23,11 @@ const chartOptions = {
   series: [
     {
       name: "Cây Trồng",
-      data: [0, 25, 0, 0, 0, 0, 0, 25, 0, 4],
+      data: [0, 25, 0, 0, 0, 0, 0, 1, 0, 4],
     },
     {
       name: "Vật Nuôi",
-      data: [0, 17, 5, 0, 0, 0, 0, 20, 0, 6],
+      data: [0, 17, 5, 0, 0, 0, 0, 0, 0, 6],
     },
   ],
   options: {

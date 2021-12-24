@@ -45,6 +45,7 @@ const distributorControllers = {
         distributor: distributor,
         processing,
         administrator: req.user.id,
+        status: 1,
       };
 
       const agricultural = new AgriculturalModel(newAgricultural);

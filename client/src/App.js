@@ -96,7 +96,7 @@ function App() {
         console.log(error);
       } else {
         console.log(event);
-        setMarquee(event);
+        setMarquee(event?.transactionHash);
       }
     }
   );

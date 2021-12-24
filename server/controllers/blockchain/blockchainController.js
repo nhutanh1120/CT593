@@ -311,8 +311,8 @@ const blockchainControllers = {
   // @access private
   restore: async (req, res) => {
     try {
-      console.log("read agricultural request");
-      const hash = req.body;
+      console.log("restore agricultural request");
+      const { hash } = req.body;
 
       if (hash === "") {
         return res.status(400).json({
@@ -321,13 +321,21 @@ const blockchainControllers = {
         });
       }
 
-      const response = await axios.get(ipfs + hash);
-
-      const agricultural = await AgriculturalModel.findByIdAndUpdate(
-        req.params.id,
-        response.data,
-        { new: true }
+      const response = await axios.get(
+        ipfs + "QmVsCFihiWZ8NpH7Dv5Gu84r9KniAV6GMTB6cjM3S6M4Ad"
       );
+
+      const find = await AgriculturalModel.findById(req.params.id);
+
+      let agricultural;
+      if (find) {
+        agricultural = await AgriculturalModel.findByIdAndUpdate(
+          req.params.id,
+          { status: 2 },
+          { new: true }
+        );
+      }
+      console.log(agricultural);
 
       res.json({
         success: true,

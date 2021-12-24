@@ -21,8 +21,11 @@ const AgriculturalScreen = ({ route }) => {
         idNew = id.slice(id.lastIndexOf(GTIN) + LENGTH, id.length);
         //http://localhost:4000/api/agricultural/blockchain/mobileread/
         const response = await axios.get(
-          "http://192.168.43.133:4000/api/blockchain/mobile/read/" + idNew
+          "http://192.168.43.133:4000/api/agricultural/read/" + idNew
         );
+        // const response = await axios.get(
+        //   "http://192.168.43.133:4000/api/blockchain/mobile/read/" + idNew
+        // );
         setState(response?.data?.agricultural);
       }
     };

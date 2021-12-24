@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
-import { apiUrl } from "../../../../constants";
+import { apiUrl, GTIN, LENGTH } from "../../../../constants";
 import {
   showErrorToast,
   showSuccessToast,
@@ -14,6 +14,7 @@ const CreateDistributor = () => {
   const token = useSelector((state) => state.token);
   const history = useHistory();
   const { id } = useParams();
+  let idNew = id.slice(id.lastIndexOf(GTIN) + LENGTH, id.length);
   useEffect(() => {
     (() => {
       Validator({
@@ -34,7 +35,7 @@ const CreateDistributor = () => {
                 {
                   start: data.start,
                   end: data.end,
-                  id,
+                  id: idNew,
                 },
                 {
                   headers: { Authorization: "Bearer " + token },

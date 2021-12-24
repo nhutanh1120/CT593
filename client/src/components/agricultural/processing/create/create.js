@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
-import { apiUrl } from "./../../../../constants";
+import { apiUrl, LENGTH, GTIN } from "./../../../../constants";
 import getBase64 from "./../../../utils/filebases64";
 import {
   showErrorToast,
@@ -15,6 +15,7 @@ import "./style.css";
 
 const CreateProcessing = () => {
   const { id } = useParams();
+  let idNew = id.slice(id.lastIndexOf(GTIN) + LENGTH, id.length);
   const history = useHistory();
   const [ingredients, setIngredients] = useState([]);
 
@@ -55,7 +56,7 @@ const CreateProcessing = () => {
             let images;
             await getBase64(data.images[0]).then((data) => (images = data));
             const processing = {
-              id: id,
+              id: idNew,
               nameProduct: data.name,
               images: images,
               dateManufacture: data.date,

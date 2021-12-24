@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { apiUrl } from "../../../../constants";
+import { apiUrl, GTIN, LENGTH } from "../../../../constants";
 import {
   showErrorToast,
   showSuccessToast,
@@ -14,7 +14,7 @@ const CreateRetailer = () => {
   const token = useSelector((state) => state.token);
   const { id } = useParams();
   const history = useHistory();
-  console.log(history);
+  let idNew = id.slice(id.lastIndexOf(GTIN) + LENGTH, id.length);
 
   useEffect(() => {
     (() => {
@@ -39,7 +39,7 @@ const CreateRetailer = () => {
                   store: data.store,
                   address: data.address,
                   price: data.price,
-                  id,
+                  id: idNew,
                 },
                 {
                   headers: { Authorization: "Bearer " + token },

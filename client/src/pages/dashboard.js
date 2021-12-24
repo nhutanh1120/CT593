@@ -13,7 +13,7 @@ import Posts from "./../components/share/post";
 import Setting from "./../components/share/setting/setting";
 import "./../assets/css/dashboard.css";
 import admin_menu from "./../assets/JsonData/admin_menu.json";
-import customerList from "./../assets/JsonData/customers.json";
+// import customerList from "./../assets/JsonData/customers.json";
 import Customer from "./../components/dashboard/customer/customer";
 import Body from "./../components/dashboard/index";
 import CopyRight from "./../components/layouts/copyright/copyright";
@@ -76,11 +76,12 @@ function Dashboard() {
     }
   }, [isLogged, isAdmin, history]);
 
+  const agriculturalAll = useSelector((state) => state.agriculturalAll);
   return (
     <div className="App">
       <Sidebar sidebarCurrent={sidebarCurrent} />
       <section className="home-section">
-        <TopNavbar data={customerList} userMenu={admin_menu} />
+        <TopNavbar data={agriculturalAll} userMenu={admin_menu} />
 
         <Switch>
           <Route exact path={match.url + "/"} component={Body}></Route>

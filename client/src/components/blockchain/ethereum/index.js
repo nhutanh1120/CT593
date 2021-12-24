@@ -78,12 +78,13 @@ const Ethereum = () => {
     }
   };
 
+  const [checkAll, setCheckAll] = useState(false);
   return (
     <div className="grid body dashboard__product">
       <div id="toast"></div>
       <div className="dashboard__body__header">
         <h2>Quản lý nông sản</h2>
-        <button className="btn">
+        <button className="btn" onClick={() => setCheckAll(true)}>
           <i className="bx bx-check bx-sm bx-burst-hover"></i>
           <span className="tooltip__create">kiểm tra</span>
         </button>
@@ -147,7 +148,12 @@ const Ethereum = () => {
                   </thead>
                   <tbody>
                     {items.map((item, index) => (
-                      <TbodyData key={index} item={item} index={index + 1} />
+                      <TbodyData
+                        key={index}
+                        item={item}
+                        index={index + 1}
+                        checkAll={checkAll}
+                      />
                     ))}
                   </tbody>
                 </table>
