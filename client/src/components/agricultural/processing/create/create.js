@@ -85,7 +85,7 @@ const CreateProcessing = () => {
         },
       });
     })();
-  }, [token, ingredients, id]);
+  }, [token, ingredients, idNew]);
   return (
     <div className="app__create__processing">
       <div id="toast"></div>

@@ -54,7 +54,7 @@ const CreateDistributor = () => {
         },
       });
     })();
-  }, [token, id]);
+  }, [token, idNew]);
   return (
     <div className="app__create__distributor">
       <div id="toast"></div>

@@ -6,7 +6,7 @@ import Footer from "./../components/layouts/footer/footer";
 import Header from "./../components/layouts/header/header";
 import "./../assets/css/contact.css";
 import QR from "./../assets/img/qr.png";
-import utility from "./../assets/img/utility1.png";
+import utility from "./../assets/img/utility2.png";
 
 function Contact() {
   return (

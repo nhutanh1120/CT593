@@ -27,7 +27,6 @@ import Post from "./pages/post";
 import Product from "./pages/product";
 import Info from "./pages/profile";
 import QrCode from "./pages/qrCode";
-import Test from "./pages/test";
 import User from "./pages/user";
 import {
   dispatchGetUser,
@@ -129,7 +128,6 @@ function App() {
           <Route path="/qr/:id" component={QrCode} />
           <Route path="/agricultural" component={Agricultural} />
           <Route path="/profile/update" component={isLogin ? Info : NotFound} />
-          <Route path="/test" component={Test} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Router>

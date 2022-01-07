@@ -32,7 +32,6 @@ const CreateRetailer = () => {
         onSubmit: function (data) {
           (async (data) => {
             try {
-              console.log(id);
               const res = await axios.post(
                 apiUrl + "/agricultural/retailer/create",
                 {
@@ -58,7 +57,7 @@ const CreateRetailer = () => {
         },
       });
     })();
-  }, [token, id]);
+  }, [token, idNew]);
   return (
     <div className="app__create__retailer">
       <div id="toast"></div>
